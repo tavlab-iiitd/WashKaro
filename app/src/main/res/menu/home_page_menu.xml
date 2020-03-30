@@ -5,7 +5,6 @@
 
     <item
         android:id="@+id/lang_togg_butt"
-
         android:title="हिं/En"
         app:showAsAction="always"/>
     <item

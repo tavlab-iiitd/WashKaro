@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
+        <activity android:name=".symptom_activity"></activity>
+        <activity android:name=".QuestionsActivity"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".FirstPage"></activity>
         <activity android:name=".privacy_policy"></activity>
         <activity android:name=".Home_Activity" />
         <activity android:name=".male_female_2" />
