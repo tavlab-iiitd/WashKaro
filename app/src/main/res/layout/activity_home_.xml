@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Home_background_color"
+    tools:context=".Home_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ViewFlipper
+                    android:id="@+id/viewFlipper_slide_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <ImageButton
+
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/flipperLeft"
+                    android:background="@drawable/iconsback"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginLeft="8dp" />
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/flipperRight"
+                    android:background="@drawable/iconsforward"
+                    android:layout_marginTop="120dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="8dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/data_tile"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/buttonback2"
+                android:elevation="@dimen/home_card_elev"
+                android:orientation="vertical">
+                <!--                <TextView-->
+                <!--                    android:id="@+id/Corona_helpline_text"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentTop="true"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginTop="25dp"-->
+                <!--                    android:layout_marginEnd="22dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:drawableRight="@drawable/ic_call_black_24dp"-->
+                <!--                    android:drawablePadding="5sp"-->
+                <!--                    android:text="01123978046"-->
+                <!--                    android:textSize="16sp"-->
+                <!--                    android:textStyle="bold" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/state_helpline_text"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@id/Corona_helpline_text"-->
+                <!--                    android:layout_alignParentStart="true"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:scrollbars="vertical"-->
+                <!--                    android:textSize="14sp"-->
+                <!--                    android:textStyle="bold" />-->
+
+                <HorizontalScrollView
+                    android:id="@+id/hori_scroll_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:elevation="@dimen/home_card_slider_elev"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv1"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/passengers" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Passesgers screened at airport"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="xxxx"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:elevation="@dimen/home_card_slider_elev"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv2"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/active_patient" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Active COVID19 Cases"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="xxxx"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:elevation="@dimen/home_card_slider_elev"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv3"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/cured" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Cured/Discharged Cases"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="xxxx"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:elevation="@dimen/home_card_slider_elev"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv4"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/death" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Death \nCases"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="xxxx"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll5"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:elevation="@dimen/home_card_slider_elev"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv5"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/migrated_icon" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Migrated Patient"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="xxxx"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/img_but_lay1"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_top"
+                    android:background="@drawable/buttonback2"
+                    android:clickable="true"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button1"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text1"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
+                        app:srcCompat="@drawable/iconsinspection"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Guidelines"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/img_but_lay2"
+                    android:layout_width="150dp"
+                    android:clickable="true"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_top"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev"
+                    android:layout_alignParentEnd="true">
+
+                    <ImageButton
+                        android:id="@+id/image_button2"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text2"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text2"
+                        app:srcCompat="@drawable/iconsprivacypolicy"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Govt Updates"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/img_but_lay3"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:clickable="true"
+                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_below="@id/img_but_lay1"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button3"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text3"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text3"
+                        app:srcCompat="@drawable/iconscross"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Myth Busters"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:clickable="true"
+                    android:id="@+id/img_but_lay4"
+                    android:layout_marginRight="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_below="@id/img_but_lay1"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button4"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text4"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text4"
+                        app:srcCompat="@drawable/iconsscroll"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Daily Information"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay5"
+                    android:layout_marginLeft="20dp"
+                    android:clickable="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/img_but_lay3"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="img5_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconsnews" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="News"/>
+
+                </LinearLayout>
+                -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay6"
+                    android:clickable="true"
+                    android:layout_marginRight="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_below="@id/img_but_lay4"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button6"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text6"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text6"
+                        app:srcCompat="@drawable/iconstrust"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="MapMyIndia Live Tracker"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay7"
+                    android:clickable="true"
+                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_below="@id/img_but_lay3"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button7"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text7"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text7"
+                        app:srcCompat="@drawable/iconschatroom"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="MyGov Corona Chatbot"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:clickable="true"
+                    android:id="@+id/img_but_lay8"
+                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
+                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_marginBottom="@dimen/home_card_margin_cont_top"
+                    android:layout_below="@id/img_but_lay7"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="@dimen/home_card_elev">
+
+                    <ImageButton
+                        android:id="@+id/image_button8"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imgbut_text8"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text8"
+                        app:srcCompat="@drawable/iconsbot"
+                        android:contentDescription="Card Image" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="WHO Chatbot"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/home_card_font"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+    <!--             <android:lecho.lib.hellocharts.view.PieChartView-->
+    <!--                 android:id="@+id/chart"-->
+    <!--                 android:layout_width="match_parent"-->
+    <!--                 android:layout_height="match_parent"-->
+    <!--                 layout_height="wrap_content"-->
+    <!--                 layout_width="wrap_content" />-->

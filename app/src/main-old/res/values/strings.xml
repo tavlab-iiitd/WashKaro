@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">WashKaro</string>
+    <string name="title_activity_about__section">About_Section</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_about">About</string>
+    <string name="link_test">www.google.com</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="slide_1_title">Daily News Articles</string>
+    <string name="slide_1_desc">Click on any article to read about it.</string>
+    <string name="slide_2_title">Meditation Techniques </string>
+    <string name="slide_2_desc">Learn about the different meditation techniques and practice them</string>
+    <string name="slide_3_title">Diet Chart</string>
+    <string name="slide_3_desc">Make your diet chart by the help of health experts</string>
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="dis_que">When was the last time someone in your family suffered from a disease?</string>
+    <string-array name="gender_list">
+        <item>MALE</item>
+        <item>FEMALE</item>
+    </string-array>
+    <string-array name="disease_frequency">
+        <item>Last 1 month</item>
+        <item>Last 3 motnhs</item>
+        <item>Last 6 motnhs</item>
+        <item>Last 12 motnhs</item>
+    </string-array>
+</resources>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Home_background_color"
+    tools:context=".Home_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ViewFlipper
+                    android:id="@+id/viewFlipper_slide_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <ImageButton
+
+                    android:layout_width="20dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/flipperLeft"
+                    android:background="@drawable/iconsback"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginLeft="8dp" />
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/flipperRight"
+                    android:background="@drawable/iconsforward"
+                    android:layout_marginTop="120dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="8dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="209dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/buttonback2"
+                android:elevation="4dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/helpline_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="25dp"
+                    android:text="Corona Central Helpline No. "
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Corona_helpline_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/ic_call_black_24dp"
+                    android:drawablePadding="5sp"
+                    android:text="01123978046"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/state_helpline_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Corona_helpline_text"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="vertical"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/image_button1"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFFFF"
+                        android:onClick="img1_clicked"
+                        app:srcCompat="@drawable/iconsinspection" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="18sp"
+                        android:text="Guidelines"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay2"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="img2_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+
+                        app:srcCompat="@drawable/iconsprivacypolicy" />
+                    <TextView
+                        android:id="@+id/imgbut_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/blackcolor"
+                        android:textSize="18sp"
+                        android:text="Govt Updates"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/img_but_lay1"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="img3_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconscross" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="Myth Busters"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay4"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/img_but_lay1"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="img4_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconsscroll" />
+                    <TextView
+                        android:id="@+id/imgbut_text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="Daily Information"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay5"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/img_but_lay3"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="img5_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconsnews" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="News"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay6"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/img_but_lay4"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton6"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:onClick="img6_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconstrust" />
+                    <TextView
+                        android:id="@+id/imgbut_text6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="MapMyIndia Live Tracker"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay7"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/img_but_lay5"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton7"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:onClick="img7_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconschatroom" />
+
+                    <TextView
+                        android:id="@+id/imgbut_text7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="16sp"
+                        android:text="MyGov Corona Chatbot"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_but_lay8"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/img_but_lay6"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/buttonback2"
+                    android:elevation="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton8"
+                        style="@android:style/Widget.Material.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:onClick="img8_clicked"
+                        android:layout_gravity="center"
+                        android:background="#FFFFFF"
+                        app:srcCompat="@drawable/iconsbot" />
+                    <TextView
+                        android:id="@+id/imgbut_text8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/blackcolor"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:text="WHO Chatbot"/>
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>
+
+    <!--             <android:lecho.lib.hellocharts.view.PieChartView-->
+    <!--                 android:id="@+id/chart"-->
+    <!--                 android:layout_width="match_parent"-->
+    <!--                 android:layout_height="match_parent"-->
+    <!--                 layout_height="wrap_content"-->
+    <!--                 layout_width="wrap_content" />-->

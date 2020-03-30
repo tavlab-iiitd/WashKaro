@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/app_bar_settings"
+
+        android:title="News"
+        app:showAsAction="never"
+         />
+    <item
+        android:id="@+id/lang_togg_butt"
+
+        android:title="हिं/En"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/Survey"
+        android:title="Survey"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/developers"
+        android:title="About Us"
+        app:showAsAction="never"/>
+
+
+
+
+</menu>
