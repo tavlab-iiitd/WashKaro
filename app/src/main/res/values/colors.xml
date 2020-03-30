@@ -28,6 +28,8 @@
     <color name="dot_active_screen1">#3a67e0</color>
     <color name="dot_active_screen2">#3a67e0</color>
     <color name="dot_active_screen3">#3a67e0</color>
+    <color name="newColour">#8075CDD8</color>
+    <color name ="Shadow"> #39000000</color>
     <array name="array_dot_active">
         <item>@color/dot_active_screen1</item>
         <item>@color/dot_active_screen2</item>

@@ -59,8 +59,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     private ViewFlipper viewFlipper;
     private DatabaseReference databaseReference;
     private List<SlideModel> slideLists;
-    ConstraintLayout ll_but[] = new ConstraintLayout[8];
-    ConstraintLayout ll_but1, ll_but2, ll_but3, ll_but4, ll_but5, ll_but6, ll_but7, ll_but8;
+    ConstraintLayout ll_but[] = new ConstraintLayout[10];
+    ConstraintLayout ll_but1, ll_but2, ll_but3, ll_but4, ll_but5, ll_but6, ll_but7, ll_but8,ll_but9,ll_but10;
     int curr_lang = 2; //1 for eng , 2 for hindi
     String intentLangExtra = "hindi";
     //    DatabaseReference dref;
@@ -123,6 +123,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         initialize_view_flipper();
 
         slideLists = new ArrayList<>();
+        slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.img_but_lay1);
         ll_but[1] = findViewById(R.id.img_but_lay2);
         ll_but[2] = findViewById(R.id.img_but_lay3);
@@ -131,10 +132,13 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         ll_but[5] = findViewById(R.id.img_but_lay6);
         ll_but[6] = findViewById(R.id.img_but_lay7);
         ll_but[7] = findViewById(R.id.img_but_lay8);
+        ll_but[8] = findViewById(R.id.img_but_lay9);
+        ll_but[9] = findViewById(R.id.img_but_lay10);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 5, 6, 7};
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 5, 6, 7,8,9};
 
-        for (int i = 0; i < btnToAdd.length; i++) {
+        for (int i = 0; i < btnToAdd.length; i++)
+        {
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
@@ -300,6 +304,18 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             String nmbr = "+41798931892";
             openWhatsapp(nmbr);
         }
+        if(view==ll_but[8])
+        {
+            Intent i = new Intent(Home_Activity.this,CardViewActivity.class);
+            i.putExtra("Language", intentLangExtra);
+            startActivity(i);
+        }
+        if(view==ll_but[9])
+        {
+            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
+            i.putExtra("Language", intentLangExtra);
+            startActivity(i);
+        }
         if (view == corona_helpline) {
             Intent callintent = new Intent(Intent.ACTION_DIAL);
             callintent.setData(Uri.parse("tel:" + corona_helpline.getText().toString()));
@@ -365,6 +381,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             //TextView t5 = (TextView)findViewById(R.id.helpline_text);
             TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
             //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
+            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
+            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
 
             t1.setText("Guidelines");
             t2.setText("Gov updates");
@@ -372,6 +390,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             t4.setText("Daily Information");
             //t5.setText("Corona Central helpline");
             t6.setText("MapMyIndia Live Tracker");
+            t9.setText("News");
+            t10.setText("Symptom Tracker");
             //t7.setText("News");
             mohfw_tv1.setText("Passesgers screened at airport");
             mohfw_tv2.setText("Active COVID19\n Cases");
@@ -388,12 +408,16 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
             //TextView t5 = (TextView)findViewById(R.id.helpline_text);
             TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
+            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
+            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
             t1.setText("दिशा निर्देश");
             t2.setText("सरकारी निर्देश");
             t3.setText("मिथक ");
             t4.setText("दैनिक जानकारी");
             //t7.setText("समाचार");
             //t5.setText("कोरोना केंद्रीय हेल्पलाइन");
+            t9.setText("समाचार");
+            t10.setText("लक्षण ट्रैकर");
             t6.setText("MapMyIndia लाइव ट्रैकर");
             mohfw_tv1.setText("हवाई अड्डे पर यात्री जांच");
             mohfw_tv2.setText("सक्रिय COVID19 रोगी");
