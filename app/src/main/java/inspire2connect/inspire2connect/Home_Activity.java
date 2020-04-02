@@ -37,6 +37,7 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.common.hash.HashingOutputStream;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,6 +61,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     private DatabaseReference databaseReference;
     private List<SlideModel> slideLists;
     ConstraintLayout ll_but[] = new ConstraintLayout[10];
+    ImageButton img_but[]=new ImageButton[10];
     ConstraintLayout ll_but1, ll_but2, ll_but3, ll_but4, ll_but5, ll_but6, ll_but7, ll_but8,ll_but9,ll_but10;
     int curr_lang = 2; //1 for eng , 2 for hindi
     String intentLangExtra = "hindi";
@@ -104,7 +106,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
                 Log.e("UPDATE_STATUS", "Update flow failed! Result code: " + resultCode);
@@ -128,17 +131,30 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         ll_but[1] = findViewById(R.id.img_but_lay2);
         ll_but[2] = findViewById(R.id.img_but_lay3);
         ll_but[3] = findViewById(R.id.img_but_lay4);
-//        ll_but[4]=findViewById(R.id.img_but_lay5);
+        ll_but[4]=findViewById(R.id.img_but_lay5);
         ll_but[5] = findViewById(R.id.img_but_lay6);
-        ll_but[6] = findViewById(R.id.img_but_lay7);
-        ll_but[7] = findViewById(R.id.img_but_lay8);
-        ll_but[8] = findViewById(R.id.img_but_lay9);
-        ll_but[9] = findViewById(R.id.img_but_lay10);
+//        ll_but[6] = findViewById(R.id.img_but_lay7);
+//        ll_but[7] = findViewById(R.id.img_but_lay8);
+//        ll_but[8] = findViewById(R.id.img_but_lay9);
+//        ll_but[9] = findViewById(R.id.img_but_lay10);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 5, 6, 7,8,9};
+
+//        img_but[0] = findViewById(R.id.image_button1);
+//        img_but[1] = findViewById(R.id.image_button2);
+//        img_but[2] = findViewById(R.id.image_button3);
+//        img_but[3] = findViewById(R.id.image_button4);
+//        ll_but[4]=findViewById(R.id.img_but_lay5);
+//        img_but[5] = findViewById(R.id.image_button6);
+//        img_but[6] = findViewById(R.id.image_button7);
+//        img_but[7] = findViewById(R.id.image_button8);
+//        img_but[8] = findViewById(R.id.image_button9);
+//        img_but[9] = findViewById(R.id.image_button10);
+
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4,5};
 
         for (int i = 0; i < btnToAdd.length; i++)
         {
+            //img_but[btnToAdd[i]].setOnClickListener(this);
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
@@ -264,63 +280,66 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             viewFlipper.setOutAnimation(anim4);
             viewFlipper.showNext();
         }
-        if (view == ll_but[0]) {
-            Intent i = new Intent(Home_Activity.this, daily_guidelines.class);
+
+        if (view == ll_but[0] )
+        {
+            Intent i = new Intent(Home_Activity.this, daily_updates.class);
             i.putExtra("Language", intentLangExtra);
             //Toast.makeText(Home_Activity.this,"Button Clicked 1 ",Toast.LENGTH_SHORT).show();
             startActivity(i);
         }
-        if (view == ll_but[1]) {
-            Intent i = new Intent(Home_Activity.this, Government_Updates.class);
+        if (view == ll_but[1] ) {
+            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[2]) {
+            //Put contact tracer here
             Intent i = new Intent(Home_Activity.this, Myths.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
-        if (view == ll_but[3]) {
-            Intent i = new Intent(Home_Activity.this, daily_updates.class);
-            i.putExtra("Language", intentLangExtra);
-            startActivity(i);
-        }
-        if (view == ll_but[4]) {
+        if (view == ll_but[3] ) {
             Intent i = new Intent(Home_Activity.this, CardViewActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
-        if (view == ll_but[5]) {
+        if (view == ll_but[4] ) {
+            Intent i = new Intent(Home_Activity.this, CardViewActivity.class);
+            i.putExtra("Language", intentLangExtra);
+            startActivity(i);
+        }
+        if (view == ll_but[5] ) {
             //call map activity here
             Intent i = new Intent(Home_Activity.this, map_activity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
-        if (view == ll_but[6]) {
-            String nmbr = "+919013151515";
-            openWhatsapp(nmbr);
-        }
-        if (view == ll_but[7]) {
-            String nmbr = "+41798931892";
-            openWhatsapp(nmbr);
-        }
-        if(view==ll_but[8])
-        {
-            Intent i = new Intent(Home_Activity.this,CardViewActivity.class);
-            i.putExtra("Language", intentLangExtra);
-            startActivity(i);
-        }
-        if(view==ll_but[9])
-        {
-            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
-            i.putExtra("Language", intentLangExtra);
-            startActivity(i);
-        }
-        if (view == corona_helpline) {
-            Intent callintent = new Intent(Intent.ACTION_DIAL);
-            callintent.setData(Uri.parse("tel:" + corona_helpline.getText().toString()));
-            startActivity(callintent);
-        }
+//        if (view == ll_but[6] ) {
+//            String nmbr = "+919013151515";
+//            openWhatsapp(nmbr);
+//        }
+//        if (view == ll_but[7]  || view==img_but[7]) {
+//            String nmbr = "+41798931892";
+//            openWhatsapp(nmbr);
+//        }
+//        if(view==ll_but[8]  || view==img_but[8])
+//        {
+//            Intent i = new Intent(Home_Activity.this,CardViewActivity.class);
+//            i.putExtra("Language", intentLangExtra);
+//            startActivity(i);
+//        }
+//        if(view==ll_but[9]  || view==img_but[9])
+//        {
+//            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
+//            i.putExtra("Language", intentLangExtra);
+//            startActivity(i);
+//        }
+//        if (view == corona_helpline) {
+//            Intent callintent = new Intent(Intent.ACTION_DIAL);
+//            callintent.setData(Uri.parse("tel:" + corona_helpline.getText().toString()));
+//            startActivity(callintent);
+//        }
     }
 
     private void openWhatsapp(String nmbr) {
@@ -354,6 +373,11 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             Intent i = new Intent(Home_Activity.this, about.class);
             startActivity(i);
         }
+        else if(id==R.id.privacy_policy)
+        {
+            Intent i=new Intent(Home_Activity.this,privacy_policy.class);
+            startActivity(i);
+        }
 
 
         return super.onOptionsItemSelected(item);
@@ -378,20 +402,20 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             TextView t2 = (TextView) findViewById(R.id.imgbut_text2);
             TextView t3 = (TextView) findViewById(R.id.imgbut_text3);
             TextView t4 = (TextView) findViewById(R.id.imgbut_text4);
-            //TextView t5 = (TextView)findViewById(R.id.helpline_text);
+            TextView t5 = (TextView)findViewById(R.id.imgbut_text5);
             TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
             //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
-            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
-            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
+//            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
+//            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
 
-            t1.setText("Guidelines");
-            t2.setText("Gov updates");
-            t3.setText("Myth Busters");
-            t4.setText("Daily Information");
-            //t5.setText("Corona Central helpline");
-            t6.setText("MapMyIndia Live Tracker");
-            t9.setText("News");
-            t10.setText("Symptom Tracker");
+            t1.setText("Government Advisories");
+            t2.setText("Symptom Tracker");
+            t3.setText("Contact Tracer");
+            t4.setText("AI News");
+            t5.setText("Chatbots");
+            t6.setText("Miscellaneous");
+//            t9.setText("News");
+////            t10.setText("Symptom Tracker");
             //t7.setText("News");
             mohfw_tv1.setText("Passesgers screened at airport");
             mohfw_tv2.setText("Active COVID19\n Cases");
@@ -405,20 +429,19 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             TextView t2 = (TextView) findViewById(R.id.imgbut_text2);
             TextView t3 = (TextView) findViewById(R.id.imgbut_text3);
             TextView t4 = (TextView) findViewById(R.id.imgbut_text4);
-            //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
-            //TextView t5 = (TextView)findViewById(R.id.helpline_text);
+            TextView t5 = (TextView)findViewById(R.id.imgbut_text5);
             TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
-            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
-            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
-            t1.setText("दिशा निर्देश");
-            t2.setText("सरकारी निर्देश");
-            t3.setText("मिथक ");
-            t4.setText("दैनिक जानकारी");
-            //t7.setText("समाचार");
-            //t5.setText("कोरोना केंद्रीय हेल्पलाइन");
-            t9.setText("समाचार");
-            t10.setText("लक्षण ट्रैकर");
-            t6.setText("MapMyIndia लाइव ट्रैकर");
+//            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
+//            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
+            t1.setText("सरकारी निर्देश");
+            t2.setText("लक्षण ट्रैकर");
+            t3.setText("Contact Tracer");
+            t4.setText("समाचार");
+            t5.setText("Chatbots");
+            t6.setText("Miscellaneous");
+//            t9.setText("समाचार");
+//            t10.setText("लक्षण ट्रैकर");
+            //t6.setText("MapMyIndia लाइव ट्रैकर");
             mohfw_tv1.setText("हवाई अड्डे पर यात्री जांच");
             mohfw_tv2.setText("सक्रिय COVID19 रोगी");
             mohfw_tv3.setText("कुल ठीक व्यक्ति ");
@@ -463,12 +486,14 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void flipper_single_tap() {
+    public void flipper_single_tap()
+    {
         viewFlipper.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                switch (motionEvent.getAction()) {
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
+                switch (motionEvent.getAction())
+                {
                     case MotionEvent.ACTION_DOWN:
                         downX = motionEvent.getX();
                         downY = motionEvent.getY();
@@ -478,8 +503,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                         upY = motionEvent.getY();
                         float deltaX = downX - upX;
                         float deltaY = downY - upY;
-
-                        if (deltaX == 0 && deltaY == 0) {
+                        if (deltaX == 0 && deltaY == 0)
+                        {
                             onFlipperClicked();
                         }
 
@@ -489,8 +514,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-
-    public void onFlipperClicked() {
+    public void onFlipperClicked()
+    {
         viewFlipper.stopFlipping();
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
         Log.d("Zoomintest", "Index of child" + Integer.toString(i));
@@ -537,7 +562,6 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
     }
 }
-
 //    private void populateViewFlipper() {
 //        Toast.makeText(Home_Activity.this,"PLease wait",Toast.LENGTH_LONG).show();
 //        adapterViewFlipper = (AdapterViewFlipper)findViewById(R.id.adapterViewFlipper);
