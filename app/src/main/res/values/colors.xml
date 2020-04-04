@@ -42,4 +42,6 @@
         <item>@color/dot_inactive_screen3</item>
         <item>@color/dot_inactive_screen1</item>
     </array>
+
+    <color name="app_icon_round_background">#FFFFFF</color>
 </resources>
