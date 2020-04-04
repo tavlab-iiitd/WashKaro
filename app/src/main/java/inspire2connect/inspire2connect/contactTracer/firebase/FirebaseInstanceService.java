@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.firebase;
+package inspire2connect.inspire2connect.contactTracer.firebase;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.testapp.MainActivity;
+import inspire2connect.inspire2connect.contactTracer.MainActivity;
 import inspire2connect.inspire2connect.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

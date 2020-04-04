@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.firebase;
+package inspire2connect.inspire2connect.contactTracer.firebase;
 
 import android.content.Context;
 import android.util.Log;

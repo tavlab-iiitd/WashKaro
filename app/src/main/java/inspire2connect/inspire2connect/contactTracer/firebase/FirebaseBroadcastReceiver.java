@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.firebase;
+package inspire2connect.inspire2connect.contactTracer.firebase;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
