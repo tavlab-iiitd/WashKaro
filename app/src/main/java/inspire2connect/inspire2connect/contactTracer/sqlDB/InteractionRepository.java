@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.sqlDB;
+package inspire2connect.inspire2connect.contactTracer.sqlDB;
 
 import android.content.Context;
 import android.os.AsyncTask;

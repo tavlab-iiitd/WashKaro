@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.sqlDB;
+package inspire2connect.inspire2connect.contactTracer.sqlDB;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
