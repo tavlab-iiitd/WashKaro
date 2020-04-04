@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.base;
+package inspire2connect.inspire2connect.contactTracer.base;
 
 import android.util.Log;
 

@@ -1,6 +1,5 @@
-package inspire2connect.inspire2connect.base;
+package inspire2connect.inspire2connect.contactTracer.base;
 
-import android.app.ProgressDialog;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
