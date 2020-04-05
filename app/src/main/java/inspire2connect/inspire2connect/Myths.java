@@ -32,10 +32,12 @@ import java.util.List;
 
 public class Myths extends AppCompatActivity {
     TextView centre;
+    public ArrayList<myth_single_object> result;
+
     DatabaseReference dref;
     private RecyclerView recyclerView;
     DatabaseReference d;
-    private daily_guidelines_adapter mAdapter;
+    private myths_adapter mAdapter;
     int curr_lang = 2;  // 2 for hindi  1 for eng
 
     private RecyclerView.LayoutManager layoutManager;
@@ -61,7 +63,7 @@ public class Myths extends AppCompatActivity {
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<guideline_sigle_object> result = new ArrayList<>();
+                ArrayList<myth_single_object> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -70,8 +72,10 @@ public class Myths extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_hin").getValue(String.class);
-                    String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
-                    result.add(new guideline_sigle_object(ttp, Integer.toString(count), audio_url));
+                    hin_title=sno+". "+hin_title;
+                    //String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
+                    String ttp=g_hindi;
+                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
@@ -95,7 +99,7 @@ public class Myths extends AppCompatActivity {
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<guideline_sigle_object> result = new ArrayList<>();
+                ArrayList<myth_single_object> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -105,7 +109,7 @@ public class Myths extends AppCompatActivity {
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_en").getValue(String.class);
                     String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
-                    result.add(new guideline_sigle_object(ttp, Integer.toString(count), audio_url));
+                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
@@ -117,8 +121,9 @@ public class Myths extends AppCompatActivity {
         });
     }
 
-    public void populate_recycler_view(ArrayList<guideline_sigle_object> result) {
-        mAdapter = new daily_guidelines_adapter(result);
+    public void populate_recycler_view(ArrayList<myth_single_object> result)
+    {
+        mAdapter = new myths_adapter(result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -130,7 +135,9 @@ public class Myths extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_guidelines);
-
+        result=new ArrayList<>();
+        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
+        mAdapter=new myths_adapter(result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         Intent i = this.getIntent();
@@ -221,5 +228,35 @@ public class Myths extends AppCompatActivity {
         return true;
     }
 
-
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        ((myths_adapter) mAdapter).setOnItemClickListener(new myths_adapter
+                .MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v)
+            {
+                Log.d("Testing", " Clicked on Item gov_updates " + position);
+                Intent i = new Intent(Myths.this, detailed_view.class);
+                //Log.d("Testing",result.get(position).getTitle());
+                ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
+                Log.d("Testing",result_from_adapter.get(position).getTitle());
+                /*if(mMediaPlayer!=null)
+                {
+                    mMediaPlayer.stop();
+                    mMediaPlayer.release();
+                    mMediaPlayer=null;
+                }*/
+                ArrayList<myth_single_object> single=new ArrayList<>();
+                single.add(result_from_adapter.get(position));
+                Log.d("Testing",single.get(0).getTitle());
+                i.putExtra("detailed_title",single.get(0).getTitle());
+                i.putExtra("detailed_text",single.get(0).getMyth());
+                i.putExtra("url",single.get(0).getAudio_url());
+                //i.putExtra("result_list",single);
+                startActivity(i);
+            }
+        });
+    }
 }

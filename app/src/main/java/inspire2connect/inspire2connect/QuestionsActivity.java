@@ -53,8 +53,11 @@ public class QuestionsActivity extends AppCompatActivity {
         final TextView textView=(TextView)findViewById(R.id.pageNo);
 
         if(flag==0){
-            Intent in = new Intent(getApplicationContext(),Home_Activity.class);
-            startActivity(in);
+//            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
+//
+//            startActivity(in);
+            finish();
+
         }else{
             flag--;
             textView.setText(Integer.toString(flag+1)+"/7");
@@ -72,8 +75,11 @@ public class QuestionsActivity extends AppCompatActivity {
         final TextView textView=(TextView)findViewById(R.id.pageNo);
 
         if(flag==0){
-            Intent in = new Intent(getApplicationContext(),Home_Activity.class);
-            startActivity(in);
+//            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
+//            startActivity(in);
+            finish();
+
+
         }else{
             flag--;
             textView.setText(Integer.toString(flag+1)+"/7");
@@ -154,9 +160,9 @@ public class QuestionsActivity extends AppCompatActivity {
 //                }
 
                 flag++;
-                textView.setText(Integer.toString(flag+1)+"/7");
                 if(flag<questions.length)
                 {
+                    textView.setText(Integer.toString(flag+1)+"/7");
                     tv.setText(questions[flag]);
                 }
                 else
