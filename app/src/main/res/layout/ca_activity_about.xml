@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contactTracer.AboutActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/presented_to_you_by"
+
+        android:textColor="#000000"
+
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tavlabLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/tavlab_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iiitdLogo"
+        app:srcCompat="@drawable/tavlab" />
+
+    <ImageView
+        android:id="@+id/iiitdLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/iiitd_logo"
+        app:layout_constraintEnd_toStartOf="@+id/precogLogo"
+        app:layout_constraintStart_toEndOf="@+id/tavlabLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/iiitd" />
+
+    <ImageView
+        android:id="@+id/precogLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/precog_logo"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iiitdLogo"
+        app:srcCompat="@drawable/precog" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/priyanka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/priyanka"
+        android:textColor="#000000"
+
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iiitdLogo" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/priyankaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/priyanka_tag"
+
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priyanka" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/chirag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/chirag"
+        android:textColor="#000000"
+
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priyankaTag" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/chiragTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/chirag_tag"
+
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chirag" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
