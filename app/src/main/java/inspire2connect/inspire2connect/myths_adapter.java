@@ -99,7 +99,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
         myth_single_object movie = List.get(position);
         holder.title.setText(movie.getTitle());
         holder.actual_text.setText(Html.fromHtml(movie.getMyth()));
-        holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+        holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         play_pause_list.add(false);
         media_player_list.add(new custom_media_Class(null, true));
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
@@ -120,7 +120,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
                         }
                         if (media_player_list.get(position).getPaused()) {
                             holder.play_pause.setImageDrawable(null);
-                            holder.play_pause.setBackgroundResource(R.drawable.pause_icon);
+                            holder.play_pause.setBackgroundResource(R.drawable.ic_pause_black_34dp);
                             //media_player_list.get(position).setPaused(false);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();
                             try {
@@ -144,7 +144,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
                                             public void onCompletion(MediaPlayer mediaPlayer) {
                                                 Log.d("Testing", "Media Player finished");
                                                 media_player_list.get(position).setPaused(true);
-                                                holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+                                                holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
                                                 mediaPlayer = null;
                                             }
                                         });
@@ -172,7 +172,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
                                 e.printStackTrace();
                             }
                         } else {
-                            holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+                            holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
                             //play_pause_list.set(position,false);
                             //media_player_list.get(position).setPaused(true);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();

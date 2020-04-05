@@ -9,7 +9,7 @@
     <color name="RedColor">#f85f68</color>
     <color name="backColor">#4dffff</color>
     <color name="blackcolor">#000000</color>
-    <color name="home_buton_color">#A9F0F0</color>
+    <color name="home_buton_color">#B0DCDF</color>
     <color name="Home_background_color">#fafafa</color>
     <!-- Screens background color-->
 
@@ -49,4 +49,3 @@
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
 </resources>
-

@@ -4,24 +4,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/detailed_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="this is the heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingLeft="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:textColor="@color/blackcolor"
+        android:paddingRight="5dp"
+        />
 
     <TextView
         android:id="@+id/detailed_text"
         android:layout_width="match_parent"
-        android:layout_height="483dp"
-        android:text="TextView"
+        android:layout_height="480dp"
+        android:paddingLeft="10dp"
+        android:text="these are the details"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailed_title" />
+        app:layout_constraintTop_toBottomOf="@+id/detailed_title"
+        app:layout_constraintVertical_bias="0.05"
+        android:textSize="16dp"
+        android:textColor="@color/blackcolor"
+        android:lineSpacingExtra="3dp"
+        android:paddingRight="5dp"
+
+        />
 
     <SeekBar
         android:id="@+id/detailed_seekBar"
@@ -37,22 +54,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/detailed_share"
-        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailed_seekBar"
-        app:layout_constraintVertical_bias="0.45"
-        app:srcCompat="@drawable/play_icon" />
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/ic_play_arrow_black_34dp"
+        android:background="@color/transparent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        />
 
     <ImageButton
         android:id="@+id/detailed_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailed_seekBar"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/settings" />
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/ic_share_black_24dp"
+        android:background="@color/transparent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

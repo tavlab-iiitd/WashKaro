@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WashKaro</string>
     <string name="title_activity_about__section">About_Section</string>
@@ -35,6 +34,7 @@
     <string name="maybe">Maybe</string>
     <string name="nextQues">NEXT</string>
     <string name="mainMenu">Back to Main Menu</string>
+   
     <string name="english" translatable="false">English</string>
     <string name="hindi">Hindi</string>
     <string name="language">What is your preferred language?</string>
@@ -46,10 +46,15 @@
     <string name="del">Delhi</string>
     <string name="nondel">Outside Delhi</string>
     <string name="begin">Begin</string>
+    <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
 
-<!--    -->
-<!--    Contact Tracer-->
-<!--    -->
+
+
+    <!--    -->
+    <!--    Contact Tracer-->
+    <!--    -->
 
     <string name="label_phone_auth">Phone Number Authentication</string>
     <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
