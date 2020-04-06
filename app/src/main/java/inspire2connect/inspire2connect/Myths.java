@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +74,8 @@ public class Myths extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_hin").getValue(String.class);
-                    hin_title=sno+". "+hin_title;
+                    String redirect_url = snapshot.child("Source").getValue(String.class);
+                    hin_title=sno+". "+hin_title+"<br><a href=" + redirect_url + ">स्रोत" + "</a>";
                     //String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
                     String ttp=g_hindi;
                     result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
@@ -108,7 +111,9 @@ public class Myths extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_en").getValue(String.class);
-                    String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
+                    String redirect_url = snapshot.child("Source").getValue(String.class);
+                    hin_title=sno+". "+hin_title+"</b><br><a href=" + redirect_url + ">Source" + "</a>";
+                    String ttp = g_hindi;
                     result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
@@ -123,7 +128,7 @@ public class Myths extends AppCompatActivity {
 
     public void populate_recycler_view(ArrayList<myth_single_object> result)
     {
-        mAdapter = new myths_adapter(result);
+        mAdapter = new myths_adapter(this,result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -139,7 +144,7 @@ public class Myths extends AppCompatActivity {
         setContentView(R.layout.activity_daily_guidelines);
         result=new ArrayList<>();
         result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
-        mAdapter=new myths_adapter(result);
+        mAdapter=new myths_adapter(this,result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         Intent i = this.getIntent();
@@ -229,7 +234,17 @@ public class Myths extends AppCompatActivity {
         //return super.onSupportNavigateUp();
         return true;
     }
-
+    public void share(String toShare)
+    {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/html");
+        Log.d("sharing",toShare);
+        Spanned shareBody = Html.fromHtml(toShare);
+        String share=shareBody.toString();
+        //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
     @Override
     protected void onResume()
     {
@@ -257,7 +272,13 @@ public class Myths extends AppCompatActivity {
                 i.putExtra("detailed_text",single.get(0).getMyth());
                 i.putExtra("url",single.get(0).getAudio_url());
                 //i.putExtra("result_list",single);
-                startActivity(i);
+//                if(v==findViewById(R.id.share_button))
+//                {
+//                    Log.d("sharing",single.get(0).getTitle());
+//                    share(single.get(0).getTitle());
+//                }
+//                else
+                    startActivity(i);
             }
         });
     }

@@ -101,9 +101,11 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
 
-                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;
+                    //hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + english_text;
-                    String text = hindi_text+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
+                    //String text = hindi_text+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
+                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date+"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
+                    String text = hindi_text;//+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
                     result.add(new myth_single_object(hindi_title,
                             text, Integer.toString(count), audio_url));
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + hindi_text;
@@ -148,9 +150,13 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;
-                    String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
-                    String text = english_text+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
+                    //english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
+                    //String text = english_text+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
+                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
+                    String text = english_text;//+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
+
                     result.add(new myth_single_object(english_title,
                            text, Integer.toString(count), audio_url));
                 }
@@ -167,7 +173,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
 
     public void populate_recycler_view(ArrayList<myth_single_object> result)
     {
-        mAdapter = new Government_Updates_Adapter(result);
+        mAdapter = new Government_Updates_Adapter(this,result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -184,7 +190,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
         setContentView(R.layout.activity_government__updates);
         result=new ArrayList<>();
         result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
-        mAdapter=new Government_Updates_Adapter(result);
+        mAdapter=new Government_Updates_Adapter(this,result);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_gov_updates);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -282,7 +288,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
             {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
                 Intent i = new Intent(Government_Updates.this, detailed_view.class);
-                Log.d("Testing",result.get(position).getTitle());
+                //Log.d("Testing",result.get(position).getTitle());
                 ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
                 Log.d("Testing",result_from_adapter.get(position).getTitle());
                 /*if(mMediaPlayer!=null)
@@ -293,7 +299,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                 }*/
                 ArrayList<myth_single_object> single=new ArrayList<>();
                 single.add(result_from_adapter.get(position));
-                Log.d("Testing",single.get(0).getTitle());
+                //Log.d("Testing",single.get(0).getTitle());
                 i.putExtra("detailed_title",single.get(0).getTitle());
                 i.putExtra("detailed_text",single.get(0).getMyth());
                 i.putExtra("url",single.get(0).getAudio_url());
@@ -303,4 +309,3 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
         });
     }
 }
-

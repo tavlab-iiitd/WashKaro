@@ -88,8 +88,8 @@ public class daily_guidelines extends AppCompatActivity {
                     String hin_title = snapshot.child("Title_hin").getValue(String.class);
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
-                    hin_title=sno+". "+hin_title;
-                    //String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
+                    String redirect_url = snapshot.child("Source").getValue(String.class);
+                    hin_title=sno+". "+hin_title+"<br><a href=" + redirect_url + ">स्रोत" + "</a>";
                     String ttp=g_hindi;
                     result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
                 }
@@ -119,12 +119,16 @@ public class daily_guidelines extends AppCompatActivity {
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
-                    String en_title = snapshot.child("Title_en").getValue(String.class);
-                    String g_english = snapshot.child("Guideline_en").getValue(String.class);
+                    String hin_title = snapshot.child("Title_en").getValue(String.class);
+                    String g_hindi = snapshot.child("Guideline_en").getValue(String.class);
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
-                    String ttp = "<b>" + sno + ". " + en_title+ "</b><br />" + g_english;
-                    result.add(new myth_single_object(en_title,ttp, Integer.toString(count), audio_url));
+                    String redirect_url = snapshot.child("Source").getValue(String.class);
+                    //String ttp = "<b>" + sno + ". " + en_title+ "</b><br />" + g_english;
+                    hin_title=sno+". "+hin_title+"</b><br><a href=" + redirect_url + ">Source" + "</a>";
+                    String ttp = g_hindi;
+                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
+                    //result.add(new myth_single_object(en_t,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
@@ -137,7 +141,7 @@ public class daily_guidelines extends AppCompatActivity {
     }
 
     public void populate_recycler_view(ArrayList<myth_single_object> result) {
-        mAdapter = new myths_adapter(result);
+        mAdapter = new myths_adapter(this,result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -154,7 +158,7 @@ public class daily_guidelines extends AppCompatActivity {
 //        centre.setText("दिशा निर्देश");
         result=new ArrayList<>();
         result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
-        mAdapter=new myths_adapter(result);
+        mAdapter=new myths_adapter(this,result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         Intent i = this.getIntent();
