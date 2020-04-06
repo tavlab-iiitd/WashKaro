@@ -16,7 +16,7 @@ public class map_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_activity);
-        getSupportActionBar().hide();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         webView = (WebView) findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -36,7 +36,10 @@ public class map_activity extends AppCompatActivity {
 
             }
         });
-        webView.loadUrl("https://maps.mapmyindia.com/corona");
+
+
+        webView.loadUrl("https://hspandit.github.io/washkaro-map/");
+
     }
 
     @Override
