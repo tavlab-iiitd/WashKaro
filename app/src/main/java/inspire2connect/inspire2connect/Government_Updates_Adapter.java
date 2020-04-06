@@ -1,11 +1,13 @@
 package inspire2connect.inspire2connect;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.text.Html;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +37,7 @@ public class Government_Updates_Adapter extends RecyclerView.
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
     private ArrayList<myth_single_object> List;
     private static MyClickListener myClickListener;
-
+    Context context;
     public ArrayList<custom_media_Class> getMedia_player_list()
     {
         return media_player_list;
@@ -51,7 +53,7 @@ public class Government_Updates_Adapter extends RecyclerView.
         public TextView title;
         public TextView actual_text;
         public ConstraintLayout main_layout;
-        public ImageView play_pause;
+        public ImageView play_pause,share_button;
         private LinearLayout linearLayout;
         public CardView cardView;
         //public CardView guideline_cv;
@@ -64,19 +66,32 @@ public class Government_Updates_Adapter extends RecyclerView.
             super(view);
             title = (TextView) view.findViewById(R.id.myth_title);
             actual_text=(TextView)view.findViewById(R.id.actual_text);
-            actual_text.setMovementMethod(LinkMovementMethod.getInstance());
+            title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
             main_layout = (ConstraintLayout) view.findViewById(R.id.main_layout);
             cardView=(CardView) view.findViewById(R.id.cardView);
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
+            share_button=(ImageView)view.findViewById(R.id.share_button);
             //cardView.setOnClickListener(this);
             //linearLayout=(LinearLayout)itemView.findViewById(R.id.Linear_layout);
         }
     }
 
-
-    public Government_Updates_Adapter(ArrayList<myth_single_object> List) {
+    public void share(String toShare)
+    {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/html");
+        Log.d("sharing",toShare);
+        Spanned shareBody = Html.fromHtml(toShare);
+        String share=shareBody.toString();
+        //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+        context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+    public Government_Updates_Adapter(Context context,ArrayList<myth_single_object> List)
+    {
+        this.context=context;
         this.List = List;
     }
 
@@ -101,12 +116,20 @@ public class Government_Updates_Adapter extends RecyclerView.
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        myth_single_object movie = List.get(position);
+        final myth_single_object movie = List.get(position);
         holder.title.setText(Html.fromHtml(movie.getTitle()));
         holder.actual_text.setText(movie.getMyth());
         holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         play_pause_list.add(false);
         media_player_list.add(new custom_media_Class(null, true));
+        holder.share_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Log.d("sharing","share clicked");
+                share(movie.getTitle());
+            }
+        });
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

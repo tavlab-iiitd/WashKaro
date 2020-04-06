@@ -1,9 +1,13 @@
 package inspire2connect.inspire2connect;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.text.Html;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -31,11 +35,22 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
     private ArrayList<myth_single_object> List;
     private static MyClickListener myClickListener;
-
+    Context context;
     public myths_adapter()
     {
     }
+    public void share(String toShare)
+    {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/html");
+        Log.d("sharing",toShare);
+        Spanned shareBody = Html.fromHtml(toShare);
+        String share=shareBody.toString();
+        //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
 
+        context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
     public ArrayList<custom_media_Class> getMedia_player_list()
     {
         return media_player_list;
@@ -50,7 +65,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
         public TextView title;
         public TextView actual_text;
         public ConstraintLayout main_layout;
-        public ImageView play_pause;
+        public ImageView play_pause,share_button;
 
         //public CardView guideline_cv;
         @Override
@@ -63,16 +78,20 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
             super(view);
             title = (TextView) view.findViewById(R.id.myth_title);
             actual_text=(TextView)view.findViewById(R.id.actual_text);
+            title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
+            share_button=(ImageView)view.findViewById(R.id.share_button);
             main_layout = (ConstraintLayout) itemView.findViewById(R.id.main_layout);
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
+            //share_button.setOnClickListener(this);
         }
     }
 
 
-    public myths_adapter(ArrayList<myth_single_object> List)
+    public myths_adapter(Context context,ArrayList<myth_single_object> List)
     {
+        this.context=context;
         this.List = List;
     }
 
@@ -96,12 +115,20 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        myth_single_object movie = List.get(position);
-        holder.title.setText(movie.getTitle());
+        final myth_single_object movie = List.get(position);
+        holder.title.setText(Html.fromHtml(movie.getTitle()));
         holder.actual_text.setText(Html.fromHtml(movie.getMyth()));
         holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         play_pause_list.add(false);
         media_player_list.add(new custom_media_Class(null, true));
+        holder.share_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Log.d("sharing","share clicked");
+                share(movie.getTitle());
+            }
+        });
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
