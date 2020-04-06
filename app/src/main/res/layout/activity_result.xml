@@ -25,13 +25,13 @@
         android:id="@+id/prediction"
         android:layout_width="261dp"
         android:layout_height="108dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="80dp"
         android:shadowColor="@color/colorAccent"
         android:shadowDx="10"
         android:shadowDy="-10"
-        android:shadowRadius="25"
+        android:shadowRadius="20"
         android:textAllCaps="true"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,5 +45,7 @@
         android:text="@string/mainMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prediction" />
+        app:layout_constraintTop_toBottomOf="@+id/prediction"
+        android:background="@drawable/buttonback2"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

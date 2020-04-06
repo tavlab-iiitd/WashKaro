@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#fafafa"
     tools:context=".symptom_activity">
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="103dp"
-        android:layout_height="57dp"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
         android:layout_marginTop="44dp"
-        android:background="@color/newColour"
+
         android:onClick="onClickStart"
-        android:shadowColor="#39000000"
+
         android:text="@string/begin"
-        android:textColor="@android:color/background_dark"
+        android:background="@drawable/buttonback2"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title2Text" />
+        app:layout_constraintTop_toBottomOf="@+id/title2Text"
+        android:elevation="5dp"
+
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -32,14 +35,14 @@
         android:shadowColor="@color/Shadow"
         android:shadowDx="10"
         android:shadowDy="-10"
-        android:shadowRadius="25"
+        android:shadowRadius="20"
         android:singleLine="false"
         android:text="@string/intro"
         android:textAllCaps="true"
         android:textSize="36sp"
         app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +51,7 @@
         android:layout_width="385dp"
         android:layout_height="189dp"
         android:layout_marginTop="36dp"
-        android:background="#8075CDD8"
+
         android:gravity="center"
         android:shadowColor="@color/Shadow"
         android:shadowDx="10"
