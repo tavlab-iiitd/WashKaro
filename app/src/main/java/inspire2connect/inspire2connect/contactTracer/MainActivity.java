@@ -125,7 +125,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             isLoggedIn = true;
         }
         if(isLoggedIn) {
-            this.showInteractionsActiviy();
             login.setVisibility(View.GONE);
         } else {
             login.setVisibility(View.VISIBLE);
