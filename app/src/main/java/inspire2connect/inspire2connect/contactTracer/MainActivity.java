@@ -9,16 +9,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +32,7 @@ import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
 import inspire2connect.inspire2connect.contactTracer.models.User;
+import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -47,15 +51,55 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     boolean network_enabled = false;
 
     private boolean isLoggedIn;
+    private boolean isSafe;
 
+    private ImageView traceImage;
+    private MaterialTextView traceTitle;
+    private MaterialTextView traceContent;
+
+    private InteractionRepository dbRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.ca_activity_main);
+
+        traceImage = findViewById(R.id.tracer_photo);
+        traceTitle = findViewById(R.id.tracer_title);
+        traceContent = findViewById(R.id.tracer_content);
+
+        getSupportActionBar().hide();
+
+        isSafe = true;
+
+        dbRepo = new InteractionRepository(this.getApplicationContext());
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                final String res = dbRepo.getUUIDs();
+                int count = Integer.parseInt(res);
+                if(count>0) {
+                    isSafe = false;
+                    updateSafe();
+                } else {
+                    isSafe = true;
+                    updateSafe();
+                }
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        devices.setText(res);
+//                    }
+//                });
+//                interactionDatabase.interactionDao().insertTask(entity);
+                return null;
+            }
+        }.execute();
+
+        updateSafe();
+
         if(isAuthEnabled) {
             FirebaseMessaging.getInstance().setAutoInitEnabled(true);
             usersDB.keepSynced(true);
@@ -106,8 +150,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 editor.putInt(getString(R.string.state_key), 1);
             }
         }
-        this.settings = findViewById(R.id.settings_bt);
-        this.settings.setOnClickListener(this);
+//        this.settings = findViewById(R.id.settings_bt);
+//        this.settings.setOnClickListener(this);
 
         this.login = findViewById(R.id.login_bt);
         this.login.setOnClickListener(this);
@@ -115,6 +159,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initBluetooth();
         initLocation();
         updateUI();
+    }
+
+    private void updateSafe() {
+        if(isSafe) {
+            traceImage.setImageResource(R.drawable.ca_safe);
+            traceTitle.setText(R.string.you_are_safe);
+            traceContent.setText(R.string.you_are_safe_content);
+        } else {
+            traceImage.setImageResource(R.drawable.ca_unsafe);
+            traceTitle.setText(R.string.you_are_unsafe);
+            traceContent.setText(R.string.you_are_unsafe_content);
+        }
     }
 
     private void updateUI() {
@@ -176,9 +232,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.login_bt:
                 showLoginActivity();
                 break;
-            case R.id.settings_bt:
-                showSettingsActivtiy();
-                break;
+//            case R.id.settings_bt:
+//                showSettingsActivtiy();
+//                break;
 //            case R.id.logout_bt:
 //                FirebaseAuth.getInstance().signOut();
 //                updateUI();

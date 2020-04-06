@@ -39,6 +39,5 @@ public class InteractionsActivity extends BaseActivity {
             }
         }.execute();
 
-
     }
 }

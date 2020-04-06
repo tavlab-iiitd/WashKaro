@@ -166,4 +166,19 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy_policy_key" translatable="false">privacy_policy</string>
     <string name="title_activity_settings">Settings</string>
+
+<!--    Contact Tracer Again-->
+    <string name="share_this_app">Share this app</string>
+    <string name="share_content">Help stop the spread of COVID-19 by sharing this app with family and friends.</string>
+    <string name="who_guidelines">WHO Guidelines</string>
+    <string name="who_guidelines_content">Read these for preventive measures.</string>
+    <string name="symptom_tracker">Symptom Tracker</string>
+    <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
+
+    <string name="you_are_safe">You are safe!</string>
+    <string name="you_are_unsafe">You maybe at risk!</string>
+    <string name="you_are_safe_content">We detect people who might have the virus around you.</string>
+    <string name="you_are_unsafe_content">We detect people who might have the virus around you.</string>
+
+
 </resources>

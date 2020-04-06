@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    android:background="@drawable/ca_who_guidelines_border">
+
+    <ImageView
+        android:id="@+id/app_share_btn"
+        android:layout_width="24dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:clickable="false"
+        android:src="@drawable/symptom_tracker_ico"
+        app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialTextView" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:clickable="false"
+        android:fontFamily="@font/mukta_medium"
+        android:text="@string/symptom_tracker"
+        android:textColor="@color/app_black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/app_share_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="false"
+        android:fontFamily="@font/mukta_medium"
+        android:text="@string/symptom_tracker_content"
+        android:textColor="@color/app_light_black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/app_share_btn"
+        app:layout_constraintTop_toBottomOf="@+id/app_share_btn"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
