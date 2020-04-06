@@ -367,7 +367,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-                        app:srcCompat="@drawable/iconsinspection" />
+                        app:srcCompat="@drawable/ic_official_adv" />
 
                     <TextView
                         android:id="@+id/imgbut_text1"
@@ -410,7 +410,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgbut_text2"
-                        app:srcCompat="@drawable/iconsprivacypolicy" />
+                        app:srcCompat="@drawable/ic_people" />
 
                     <TextView
                         android:id="@+id/imgbut_text2"
@@ -453,7 +453,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgbut_text3"
-                        app:srcCompat="@drawable/iconssafetycollectionplace" />
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/ic_symptom_tracker" />
 
                     <TextView
                         android:id="@+id/imgbut_text3"
@@ -497,7 +498,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgbut_text4"
-                        app:srcCompat="@drawable/iconsscroll" />
+                        app:srcCompat="@drawable/ic_onair" />
 
                     <TextView
                         android:id="@+id/imgbut_text4"
@@ -542,7 +543,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgbut_text6"
-                        app:srcCompat="@drawable/iconstrust" />
+                        app:srcCompat="@drawable/ic_more_info" />
 
                     <TextView
                         android:id="@+id/imgbut_text6"
@@ -590,8 +591,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text6"
-                        app:srcCompat="@drawable/iconschatroom" />
+                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text5"
+                        app:srcCompat="@drawable/ic_chat" />
 
                     <TextView
                         android:id="@+id/imgbut_text5"
