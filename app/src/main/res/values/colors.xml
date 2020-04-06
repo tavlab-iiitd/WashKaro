@@ -44,7 +44,7 @@
     </array>
 
     <color name="app_icon_round_background">#FFFFFF</color>
-
+    <color name="transparent">#00FFFFFF</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>

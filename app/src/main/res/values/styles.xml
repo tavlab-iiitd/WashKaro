@@ -10,7 +10,6 @@
         <item name="colorAccent">#1da1f2</item>
 
 <!--        Contact Tracer-->
-        <item name="preferenceTheme">@style/PrefsTheme</item>
     </style>
 
     <style name="Switch_Style">
@@ -35,14 +34,5 @@
     </style>
 
 <!--    Contact Tracer-->
-    <style name="OutlineButtonTheme" parent="Widget.MaterialComponents.Button.OutlinedButton" >
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-    <style name="PrefsTheme" parent="PreferenceThemeOverlay.v14.Material">
-        <item name="android:divider">@null</item>
-        <item name="android:dividerHeight">0dp</item>
-    </style>
 </resources>
