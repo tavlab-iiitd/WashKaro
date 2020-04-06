@@ -4,30 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionsActivity">
+    tools:context=".QuestionsActivity"
+    android:background="@color/Home_background_color"
+    >
 
     <Button
         android:id="@+id/nextQues"
         android:layout_width="176dp"
         android:layout_height="57dp"
-        android:layout_marginTop="104dp"
-        android:background="@color/newColour"
+        android:background="@drawable/buttonback2"
         android:text="@string/nextQues"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answers" />
+        app:layout_constraintTop_toBottomOf="@+id/answers"
+        app:layout_constraintVertical_bias="0.6"
+        />
 
     <RadioGroup
         android:id="@+id/answers"
         android:layout_width="290dp"
         android:layout_height="109dp"
-        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.2"
+        >
 
         <RadioButton
             android:id="@+id/yesButton"
@@ -55,20 +61,22 @@
         android:id="@+id/pageNo"
         android:layout_width="81dp"
         android:layout_height="35dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="40dp"
         android:shadowColor="@color/Shadow"
         android:textAllCaps="true"
         android:textSize="14sp"
         app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="350dp"
         android:layout_height="179dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pageNo">
