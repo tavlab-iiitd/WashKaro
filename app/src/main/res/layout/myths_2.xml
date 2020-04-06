@@ -7,25 +7,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-
-        android:layout_marginTop="10dp"
+        android:layout_height="160dp"
 
         app:contentPadding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         card_view:cardCornerRadius="7dp"
-        card_view:cardElevation="@dimen/card_view_elev"
-
+        card_view:cardElevation="@dimen/card_view_elev_2"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,25 +38,26 @@
                 android:id="@+id/play_pause_myth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.466"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/actual_text"
                 app:srcCompat="@drawable/ic_play_arrow_black_34dp"
-                android:background="@color/transparent"
+                app:layout_constraintVertical_bias="0.5"
                 />
 
             <ImageView
                 android:id="@+id/share_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/play_pause_myth"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.971"
+                app:layout_constraintHorizontal_bias="0.974"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.02"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_share_black_24dp" />
 
             <TextView
@@ -67,22 +69,21 @@
                 android:paddingRight="4dp"
                 android:paddingBottom="4dp"
                 android:text="Title"
+                android:textColor="@color/blackcolor"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/share_button"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@color/blackcolor"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/actual_text"
                 android:layout_width="375dp"
-                android:layout_height="53dp"
+                android:layout_height="50dp"
+                android:gravity="start"
                 app:layout_constraintBottom_toTopOf="@+id/play_pause_myth"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/myth_title"
                 app:layout_constraintVertical_bias="0.0" />

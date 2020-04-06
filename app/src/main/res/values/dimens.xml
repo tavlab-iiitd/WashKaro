@@ -13,6 +13,7 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="home_card_elev">3dp</dimen>
     <dimen name="card_view_elev">5dp</dimen>
+    <dimen name="card_view_elev_2">2dp</dimen>
     <dimen name="home_card_slider_elev">1dp</dimen>
     <dimen name="home_card_margin_top">8dp</dimen>
     <dimen name="home_card_margin_left_right">24dp</dimen>
