@@ -23,9 +23,9 @@
     </string-array>
     <string-array name="disease_frequency">
         <item>Last 1 month</item>
-        <item>Last 3 motnhs</item>
-        <item>Last 6 motnhs</item>
-        <item>Last 12 motnhs</item>
+        <item>Last 3 months</item>
+        <item>Last 6 months</item>
+        <item>Last 12 months</item>
     </string-array>
     <string name="titleString">Symptom Predictor</string>
     <string name="START">START</string>
