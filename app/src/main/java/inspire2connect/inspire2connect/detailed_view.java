@@ -30,6 +30,7 @@ public class detailed_view extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_view);
         detailed_title=(TextView)findViewById(R.id.detailed_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         detailed_text=(TextView)findViewById(R.id.detailed_text);
         detailed_play_button=(ImageButton)findViewById(R.id.detailed_play_button);
         detailed_seekBar=(SeekBar)findViewById(R.id.detailed_seekBar);
@@ -129,5 +130,13 @@ public class detailed_view extends AppCompatActivity implements Serializable
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        finish();
+        //return super.onSupportNavigateUp();
+        return true;
     }
 }

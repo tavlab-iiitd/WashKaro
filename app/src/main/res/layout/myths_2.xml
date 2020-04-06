@@ -5,25 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="385dp"
+        android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:elevation="@dimen/home_card_elev"
+
+        android:layout_marginTop="10dp"
+
         app:contentPadding="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardCornerRadius="7dp"
+        card_view:cardElevation="@dimen/card_view_elev"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_daily_updates"
-            android:layout_width="395dp"
-            android:layout_height="191dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/play_pause_myth"
@@ -34,7 +42,9 @@
                 app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/actual_text"
-                app:srcCompat="@drawable/play_icon" />
+                app:srcCompat="@drawable/ic_play_arrow_black_34dp"
+                android:background="@color/transparent"
+                />
 
             <ImageView
                 android:id="@+id/share_button"
@@ -46,7 +56,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.02"
-                app:srcCompat="@drawable/settings" />
+                app:srcCompat="@drawable/ic_share_black_24dp" />
 
             <TextView
                 android:id="@+id/myth_title"
@@ -62,7 +72,9 @@
                 app:layout_constraintEnd_toStartOf="@+id/share_button"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/blackcolor"
+                />
 
             <TextView
                 android:id="@+id/actual_text"
