@@ -208,7 +208,7 @@ public class BluetoothScanner {
                         new NotificationCompat.Builder(context, channelId)
                                 .setSmallIcon(R.drawable.notif_icon)
                                 .setContentTitle(context.getString(R.string.fcm_message))
-                                .setContentText(context.getString(R.string.alert_message))
+                                .setContentText(context.getString(R.string.app_name))
                                 .setAutoCancel(true)
                                 .setSound(defaultSoundUri)
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
