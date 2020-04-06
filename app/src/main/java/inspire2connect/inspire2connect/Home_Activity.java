@@ -8,8 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
+import android.graphics.PointF;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,6 +24,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 //import android.widget.AdapterViewFlipper;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -77,9 +81,13 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     LayoutInflater inflater;
     LinearLayout layout;
     float downX, downY, upX, upY;
-    ImageView zoo_image;
+
     public int w = 0, h = 0;
     private static final int MY_REQUEST_CODE = 2399;
+    private PopupWindow p_window;
+    String TAG = "MainActivity";
+    //View flipper Zoom Variables.......................................................
+
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -184,9 +192,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         inflater = (LayoutInflater) Home_Activity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //layout = inflater.inflate(R.layout.zoom_in, null);
-        layout = (LinearLayout) inflater.inflate(R.layout.zoom_in, null);
-        zoo_image = (ImageView) layout.findViewById(R.id.zoom_image);
-        zoo_image.setImageResource(R.drawable.loading_image);
+
 
         flip_left.setOnClickListener(this);
         flip_right.setOnClickListener(this);
@@ -194,6 +200,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         flipper_single_tap();
         fetchset_MOHFW_data();
+
 
     }
 
@@ -285,7 +292,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         if (view == ll_but[0] )
         {
-            Intent i = new Intent(Home_Activity.this, daily_updates.class);
+            Intent i = new Intent(Home_Activity.this,Government_Updates.class);
             i.putExtra("Language", intentLangExtra);
             //Toast.makeText(Home_Activity.this,"Button Clicked 1 ",Toast.LENGTH_SHORT).show();
             startActivity(i);
@@ -307,16 +314,16 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             startActivity(i);
         }
         if (view == ll_but[4] ) {
-            Intent i = new Intent(Home_Activity.this, CardViewActivity.class);
-            i.putExtra("Language", intentLangExtra);
+            Intent i = new Intent(Home_Activity.this,select_chatbot_activity.class);
             startActivity(i);
         }
         if (view == ll_but[5] ) {
-            //call map activity here
-            Intent i = new Intent(Home_Activity.this, map_activity.class);
-            i.putExtra("Language", intentLangExtra);
+            Intent i = new Intent(Home_Activity.this,select_misc_activity.class);
             startActivity(i);
+
         }
+
+
 //        if (view == ll_but[6] ) {
 //            String nmbr = "+919013151515";
 //            openWhatsapp(nmbr);
@@ -516,28 +523,38 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-    public void onFlipperClicked()
-    {
-        viewFlipper.stopFlipping();
+    public void onFlipperClicked() {
+
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
-        Log.d("Zoomintest", "Index of child" + Integer.toString(i));
+
         String url = slideLists.get(i).getImageUrl();
-        Log.d("Zoomintest", "Url of child" + url);
-        Picasso.get().load(url).into(zoo_image);
-
-        zoo_image.setBackground(new ColorDrawable(Color.TRANSPARENT));
-
-        // Log.d("Zoomintest",Integer.toString(w)+" "+Integer.toString(h));
-        PopupWindow window = new PopupWindow(layout, 800, 1400, true);
-
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setOutsideTouchable(true);
-        window.setElevation(60);
-
-        window.showAtLocation(layout, Gravity.CENTER, 10, 10);
-
-        Log.d("Zoomintest", Integer.toString(w) + " " + Integer.toString(h));
+        Intent intnt = new Intent(Home_Activity.this,Infographics.class);
+        intnt.putExtra("image",url);
+        startActivity(intnt);
     }
+
+        //call new infographics activity here
+
+//        viewFlipper.stopFlipping();
+//        int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
+//        Log.d("Zoomintest", "Index of child" + Integer.toString(i));
+//        String url = slideLists.get(i).getImageUrl();
+//        Log.d("Zoomintest", "Url of child" + url);
+//        Picasso.get().load(url).into(zoo_image);
+//
+//        zoo_image.setBackground(new ColorDrawable(Color.TRANSPARENT));
+//
+//        // Log.d("Zoomintest",Integer.toString(w)+" "+Integer.toString(h));
+//        PopupWindow window = new PopupWindow(layout, 800, 1400, true);
+//
+//        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        window.setOutsideTouchable(true);
+//        window.setElevation(60);
+//
+//        window.showAtLocation(layout, Gravity.CENTER, 10, 10);
+
+//
+
 
     public void fetchset_MOHFW_data() {
 
@@ -563,6 +580,9 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         });
 
     }
+
+
+
 }
 //    private void populateViewFlipper() {
 //        Toast.makeText(Home_Activity.this,"PLease wait",Toast.LENGTH_LONG).show();

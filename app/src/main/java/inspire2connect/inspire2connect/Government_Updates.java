@@ -29,12 +29,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Government_Updates extends AppCompatActivity {
+public class Government_Updates extends AppCompatActivity implements Serializable {
     DatabaseReference dref;
     private RecyclerView recyclerView;
+    public ArrayList<myth_single_object> result;
     DatabaseReference d;
     private Government_Updates_Adapter mAdapter;
     TextView centre;
@@ -53,14 +55,18 @@ public class Government_Updates extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
         if (mAdapter != null)
             media_player_list = mAdapter.getMedia_player_list();
         if (media_player_list != null)
-            for (int i = 0; i < media_player_list.size(); i++) {
-                if (media_player_list.get(i).getMediaPlayer() != null) {
-                    if (media_player_list.get(i).getMediaPlayer().isPlaying()) {
+            for (int i = 0; i < media_player_list.size(); i++)
+            {
+                if (media_player_list.get(i).getMediaPlayer() != null)
+                {
+                    if (media_player_list.get(i).getMediaPlayer().isPlaying())
+                    {
                         media_player_list.get(i).getMediaPlayer().stop();
                         media_player_list.get(i).getMediaPlayer().seekTo(media_player_list.get(i).getMediaPlayer().getDuration());
                     }
@@ -70,7 +76,8 @@ public class Government_Updates extends AppCompatActivity {
         Log.d("Testing", "Sizze of Media player list=" + Integer.toString(media_player_list.size()));
     }
 
-    private void setGuidelinesHindi() {
+    private void setGuidelinesHindi()
+    {
         curr_lang = 2;
         centre = (TextView) findViewById(R.id.centre_view_gov_updates);
         centre.setText("सरकारी जानकारी");
@@ -79,11 +86,13 @@ public class Government_Updates extends AppCompatActivity {
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<daily_update_single_object> result = new ArrayList<>();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                ArrayList<myth_single_object> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
                     count += 1;
                     String date = snapshot.child("Date").getValue(String.class);
                     String hindi_title = snapshot.child("Title_hin").getValue(String.class);
@@ -91,10 +100,19 @@ public class Government_Updates extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + hindi_text;
-                    Spanned text = Html.fromHtml(ttd +
-                            "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>");
-                    result.add(new daily_update_single_object(text, Integer.toString(count), audio_url));
+
+                    //hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + english_text;
+                    //String text = hindi_text+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
+                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date+"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
+                    String text = hindi_text;//+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
+                    result.add(new myth_single_object(hindi_title,
+                            text, Integer.toString(count), audio_url));
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + hindi_text;
+                    //Spanned text = Html.fromHtml(ttd +
+                      //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>");
+                    //result.add(new myth_single_object(hindi_title,ttd +
+                      //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>", Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
@@ -106,7 +124,8 @@ public class Government_Updates extends AppCompatActivity {
         });
     }
 
-    private void setGuidelinesEnglish() {
+    private void setGuidelinesEnglish()
+    {
         curr_lang = 1;
         centre = (TextView) findViewById(R.id.centre_view_gov_updates);
         centre.setTypeface(null, Typeface.BOLD);
@@ -117,11 +136,13 @@ public class Government_Updates extends AppCompatActivity {
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<daily_update_single_object> result = new ArrayList<>();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+               result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
                     count += 1;
                     String date = snapshot.child("Date").getValue(String.class);
                     String english_title = snapshot.child("Title_en").getValue(String.class);
@@ -129,35 +150,47 @@ public class Government_Updates extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
-                    Spanned text = Html.fromHtml(ttd +
-                            "<a href=" + redirect_url + "> Source:" + redirect_url + "</a>");
-                    result.add(new daily_update_single_object(text, Integer.toString(count), audio_url));
+                    //english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
+                    //String text = english_text+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
+                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
+                    //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
+                    String text = english_text;//+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
+
+                    result.add(new myth_single_object(english_title,
+                           text, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
 
             }
         });
     }
 
-    public void populate_recycler_view(ArrayList<daily_update_single_object> result) {
-        mAdapter = new Government_Updates_Adapter(result);
+    public void populate_recycler_view(ArrayList<myth_single_object> result)
+    {
+        mAdapter = new Government_Updates_Adapter(this,result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
+
         recyclerView.setAdapter(mAdapter);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_government__updates);
-
+        result=new ArrayList<>();
+        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
+        mAdapter=new Government_Updates_Adapter(this,result);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_gov_updates);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -243,5 +276,36 @@ public class Government_Updates extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        ((Government_Updates_Adapter) mAdapter).setOnItemClickListener(new Government_Updates_Adapter
+                .MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v)
+            {
+                Log.d("Testing", " Clicked on Item gov_updates " + position);
+                Intent i = new Intent(Government_Updates.this, detailed_view.class);
+                //Log.d("Testing",result.get(position).getTitle());
+                ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
+                Log.d("Testing",result_from_adapter.get(position).getTitle());
+                /*if(mMediaPlayer!=null)
+                {
+                    mMediaPlayer.stop();
+                    mMediaPlayer.release();
+                    mMediaPlayer=null;
+                }*/
+                ArrayList<myth_single_object> single=new ArrayList<>();
+                single.add(result_from_adapter.get(position));
+                //Log.d("Testing",single.get(0).getTitle());
+                i.putExtra("detailed_title",single.get(0).getTitle());
+                i.putExtra("detailed_text",single.get(0).getMyth());
+                i.putExtra("url",single.get(0).getAudio_url());
+                //i.putExtra("result_list",single);
+                startActivity(i);
+            }
+        });
     }
 }

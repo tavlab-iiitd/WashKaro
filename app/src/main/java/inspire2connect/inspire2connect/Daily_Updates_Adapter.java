@@ -1,32 +1,21 @@
 package inspire2connect.inspire2connect;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Daily_Updates_Adapter extends RecyclerView.Adapter<Daily_Updates_Adapter.MyViewHolder> {
     private ArrayList<Boolean> play_pause_list = new ArrayList<Boolean>();
@@ -44,16 +33,18 @@ public class Daily_Updates_Adapter extends RecyclerView.Adapter<Daily_Updates_Ad
         public TextView title;
         public ConstraintLayout constraintLayout;
         public ImageView play_pause;
-        private LinearLayout linearLayout;
+        public TextView actual_text;
+        private LinearLayout main_layout;
 
         //public CardView guideline_cv;
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.daily_update_view);
+            title = (TextView) view.findViewById(R.id.daily_update_title);
+            //actual_text=(TextView)view.findViewById(R.id.actual_text);
             title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = (ImageView) view.findViewById(R.id.play_pause_daily_update);
             constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.constraint_daily_updates);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.Linear_layout);
+            main_layout = (LinearLayout) itemView.findViewById(R.id.Linear_layout);
         }
     }
 
@@ -82,6 +73,7 @@ public class Daily_Updates_Adapter extends RecyclerView.Adapter<Daily_Updates_Ad
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         daily_update_single_object movie = List.get(position);
+        //holder.title.setText("This is a title");
         holder.title.setText(movie.getDaily_update());
         holder.play_pause.setBackgroundResource(R.drawable.play_icon);
         play_pause_list.add(false);
