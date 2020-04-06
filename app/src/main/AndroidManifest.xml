@@ -49,6 +49,11 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".select_chatbot_activity"></activity>
+        <activity android:name=".select_misc_activity"></activity>
+        <activity android:name=".detailed_view"></activity>
+        <activity android:name=".Infographics"></activity>
+
 <!--        Contact Tracer-->
 
         <activity
