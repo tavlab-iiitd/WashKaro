@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".contactTracer.MainActivity"
+    tools:context=".MainActivity"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true">
 
@@ -21,14 +21,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/discover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="@string/discover"
-            android:textSize="16sp" />
-
-        <Button
             android:id="@+id/login_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,12 +28,7 @@
             android:text="@string/login"
             android:textSize="22sp" />
 
-        <Button
-            android:id="@+id/interactions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/interactions"
-            android:textSize="16sp" />
+  
     </LinearLayout>
 
     <LinearLayout
@@ -64,24 +51,24 @@
             android:text="@string/settings"
             android:textSize="14sp" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/about_bt"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:theme="@style/Theme.MaterialComponents"-->
-        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-        <!--            android:text="@string/about"-->
-        <!--            android:textSize="12sp" />-->
+<!--        <Button-->
+<!--            android:id="@+id/about_bt"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:theme="@style/Theme.MaterialComponents"-->
+<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--            android:text="@string/about"-->
+<!--            android:textSize="12sp" />-->
 
-        <!--        <Button-->
-        <!--            android:id="@+id/logout_bt"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_marginLeft="50dp"-->
-        <!--            android:theme="@style/Theme.MaterialComponents"-->
-        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="@string/logout"-->
-        <!--            android:textSize="12sp" />-->
+<!--        <Button-->
+<!--            android:id="@+id/logout_bt"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:theme="@style/Theme.MaterialComponents"-->
+<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/logout"-->
+<!--            android:textSize="12sp" />-->
     </LinearLayout>
 
     <TextView
