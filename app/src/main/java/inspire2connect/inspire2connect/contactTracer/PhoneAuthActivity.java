@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect.contactTracer;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +16,6 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 
-import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
-import inspire2connect.inspire2connect.contactTracer.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,6 +35,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.concurrent.TimeUnit;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
+import inspire2connect.inspire2connect.contactTracer.models.User;
 
 public class PhoneAuthActivity extends BaseActivity implements
         View.OnClickListener {
@@ -75,21 +76,6 @@ public class PhoneAuthActivity extends BaseActivity implements
 
     private ProgressBar progressBar;
 
-    private String[] numbers = {"+917259154063",
-            "+919818500549",
-            "+919779908630",
-            "+919717909239",
-            "+919650861018",
-            "+919414289702",
-            "+918240355640",
-            "+918826976182",
-            "+917011680787",
-            "+919084506745",
-            "+918433144370",
-            "+918700856994",
-            "+919573552691",
-            "+919650122772",
-            "+919560794550"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -428,11 +414,8 @@ public class PhoneAuthActivity extends BaseActivity implements
                     me = obj.getValue(User.class);
                     break;
                 }
-                for (int i = 0; i < numbers.length; i++) {
-                    if (phoneNo.equals(numbers[i])) {
-                        me.state = 5;
-                    }
-                }
+
+
                 if (me != null) {
                     editor.putString(getString(R.string.uuid_id_key), me.UUID);
                     editor.putString(getString(R.string.phone_key), me.phoneNo);

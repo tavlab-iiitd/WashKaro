@@ -8,6 +8,7 @@ import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
 
+
 public class InteractionsActivity extends BaseActivity {
 
     private TextView devices;

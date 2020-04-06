@@ -10,6 +10,7 @@ import android.widget.TextView;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 
+
 @SuppressWarnings("SpellCheckingInspection")
 public class AboutActivity extends BaseActivity implements View.OnClickListener {
 

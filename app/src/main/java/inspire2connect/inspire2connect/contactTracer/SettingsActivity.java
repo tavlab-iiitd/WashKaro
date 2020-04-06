@@ -20,11 +20,12 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
+
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -45,14 +46,16 @@ public class SettingsActivity extends BaseActivity {
 
         mContext = this;
         mActivity = this;
-
-        isLoggedIn = FirebaseAuth.getInstance().getCurrentUser() != null;
-
+        if(MainActivity.isAuthEnabled) {
+            isLoggedIn = FirebaseAuth.getInstance().getCurrentUser() != null;
+        }
+        if(!MainActivity.isAuthEnabled) {
+            isLoggedIn = false;
+        }
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settingsFrame, new SettingsFragment())
                 .commit();
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
