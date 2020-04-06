@@ -51,12 +51,12 @@
 
 <!--        Contact Tracer-->
 
-        <activity
-            android:name=".contactTracer.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+<!--        <activity-->
+<!--            android:name=".contactTracer.SettingsActivity"-->
+<!--            android:label="@string/title_activity_settings"></activity>-->
 
-        <activity android:name=".contactTracer.AboutActivity" />
-        <activity android:name=".contactTracer.InteractionsActivity" />
+<!--        <activity android:name=".contactTracer.AboutActivity" />-->
+<!--        <activity android:name=".contactTracer.InteractionsActivity" />-->
 
         <activity android:name=".contactTracer.MainActivity"/>
 

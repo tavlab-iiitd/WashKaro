@@ -194,26 +194,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
          startActivityForResult(intent, REQUEST_LOGIN);
     }
 
-    private void showInteractionsActiviy() {
-        Intent intent = new Intent(this, InteractionsActivity.class);
-        startActivity(intent);
-    }
-
-    private void showAboutActivity() {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
-
-    private void showSettingsActivtiy() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivityForResult(intent, REQUEST_LOGOUT);
-        updateUI();
-    }
-
-    private void exitApp () {
-        finishAffinity();
-        System.exit(0);
-    }
+//    private void showInteractionsActiviy() {
+//        Intent intent = new Intent(this, InteractionsActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    private void showAboutActivity() {
+//        Intent intent = new Intent(this, AboutActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    private void showSettingsActivtiy() {
+//        Intent intent = new Intent(this, SettingsActivity.class);
+//        startActivityForResult(intent, REQUEST_LOGOUT);
+//        updateUI();
+//    }
+//
+//    private void exitApp () {
+//        finishAffinity();
+//        System.exit(0);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
