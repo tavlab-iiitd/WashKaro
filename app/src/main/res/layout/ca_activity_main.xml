@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".contactTracer.MainActivity"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true">
+    android:layout_gravity="center">
 
     <LinearLayout
+        app:layout_anchor="@id/linearLayout2"
+        android:layout_gravity="top|center"
         android:id="@+id/linearLayout"
+        android:paddingBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -64,6 +65,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:layout_gravity="bottom"
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -158,4 +160,5 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/textView2"-->
 <!--        tools:text="@string/alert_about_patient_message"-->
 <!--        tools:visibility="visible" />-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
