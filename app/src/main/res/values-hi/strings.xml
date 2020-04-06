@@ -132,7 +132,7 @@
 
     <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
 
-    <string name="presented_to_you_by">ContactAlert, आपके द्वारा प्रस्तुत किया गया</string>
+    <string name="presented_to_you_by">WashKaro, आपके द्वारा प्रस्तुत किया गया</string>
 
     <string name="priyanka">प्रियंका स्याल</string>
     <string name="priyanka_tag">सॉफ्टवेयर इंजीनियर, माइक्रोसॉफ्ट आईडीसी</string>
@@ -144,7 +144,6 @@
     <string name="default_notification_channel_name" translatable="false">covidAlert</string>
 
     <string name="msg_subscribe_failed">CovidAlert विषय की सदस्यता लेने में विफल</string>
-    <string name="fcm_message" translatable="false">ContactAlert</string>
     <string name="alert_about_message">यदि आप एक पुष्टि किए गए कोविद मामले के पास हैं तो आपको एक चेतावनी दिखाई देगी</string>
     <string name="alert_about_patient_message">हम पुष्ट मामलों के लिए एक अद्यतन स्रोत प्राप्त करने के लिए काम कर रहे हैं</string>
     <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए कोविद मामले के पास हैं</string>

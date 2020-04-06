@@ -19,4 +19,11 @@
     <dimen name="home_card_margin_left_right">24dp</dimen>
     <dimen name="home_card_font">18dp</dimen>
     <dimen name="home_card_margin_cont_top">16dp</dimen>
+
+    <dimen name="icon_top_margin">24dp</dimen>
+    <dimen name="icon_bottom_margin">24dp</dimen>
+    <dimen name="title_bottom_margin">16dp</dimen>
+    <dimen name="field_width_standard">160dp</dimen>
+
+    <dimen name="button_horizontal_margin">8dp</dimen>
 </resources>
