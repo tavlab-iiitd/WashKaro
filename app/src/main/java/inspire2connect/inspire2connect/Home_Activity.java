@@ -54,7 +54,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import inspire2connect.inspire2connect.contactTracer.AboutActivity;
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
 
 
