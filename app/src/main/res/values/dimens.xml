@@ -25,8 +25,8 @@
     <dimen name="title_bottom_margin">16dp</dimen>
     <dimen name="field_width_standard">160dp</dimen>
 
-    <dimen name="about_cat_title">30sp</dimen>
-    <dimen name="about_title">24sp</dimen>
+    <dimen name="about_cat_title">28sp</dimen>
+    <dimen name="about_title">22sp</dimen>
     <dimen name="about_content">16sp</dimen>
     <dimen name="about_bottom_margin">24dp</dimen>
 
