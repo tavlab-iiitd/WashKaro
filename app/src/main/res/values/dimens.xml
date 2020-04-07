@@ -25,7 +25,7 @@
     <dimen name="title_bottom_margin">16dp</dimen>
     <dimen name="field_width_standard">160dp</dimen>
 
-    <dimen name="home_card_horizontal_margin">4dp</dimen>
+    <dimen name="home_card_horizontal_margin">5dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
 </resources>
