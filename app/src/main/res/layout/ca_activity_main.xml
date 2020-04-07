@@ -70,6 +70,7 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/symptom_tracker_box"
             layout="@layout/ca_symptom_tracker_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,6 +87,7 @@
 <!--            android:layout_marginBottom="16dp" />-->
 
         <include
+            android:id="@+id/share_box"
             layout="@layout/ca_share_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
