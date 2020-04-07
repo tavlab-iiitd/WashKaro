@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.squareup.picasso.Picasso;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
@@ -59,6 +60,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private InteractionRepository dbRepo;
 
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         traceContent = findViewById(R.id.tracer_content);
 
         getSupportActionBar().hide();
+
+        mContext = this;
 
         isSafe = true;
 
@@ -163,10 +168,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void updateSafe() {
         if(isSafe) {
+//            Picasso.get().load(R.drawable.ca_safe).into(traceImage);
             traceImage.setImageResource(R.drawable.ca_safe);
             traceTitle.setText(R.string.you_are_safe);
             traceContent.setText(R.string.you_are_safe_content);
         } else {
+//            Picasso.get().load(R.drawable.ca_unsafe).into(traceImage);
             traceImage.setImageResource(R.drawable.ca_unsafe);
             traceTitle.setText(R.string.you_are_unsafe);
             traceContent.setText(R.string.you_are_unsafe_content);
