@@ -24,17 +24,20 @@ public class symptom_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom_activity);
+
         Intent i=getIntent();
         if(i.getStringExtra("Language").equalsIgnoreCase("hindi"))
             curr_lang=2;
         else
             curr_lang=1;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.symptom_tracker);
         String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
         String button_text="BEGIN";
         Button b = findViewById(R.id.startButton);
         if(curr_lang==2)
         {
+            getSupportActionBar().setTitle(R.string.symptom_tracker);
             button_text="शुरू करो";
             title2="<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
         }

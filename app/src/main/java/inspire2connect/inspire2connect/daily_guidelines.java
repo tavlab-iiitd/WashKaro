@@ -71,8 +71,9 @@ public class daily_guidelines extends AppCompatActivity {
 
     private void setGuidelinesHindi() {
         curr_lang = 2;
-        TextView guid_view = (TextView) findViewById(R.id.centre_view);
-        guid_view.setText("दिशा निर्देश (WHO के द्वारा)");
+        //TextView guid_view = (TextView) findViewById(R.id.centre_view);
+        //guid_view.setText("दिशा निर्देश (WHO के द्वारा)");
+        getSupportActionBar().setTitle(R.string.guidelines_act_hi);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
@@ -105,9 +106,10 @@ public class daily_guidelines extends AppCompatActivity {
 
     private void setGuidelinesEnglish() {
         curr_lang = 1;
-        TextView guid_view = (TextView) findViewById(R.id.centre_view);
-        guid_view.setTypeface(null, Typeface.BOLD);
-        guid_view.setText("Guidelines(By WHO)");
+        //TextView guid_view = (TextView) findViewById(R.id.centre_view);
+        //guid_view.setTypeface(null, Typeface.BOLD);
+        //guid_view.setText("Guidelines(By WHO)");
+        getSupportActionBar().setTitle(R.string.guidelines_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
