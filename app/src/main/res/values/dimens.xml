@@ -33,4 +33,6 @@
     <dimen name="home_card_horizontal_margin">5dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
+
+    <dimen name="app_bar_bottom_margin">8dp</dimen>
 </resources>

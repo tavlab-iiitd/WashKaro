@@ -419,7 +419,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 //            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
 //            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
 
-            t1.setText("Government Advisories");
+            t1.setText("Govt Advisory");
             t2.setText("Symptom Tracker");
             t3.setText("Contact Tracer");
             t4.setText("AI News");

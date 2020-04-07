@@ -212,6 +212,10 @@
     <string name="vrinda">Vrinda Narayan</string>
     <string name="samprati">Samprati</string>
 
+<!--    WK Activities-->
+    <string name="govt_updates_act" translatable="false">Government Updates</string>
+    <string name="govt_updates_act_hi" translatable="false">सरकारी जानकारी</string>
+
 
 
 </resources>
