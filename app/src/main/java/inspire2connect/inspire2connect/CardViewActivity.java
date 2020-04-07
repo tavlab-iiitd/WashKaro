@@ -285,15 +285,15 @@ public class CardViewActivity extends AppCompatActivity {
                     version_from_database = (Long) snapshot.getValue();
 
                     Log.d("threshodl", Long.toString(version_from_database));
-                    if (version_from_app != version_from_database) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(CardViewActivity.this);
-                        builder.setTitle(R.string.app_name);
-                        builder.setIcon(R.drawable.image);
-                        builder.setMessage("Please update your app.")
-                                .setCancelable(false);
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
+//                    if (version_from_app != version_from_database) {
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(CardViewActivity.this);
+//                        builder.setTitle(R.string.app_name);
+//                        builder.setIcon(R.drawable.image);
+//                        builder.setMessage("Please update your app.")
+//                                .setCancelable(false);
+//                        AlertDialog alert = builder.create();
+//                        alert.show();
+//                    }
                 }
             }
 
