@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,7 +65,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
 
         public TextView title;
         public TextView actual_text;
-        public ConstraintLayout main_layout;
+        public LinearLayout main_layout;
         public ImageView play_pause,share_button;
 
         //public CardView guideline_cv;
@@ -81,7 +82,7 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
             title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
             share_button=(ImageView)view.findViewById(R.id.share_button);
-            main_layout = (ConstraintLayout) itemView.findViewById(R.id.main_layout);
+            main_layout = itemView.findViewById(R.id.main_layout);
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
             //share_button.setOnClickListener(this);

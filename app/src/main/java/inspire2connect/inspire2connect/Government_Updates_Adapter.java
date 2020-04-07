@@ -52,7 +52,7 @@ public class Government_Updates_Adapter extends RecyclerView.
     {
         public TextView title;
         public TextView actual_text;
-        public ConstraintLayout main_layout;
+        public LinearLayout main_layout;
         public ImageView play_pause,share_button;
         private LinearLayout linearLayout;
         public CardView cardView;
@@ -68,7 +68,7 @@ public class Government_Updates_Adapter extends RecyclerView.
             actual_text=(TextView)view.findViewById(R.id.actual_text);
             title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
-            main_layout = (ConstraintLayout) view.findViewById(R.id.main_layout);
+            main_layout = view.findViewById(R.id.main_layout);
             cardView=(CardView) view.findViewById(R.id.cardView);
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
