@@ -422,7 +422,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             t3.setText("Contact Tracer");
             t4.setText("AI News");
             t5.setText("Chatbots");
-            t6.setText("Miscellaneous");
+            t6.setText("More Information");
 //            t9.setText("News");
 ////            t10.setText("Symptom Tracker");
             //t7.setText("News");
@@ -444,10 +444,10 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 //            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
             t1.setText("सरकारी निर्देश");
             t2.setText("लक्षण ट्रैकर");
-            t3.setText("Contact Tracer");
+            t3.setText("संपर्क ट्रेसर");
             t4.setText("समाचार");
-            t5.setText("Chatbots");
-            t6.setText("Miscellaneous");
+            t5.setText("चैटबॉट");
+            t6.setText("अधिक जानकारी");
 //            t9.setText("समाचार");
 //            t10.setText("लक्षण ट्रैकर");
             //t6.setText("MapMyIndia लाइव ट्रैकर");
