@@ -13,6 +13,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.Html;
+import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.textview.MaterialTextView;
@@ -58,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private boolean isLoggedIn;
     //private boolean isSafe;
     private static final long UPDATEUIPERIOD = 1000;
-
+    public ConstraintLayout symptom,share_layout;
     private ImageView traceImage;
     private MaterialTextView traceTitle;
     private MaterialTextView traceContent;
@@ -71,20 +75,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Handler handler;
     private Timer timer;
 
-
+    public void share(String toShare)
+    {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/html");
+        Spanned shareBody = Html.fromHtml(toShare);
+        String share=shareBody.toString();
+        //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.ca_activity_main);
-
+        symptom=findViewById(R.id.symptom_tracker_box);
         traceImage = findViewById(R.id.tracer_photo);
         traceTitle = findViewById(R.id.tracer_title);
         traceContent = findViewById(R.id.tracer_content);
-
+        share_layout=findViewById(R.id.share_box);
         getSupportActionBar().hide();
 
-
+        symptom.setOnClickListener(this);
+        share_layout.setOnClickListener(this);
         mContext = this;
         isSafe = true;
         handler = new Handler();
@@ -246,6 +260,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             case R.id.login_bt:
                 showLoginActivity();
+                break;
+            case R.id.symptom_tracker_box:
+                Intent i=new Intent(MainActivity.this,inspire2connect.inspire2connect.symptom_activity.class);
+                i.putExtra("Language", "hindi");
+                startActivity(i);
+                break;
+            case R.id.share_box:
+                share("Download the app. https://play.google.com/store/apps/details?id=inspire2connect.inspire2connect");
                 break;
 //            case R.id.settings_bt:
 //                showSettingsActivtiy();
