@@ -138,7 +138,7 @@
     <string name="fcm_message" translatable="false">WashKaro</string>
     <string name="alert_about_message">You will see an alert if you are near a confirmed Covid case</string>
     <string name="alert_about_patient_message">We are working to get an updated source for confirmed cases</string>
-    <string name="alert_message">Alert! You are near a confirmed Covid case</string>
+    <string name="alert_message">Please maintain social distancing to keep you and your family safe</string>
     <string name="covid_avengers_message">Alert! You are near a Covid avenger</string>
     <string name="network_not_enabled">Location is not enabled</string>
     <string name="Cancel">Cancel</string>
@@ -169,9 +169,9 @@
     <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
     <string name="you_are_safe">You are safe!</string>
-    <string name="you_are_unsafe">You are maybe at risk!</string>
-    <string name="you_are_safe_content">We detect people who might have the virus around you.</string>
-    <string name="you_are_unsafe_content">We detect people who might have the virus around you.</string>
+    <string name="you_are_unsafe">You maybe at risk!</string>
+    <string name="you_are_safe_content">Low risk of corona virus infection.</string>
+    <string name="you_are_unsafe_content">Please maintain social distancing.</string>
 
 <!--    about-->
 
