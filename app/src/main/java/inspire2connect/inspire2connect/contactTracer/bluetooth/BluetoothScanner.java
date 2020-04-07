@@ -40,7 +40,7 @@ public class BluetoothScanner {
     private Context context;
     private BluetoothAdapter bluetoothAdapter;
     // TODO: Scanning Period is set here. Change the same
-    private static final long SCAN_PERIOD = 600000;
+    private static final long SCAN_PERIOD = 10000;
     private ArrayList<ScanResult> scanResultArrayList;
     private BluetoothLeScanner bluetoothScanner;
     private ScanCallback bluetoothScanCallback;
@@ -96,7 +96,7 @@ public class BluetoothScanner {
         bluetoothScanner.stopScan(bluetoothScanCallback);
         scanResultArrayList = new ArrayList<>();
         bluetoothScanCallback = null;
-
+        MainActivity.isSafe = true;
         // Even if no new results, update 'last seen' times.
       //  bluetoothScanResultAdapter.notifyDataSetChanged();
     }
@@ -172,6 +172,7 @@ public class BluetoothScanner {
         }
 
         private void sendNotificationOnResult(ScanResult result) {
+            MainActivity.isSafe = false;
             ScanRecord rec = result.getScanRecord();
             String uuidInfo = new String(rec.getServiceData().get(Constants.Service_UUID), StandardCharsets.UTF_8);
             int existingPosition = getPosition(uuidInfo);
@@ -209,6 +210,8 @@ public class BluetoothScanner {
                                 .setSmallIcon(R.drawable.notif_icon)
                                 .setContentTitle(context.getString(R.string.app_name))
                                 .setContentText(context.getString(R.string.alert_message))
+                                .setStyle(new NotificationCompat.BigTextStyle()
+                                        .bigText((context.getString(R.string.alert_message))))
                                 .setAutoCancel(true)
                                 .setSound(defaultSoundUri)
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)

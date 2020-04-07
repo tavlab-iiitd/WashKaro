@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:src="@drawable/ca_unsafe" />
+            android:src="@drawable/ca_safe" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tracer_title"
@@ -43,7 +43,7 @@
             android:clickable="false"
             android:fontFamily="@font/mukta_medium"
             android:gravity="center"
-            android:text="@string/you_are_unsafe"
+            android:text="@string/you_are_safe"
             android:textColor="@color/app_black"
             android:textSize="24dp" />
 
@@ -54,7 +54,7 @@
             android:clickable="false"
             android:fontFamily="@font/mukta_medium"
             android:gravity="center"
-            android:text="@string/you_are_unsafe_content"
+            android:text="@string/you_are_safe_content"
             android:textColor="@color/app_light_black"
             android:textSize="12dp" />
 
