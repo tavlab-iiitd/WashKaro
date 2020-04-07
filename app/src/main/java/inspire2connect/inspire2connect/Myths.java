@@ -57,8 +57,9 @@ public class Myths extends AppCompatActivity {
 
     private void setGuidelinesHindi() {
         curr_lang = 2;
-        centre = (TextView) findViewById(R.id.centre_view);
-        centre.setText("मिथक(WHO के द्वारा)");
+        //centre = (TextView) findViewById(R.id.centre_view);
+        //centre.setText("मिथक(WHO के द्वारा)");
+        getSupportActionBar().setTitle(R.string.myth_act_hi);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
@@ -92,10 +93,10 @@ public class Myths extends AppCompatActivity {
 
     private void setGuidelinesEnglish() {
         curr_lang = 1;
-        TextView guid_view = (TextView) findViewById(R.id.centre_view);
-        guid_view.setTypeface(null, Typeface.BOLD);
-        guid_view.setText("Myth Busters(By WHO)");
-
+        //TextView guid_view = (TextView) findViewById(R.id.centre_view);
+        //guid_view.setTypeface(null, Typeface.BOLD);
+        //guid_view.setText("Myth Busters(By WHO)");
+        getSupportActionBar().setTitle(R.string.myth_act_hi);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
