@@ -102,6 +102,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
                             android:background="@drawable/buttonback2"
                             android:orientation="vertical">
 
@@ -146,6 +147,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
                             android:background="@drawable/buttonback2"
                             android:orientation="vertical">
 
@@ -190,6 +192,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
                             android:background="@drawable/buttonback2"
                             android:orientation="vertical">
 
@@ -234,6 +237,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
                             android:background="@drawable/buttonback2"
                             android:orientation="vertical">
 
@@ -278,6 +282,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
                             android:background="@drawable/buttonback2"
                             android:orientation="vertical">
 
@@ -506,7 +511,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="AI News"
+                        android:text="onAIr"
                         android:textAlignment="center"
                         android:textColor="@color/blackcolor"
                         android:textSize="@dimen/home_card_font"
