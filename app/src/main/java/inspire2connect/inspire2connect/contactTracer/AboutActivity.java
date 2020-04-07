@@ -27,6 +27,14 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ca_activity_about);
 
+        if(getActionBar()!=null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         tavlab = findViewById(R.id.tavlabLogo);
         precog = findViewById(R.id.precogLogo);
         iiitd = findViewById(R.id.iiitdLogo);

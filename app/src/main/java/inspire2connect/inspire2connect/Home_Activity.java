@@ -54,6 +54,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import inspire2connect.inspire2connect.contactTracer.AboutActivity;
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
 
 
@@ -380,7 +381,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Home_Activity.this, about.class);
+            Intent i = new Intent(Home_Activity.this, AboutActivity.class);
             startActivity(i);
         }
         else if(id==R.id.privacy_policy)

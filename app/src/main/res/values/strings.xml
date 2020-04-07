@@ -130,13 +130,6 @@
     <!--    Notification Channels-->
     <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
 
-    <string name="presented_to_you_by">WashKaro, presented to you by</string>
-
-    <string name="priyanka">Priyanka Syal</string>
-    <string name="priyanka_tag">Software Engineer, Microsoft IDC</string>
-    <string name="chirag">Chirag Jain</string>
-    <string name="chirag_tag">CSE Undergraduate, IIIT Delhi</string>
-
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="default_notification_channel_id" translatable="false">covid_alert_channel</string>
     <string name="default_notification_channel_name" translatable="false">covidAlert</string>
@@ -179,6 +172,46 @@
     <string name="you_are_unsafe">You are maybe at risk!</string>
     <string name="you_are_safe_content">We detect people who might have the virus around you.</string>
     <string name="you_are_unsafe_content">We detect people who might have the virus around you.</string>
+
+<!--    about-->
+
+    <string name="presented_to_you_by">WashKaro, presented to you by</string>
+
+    <string name="priyanka">Priyanka Syal</string>
+    <string name="priyanka_tag">Software Engineer, Microsoft IDC</string>
+    <string name="chirag">Chirag Jain</string>
+    <string name="chirag_tag">Undergraduate, IIIT Delhi</string>
+
+    <string name="development_team">Development Team</string>
+
+    <string name="pk">Dr. Ponnurangam Kumaraguru</string>
+    <string name="pk_description">Professor (CSE), IIIT Delhi</string>
+    <string name="tav">Dr. Tavpritesh Sethi</string>
+    <string name="tav_description">Assistant Professor(CB), IIIT Delhi</string>
+
+    <string name="rohan">Rohan Pandey</string>
+    <string name="rohan_tag">Undergraduate, SNU</string>
+    
+    <string name="kanav">Kanav Bhagat</string>
+    <string name="kanav_tag">Undergraduate, IIIT Delhi</string>
+    
+    <string name="vaibhav">Vaibhav Gautam</string>
+    <string name="vaibhav_tag">Undergraduate, SNU</string>
+    
+    <string name="himanshu">Himanshu Sharma</string>
+    <string name="himanshu_tag">Undergraduate, GL Bajaj Institute</string>
+    
+    <string name="bhavika">Bhavika Rana</string>
+    <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
+    
+    <string name="mentors">Mentor Team</string>
+    
+    <string name="lovedeep">Lovedeep Singh Dhingra</string>
+    <string name="arushi">Arushi Lajja</string>
+    <string name="mudit">Mudit Agarwal</string>
+    <string name="vrinda">Vrinda Narayan</string>
+    <string name="samprati">Samprati</string>
+
 
 
 </resources>
