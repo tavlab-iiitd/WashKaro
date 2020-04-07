@@ -48,5 +48,12 @@
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
+
+    <color name="app_pink">#E8247D</color>
+    <color name="app_blue">#168FFF</color>
+    <color name="app_black">#1D1D1D</color>
+    <color name="app_light_black">#313131</color>
+    <color name="app_white">#FFFFFF</color>
+    <color name="card_shadow">#000000</color>
 </resources>
 

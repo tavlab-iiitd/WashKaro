@@ -23,9 +23,9 @@
     </string-array>
     <string-array name="disease_frequency">
         <item>Last 1 month</item>
-        <item>Last 3 motnhs</item>
-        <item>Last 6 motnhs</item>
-        <item>Last 12 motnhs</item>
+        <item>Last 3 months</item>
+        <item>Last 6 months</item>
+        <item>Last 12 months</item>
     </string-array>
     <string name="titleString">Symptom Predictor</string>
     <string name="START">START</string>
@@ -48,4 +48,137 @@
     <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
     <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
     <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
+
+    <string name="label_phone_auth">Phone Number Authentication</string>
+    <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="signed_in">Signed In</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="start_phone_auth">Send</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="resend_phone_auth">Resend</string>
+    <string name="hint_phone_number">Phone Number in +91 format</string>
+    <string name="hint_verification_code">Verification Code</string>
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="verification_code_help">You will receive an OTP soon!</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="firebase_status_fmt">Firebase UID: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="reload">Reload</string>
+
+    <string name="tavlab_logo">Tav Lab at IIIT Delhi</string>
+    <string name="precog_logo">Precog Lab at IIIT Delhi</string>
+    <string name="iiitd_logo">IIIT Delhi</string>
+
+    <string name="signing_in">Signing In</string>
+
+    <string name="bt_not_enabled_leaving">User declined to enable Bluetooth, exiting Bluetooth Advertisements.</string>
+    <string name="activity_main_title">Nearby Devices</string>
+    <string name="broadcast_device">Broadcast Device</string>
+
+    <string name="bt_not_supported">Bluetooth is not supported on this device.</string>
+    <string name="bt_ads_not_supported">Bluetooth Advertisements are not supported on this device.</string>
+
+    <string name="refresh">Refresh</string>
+    <string name="start_error_prefix">Start Advertising failed: </string>
+    <string name="start_error_already_started">already started.</string>
+    <string name="start_error_too_large">data packet exceeded 31 Byte limit.</string>
+    <string name="start_error_unsupported">not supported on this device.</string>
+    <string name="start_error_internal">internal error.</string>
+    <string name="start_error_too_many">too many advertisers.</string>
+    <string name="bt_null">Error: Bluetooth object null</string>
+    <string name="last_seen">Last Seen:</string>
+    <string name="just_now">just now</string>
+    <string name="minute_ago">minute ago</string>
+    <string name="hour_ago">hour ago</string>
+    <string name="seconds_ago">seconds ago</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="empty_list">No devices found.</string>
+    <string name="seconds">seconds.</string>
+    <string name="scan_start_toast">Scanning for</string>
+    <string name="already_scanning">Scanning already started.</string>
+    <string name="no_name">(no name)</string>
+    <string name="start_error_unknown">unknown error</string>
+    <string name="advertising_timedout">Advertising stopped due to timeout.</string>
+
+    <string name="device">Device</string>
+    <string name="devices">Devices</string>
+
+    <string name="discover">Discover</string>
+    <string name="interactions">See Interactions</string>
+
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+
+    <string name="login">Login</string>
+
+    <!--    Shared Prefs-->
+    <string name="user_id_key" translatable="false">user_id_key_pref</string>
+    <string name="uuid_id_key" translatable="false">uuid_id_key_pref</string>
+    <string name="phone_key" translatable="false">phone_key_pref</string>
+    <string name="state_key" translatable="false">status_key_pref</string>
+    <string name="shared_prefs_file" translatable="false">shared_prefs</string>
+
+    <!--    Notification Channels-->
+    <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
+
+    <string name="presented_to_you_by">WashKaro, presented to you by</string>
+
+    <string name="priyanka">Priyanka Syal</string>
+    <string name="priyanka_tag">Software Engineer, Microsoft IDC</string>
+    <string name="chirag">Chirag Jain</string>
+    <string name="chirag_tag">CSE Undergraduate, IIIT Delhi</string>
+
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="default_notification_channel_id" translatable="false">covid_alert_channel</string>
+    <string name="default_notification_channel_name" translatable="false">covidAlert</string>
+
+    <string name="msg_subscribe_failed">Failed to subscribe to covidAlert topic</string>
+    <string name="fcm_message" translatable="false">WashKaro</string>
+    <string name="alert_about_message">You will see an alert if you are near a confirmed Covid case</string>
+    <string name="alert_about_patient_message">We are working to get an updated source for confirmed cases</string>
+    <string name="alert_message">Alert! You are near a confirmed Covid case</string>
+    <string name="covid_avengers_message">Alert! You are near a Covid avenger</string>
+    <string name="network_not_enabled">Location is not enabled</string>
+    <string name="Cancel">Cancel</string>
+    <string name="location_is_not_enabled">Location is not enabled</string>
+    <string name="show_location_setting">Enable Location from your location settings</string>
+    <string name="contact_result">Contact</string>
+
+    <!--    Preferences-->
+    <string name="general_cat">General</string>
+    <string name="info_cat">Information</string>
+    <string name="security_cat">Security</string>
+    <string name="security_key" translatable="false">security_key</string>
+    <string name="lang_tile">Language</string>
+    <string name="lang_key" translatable="false">lang_key</string>
+    <string name="lang_summary">Please choose a language of the app.</string>
+    <string name="about_key" translatable="false">about_key</string>
+    <string name="logout_key" translatable="false">logout_key</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_key" translatable="false">privacy_policy</string>
+    <string name="title_activity_settings">Settings</string>
+
+<!--    Contact Tracer Again-->
+    <string name="share_this_app">Share this app</string>
+    <string name="share_content">Help stop the spread of COVID-19 by sharing this app with family and friends.</string>
+    <string name="who_guidelines">WHO Guidelines</string>
+    <string name="who_guidelines_content">Read these for preventive measures.</string>
+    <string name="symptom_tracker">Symptom Tracker</string>
+    <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
+
+    <string name="you_are_safe">You are safe!</string>
+    <string name="you_are_unsafe">You are maybe at risk!</string>
+    <string name="you_are_safe_content">We detect people who might have the virus around you.</string>
+    <string name="you_are_unsafe_content">We detect people who might have the virus around you.</string>
+
+
 </resources>

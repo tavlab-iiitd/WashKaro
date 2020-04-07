@@ -54,6 +54,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import inspire2connect.inspire2connect.contactTracer.MainActivity;
+
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -302,7 +304,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         }
         if (view == ll_but[2]) {
             //Put contact tracer here
-            Intent i = new Intent(Home_Activity.this, Myths.class);
+            Intent i = new Intent(Home_Activity.this, MainActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }

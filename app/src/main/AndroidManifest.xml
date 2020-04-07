@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/app_icon_round_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".contactTracer.BluetoothApplication"
         tools:replace="android:appComponentFactory">
         <activity android:name=".symptom_activity"></activity>
         <activity android:name=".QuestionsActivity"></activity>
@@ -48,25 +49,28 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".select_chatbot_activity"></activity>
+        <activity android:name=".select_misc_activity"></activity>
+        <activity android:name=".detailed_view"></activity>
+        <activity android:name=".Infographics"></activity>
+
 <!--        Contact Tracer-->
 
-        <activity
-            android:name=".contactTracer.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+<!--        <activity-->
+<!--            android:name=".contactTracer.SettingsActivity"-->
+<!--            android:label="@string/title_activity_settings"></activity>-->
 
-        <activity android:name=".contactTracer.AboutActivity" />
-        <activity android:name=".contactTracer.InteractionsActivity" />
+<!--        <activity android:name=".contactTracer.AboutActivity" />-->
+<!--        <activity android:name=".contactTracer.InteractionsActivity" />-->
 
-        <activity android:name=".contactTracer.bluetooth.BluetoothStartActivity" />
-        <activity android:name=".contactTracer.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".contactTracer.MainActivity"/>
 
         <activity android:name=".contactTracer.PhoneAuthActivity" />
+
+        <activity android:name=".select_chatbot_activity"></activity>
+        <activity android:name=".select_misc_activity"></activity>
+        <activity android:name=".detailed_view"></activity>
+        <activity android:name=".Infographics"></activity>
 
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
@@ -80,7 +84,7 @@
             android:resource="@color/colorAccent" />
 
         <service
-            android:name=".contactTracer.bluetooth.BluetoothAdvertiserService"
+            android:name=".contactTracer.bluetooth.BluetoothService"
             android:enabled="true"
             android:exported="false" />
         <service
@@ -115,5 +119,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
 </manifest>

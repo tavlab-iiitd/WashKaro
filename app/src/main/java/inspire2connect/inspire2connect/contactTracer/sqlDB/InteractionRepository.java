@@ -52,7 +52,7 @@ public class InteractionRepository {
 //        }
 
         List<InteractionEntity> list = interactionDatabase.interactionDao().getAll();
-        String res = list.size() +" Contacts";
+        String res = list.size()+"";
        /* for (int i=0; i<list.size(); i++) {
             res += list.get(i).UUID + "\n";
         } */

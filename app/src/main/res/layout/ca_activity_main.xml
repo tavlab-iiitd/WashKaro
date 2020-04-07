@@ -1,119 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".contactTracer.MainActivity"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true">
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".contactTracer.MainActivity">
+
+    <Button
+        android:id="@+id/login_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textSize="22sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingBottom="20dp">
 
-        <Button
-            android:id="@+id/discover"
+        <ImageView
+            android:id="@+id/tracer_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="@string/discover"
-            android:textSize="16sp" />
+            android:clickable="false"
+            android:src="@drawable/ca_unsafe" />
 
-        <Button
-            android:id="@+id/login_bt"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tracer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="@string/login"
-            android:textSize="22sp" />
+            android:clickable="false"
+            android:fontFamily="@font/mukta_medium"
+            android:gravity="center"
+            android:text="@string/you_are_unsafe"
+            android:textColor="@color/app_black"
+            android:textSize="24dp" />
 
-        <Button
-            android:id="@+id/interactions"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tracer_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/interactions"
-            android:textSize="16sp" />
+            android:clickable="false"
+            android:fontFamily="@font/mukta_medium"
+            android:gravity="center"
+            android:text="@string/you_are_unsafe_content"
+            android:textColor="@color/app_light_black"
+            android:textSize="12dp" />
+
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_gravity="bottom|center"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/settings_bt"
-            android:layout_width="wrap_content"
+        <include
+            layout="@layout/ca_symptom_tracker_box"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/Theme.MaterialComponents"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="@string/settings"
-            android:textSize="14sp" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/about_bt"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:theme="@style/Theme.MaterialComponents"-->
-        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-        <!--            android:text="@string/about"-->
-        <!--            android:textSize="12sp" />-->
+<!--        <include-->
+<!--            layout="@layout/ca_who_guidelines_box"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="8dp"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:layout_marginBottom="16dp" />-->
 
-        <!--        <Button-->
-        <!--            android:id="@+id/logout_bt"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_marginLeft="50dp"-->
-        <!--            android:theme="@style/Theme.MaterialComponents"-->
-        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="@string/logout"-->
-        <!--            android:textSize="12sp" />-->
+        <include
+            layout="@layout/ca_share_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="12dp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/alert_about_message"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/alert_about_message"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/alert_about_patient_message"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="@string/alert_about_patient_message"
-        tools:visibility="visible" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
