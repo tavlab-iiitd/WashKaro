@@ -118,6 +118,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
                 Log.e("UPDATE_STATUS", "Update flow failed! Result code: " + resultCode);

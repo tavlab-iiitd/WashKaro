@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/Home_background_color"
+    android:orientation="vertical"
     tools:context=".Home_Activity">
 
     <ScrollView
@@ -14,58 +14,47 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageButton
+
+                    android:id="@+id/flipperLeft"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/arrow_left" />
+
+                <ImageButton
+                    android:id="@+id/flipperRight"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/right_arrow" />
+
                 <ViewFlipper
                     android:id="@+id/viewFlipper_slide_show"
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
 
-                <ImageButton
-
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:id="@+id/flipperLeft"
-                    android:background="@drawable/arrow_left"
-                    android:layout_marginTop="120dp"
-                    android:layout_marginLeft="8dp" />
-
-                <ImageButton
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:id="@+id/flipperRight"
-                    android:background="@drawable/right_arrow"
-                    android:layout_marginTop="120dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="8dp" />
-
             </RelativeLayout>
-            <TextView
-                android:id="@+id/curr_stats_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Current Statistics"
-                android:textColor="@color/blackcolor"
-                android:textSize="15sp"
-                android:layout_marginTop="5dp"
-                />
 
             <RelativeLayout
+                android:id="@+id/data_tile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/data_tile"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:background="@color/Home_background_color"
-
                 android:orientation="vertical">
                 <!--                <TextView-->
                 <!--                    android:id="@+id/Corona_helpline_text"-->
@@ -334,104 +323,122 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_marginTop="5dp"
-               >
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay1"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
-                    android:layout_marginTop="@dimen/home_card_margin_top"
-                    android:background="@drawable/buttonback2"
-                    android:clickable="true"
-                    android:elevation="@dimen/home_card_elev">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:clipToPadding="false"
+                    android:layout_marginBottom="8dp">
 
-                    <ImageButton
-                        android:id="@+id/image_button1"
-                        style="@android:style/Widget.Material.Light.ImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_below="@+id/imgbut_text1"
-                        android:layout_alignParentStart="true"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/img_but_lay1"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:layout_marginRight="@dimen/home_card_horizontal_margin"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <ImageButton
+                            android:id="@+id/image_button1"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_below="@+id/imgbut_text1"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="4dp"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
+                            app:srcCompat="@drawable/ic_official_adv" />
+
+                        <TextView
+                            android:id="@+id/imgbut_text1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Advisories"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/img_but_lay2"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="4dp"
-                        android:background="#FFFFFF"
-                        android:clickable="false"
-                        android:contentDescription="Card Image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-                        app:srcCompat="@drawable/ic_official_adv" />
+                        android:layout_marginLeft="@dimen/home_card_horizontal_margin"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
 
-                    <TextView
-                        android:id="@+id/imgbut_text1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Advisories"
-                        android:textAlignment="center"
-                        android:textColor="@color/blackcolor"
-                        android:textSize="@dimen/home_card_font"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <ImageButton
+                            android:id="@+id/image_button2"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_below="@+id/imgbut_text2"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="4dp"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text2"
+                            app:srcCompat="@drawable/ic_people" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/imgbut_text2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Symptom Tracker"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay2"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/home_card_margin_top"
-                    android:layout_marginRight="@dimen/home_card_margin_left_right"
-                    android:background="@drawable/buttonback2"
-                    android:clickable="true"
-                    android:elevation="@dimen/home_card_elev">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageButton
-                        android:id="@+id/image_button2"
-                        style="@android:style/Widget.Material.Light.ImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_below="@+id/imgbut_text2"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="4dp"
-                        android:background="#FFFFFF"
-                        android:clickable="false"
-                        android:contentDescription="Card Image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imgbut_text2"
-                        app:srcCompat="@drawable/ic_people" />
+                </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/imgbut_text2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Symptom Tracker"
-                        android:textAlignment="center"
-                        android:textColor="@color/blackcolor"
-                        android:textSize="@dimen/home_card_font"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/img_but_lay3"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_below="@id/img_but_lay1"
-                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
-                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_marginRight="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
                     android:elevation="@dimen/home_card_elev">
@@ -475,8 +482,7 @@
                     android:layout_height="100dp"
                     android:layout_below="@id/img_but_lay1"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
-                    android:layout_marginRight="@dimen/home_card_margin_left_right"
+                    android:layout_marginLeft="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
                     android:elevation="@dimen/home_card_elev">
@@ -513,6 +519,17 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="4dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/img_but_lay6"
@@ -520,8 +537,7 @@
                     android:layout_height="100dp"
                     android:layout_below="@id/img_but_lay4"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
-                    android:layout_marginRight="@dimen/home_card_margin_left_right"
+                    android:layout_marginRight="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
                     android:elevation="@dimen/home_card_elev">
@@ -564,9 +580,7 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_below="@id/img_but_lay3"
-
-                    android:layout_marginLeft="@dimen/home_card_margin_left_right"
-                    android:layout_marginTop="@dimen/home_card_margin_cont_top"
+                    android:layout_marginLeft="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
                     android:elevation="@dimen/home_card_elev"
@@ -608,8 +622,19 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </LinearLayout>
 
-            </RelativeLayout>
+
+            </LinearLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/curr_stats_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Current Statistics"-->
+<!--                android:textColor="@color/blackcolor"-->
+<!--                android:textSize="15sp" />-->
         </LinearLayout>
     </ScrollView>
 
