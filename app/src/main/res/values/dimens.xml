@@ -17,7 +17,7 @@
     <dimen name="home_card_slider_elev">1dp</dimen>
     <dimen name="home_card_margin_top">8dp</dimen>
     <dimen name="home_card_margin_left_right">24dp</dimen>
-    <dimen name="home_card_font">18dp</dimen>
+    <dimen name="home_card_font">16dp</dimen>
     <dimen name="home_card_margin_cont_top">16dp</dimen>
 
     <dimen name="icon_top_margin">24dp</dimen>
@@ -25,9 +25,9 @@
     <dimen name="title_bottom_margin">16dp</dimen>
     <dimen name="field_width_standard">160dp</dimen>
 
-    <dimen name="about_cat_title">28sp</dimen>
-    <dimen name="about_title">22sp</dimen>
-    <dimen name="about_content">16sp</dimen>
+    <dimen name="about_cat_title">28dp</dimen>
+    <dimen name="about_title">22dp</dimen>
+    <dimen name="about_content">16dp</dimen>
     <dimen name="about_small_content">12sp</dimen>
     <dimen name="about_bottom_margin">24dp</dimen>
 

@@ -33,6 +33,7 @@
             android:id="@+id/relevant_button"
             android:layout_width="49dp"
             android:layout_height="48dp"
+            android:visibility="gone"
             android:background="@color/GreenColor"
             android:src="@drawable/checkmark"
             android:text="RELEVANT" />
@@ -56,6 +57,7 @@
             android:id="@+id/irrelevant_button"
             android:layout_width="49dp"
             android:layout_height="48dp"
+            android:visibility="gone"
             android:background="@color/RedColor"
             android:src="@drawable/wrong_mark"
             android:text="IRRELEVANT" />

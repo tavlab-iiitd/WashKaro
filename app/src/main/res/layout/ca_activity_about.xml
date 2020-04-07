@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contactTracer.AboutActivity">
+    tools:context=".about">
 
     <ImageView
         android:id="@+id/tavlabLogo"
@@ -63,47 +63,6 @@
                 android:textColor="@color/app_blue"
                 android:fontFamily="@font/mukta_medium"
                 android:textSize="@dimen/about_cat_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/pk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/pk"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/pkTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/pk_description"
-                android:textColor="@color/app_light_black"
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/tav"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tavTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="8dp"
-                android:text="@string/tav_description"
-                android:textColor="@color/app_light_black"
-                android:textSize="@dimen/about_content" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/bhavika"
@@ -257,6 +216,47 @@
                 android:text="@string/vaibhav_tag"
                 android:textColor="@color/app_light_black"
 
+                android:textSize="@dimen/about_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/about_bottom_margin"
+
+                android:fontFamily="@font/mukta_semibold"
+                android:text="@string/tav"
+                android:textColor="@color/app_black"
+                android:textSize="@dimen/about_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tavTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mukta_medium"
+                android:layout_marginTop="8dp"
+                android:text="@string/tav_description"
+                android:textColor="@color/app_light_black"
+                android:textSize="@dimen/about_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/about_bottom_margin"
+                android:fontFamily="@font/mukta_semibold"
+                android:text="@string/pk"
+                android:textColor="@color/app_black"
+                android:textSize="@dimen/about_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pkTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/mukta_medium"
+                android:text="@string/pk_description"
+                android:textColor="@color/app_light_black"
                 android:textSize="@dimen/about_content" />
 
             <com.google.android.material.textview.MaterialTextView
