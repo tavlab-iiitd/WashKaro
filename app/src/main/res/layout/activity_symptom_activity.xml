@@ -4,64 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafafa"
+    android:background="@color/Home_background_color"
     tools:context=".symptom_activity">
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="110dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
-
-        android:onClick="onClickStart"
-
-        android:text="@string/begin"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/buttonback2"
-        android:textSize="18sp"
+        android:elevation="@dimen/home_card_elev"
+        android:onClick="onClickStart"
+        android:text="@string/begin"
+        android:textSize="@dimen/about_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title2Text"
-        android:elevation="5dp"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="384dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:selectAllOnFocus="false"
-        android:shadowColor="@color/Shadow"
-        android:shadowDx="10"
-        android:shadowDy="-10"
-        android:shadowRadius="20"
-        android:singleLine="false"
-        android:text="@string/intro"
-        android:textAllCaps="true"
-        android:textSize="36sp"
-        app:fontFamily="sans-serif-condensed-medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="150dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:selectAllOnFocus="false"-->
+    <!--        android:shadowColor="@color/Shadow"-->
+    <!--        android:shadowDx="10"-->
+    <!--        android:shadowDy="-10"-->
+    <!--        android:shadowRadius="20"-->
+    <!--        android:singleLine="false"-->
+    <!--        android:text="@string/intro"-->
+    <!--        android:textAllCaps="true"-->
+    <!--        android:textSize="36sp"-->
+    <!--        app:fontFamily="sans-serif-condensed-medium"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/title2Text"
-        android:layout_width="385dp"
-        android:layout_height="189dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
 
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/mukta_medium"
         android:gravity="center"
-        android:shadowColor="@color/Shadow"
-        android:shadowDx="10"
-        android:shadowDy="-10"
-        android:shadowRadius="25"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
+        android:textColor="@color/app_black"
+        android:textSize="@dimen/about_title"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
