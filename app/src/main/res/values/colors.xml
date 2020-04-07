@@ -10,7 +10,7 @@
     <color name="backColor">#4dffff</color>
     <color name="blackcolor">#000000</color>
     <color name="home_buton_color">#A9F0F0</color>
-    <color name="Home_background_color">#fafafa</color>
+    <color name="Home_background_color">#F8F8F8</color>
     <!-- Screens background color-->
 
     <!--<color name="bg_slider_screen1">#f4b241</color>
@@ -55,5 +55,6 @@
     <color name="app_light_black">#313131</color>
     <color name="app_white">#FFFFFF</color>
     <color name="card_shadow">#000000</color>
+
 </resources>
 

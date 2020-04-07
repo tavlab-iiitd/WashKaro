@@ -221,5 +221,8 @@
     <string name="myth_act_hi" translatable="false">मिथक(WHO के द्वारा)</string>
     <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>
 
+<!--    Myths-->
+    <string name="play_audio">PLAY AUDIO</string>
+    <string name="playing">PLAYING</string>
 
 </resources>
