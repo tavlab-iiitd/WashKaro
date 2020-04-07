@@ -79,8 +79,11 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
     private void setGuidelinesHindi()
     {
         curr_lang = 2;
-        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
-        centre.setText("सरकारी जानकारी");
+
+        getSupportActionBar().setTitle(R.string.govt_updates_act_hi);
+
+//        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
+//        centre.setText("सरकारी जानकारी");
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
@@ -127,10 +130,13 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
     private void setGuidelinesEnglish()
     {
         curr_lang = 1;
-        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
-        centre.setTypeface(null, Typeface.BOLD);
 
-        centre.setText("Government Updates");
+        getSupportActionBar().setTitle(R.string.govt_updates_act);
+
+//        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
+//        centre.setTypeface(null, Typeface.BOLD);
+
+//        centre.setText("Government Updates");
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
@@ -188,6 +194,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_government__updates);
+
         result=new ArrayList<>();
         result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
         mAdapter=new Government_Updates_Adapter(this,result);
