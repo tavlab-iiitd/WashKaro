@@ -79,9 +79,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
     private void setGuidelinesHindi()
     {
         curr_lang = 2;
-
         getSupportActionBar().setTitle(R.string.govt_updates_act_hi);
-
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
 //        centre.setText("सरकारी जानकारी");
         FirebaseApp.initializeApp(this);
@@ -107,10 +105,10 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                     //hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + english_text;
                     //String text = hindi_text+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
-                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date+"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
-                    String text = hindi_text;//+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
+                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;//"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
+                    String text = hindi_text;
                     result.add(new myth_single_object(hindi_title,
-                            text, Integer.toString(count), audio_url));
+                            text, Integer.toString(count), audio_url,redirect_url));
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + hindi_text;
                     //Spanned text = Html.fromHtml(ttd +
                       //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>");
@@ -159,12 +157,12 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                     //english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
                     //String text = english_text+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
-                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
+                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;//+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
                     String text = english_text;//+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
 
                     result.add(new myth_single_object(english_title,
-                           text, Integer.toString(count), audio_url));
+                           text, Integer.toString(count), audio_url,redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -196,7 +194,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
         setContentView(R.layout.activity_government__updates);
 
         result=new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
+        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under","under"));
         mAdapter=new Government_Updates_Adapter(this,result);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_gov_updates);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -310,6 +308,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                 i.putExtra("detailed_title",single.get(0).getTitle());
                 i.putExtra("detailed_text",single.get(0).getMyth());
                 i.putExtra("url",single.get(0).getAudio_url());
+                i.putExtra("redirect_url",single.get(0).getRedirect_url());
                 //i.putExtra("result_list",single);
                 startActivity(i);
             }

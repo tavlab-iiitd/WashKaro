@@ -54,8 +54,9 @@ public class detailed_view extends AppCompatActivity implements Serializable
         detailed_share_button=(ImageButton)findViewById(R.id.detailed_share);
         currently_paused=false;
         final Intent i=getIntent();
+        String redirect_url=i.getStringExtra("redirect_url");
         //ArrayList<myth_single_object> single=(ArrayList<myth_single_object>) i.getSerializableExtra("result_list");
-        detailed_title.setText(Html.fromHtml(i.getStringExtra("detailed_title")));
+        detailed_title.setText(Html.fromHtml(i.getStringExtra("detailed_title")+"<br><a href=" + redirect_url + ">Source"+ "</a>"));
         detailed_text.setText(Html.fromHtml(i.getStringExtra("detailed_text")));
         mediaPlayer=new MediaPlayer();
 

@@ -6,13 +6,22 @@ public class myth_single_object
     String myth;
     String position;
     String audio_url;
-
-    public myth_single_object(String title,String myth, String position, String audio_url)
+    String redirect_url;
+    public myth_single_object(String title,String myth, String position, String audio_url,String redirect_url)
     {
         this.title=title;
         this.myth = myth;
         this.position = position;
         this.audio_url = audio_url;
+        this.redirect_url=redirect_url;
+    }
+
+    public String getRedirect_url() {
+        return redirect_url;
+    }
+
+    public void setRedirect_url(String redirect_url) {
+        this.redirect_url = redirect_url;
     }
 
     public String getTitle() {
