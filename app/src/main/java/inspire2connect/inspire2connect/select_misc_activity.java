@@ -108,9 +108,9 @@ public class select_misc_activity extends AppCompatActivity implements View.OnCl
         TextView t2 = (TextView)findViewById(R.id.misc_but2_text);
         TextView t3 = (TextView)findViewById(R.id.misc_but3_text);
 
-        t1.setText("India COVID Map");
-        t2.setText("WHO Guidelines");
-        t3.setText("Myth Busters");
+        t1.setText("भारत कॉविड नक्शा");
+        t2.setText("डब्ल्यूएचओ के दिशानिर्देश");
+        t3.setText("मिथक");
     }
 
 }
