@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
@@ -52,7 +56,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     boolean network_enabled = false;
 
     private boolean isLoggedIn;
-    private boolean isSafe;
+    //private boolean isSafe;
+    private static final long UPDATEUIPERIOD = 1000;
 
     private ImageView traceImage;
     private MaterialTextView traceTitle;
@@ -61,6 +66,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private InteractionRepository dbRepo;
 
     private Context mContext;
+
+    public static boolean isSafe = true;
+    private Handler handler;
+    private Timer timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,36 +84,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         getSupportActionBar().hide();
 
+
         mContext = this;
-
         isSafe = true;
-
+        handler = new Handler();
         dbRepo = new InteractionRepository(this.getApplicationContext());
 
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                final String res = dbRepo.getUUIDs();
-                int count = Integer.parseInt(res);
-                if(count>0) {
-                    isSafe = false;
-                    updateSafe();
-                } else {
-                    isSafe = true;
-                    updateSafe();
-                }
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        devices.setText(res);
-//                    }
-//                });
-//                interactionDatabase.interactionDao().insertTask(entity);
-                return null;
-            }
-        }.execute();
-
-        updateSafe();
 
         if(isAuthEnabled) {
             FirebaseMessaging.getInstance().setAutoInitEnabled(true);
@@ -164,10 +150,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initBluetooth();
         initLocation();
         updateUI();
+        updateSafe();
+        timer = new Timer(); // changed
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                           updateSafe();
+                        }
+                    });
+            }
+
+        }, 0, 1000);
+
+
     }
 
     private void updateSafe() {
-        if(isSafe) {
+        if (isSafe) {
 //            Picasso.get().load(R.drawable.ca_safe).into(traceImage);
             traceImage.setImageResource(R.drawable.ca_safe);
             traceTitle.setText(R.string.you_are_safe);
@@ -180,6 +182,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    protected void onResume() {
+        super.onResume();
+        this.updateSafe();
+    }
+
+    
     private void updateUI() {
 
         if(isAuthEnabled) {
