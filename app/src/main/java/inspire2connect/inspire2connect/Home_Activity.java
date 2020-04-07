@@ -381,7 +381,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Home_Activity.this, AboutActivity.class);
+            Intent i = new Intent(Home_Activity.this, about.class);
             startActivity(i);
         }
         else if(id==R.id.privacy_policy)

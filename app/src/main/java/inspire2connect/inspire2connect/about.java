@@ -1,107 +1,96 @@
 package inspire2connect.inspire2connect;
 
-
-//import android.support.v7.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
-
-public class about extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private ArrayList<AboutModel> imageModelArrayList;
-    private AboutAdapter adapter;
-
-    @Override
-    public boolean onSupportNavigateUp() {
-
-        finish();
-        //return super.onSupportNavigateUp();
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_page_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.lang_togg_butt) {
-            Toast.makeText(about.this, "Language Changed", Toast.LENGTH_SHORT).show();
+import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
 
 
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(about.this, Male_Female.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(about.this, about.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(about.this, privacy_policy.class);
-            startActivity(i);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+@SuppressWarnings("SpellCheckingInspection")
+public class about extends BaseActivity implements View.OnClickListener {
+
+    private ImageView tavlab;
+    private ImageView precog;
+    private ImageView iiitd;
+    private TextView chirag;
+    private TextView chiragTag;
+    private TextView priyanka;
+    private TextView priyankaTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        imageModelArrayList = eatFruits();
-        adapter = new AboutAdapter(this, imageModelArrayList);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-    }
+        setContentView(R.layout.ca_activity_about);
 
-    private ArrayList<AboutModel> eatFruits() {
-        String tempo = getResources().getString(R.string.link_test);
-        Log.d("link_test", tempo);
-        /*
-        int[] myImageList = new int[]{R.drawable.kanav_image, R.drawable.rohan_image,R.drawable.vaibhav_image};
-        String[] NameList = new String[]{"Kanav Bhagat","Rohan Pandey" ,"Vaibhav Gautam"};
-        String[] GithubList=new String[]{"Github\nhttps://github.com/kanavbhagat","Github\nhttps://github.com/rohanpandey","Github\nhttps://github.com/VAICR7BHAV"};
-        String[] LinkedInList=new String[]{"LinkedIn\nhttp://linkedin.com/in/kanav-bhagat-133229130","LinkedIn\nhttps://www.linkedin.com/in/rohan-pandey-145170175/","LinkedIn\nhttps://www.linkedin.com/in/vaibhav-gautam-171775187/"};
-        String[] TwitterList=new String[]{"Twitter\nhttps://mobile.twitter.com/BhagatKanav","Twitter\nhttps://twitter.com/therohanpandey1","Twitter\nhttps://twitter.com/VAIBHAVGAUTAM13"};
-        String[] EmailList=new String[]{"Email\nkanav16046@iiitd.ac.in","Email\nrohan99pandey@gmail.com","Email\nvg459@snu.edu.in"};
-        */
-        int[] myImageList = new int[]{R.drawable.logo, R.drawable.tavsir, R.drawable.kanav_image, R.drawable.rohan_image, R.drawable.vaibhav_image, R.drawable.himanshu};
-        String[] NameList = new String[]{"TAVLAB", "Dr. Tavpritesh Sethi(Mentor)", "Kanav Bhagat(Developer)", "Rohan Pandey(Developer)", "Vaibhav Gautam(Developer)", "Himanshu Sharma (Developer)"};
-        String[] GithubList = new String[]{"Email\ntavlabiiitd@gmail.com", "LinkedIn\nhttps://www.linkedin.com/in/tavpritesh/", "Github\nhttps://github.com/kanavbhagat", "Github\nhttps://github.com/rohanpandey", "Github\nhttps://github.com/VAICR7BHAV", "Github\nhttps://github.com/hspandit"};
-        String[] LinkedInList = new String[]{"Website\nhttps://tavlab.iiitd.edu.in/", "Twitter\nhttps://twitter.com/Tavpritesh", "LinkedIn\nhttp://linkedin.com/in/kanav-bhagat-133229130", "LinkedIn\nhttps://www.linkedin.com/in/rohan-pandey-145170175/", "LinkedIn\nhttps://www.linkedin.com/in/vaibhav-gautam-171775187/", "LinkedIn\nhttps://www.linkedin.com/in/himanshu-sharma2950/"};
-        String[] TwitterList = new String[]{"Github\nhttps://github.com/tavlab-iiitd", "Email\ntavpriteshsethi@iiitd.ac.in", "Twitter\nhttps://mobile.twitter.com/BhagatKanav", "Twitter\nhttps://twitter.com/therohanpandey1", "Twitter\nhttps://twitter.com/VAIBHAVGAUTAM13", "Twitter\nhttps://twitter.com/himanshu9132"};
-        String[] EmailList = new String[]{"", "", "Email\nkanav16046@iiitd.ac.in", "Email\nrohan99pandey@gmail.com", "Email\nvg459@snu.edu.in", "Email\n 0hspandit0@gmail.com"};
-
-
-        ArrayList<AboutModel> list = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            AboutModel fruitModel = new AboutModel();
-            fruitModel.setName(NameList[i]);
-            fruitModel.setImage_drawable(myImageList[i]);
-            fruitModel.setEmail(EmailList[i]);
-            fruitModel.setGithub(GithubList[i]);
-            fruitModel.setLinkedin(LinkedInList[i]);
-            fruitModel.setTwitter(TwitterList[i]);
-            list.add(fruitModel);
+        if(getActionBar()!=null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        return list;
+
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        tavlab = findViewById(R.id.tavlabLogo);
+        precog = findViewById(R.id.precogLogo);
+        iiitd = findViewById(R.id.iiitdLogo);
+        chirag = findViewById(R.id.chirag);
+        chiragTag = findViewById(R.id.chiragTag);
+        priyanka = findViewById(R.id.priyanka);
+        priyankaTag = findViewById(R.id.priyankaTag);
+
+        tavlab.setOnClickListener(this);
+        precog.setOnClickListener(this);
+        iiitd.setOnClickListener(this);
+        chiragTag.setOnClickListener(this);
+        chirag.setOnClickListener(this);
+        priyankaTag.setOnClickListener(this);
+        priyanka.setOnClickListener(this);
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        String url = "https://www.google.com/";
+        switch (view.getId()){
+            case R.id.precogLogo:
+                url = "http://precog.iiitd.edu.in/";
+                break;
+            case R.id.iiitdLogo:
+                url = "https://www.iiitd.ac.in/";
+                break;
+            case R.id.tavlabLogo:
+                url = "https://tavlab.iiitd.edu.in/";
+                break;
+            case R.id.chirag:
+            case R.id.chiragTag:
+                url = "https://www.linkedin.com/in/jnchirag/";
+                break;
+            case R.id.priyanka:
+            case R.id.priyankaTag:
+                url = "https://www.linkedin.com/in/priyanka-syal-671b9495/";
+                break;
+        }
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
 }

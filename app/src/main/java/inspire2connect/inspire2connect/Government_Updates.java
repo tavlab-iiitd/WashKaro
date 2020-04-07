@@ -137,7 +137,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
 //        centre.setTypeface(null, Typeface.BOLD);
 
 //        centre.setText("Government Updates");
-        FirebaseApp.initializeApp(this);
+//        FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
