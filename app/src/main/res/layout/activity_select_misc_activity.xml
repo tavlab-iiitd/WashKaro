@@ -87,7 +87,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-            app:srcCompat="@drawable/iconswho" />
+            app:srcCompat="@drawable/ic_who_guidelines" />
 
         <TextView
             android:id="@+id/misc_but2_text"
@@ -135,7 +135,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-            app:srcCompat="@drawable/iconscross" />
+            app:srcCompat="@drawable/ic_mask_group_3" />
 
         <TextView
             android:id="@+id/misc_but3_text"
