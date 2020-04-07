@@ -421,7 +421,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             t1.setText("Govt Advisory");
             t2.setText("Symptom Tracker");
             t3.setText("Contact Tracer");
-            t4.setText("AI News");
+            t4.setText("onAIr");
             t5.setText("Chatbots");
             t6.setText("More Information");
 //            t9.setText("News");
