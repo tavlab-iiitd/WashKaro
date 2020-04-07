@@ -90,9 +90,9 @@ public class daily_guidelines extends AppCompatActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    hin_title=sno+". "+hin_title+"<br><a href=" + redirect_url + ">स्रोत" + "</a>";
+                    hin_title=sno+". "+hin_title+"<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
                     String ttp=g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
+                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -127,9 +127,9 @@ public class daily_guidelines extends AppCompatActivity {
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
                     //String ttp = "<b>" + sno + ". " + en_title+ "</b><br />" + g_english;
-                    hin_title=sno+". "+hin_title+"</b><br><a href=" + redirect_url + ">Source" + "</a>";
+                    hin_title=sno+". "+hin_title+"</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
                     String ttp = g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url));
+                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
                     //result.add(new myth_single_object(en_t,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
@@ -159,7 +159,7 @@ public class daily_guidelines extends AppCompatActivity {
 //        centre=(TextView)findViewById(R.id.centre_view);
 //        centre.setText("दिशा निर्देश");
         result=new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under"));
+        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under","under"));
         mAdapter=new myths_adapter(this,result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -257,6 +257,8 @@ public class daily_guidelines extends AppCompatActivity {
                 i.putExtra("detailed_title",single.get(0).getTitle());
                 i.putExtra("detailed_text",single.get(0).getMyth());
                 i.putExtra("url",single.get(0).getAudio_url());
+                i.putExtra("redirect_url",single.get(0).getRedirect_url());
+
                 //i.putExtra("result_list",single);
                 startActivity(i);
             }
