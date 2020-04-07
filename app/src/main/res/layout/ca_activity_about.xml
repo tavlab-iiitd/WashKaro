@@ -237,7 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/development_team"
+                android:text="@string/mentors"
                 android:textColor="@color/app_blue"
                 android:textSize="@dimen/about_cat_title" />
 
