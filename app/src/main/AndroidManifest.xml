@@ -37,7 +37,7 @@
         <activity android:name=".InfoGraphic" />
         <activity android:name=".daily_guidelines" />
         <activity android:name=".Myths" />
-        <activity android:name=".daily_updates" />
+<!--        <activity android:name=".daily_updates" />-->
         <activity android:name=".Government_Updates" />
         <activity android:name=".map_activity" />
 
