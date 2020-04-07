@@ -115,7 +115,7 @@
                                 android:layout_marginTop="5dp"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/passengers" />
+                                app:srcCompat="@drawable/ic_stat1" />
 
                             <TextView
                                 android:id="@+id/mohfw_tv1"
@@ -160,7 +160,7 @@
                                 android:layout_marginTop="5dp"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/active_patient" />
+                                app:srcCompat="@drawable/ic_stat2" />
 
                             <TextView
                                 android:id="@+id/mohfw_tv2"
@@ -205,7 +205,7 @@
                                 android:layout_marginTop="5dp"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/cured" />
+                                app:srcCompat="@drawable/ic_stat3" />
 
                             <TextView
                                 android:id="@+id/mohfw_tv3"
@@ -250,7 +250,7 @@
                                 android:layout_marginTop="5dp"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/death" />
+                                app:srcCompat="@drawable/ic_stat4" />
 
                             <TextView
                                 android:id="@+id/mohfw_tv4"
@@ -295,7 +295,7 @@
                                 android:layout_marginTop="5dp"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/migrated_icon" />
+                                app:srcCompat="@drawable/ic_stat5" />
 
                             <TextView
                                 android:id="@+id/mohfw_tv5"
@@ -372,6 +372,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
                             android:text="Advisories"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
@@ -417,6 +418,7 @@
                             android:layout_marginTop="4dp"
                             android:text="Symptom Tracker"
                             android:textAlignment="center"
+                            android:fontFamily="@font/mukta_semibold"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -472,6 +474,7 @@
                         android:layout_marginTop="4dp"
                         android:text="Contact Tracer"
                         android:textAlignment="center"
+                        android:fontFamily="@font/mukta_semibold"
                         android:textColor="@color/blackcolor"
                         android:textSize="@dimen/home_card_font"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -514,6 +517,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="onAIr"
+                        android:fontFamily="@font/mukta_semibold"
                         android:textAlignment="center"
                         android:textColor="@color/blackcolor"
                         android:textSize="@dimen/home_card_font"
@@ -569,6 +573,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Miscellaneous"
+                        android:fontFamily="@font/mukta_semibold"
                         android:textAlignment="center"
                         android:textColor="@color/blackcolor"
                         android:textSize="@dimen/home_card_font"
@@ -617,7 +622,7 @@
                         android:layout_marginTop="4dp"
                         android:text="Chatbots"
                         android:textAlignment="center"
-
+                        android:fontFamily="@font/mukta_semibold"
                         android:textColor="@color/blackcolor"
                         android:textSize="@dimen/home_card_font"
                         app:layout_constraintTop_toTopOf="parent" />

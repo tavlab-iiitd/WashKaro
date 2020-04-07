@@ -14,29 +14,29 @@
         android:layout_marginTop="10dp"
         android:contentDescription="@string/tavlab_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iiitdLogo"
+        app:layout_constraintTop_toTopOf="@+id/precogLogo"
         app:srcCompat="@drawable/tavlab" />
-
-    <ImageView
-        android:id="@+id/iiitdLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="@dimen/about_bottom_margin"
-        android:contentDescription="@string/iiitd_logo"
-        app:layout_constraintEnd_toStartOf="@+id/precogLogo"
-        app:layout_constraintStart_toEndOf="@+id/tavlabLogo"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/iiitd" />
 
     <ImageView
         android:id="@+id/precogLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="@dimen/about_bottom_margin"
+        android:contentDescription="@string/iiitd_logo"
+        app:layout_constraintEnd_toStartOf="@+id/iiitdLogo"
+        app:layout_constraintStart_toEndOf="@+id/tavlabLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/precog" />
+
+    <ImageView
+        android:id="@+id/iiitdLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="24dp"
         android:contentDescription="@string/precog_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iiitdLogo"
-        app:srcCompat="@drawable/precog" />
+        app:layout_constraintTop_toTopOf="@+id/precogLogo"
+        app:srcCompat="@drawable/iiitd" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iiitdLogo">
+        app:layout_constraintTop_toBottomOf="@id/precogLogo">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,15 +54,15 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/development_team"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/development_team"
-                android:textColor="@color/app_blue"
-                android:fontFamily="@font/mukta_medium"
-                android:textSize="@dimen/about_cat_title" />
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/development_team"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/development_team"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:textSize="@dimen/about_cat_title" />-->
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/bhavika"
@@ -259,66 +259,66 @@
                 android:textColor="@color/app_light_black"
                 android:textSize="@dimen/about_content" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/mentor_team"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/mentor_team"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/mentors"
-                android:textColor="@color/app_blue"
-                android:textSize="@dimen/about_cat_title" />
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/mentors"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:textSize="@dimen/about_cat_title" />-->
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/arushi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/arushi"
-                android:fontFamily="@font/mukta_bold"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/lovedeep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/arushi"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/arushi"-->
+<!--                android:fontFamily="@font/mukta_bold"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/lovedeep"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:fontFamily="@font/mukta_semibold"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/lovedeep"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/mudit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/lovedeep"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/mudit"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:fontFamily="@font/mukta_semibold"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/mudit"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/samprati"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/mudit"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/samprati"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
 
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/samprati"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/vrinda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/vrinda"
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:text="@string/samprati"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/vrinda"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/vrinda"-->
 
-                android:fontFamily="@font/mukta_semibold"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
 
         </LinearLayout>
 

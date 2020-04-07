@@ -38,8 +38,8 @@ public class about extends BaseActivity implements View.OnClickListener {
         }
 
         tavlab = findViewById(R.id.tavlabLogo);
-        precog = findViewById(R.id.precogLogo);
-        iiitd = findViewById(R.id.iiitdLogo);
+        precog = findViewById(R.id.iiitdLogo);
+        iiitd = findViewById(R.id.precogLogo);
         chirag = findViewById(R.id.chirag);
         chiragTag = findViewById(R.id.chiragTag);
         priyanka = findViewById(R.id.priyanka);
@@ -71,10 +71,10 @@ public class about extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         String url = "https://www.google.com/";
         switch (view.getId()){
-            case R.id.precogLogo:
+            case R.id.iiitdLogo:
                 url = "http://precog.iiitd.edu.in/";
                 break;
-            case R.id.iiitdLogo:
+            case R.id.precogLogo:
                 url = "https://www.iiitd.ac.in/";
                 break;
             case R.id.tavlabLogo:
