@@ -26,7 +26,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:clickable="false"
-        android:fontFamily="@font/mukta_medium"
+        android:fontFamily="@font/mukta_semibold"
         android:text="@string/share_this_app"
         android:textColor="@color/app_black"
         android:textSize="18dp"
