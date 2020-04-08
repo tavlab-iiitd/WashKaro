@@ -33,6 +33,7 @@ import inspire2connect.inspire2connect.contactTracer.MainActivity;
 import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
 
 import static inspire2connect.inspire2connect.contactTracer.base.Base.Logd;
+import static inspire2connect.inspire2connect.contactTracer.base.Base.Logv;
 
 
 public class BluetoothScanner {
@@ -93,7 +94,12 @@ public class BluetoothScanner {
     public void stopScanning() {
         isCurrentlyScanning = false;
         // Stop the scan, wipe the callback.
-        bluetoothScanner.stopScan(bluetoothScanCallback);
+        try {
+            bluetoothScanner.stopScan(bluetoothScanCallback);
+        }
+        catch (Exception ex) {
+            Logv(TAG, "Bluetooth scanning could not be stopped " + ex.getMessage());
+        }
         scanResultArrayList = new ArrayList<>();
         bluetoothScanCallback = null;
         MainActivity.isSafe = true;

@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import inspire2connect.inspire2connect.R;
 
 import static inspire2connect.inspire2connect.contactTracer.base.Base.Logd;
+import static inspire2connect.inspire2connect.contactTracer.base.Base.Logv;
 
 
 public class BluetoothAdvertiser {
@@ -95,7 +96,12 @@ public class BluetoothAdvertiser {
         Log.d(TAG, "Service: Stopping Advertising");
         isAdvertising = false;
         if (bluetoothAdvertiser != null) {
-            bluetoothAdvertiser.stopAdvertising(bluetoothAdvertiseCallback);
+            try {
+                bluetoothAdvertiser.stopAdvertising(bluetoothAdvertiseCallback);
+            }
+            catch (Exception ex) {
+                Logv(TAG , "Bluetooth advertising could not be stopped");
+            }
             bluetoothAdvertiseCallback = null;
         }
     }
