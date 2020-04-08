@@ -68,9 +68,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     private List<SlideModel> slideLists;
     ConstraintLayout ll_but[] = new ConstraintLayout[10];
     ImageButton img_but[]=new ImageButton[10];
-    ConstraintLayout ll_but1, ll_but2, ll_but3, ll_but4, ll_but5, ll_but6, ll_but7, ll_but8,ll_but9,ll_but10;
-    int curr_lang = 2; //1 for eng , 2 for hindi
-    String intentLangExtra = "hindi";
+    int curr_lang = 1; //1 for eng , 2 for hindi
+    String intentLangExtra = "english";
     //    DatabaseReference dref;
     ImageButton flip_left, flip_right;
     Animation anim_in, anim_out, anim1, anim2, anim3, anim4;
