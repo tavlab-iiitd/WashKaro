@@ -19,6 +19,11 @@ public class select_misc_activity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_misc_activity);
+        Intent intent=getIntent();
+        if(intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
+            change_to_hindi();
+        else
+            change_to_english();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         misc_buttons[0] = findViewById(R.id.misc_but1_layout);
         misc_buttons[1] = findViewById(R.id.misc_but2_layout);

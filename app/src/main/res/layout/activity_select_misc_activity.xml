@@ -6,32 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".select_misc_activity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/misc_but1_layout"
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/buttonback2"
         android:clickable="true"
         android:elevation="@dimen/home_card_elev"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.05"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        >
+        <TextView
+            android:id="@+id/misc_but1_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="India COVID Map"
+            android:fontFamily="@font/mukta_semibold"
+            android:textAlignment="center"
+            android:textColor="@color/blackcolor"
+            android:textSize="@dimen/home_card_font"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageButton
 
             style="@android:style/Widget.Material.Light.ImageButton"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/imgbut_text1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="4dp"
+            android:layout_marginTop="2dp"
             android:background="#FFFFFF"
             android:clickable="false"
             android:contentDescription="Card Image"
@@ -40,35 +54,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
             app:srcCompat="@drawable/iconsinspection" />
-
-        <TextView
-            android:id="@+id/misc_but1_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="India COVID Map"
-            android:textAlignment="center"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/misc_but2_layout"
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/buttonback2"
         android:clickable="true"
         android:elevation="@dimen/home_card_elev"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintVertical_bias="0.05"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/misc_but2_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="WHO Guidelines"
+            android:textAlignment="center"
+            android:fontFamily="@font/mukta_semibold"
+            android:textColor="@color/blackcolor"
+            android:textSize="@dimen/home_card_font"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
 
@@ -79,7 +94,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:background="#FFFFFF"
             android:clickable="false"
             android:contentDescription="Card Image"
@@ -89,45 +105,46 @@
             app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
             app:srcCompat="@drawable/ic_who_guidelines" />
 
-        <TextView
-            android:id="@+id/misc_but2_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="WHO Guidelines"
-            android:textAlignment="center"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/misc_but3_layout"
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/buttonback2"
         android:clickable="true"
         android:elevation="@dimen/home_card_elev"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/misc_but1_layout"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.05"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        >
-
+        <TextView
+            android:id="@+id/misc_but3_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Myth Busters"
+            android:fontFamily="@font/mukta_semibold"
+            android:textAlignment="center"
+            android:textColor="@color/blackcolor"
+            android:textSize="@dimen/home_card_font"
+            app:layout_constraintTop_toTopOf="parent" />
         <ImageButton
 
             style="@android:style/Widget.Material.Light.ImageButton"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/imgbut_text1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="4dp"
+            android:layout_marginTop="2dp"
             android:background="#FFFFFF"
             android:clickable="false"
             android:contentDescription="Card Image"
@@ -137,19 +154,8 @@
             app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
             app:srcCompat="@drawable/ic_mask_group_3" />
 
-        <TextView
-            android:id="@+id/misc_but3_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Myth Busters"
-            android:textAlignment="center"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

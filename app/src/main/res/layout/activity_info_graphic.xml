@@ -22,7 +22,7 @@
             android:layout_height="60dp"
             android:background="@null"
             android:scaleType="centerCrop"
-            android:src="@mipmap/app_icon_round">
+            android:src="@mipmap/ic_launcher_round">
 
         </ImageButton>
 
