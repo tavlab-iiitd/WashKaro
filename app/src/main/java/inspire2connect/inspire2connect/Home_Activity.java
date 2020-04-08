@@ -320,6 +320,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         }
         if (view == ll_but[5] ) {
             Intent i = new Intent(Home_Activity.this,select_misc_activity.class);
+            i.putExtra("Language", intentLangExtra);
             startActivity(i);
 
         }
