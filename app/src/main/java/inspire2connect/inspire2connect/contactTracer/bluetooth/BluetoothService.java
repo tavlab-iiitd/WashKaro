@@ -99,7 +99,7 @@ public class BluetoothService extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+       //  Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
         // running = false;
        bluetoothAdvertiser.stopAdvertising();
         bluetoothScanner.stopScanning();
