@@ -124,6 +124,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="Passesgers screened at airport"
                                 android:textAlignment="center"
+                                android:fontFamily="@font/mukta_bold"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="11sp" />
 
@@ -142,7 +143,7 @@
                         <LinearLayout
                             android:id="@+id/mohfw_ll2"
                             android:layout_width="100dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="1dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
@@ -168,6 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Active COVID19 Cases"
+                                android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="12sp" />
@@ -187,7 +189,7 @@
                         <LinearLayout
                             android:id="@+id/mohfw_ll3"
                             android:layout_width="100dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="1dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
@@ -213,6 +215,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Cured/Discharged Cases"
+                                android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="12sp" />
@@ -257,6 +260,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/mukta_bold"
                                 android:text="Death \nCases"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -304,6 +308,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="Migrated Patient"
                                 android:textAlignment="center"
+                                android:fontFamily="@font/mukta_bold"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="12sp" />
 
