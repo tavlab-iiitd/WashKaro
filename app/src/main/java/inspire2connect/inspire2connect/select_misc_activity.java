@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class select_misc_activity extends AppCompatActivity implements View.OnClickListener {
 
-    ConstraintLayout misc_buttons[] = new ConstraintLayout[10];
+    LinearLayout misc_buttons[] = new LinearLayout[10];
     int curr_lang =2;
     String Lang_extra = "hindi";
     @Override
