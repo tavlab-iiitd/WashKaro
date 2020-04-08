@@ -170,7 +170,7 @@
     <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
     <string name="you_are_safe">You are safe!</string>
-    <string name="you_are_unsafe">You maybe at risk!</string>
+    <string name="you_are_unsafe">You are maybe at risk!</string>
     <string name="you_are_safe_content">Low risk of corona virus infection.</string>
     <string name="you_are_unsafe_content">Please maintain social distancing.</string>
 
