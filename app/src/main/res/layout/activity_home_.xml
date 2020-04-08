@@ -21,7 +21,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
+                <ViewFlipper
+                    android:id="@+id/viewFlipper_slide_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
                 <ImageButton
 
                     android:id="@+id/flipperLeft"
@@ -40,10 +43,7 @@
                     android:layout_marginRight="8dp"
                     android:background="@drawable/right_arrow" />
 
-                <ViewFlipper
-                    android:id="@+id/viewFlipper_slide_show"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+
 
             </RelativeLayout>
 
