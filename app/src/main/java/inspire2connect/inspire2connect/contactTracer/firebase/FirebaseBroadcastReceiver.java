@@ -27,7 +27,7 @@ public class FirebaseBroadcastReceiver  extends BroadcastReceiver {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(context, channelId)
-                        .setSmallIcon(R.drawable.notif_icon)
+                        .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(context.getString(R.string.fcm_message))
                         .setContentText(context.getString(R.string.alert_message))
                         .setAutoCancel(true)

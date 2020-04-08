@@ -213,7 +213,7 @@ public class BluetoothScanner {
                 Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 NotificationCompat.Builder notificationBuilder =
                         new NotificationCompat.Builder(context, channelId)
-                                .setSmallIcon(R.drawable.notif_icon)
+                                .setSmallIcon(R.mipmap.ic_launcher)
                                 .setContentTitle(context.getString(R.string.app_name))
                                 .setContentText(context.getString(R.string.alert_message))
                                 .setStyle(new NotificationCompat.BigTextStyle()

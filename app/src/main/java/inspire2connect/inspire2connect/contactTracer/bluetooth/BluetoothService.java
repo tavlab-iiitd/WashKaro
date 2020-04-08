@@ -72,7 +72,7 @@ public class BluetoothService extends Service {
 
 
         Notification notification = notificationBuilder.setOngoing(true)
-                .setSmallIcon(R.drawable.notif_icon)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("App is running in background")
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
