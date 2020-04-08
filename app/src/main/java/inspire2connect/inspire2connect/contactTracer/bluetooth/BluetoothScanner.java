@@ -160,8 +160,9 @@ public class BluetoothScanner {
         @Override
         public void onScanFailed(int errorCode) {
             super.onScanFailed(errorCode);
-            Toast.makeText(context, "Scan failed with error: " + errorCode, Toast.LENGTH_LONG)
-                    .show();
+            //Toast.makeText(context, "Scan failed with error: " + errorCode, Toast.LENGTH_LONG)
+              //      .show();
+            Logv(TAG, "Scan failed with error " + errorCode);
         }
     }
 
