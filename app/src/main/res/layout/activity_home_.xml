@@ -97,7 +97,7 @@
                         <LinearLayout
                             android:id="@+id/mohfw_ll1"
                             android:layout_width="100dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
@@ -126,7 +126,7 @@
                                 android:textAlignment="center"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="11sp" />
+                                android:textSize="@dimen/home_stat_text" />
 
                             <TextView
                                 android:id="@+id/mohfw_data1"
@@ -135,7 +135,7 @@
                                 android:text="xxxx"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="13sp"
+                                android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -172,7 +172,7 @@
                                 android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/home_stat_text" />
 
                             <TextView
                                 android:id="@+id/mohfw_data2"
@@ -181,7 +181,7 @@
                                 android:text="xxxx"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="13sp"
+                                android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -189,7 +189,7 @@
                         <LinearLayout
                             android:id="@+id/mohfw_ll3"
                             android:layout_width="100dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="1dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
@@ -214,11 +214,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="Cured/Discharged Cases"
+                                android:text="Cured or Discharged Cases"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/home_stat_text" />
 
                             <TextView
                                 android:id="@+id/mohfw_data3"
@@ -227,7 +227,7 @@
                                 android:text="xxxx"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="13sp"
+                                android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -264,7 +264,7 @@
                                 android:text="Death \nCases"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/home_stat_text" />
 
                             <TextView
                                 android:id="@+id/mohfw_data4"
@@ -273,7 +273,7 @@
                                 android:text="xxxx"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="13sp"
+                                android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -310,7 +310,7 @@
                                 android:textAlignment="center"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/home_stat_text" />
 
                             <TextView
                                 android:id="@+id/mohfw_data5"
@@ -319,7 +319,7 @@
                                 android:text="xxxx"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="13sp"
+                                android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
