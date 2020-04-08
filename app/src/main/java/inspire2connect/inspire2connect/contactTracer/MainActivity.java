@@ -16,9 +16,13 @@ import android.provider.Settings;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -343,15 +347,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if(!gps_enabled && !network_enabled) {
             // notify user
-            new AlertDialog.Builder(this)
-                    .setMessage(R.string.network_not_enabled)
-                    .setPositiveButton(R.string.show_location_setting, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                        }
-                    })
-                    .show();
+            AlertDialog.Builder alert = new AlertDialog.Builder(this)
+                    .setMessage(R.string.network_not_enabled);
+            Button enable = new Button(this);
+            enable.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+            enable.setText(R.string.show_location_setting);
+            Button cancel = new Button(this);
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+            cancel.setText(R.string.cancel_btn);
+            LinearLayout container = new LinearLayout(this);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = getResources().getDimensionPixelSize(R.dimen.alert_btn_margin);
+            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params2.rightMargin = getResources().getDimensionPixelSize(R.dimen.alert_btn_margin);
+            cancel.setLayoutParams(params);
+            enable.setLayoutParams(params2);
+            container.setGravity(Gravity.RIGHT);
+            container.addView(cancel);
+            container.addView(enable);
+            alert.setView(container);
+            AlertDialog alertDialog = alert.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+            alertDialog.show();
         }
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
