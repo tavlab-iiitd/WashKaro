@@ -178,7 +178,8 @@ public class BluetoothAdvertiser {
                 errorMessage += " " + context.getString(R.string.start_error_unknown);
         }
 
-        Toast.makeText(context.getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+        Logv(TAG, errorMessage);
+       // Toast.makeText(context.getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
 
 
