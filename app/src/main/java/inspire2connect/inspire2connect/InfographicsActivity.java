@@ -2,6 +2,7 @@ package inspire2connect.inspire2connect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class InfographicsActivity extends BaseActivity {
 
@@ -45,6 +47,11 @@ public class InfographicsActivity extends BaseActivity {
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
 
         finish();
@@ -59,7 +66,7 @@ public class InfographicsActivity extends BaseActivity {
         rotate_zoom();
     }
 
-    public void rotate_zoom(){
+    public void rotate_zoom() {
 
 
         infog_image.setOnTouchListener(new View.OnTouchListener() {
@@ -73,12 +80,6 @@ public class InfographicsActivity extends BaseActivity {
         });
 
     }
-
-
-
-
-
-
 
 // Zoomer and rotator
     private void viewTransformation(View view, MotionEvent event) {

@@ -2,6 +2,7 @@ package inspire2connect.inspire2connect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class detailedViewActivity extends BaseActivity implements Serializable
 {
@@ -30,6 +32,7 @@ public class detailedViewActivity extends BaseActivity implements Serializable
     public MediaPlayer mediaPlayer;
     int current_time;
     boolean currently_paused;
+
     @Override
     public void onBackPressed()
     {

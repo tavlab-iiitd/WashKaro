@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -38,6 +40,10 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
     private TextView bhavika;
     private TextView bhavikaTag;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

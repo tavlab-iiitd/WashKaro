@@ -1,6 +1,7 @@
 package inspire2connect.inspire2connect;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -35,8 +36,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class CardViewActivity extends BaseActivity {
+public class onAIrActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private MediaPlayer mMediaPlayer;
@@ -56,9 +58,14 @@ public class CardViewActivity extends BaseActivity {
             ActivityCompat.requestPermissions(CardViewActivity.this, new String[]{Manifest.permission.RECORD_AUDIO},MIC_PERMISSION);
         }*/
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(CardViewActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION);
+            ActivityCompat.requestPermissions(onAIrActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION);
         }
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
@@ -67,22 +74,22 @@ public class CardViewActivity extends BaseActivity {
             case STORAGE_PERMISSION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
-                    Toast.makeText(CardViewActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
                             .show();
                 } else {
                     // Permission Denied
-                    Toast.makeText(CardViewActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
             case MIC_PERMISSION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
-                    Toast.makeText(CardViewActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
                             .show();
                 } else {
                     // Permission Denied
-                    Toast.makeText(CardViewActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
@@ -115,7 +122,7 @@ public class CardViewActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return true;
     }
 
@@ -123,10 +130,15 @@ public class CardViewActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(CardViewActivity.this, aboutActivity.class);
+            Intent i = new Intent(onAIrActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(CardViewActivity.this, privacyPolicyActivity.class);
+            Intent i = new Intent(onAIrActivity.this, privacyPolicyActivity.class);
+            startActivity(i);
+        } else if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
+        } else if (id == R.id.Survey) {
+            Intent i = new Intent(onAIrActivity.this, maleFemaleActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -374,7 +386,7 @@ public class CardViewActivity extends BaseActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                Intent i = new Intent(CardViewActivity.this, text2speech2_2Activity.class);
+                Intent i = new Intent(onAIrActivity.this, text2speech2_2Activity.class);
                 i.putExtra("position", Integer.toString(position));
                 /*if(mMediaPlayer!=null)
                 {

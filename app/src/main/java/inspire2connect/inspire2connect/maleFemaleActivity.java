@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Locale;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class maleFemaleActivity extends BaseActivity {
     private PreferenceManager prefManager;
@@ -129,6 +130,7 @@ public class maleFemaleActivity extends BaseActivity {
         //progDailog.setCancelable(false);
         Intent i = this.getIntent();
         String lan = i.getStringExtra("Language");
+
         if (lan.equalsIgnoreCase("hindi"))
             switch_to_hindi();
         else
@@ -221,6 +223,11 @@ public class maleFemaleActivity extends BaseActivity {
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -230,6 +237,7 @@ public class maleFemaleActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
             Toast.makeText(maleFemaleActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             switch_language();
 

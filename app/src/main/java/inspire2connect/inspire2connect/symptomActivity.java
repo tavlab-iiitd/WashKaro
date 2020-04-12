@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -12,9 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class symptomActivity extends BaseActivity {
     int curr_lang = 2;//1 for eng , 2 for Hindi
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,7 @@ public class symptomActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
             Toast.makeText(symptomActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             if (curr_lang == 2) {
                 curr_lang = 1;

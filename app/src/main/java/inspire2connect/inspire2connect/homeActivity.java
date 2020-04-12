@@ -301,7 +301,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             startActivity(i);
         }
         if (view == ll_but[3] ) {
-            Intent i = new Intent(homeActivity.this, CardViewActivity.class);
+            Intent i = new Intent(homeActivity.this, onAIrActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class governmentUpdatesActivity extends BaseActivity implements Serializable {
     DatabaseReference dref;
@@ -36,6 +38,11 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     TextView centre;
     int curr_lang = 2;
     private RecyclerView.LayoutManager layoutManager;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     @Override
     public void onPause() {
@@ -249,6 +256,7 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
             Toast.makeText(governmentUpdatesActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             //switch_language();
             if (curr_lang == 2) {

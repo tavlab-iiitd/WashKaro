@@ -42,6 +42,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class text2speech2_2Activity extends BaseActivity //implements Runnable
 {
@@ -67,6 +68,11 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
     SeekBar mSeekBar;
     String news_text, WHO_text;//Variable to store the text in text view before swapping
     FloatingActionButton btn_play, btn_pause;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     public Boolean alread_clicked_checker(String key) {
         Log.d("already_clicked", "In function with " + key);

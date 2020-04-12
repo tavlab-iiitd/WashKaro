@@ -3,6 +3,7 @@ package inspire2connect.inspire2connect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,14 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class QuestionsActivity extends BaseActivity {
     TextView tv;
     Button submitbutton, prevbutton;
     RadioGroup radio_g;
-//  final TextView textView=(TextView)findViewById(R.id.pageNo);
+    //  final TextView textView=(TextView)findViewById(R.id.pageNo);
     int curr_lang = 2;//1 for eng , 2 for Hindi
-    RadioButton rb1,rb2,rb3,rb4;
+    RadioButton rb1, rb2, rb3, rb4;
     String questions[];
     String questionsEnglish[] = {
             "Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?",
@@ -42,53 +44,61 @@ public class QuestionsActivity extends BaseActivity {
             "क्या आप अस्पताल गए हैं?",
             "क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?"
     };
-    int flag=0;
+    int flag = 0;
     public static String myName;
     public static int ans[];
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     public void onBackPressed() {
-        final TextView textView=(TextView)findViewById(R.id.pageNo);
+        final TextView textView = (TextView) findViewById(R.id.pageNo);
 
-        if(flag==0){
+        if (flag == 0) {
 //            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
 //
 //            startActivity(in);
             finish();
 
-        }else{
+        } else {
             flag--;
-            textView.setText(Integer.toString(flag+1)+"/7");
+            textView.setText(Integer.toString(flag + 1) + "/7");
             tv.setText(questions[flag]);
-            if(ans[flag] ==1){
+            if (ans[flag] == 1) {
                 rb1.performClick();
-            }else{
+            } else {
                 rb2.performClick();
             }
         }
         //r
     }
+
     @Override
     public boolean onSupportNavigateUp() {
-        final TextView textView=(TextView)findViewById(R.id.pageNo);
+        final TextView textView = (TextView) findViewById(R.id.pageNo);
 
-        if(flag==0){
+        if (flag == 0) {
 //            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
 //            startActivity(in);
             finish();
 
 
-        }else{
+        } else {
             flag--;
-            textView.setText(Integer.toString(flag+1)+"/7");
+            textView.setText(Integer.toString(flag + 1) + "/7");
             tv.setText(questions[flag]);
-            if(ans[flag] ==1){
+            if (ans[flag] == 1) {
                 rb1.performClick();
-            }else{
+            } else {
                 rb2.performClick();
             }
         }
@@ -101,40 +111,39 @@ public class QuestionsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        rb1=(RadioButton)findViewById(R.id.yesButton);
-        rb2=(RadioButton)findViewById(R.id.noButton);
-        final TextView textView=(TextView)findViewById(R.id.pageNo);
-        Intent prev_intent=getIntent();
-        if(prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
-            curr_lang=2;
+        rb1 = (RadioButton) findViewById(R.id.yesButton);
+        rb2 = (RadioButton) findViewById(R.id.noButton);
+        final TextView textView = (TextView) findViewById(R.id.pageNo);
+        Intent prev_intent = getIntent();
+        if (prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
+            curr_lang = 2;
         else
-            curr_lang=1;        //String name= intent.getStringExtra("myname");
-        textView.setText(Integer.toString(flag+1)+"/7");
+            curr_lang = 1;        //String name= intent.getStringExtra("myname");
+        textView.setText(Integer.toString(flag + 1) + "/7");
         ans = new int[7];
-        submitbutton=(Button)findViewById(R.id.nextQues);
+        submitbutton = (Button) findViewById(R.id.nextQues);
 
-        for(int i=0; i<7; i++)
+        for (int i = 0; i < 7; i++)
             ans[i] = 0;
-        if(curr_lang==2){
+        if (curr_lang == 2) {
             questions = questionsHindi;
             rb1.setText("हाँ");
             rb2.setText("नहीं");
             submitbutton.setText("आगे");
-        }else{
+        } else {
             questions = questionsEnglish;
             submitbutton.setText("Next");
         }
-        tv=(TextView) findViewById(R.id.question);
+        tv = (TextView) findViewById(R.id.question);
 
-        radio_g=(RadioGroup)findViewById(R.id.answers);
+        radio_g = (RadioGroup) findViewById(R.id.answers);
 
         tv.setText(questions[flag]);
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(radio_g.getCheckedRadioButtonId()==-1)
-                {
-                    if(curr_lang==1)
+                if (radio_g.getCheckedRadioButtonId() == -1) {
+                    if (curr_lang == 1)
                         Toast.makeText(getApplicationContext(), "Please select one choice", Toast.LENGTH_SHORT).show();
                     else
                         Toast.makeText(getApplicationContext(), "कृपया एक विकल्प चुनें", Toast.LENGTH_SHORT).show();
@@ -143,15 +152,12 @@ public class QuestionsActivity extends BaseActivity {
                 }
                 RadioButton uans = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
                 String ansText = uans.getText().toString();
-                if(radio_g.getCheckedRadioButtonId()==R.id.yesButton)
-                {
+                if (radio_g.getCheckedRadioButtonId() == R.id.yesButton) {
                     ans[flag] = 1;
-                    Log.d("Testing","Yes selected");
-                }
-                else
-                {
+                    Log.d("Testing", "Yes selected");
+                } else {
                     ans[flag] = 2;
-                    Log.d("Testing","No selected");
+                    Log.d("Testing", "No selected");
                 }
 //                if(ansText.equals("Yes"))
 //                {
@@ -162,18 +168,15 @@ public class QuestionsActivity extends BaseActivity {
 //                }
 
                 flag++;
-                if(flag<questions.length)
-                {
-                    textView.setText(Integer.toString(flag+1)+"/7");
+                if (flag < questions.length) {
+                    textView.setText(Integer.toString(flag + 1) + "/7");
                     tv.setText(questions[flag]);
-                }
-                else
-                {
-                    Intent in = new Intent(getApplicationContext(),ResultActivity.class);
-                    if(curr_lang==1)
-                        in.putExtra("Language","english");
+                } else {
+                    Intent in = new Intent(getApplicationContext(), ResultActivity.class);
+                    if (curr_lang == 1)
+                        in.putExtra("Language", "english");
                     else
-                        in.putExtra("Language","hindi");
+                        in.putExtra("Language", "hindi");
                     startActivity(in);
                 }
                 radio_g.clearCheck();

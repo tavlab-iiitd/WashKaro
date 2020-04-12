@@ -1,7 +1,6 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,40 +8,46 @@ import android.view.View;
 import android.widget.Button;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class selectChatBotActivity extends BaseActivity implements View.OnClickListener{
-    Button cbot1,cbot2,cbot3;
+public class selectChatBotActivity extends BaseActivity implements View.OnClickListener {
+    Button cbot1, cbot2, cbot3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_select_chatbot_activity);
-        cbot1=(Button)findViewById(R.id.cbot1);
-        cbot2=(Button)findViewById(R.id.cbot2);
-        cbot3=(Button)findViewById(R.id.cbot3);
+        cbot1 = (Button) findViewById(R.id.cbot1);
+        cbot2 = (Button) findViewById(R.id.cbot2);
+        cbot3 = (Button) findViewById(R.id.cbot3);
         cbot1.setOnClickListener(this);
         cbot2.setOnClickListener(this);
         cbot3.setOnClickListener(this);
+    }
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
     public void onClick(View view) {
-        if(view == cbot1){
+        if (view == cbot1) {
             String nmbr = "+41798931892";
             openWhatsapp(nmbr);
         }
-        if(view == cbot2){
+        if (view == cbot2) {
             String nmbr = "+919013151515";
-           openWhatsapp(nmbr);
+            openWhatsapp(nmbr);
         }
-        if(view == cbot3){
+        if (view == cbot3) {
             String nmbr = "+918800007722";
             openWhatsapp(nmbr);
         }
 
     }
+
     @Override
     public boolean onSupportNavigateUp() {
 

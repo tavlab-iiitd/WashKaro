@@ -1,6 +1,7 @@
 package inspire2connect.inspire2connect;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.Manifest;
 
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class improveActivity extends BaseActivity {
     private static String fileName;
@@ -58,6 +60,12 @@ public class improveActivity extends BaseActivity {
             uploadTask = improve_ref.putFile(file);
         }
     }*/
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     private void requestPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(improveActivity.this, new String[]{Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION);

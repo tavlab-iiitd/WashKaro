@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,12 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 
     LinearLayout misc_buttons[] = new LinearLayout[10];
     int curr_lang =2;
     String Lang_extra = "hindi";
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +79,7 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
 
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
             //switch_language();
             if (curr_lang == 2) {
                 curr_lang = 1;

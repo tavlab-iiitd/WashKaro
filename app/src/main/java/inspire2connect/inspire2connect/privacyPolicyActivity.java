@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class privacyPolicyActivity extends BaseActivity {
     WebView webView;
@@ -18,6 +20,11 @@ public class privacyPolicyActivity extends BaseActivity {
         finish();
         //return super.onSupportNavigateUp();
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
@@ -161,6 +168,7 @@ public class privacyPolicyActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
             Toast.makeText(privacyPolicyActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             //switch_language();
 

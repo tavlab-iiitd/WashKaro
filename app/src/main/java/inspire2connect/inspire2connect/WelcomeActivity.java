@@ -25,6 +25,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class WelcomeActivity extends BaseActivity {
 
@@ -37,6 +38,11 @@ public class WelcomeActivity extends BaseActivity {
 
     private Button btnSkip, btnNext;
     private PreferenceManager prefManager;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

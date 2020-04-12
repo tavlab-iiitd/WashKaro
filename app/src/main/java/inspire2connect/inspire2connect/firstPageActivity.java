@@ -2,6 +2,7 @@ package inspire2connect.inspire2connect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class firstPageActivity extends BaseActivity {
 
@@ -19,6 +21,12 @@ public class firstPageActivity extends BaseActivity {
         setContentView(R.layout.activity_first_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     public boolean onSupportNavigateUp()
     {
