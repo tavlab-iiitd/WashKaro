@@ -72,7 +72,6 @@ public class dailyGuidelinesActivity extends BaseActivity {
     private void setGuidelinesHindi() {
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setText("दिशा निर्देश (WHO के द्वारा)");
-        getSupportActionBar().setTitle(R.string.guidelines_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
@@ -108,7 +107,6 @@ public class dailyGuidelinesActivity extends BaseActivity {
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setTypeface(null, Typeface.BOLD);
         //guid_view.setText("Guidelines(By WHO)");
-        getSupportActionBar().setTitle(R.string.guidelines_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
@@ -161,6 +159,7 @@ public class dailyGuidelinesActivity extends BaseActivity {
         result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
         mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.guidelines_act);
         recyclerView = findViewById(R.id.recyclerView);
 
         switch (getCurLang()) {

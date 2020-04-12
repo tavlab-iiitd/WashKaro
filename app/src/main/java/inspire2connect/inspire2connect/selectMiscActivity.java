@@ -27,6 +27,7 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.activity_select_misc_activity);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.misc_tile);
         misc_buttons[0] = findViewById(R.id.misc_but1_layout);
         misc_buttons[1] = findViewById(R.id.misc_but2_layout);
         misc_buttons[2] = findViewById(R.id.misc_but3_layout);
