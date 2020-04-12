@@ -66,7 +66,6 @@ public class symptomActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            Toast.makeText(symptomActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             if (curr_lang == 2) {
                 curr_lang = 1;
 

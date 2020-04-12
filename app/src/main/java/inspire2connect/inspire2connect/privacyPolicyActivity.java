@@ -169,10 +169,6 @@ public class privacyPolicyActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            Toast.makeText(privacyPolicyActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
-            //switch_language();
-
-
         } else if (id == R.id.Survey) {
             Intent i = new Intent(privacyPolicyActivity.this, maleFemaleActivity.class);
             startActivity(i);

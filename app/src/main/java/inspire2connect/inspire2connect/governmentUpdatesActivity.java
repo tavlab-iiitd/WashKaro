@@ -75,7 +75,6 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
 
     private void setGuidelinesHindi() {
         curr_lang = 2;
-        getSupportActionBar().setTitle(R.string.govt_updates_act_hi);
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
 //        centre.setText("सरकारी जानकारी");
         FirebaseApp.initializeApp(this);
@@ -121,8 +120,6 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
 
     private void setGuidelinesEnglish() {
         curr_lang = 1;
-
-        getSupportActionBar().setTitle(R.string.govt_updates_act);
 
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
 //        centre.setTypeface(null, Typeface.BOLD);
@@ -186,13 +183,17 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
         mAdapter = new Government_Updates_Adapter(this, result);
         recyclerView = findViewById(R.id.recyclerView_gov_updates);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.govt_updates_act);
 
-        Intent i = this.getIntent();
-        String lan = i.getStringExtra("Language");
-        if (lan.equalsIgnoreCase("hindi"))
-            setGuidelinesHindi();
-        else
-            setGuidelinesEnglish();
+        switch (getCurLang()) {
+            case englishCode:
+                setGuidelinesEnglish();
+                break;
+            case hindiCode:
+                setGuidelinesHindi();
+                break;
+        }
+
 //        lang_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
@@ -244,21 +245,8 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            Toast.makeText(governmentUpdatesActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
-            //switch_language();
-            if (curr_lang == 2) {
-                curr_lang = 1;
-                setGuidelinesEnglish();
-            } else {
-                curr_lang = 2;
-                setGuidelinesHindi();
-            }
         } else if (id == R.id.Survey) {
             Intent i = new Intent(governmentUpdatesActivity.this, maleFemaleActivity.class);
-            if (curr_lang == 2)
-                i.putExtra("Language", "hindi");
-            else
-                i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
             Intent i = new Intent(governmentUpdatesActivity.this, aboutActivity.class);

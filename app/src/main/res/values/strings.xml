@@ -201,8 +201,7 @@
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
 
 <!--    WK Activities-->
-    <string name="govt_updates_act" translatable="false">Government Updates</string>
-    <string name="govt_updates_act_hi" translatable="false">सरकारी जानकारी</string>
+    <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
     <string name="myth_act">Myth Busters(By WHO)</string>
     <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>

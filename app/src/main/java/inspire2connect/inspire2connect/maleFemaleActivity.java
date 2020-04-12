@@ -239,7 +239,6 @@ public class maleFemaleActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            Toast.makeText(maleFemaleActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             switch_language();
 
 
