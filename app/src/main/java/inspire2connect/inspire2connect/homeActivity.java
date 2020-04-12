@@ -1,8 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -15,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-//import android.widget.AdapterViewFlipper;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -48,18 +47,18 @@ import inspire2connect.inspire2connect.contactTracer.MainActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
+//import android.widget.AdapterViewFlipper;
+
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
+    private static final int MY_REQUEST_CODE = 2399;
+    public int w = 0, h = 0;
     //    AdapterViewFlipper adapterViewFlipper;
 //    FirebaseStorage firebaseStorage;
     DatabaseReference dRef;
-    //    DatabaseReference d;
-    private ViewFlipper viewFlipper;
-    private DatabaseReference databaseReference;
-    private List<SlideModel> slideLists;
-    ConstraintLayout ll_but[] = new ConstraintLayout[10];
-    ImageButton img_but[]=new ImageButton[10];
+    ConstraintLayout[] ll_but = new ConstraintLayout[10];
+    ImageButton[] img_but = new ImageButton[10];
     int curr_lang = 1; //1 for eng , 2 for hindi
     String intentLangExtra = "english";
     //    DatabaseReference dref;
@@ -72,13 +71,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     LayoutInflater inflater;
     LinearLayout layout;
     float downX, downY, upX, upY;
-
-    public int w = 0, h = 0;
-    private static final int MY_REQUEST_CODE = 2399;
-    private PopupWindow p_window;
     String TAG = "MainActivity";
+    //    DatabaseReference d;
+    private ViewFlipper viewFlipper;
+    private DatabaseReference databaseReference;
+    private List<SlideModel> slideLists;
+    private PopupWindow p_window;
     //View flipper Zoom Variables.......................................................
-
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -107,8 +106,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
@@ -133,7 +131,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[1] = findViewById(R.id.img_but_lay2);
         ll_but[2] = findViewById(R.id.img_but_lay3);
         ll_but[3] = findViewById(R.id.img_but_lay4);
-        ll_but[4]=findViewById(R.id.img_but_lay5);
+        ll_but[4] = findViewById(R.id.img_but_lay5);
         ll_but[5] = findViewById(R.id.img_but_lay6);
 //        ll_but[6] = findViewById(R.id.img_but_lay7);
 //        ll_but[7] = findViewById(R.id.img_but_lay8);
@@ -152,32 +150,31 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 //        img_but[8] = findViewById(R.id.image_button9);
 //        img_but[9] = findViewById(R.id.image_button10);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4,5};
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
 
-        for (int i = 0; i < btnToAdd.length; i++)
-        {
+        for (int i = 0; i < btnToAdd.length; i++) {
             //img_but[btnToAdd[i]].setOnClickListener(this);
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
-        mohfw_data1 = (TextView) findViewById(R.id.mohfw_data1);
-        mohfw_data2 = (TextView) findViewById(R.id.mohfw_data2);
-        mohfw_data3 = (TextView) findViewById(R.id.mohfw_data3);
-        mohfw_data4 = (TextView) findViewById(R.id.mohfw_data4);
-        mohfw_data5 = (TextView) findViewById(R.id.mohfw_data5);
-        mohfw_tv1 = (TextView) findViewById(R.id.mohfw_tv1);
-        mohfw_tv2 = (TextView) findViewById(R.id.mohfw_tv2);
-        mohfw_tv3 = (TextView) findViewById(R.id.mohfw_tv3);
-        mohfw_tv4 = (TextView) findViewById(R.id.mohfw_tv4);
-        mohfw_tv5 = (TextView) findViewById(R.id.mohfw_tv5);
-        data_tile = (RelativeLayout) findViewById(R.id.data_tile);
+        mohfw_data1 = findViewById(R.id.mohfw_data1);
+        mohfw_data2 = findViewById(R.id.mohfw_data2);
+        mohfw_data3 = findViewById(R.id.mohfw_data3);
+        mohfw_data4 = findViewById(R.id.mohfw_data4);
+        mohfw_data5 = findViewById(R.id.mohfw_data5);
+        mohfw_tv1 = findViewById(R.id.mohfw_tv1);
+        mohfw_tv2 = findViewById(R.id.mohfw_tv2);
+        mohfw_tv3 = findViewById(R.id.mohfw_tv3);
+        mohfw_tv4 = findViewById(R.id.mohfw_tv4);
+        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
+        data_tile = findViewById(R.id.data_tile);
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
         anim3 = AnimationUtils.loadAnimation(this, R.anim.anim3);
         anim4 = AnimationUtils.loadAnimation(this, R.anim.anim4);
-        flip_left = (ImageButton) findViewById(R.id.flipperLeft);
-        flip_right = (ImageButton) findViewById(R.id.flipperRight);
+        flip_left = findViewById(R.id.flipperLeft);
+        flip_right = findViewById(R.id.flipperRight);
 //        switchLang();
 //        corona_helpline = (TextView)findViewById(R.id.Corona_helpline_text);
 //        live_data=(TextView)findViewById(R.id.state_helpline_text);
@@ -282,14 +279,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             viewFlipper.showNext();
         }
 
-        if (view == ll_but[0] )
-        {
+        if (view == ll_but[0]) {
             Intent i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
             i.putExtra("Language", intentLangExtra);
             //Toast.makeText(Home_Activity.this,"Button Clicked 1 ",Toast.LENGTH_SHORT).show();
             startActivity(i);
         }
-        if (view == ll_but[1] ) {
+        if (view == ll_but[1]) {
             Intent i = new Intent(homeActivity.this, symptomActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
@@ -300,16 +296,16 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
-        if (view == ll_but[3] ) {
+        if (view == ll_but[3]) {
             Intent i = new Intent(homeActivity.this, onAIrActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
-        if (view == ll_but[4] ) {
+        if (view == ll_but[4]) {
             Intent i = new Intent(homeActivity.this, selectChatBotActivity.class);
             startActivity(i);
         }
-        if (view == ll_but[5] ) {
+        if (view == ll_but[5]) {
             Intent i = new Intent(homeActivity.this, selectMiscActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
@@ -339,10 +335,8 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         } else if (id == R.id.developers) {
             Intent i = new Intent(homeActivity.this, aboutActivity.class);
             startActivity(i);
-        }
-        else if(id==R.id.privacy_policy)
-        {
-            Intent i=new Intent(homeActivity.this, privacyPolicyActivity.class);
+        } else if (id == R.id.privacy_policy) {
+            Intent i = new Intent(homeActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
@@ -373,12 +367,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         if (curr_lang == 1) {
             //get_english_live_data();
-            TextView t1 = (TextView) findViewById(R.id.imgbut_text1);
-            TextView t2 = (TextView) findViewById(R.id.imgbut_text2);
-            TextView t3 = (TextView) findViewById(R.id.imgbut_text3);
-            TextView t4 = (TextView) findViewById(R.id.imgbut_text4);
-            TextView t5 = (TextView)findViewById(R.id.imgbut_text5);
-            TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
+            TextView t1 = findViewById(R.id.imgbut_text1);
+            TextView t2 = findViewById(R.id.imgbut_text2);
+            TextView t3 = findViewById(R.id.imgbut_text3);
+            TextView t4 = findViewById(R.id.imgbut_text4);
+            TextView t5 = findViewById(R.id.imgbut_text5);
+            TextView t6 = findViewById(R.id.imgbut_text6);
             //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
 //            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
 //            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
@@ -400,12 +394,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             setEnglishFlipper();
         } else {
             //get_hindi_live_data();
-            TextView t1 = (TextView) findViewById(R.id.imgbut_text1);
-            TextView t2 = (TextView) findViewById(R.id.imgbut_text2);
-            TextView t3 = (TextView) findViewById(R.id.imgbut_text3);
-            TextView t4 = (TextView) findViewById(R.id.imgbut_text4);
-            TextView t5 = (TextView)findViewById(R.id.imgbut_text5);
-            TextView t6 = (TextView) findViewById(R.id.imgbut_text6);
+            TextView t1 = findViewById(R.id.imgbut_text1);
+            TextView t2 = findViewById(R.id.imgbut_text2);
+            TextView t3 = findViewById(R.id.imgbut_text3);
+            TextView t4 = findViewById(R.id.imgbut_text4);
+            TextView t5 = findViewById(R.id.imgbut_text5);
+            TextView t6 = findViewById(R.id.imgbut_text6);
 //            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
 //            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
             t1.setText("सरकारी निर्देश");
@@ -461,14 +455,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    public void flipper_single_tap()
-    {
+    public void flipper_single_tap() {
         viewFlipper.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent)
-            {
-                switch (motionEvent.getAction())
-                {
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         downX = motionEvent.getX();
                         downY = motionEvent.getY();
@@ -478,8 +469,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                         upY = motionEvent.getY();
                         float deltaX = downX - upX;
                         float deltaY = downY - upY;
-                        if (deltaX == 0 && deltaY == 0)
-                        {
+                        if (deltaX == 0 && deltaY == 0) {
                             onFlipperClicked();
                         }
 
@@ -489,17 +479,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             }
         });
     }
+
     public void onFlipperClicked() {
 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).getImageUrl();
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
-        intnt.putExtra("image",url);
+        intnt.putExtra("image", url);
         startActivity(intnt);
     }
 
-        //call new infographics activity here
+    //call new infographics activity here
 
 //        viewFlipper.stopFlipping();
 //        int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
@@ -546,7 +537,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         });
 
     }
-
 
 
 }

@@ -1,8 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,6 +19,9 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,21 +33,21 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class maleFemaleActivity extends BaseActivity {
-    private PreferenceManager prefManager;
-    Button submit;
-    boolean can_Access;
     final int requestcode = 123;
-    int curr_lang = 2; //1 for eng , 2 for hindi
     final private int PERMISSION_ACCESS_FINE_LOCATION = 1;
     public String gender, lat, lon, locatio;
-    DatabaseReference ref;
     public String disease_info;
-    private DatabaseReference mDatabaseReference;
+    Button submit;
+    boolean can_Access;
+    int curr_lang = 2; //1 for eng , 2 for hindi
+    DatabaseReference ref;
     String location_provider = LocationManager.NETWORK_PROVIDER;
     LocationManager mLocationManager;
     LocationListener mLocationListener;
-    private WebView webView;
     Button skip;
+    private PreferenceManager prefManager;
+    private DatabaseReference mDatabaseReference;
+    private WebView webView;
     private ProgressDialog progDailog;
 
     private void send_data() {
@@ -270,7 +270,7 @@ public class maleFemaleActivity extends BaseActivity {
     }
 
     public void switch_to_hindi() {
-        webView = (WebView) findViewById(R.id.web_view);
+        webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
@@ -300,7 +300,7 @@ public class maleFemaleActivity extends BaseActivity {
     }
 
     public void switch_to_eng() {
-        webView = (WebView) findViewById(R.id.web_view);
+        webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);

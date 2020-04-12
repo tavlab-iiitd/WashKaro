@@ -1,11 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -30,12 +29,12 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class dailyGuidelinesActivity extends BaseActivity {
     DatabaseReference dref;
-    private RecyclerView recyclerView;
     DatabaseReference d;
-    private myths_adapter mAdapter;
     TextView centre;
     ArrayList<myth_single_object> result;
     int curr_lang = 2;//1 for eng , 2 for Hinf=di
+    private RecyclerView recyclerView;
+    private myths_adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -68,7 +67,7 @@ public class dailyGuidelinesActivity extends BaseActivity {
                 }
             }
         finish();
-        Log.d("Testing", "Sizze of Media player list=" + Integer.toString(media_player_list.size()));
+        Log.d("Testing", "Sizze of Media player list=" + media_player_list.size());
     }
 
     private void setGuidelinesHindi() {
@@ -92,9 +91,9 @@ public class dailyGuidelinesActivity extends BaseActivity {
                     String sno = snapshot.child("Sno").getValue().toString();
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    hin_title=sno+". "+hin_title+"<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
-                    String ttp=g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
+                    hin_title = sno + ". " + hin_title + "<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
+                    String ttp = g_hindi;
+                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -129,9 +128,9 @@ public class dailyGuidelinesActivity extends BaseActivity {
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
                     //String ttp = "<b>" + sno + ". " + en_title+ "</b><br />" + g_english;
-                    hin_title=sno+". "+hin_title+"</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
+                    hin_title = sno + ". " + hin_title + "</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
                     String ttp = g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
+                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                     //result.add(new myth_single_object(en_t,ttp, Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
@@ -145,12 +144,12 @@ public class dailyGuidelinesActivity extends BaseActivity {
     }
 
     public void populate_recycler_view(ArrayList<myth_single_object> result) {
-        mAdapter = new myths_adapter(this,result);
+        mAdapter = new myths_adapter(this, result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -160,11 +159,11 @@ public class dailyGuidelinesActivity extends BaseActivity {
         setContentView(R.layout.activity_daily_guidelines);
 //        centre=(TextView)findViewById(R.id.centre_view);
 //        centre.setText("दिशा निर्देश");
-        result=new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under","under"));
-        mAdapter=new myths_adapter(this,result);
+        result = new ArrayList<>();
+        result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
+        mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         Intent i = this.getIntent();
         String lan = i.getStringExtra("Language");
         if (lan.equalsIgnoreCase("hindi"))
@@ -234,32 +233,30 @@ public class dailyGuidelinesActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        ((myths_adapter) mAdapter).setOnItemClickListener(new myths_adapter
+        mAdapter.setOnItemClickListener(new myths_adapter
                 .MyClickListener() {
             @Override
-            public void onItemClick(int position, View v)
-            {
+            public void onItemClick(int position, View v) {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
                 Intent i = new Intent(dailyGuidelinesActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
-                ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
-                Log.d("Testing",result_from_adapter.get(position).getTitle());
+                ArrayList<myth_single_object> result_from_adapter = mAdapter.getResult();
+                Log.d("Testing", result_from_adapter.get(position).getTitle());
                 /*if(mMediaPlayer!=null)
                 {
                     mMediaPlayer.stop();
                     mMediaPlayer.release();
                     mMediaPlayer=null;
                 }*/
-                ArrayList<myth_single_object> single=new ArrayList<>();
+                ArrayList<myth_single_object> single = new ArrayList<>();
                 single.add(result_from_adapter.get(position));
-                Log.d("Testing",single.get(0).getTitle());
-                i.putExtra("detailed_title",single.get(0).getTitle());
-                i.putExtra("detailed_text",single.get(0).getMyth());
-                i.putExtra("url",single.get(0).getAudio_url());
-                i.putExtra("redirect_url",single.get(0).getRedirect_url());
+                Log.d("Testing", single.get(0).getTitle());
+                i.putExtra("detailed_title", single.get(0).getTitle());
+                i.putExtra("detailed_text", single.get(0).getMyth());
+                i.putExtra("url", single.get(0).getAudio_url());
+                i.putExtra("redirect_url", single.get(0).getRedirect_url());
 
                 //i.putExtra("result_list",single);
                 startActivity(i);

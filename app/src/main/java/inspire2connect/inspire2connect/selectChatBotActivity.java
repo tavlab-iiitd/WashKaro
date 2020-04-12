@@ -18,9 +18,9 @@ public class selectChatBotActivity extends BaseActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_select_chatbot_activity);
-        cbot1 = (Button) findViewById(R.id.cbot1);
-        cbot2 = (Button) findViewById(R.id.cbot2);
-        cbot3 = (Button) findViewById(R.id.cbot3);
+        cbot1 = findViewById(R.id.cbot1);
+        cbot2 = findViewById(R.id.cbot2);
+        cbot3 = findViewById(R.id.cbot3);
         cbot1.setOnClickListener(this);
         cbot2.setOnClickListener(this);
         cbot3.setOnClickListener(this);

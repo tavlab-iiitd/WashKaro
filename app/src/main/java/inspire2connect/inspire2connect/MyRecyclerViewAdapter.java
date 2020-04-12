@@ -1,12 +1,12 @@
 package inspire2connect.inspire2connect;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -14,35 +14,15 @@ public class MyRecyclerViewAdapter extends RecyclerView
         .Adapter<MyRecyclerViewAdapter
         .DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<DataObject> mDataset;
     private static MyClickListener myClickListener;
-
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
-        TextView label;
-        TextView dateTime;
-
-        public DataObjectHolder(View itemView) {
-            super(itemView);
-            label = (TextView) itemView.findViewById(R.id.textView);
-            dateTime = (TextView) itemView.findViewById(R.id.textView2);
-            Log.i(LOG_TAG, "Adding Listener");
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
-    }
-
-    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }
+    private ArrayList<DataObject> mDataset;
 
     public MyRecyclerViewAdapter(ArrayList<DataObject> myDataset) {
         mDataset = myDataset;
+    }
+
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        MyRecyclerViewAdapter.myClickListener = myClickListener;
     }
 
     @Override
@@ -77,6 +57,26 @@ public class MyRecyclerViewAdapter extends RecyclerView
     }
 
     public interface MyClickListener {
-        public void onItemClick(int position, View v);
+        void onItemClick(int position, View v);
+    }
+
+    public static class DataObjectHolder extends RecyclerView.ViewHolder
+            implements View
+            .OnClickListener {
+        TextView label;
+        TextView dateTime;
+
+        public DataObjectHolder(View itemView) {
+            super(itemView);
+            label = itemView.findViewById(R.id.textView);
+            dateTime = itemView.findViewById(R.id.textView2);
+            Log.i(LOG_TAG, "Adding Listener");
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
     }
 }

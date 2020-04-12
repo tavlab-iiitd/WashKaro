@@ -1,8 +1,6 @@
 package inspire2connect.inspire2connect;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,14 +17,16 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class QuestionsActivity extends BaseActivity {
+    public static String myName;
+    public static int[] ans;
     TextView tv;
     Button submitbutton, prevbutton;
     RadioGroup radio_g;
     //  final TextView textView=(TextView)findViewById(R.id.pageNo);
     int curr_lang = 2;//1 for eng , 2 for Hindi
     RadioButton rb1, rb2, rb3, rb4;
-    String questions[];
-    String questionsEnglish[] = {
+    String[] questions;
+    String[] questionsEnglish = {
             "Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?",
             "Have you been in close contact with a probable or confirmed COVID-19 patient within the past 14 days?",
             "Do you have fever?",
@@ -35,7 +35,7 @@ public class QuestionsActivity extends BaseActivity {
             "Were your symptoms severe enough to require hospital admission?",
             "Did the doctor provide an alternative explanation for the symptoms?"
     };
-    String questionsHindi[] = {
+    String[] questionsHindi = {
             "क्या आपने पिछले 14 दिनों में COVID 19 की रिपोर्टिंग करने वाले किसी देश / भारतीय राज्य की यात्रा की है?",
             "क्या आप पिछले 14 दिनों के भीतर एक संभावित या पुष्टि किए गए COVID-19 रोगी के निकट संपर्क में हैं?",
             "क्या आपको बुखार है?",
@@ -45,8 +45,6 @@ public class QuestionsActivity extends BaseActivity {
             "क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?"
     };
     int flag = 0;
-    public static String myName;
-    public static int ans[];
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,7 +59,7 @@ public class QuestionsActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        final TextView textView = (TextView) findViewById(R.id.pageNo);
+        final TextView textView = findViewById(R.id.pageNo);
 
         if (flag == 0) {
 //            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
@@ -71,7 +69,7 @@ public class QuestionsActivity extends BaseActivity {
 
         } else {
             flag--;
-            textView.setText(Integer.toString(flag + 1) + "/7");
+            textView.setText((flag + 1) + "/7");
             tv.setText(questions[flag]);
             if (ans[flag] == 1) {
                 rb1.performClick();
@@ -84,7 +82,7 @@ public class QuestionsActivity extends BaseActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        final TextView textView = (TextView) findViewById(R.id.pageNo);
+        final TextView textView = findViewById(R.id.pageNo);
 
         if (flag == 0) {
 //            Intent in = new Intent(getApplicationContext(),symptom_activity.class);
@@ -94,7 +92,7 @@ public class QuestionsActivity extends BaseActivity {
 
         } else {
             flag--;
-            textView.setText(Integer.toString(flag + 1) + "/7");
+            textView.setText((flag + 1) + "/7");
             tv.setText(questions[flag]);
             if (ans[flag] == 1) {
                 rb1.performClick();
@@ -111,17 +109,17 @@ public class QuestionsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        rb1 = (RadioButton) findViewById(R.id.yesButton);
-        rb2 = (RadioButton) findViewById(R.id.noButton);
-        final TextView textView = (TextView) findViewById(R.id.pageNo);
+        rb1 = findViewById(R.id.yesButton);
+        rb2 = findViewById(R.id.noButton);
+        final TextView textView = findViewById(R.id.pageNo);
         Intent prev_intent = getIntent();
         if (prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
             curr_lang = 2;
         else
             curr_lang = 1;        //String name= intent.getStringExtra("myname");
-        textView.setText(Integer.toString(flag + 1) + "/7");
+        textView.setText((flag + 1) + "/7");
         ans = new int[7];
-        submitbutton = (Button) findViewById(R.id.nextQues);
+        submitbutton = findViewById(R.id.nextQues);
 
         for (int i = 0; i < 7; i++)
             ans[i] = 0;
@@ -134,9 +132,9 @@ public class QuestionsActivity extends BaseActivity {
             questions = questionsEnglish;
             submitbutton.setText("Next");
         }
-        tv = (TextView) findViewById(R.id.question);
+        tv = findViewById(R.id.question);
 
-        radio_g = (RadioGroup) findViewById(R.id.answers);
+        radio_g = findViewById(R.id.answers);
 
         tv.setText(questions[flag]);
         submitbutton.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +148,7 @@ public class QuestionsActivity extends BaseActivity {
 
                     return;
                 }
-                RadioButton uans = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
+                RadioButton uans = findViewById(radio_g.getCheckedRadioButtonId());
                 String ansText = uans.getText().toString();
                 if (radio_g.getCheckedRadioButtonId() == R.id.yesButton) {
                     ans[flag] = 1;
@@ -169,7 +167,7 @@ public class QuestionsActivity extends BaseActivity {
 
                 flag++;
                 if (flag < questions.length) {
-                    textView.setText(Integer.toString(flag + 1) + "/7");
+                    textView.setText((flag + 1) + "/7");
                     tv.setText(questions[flag]);
                 } else {
                     Intent in = new Intent(getApplicationContext(), ResultActivity.class);

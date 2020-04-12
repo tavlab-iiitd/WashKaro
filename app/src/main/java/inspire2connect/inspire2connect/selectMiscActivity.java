@@ -14,8 +14,8 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 
-    LinearLayout misc_buttons[] = new LinearLayout[10];
-    int curr_lang =2;
+    LinearLayout[] misc_buttons = new LinearLayout[10];
+    int curr_lang = 2;
     String Lang_extra = "hindi";
 
     @Override
@@ -27,8 +27,8 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_misc_activity);
-        Intent intent=getIntent();
-        if(intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
+        Intent intent = getIntent();
+        if (intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
             change_to_hindi();
         else
             change_to_english();
@@ -37,27 +37,27 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
         misc_buttons[1] = findViewById(R.id.misc_but2_layout);
         misc_buttons[2] = findViewById(R.id.misc_but3_layout);
 
-        for(int i =0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             misc_buttons[i].setOnClickListener(this);
         }
     }
 
     @Override
     public void onClick(View view) {
-        if(view == misc_buttons[0]){
+        if (view == misc_buttons[0]) {
             Intent i = new Intent(selectMiscActivity.this, mapActivity.class);
-            i.putExtra("Language",Lang_extra);
+            i.putExtra("Language", Lang_extra);
             startActivity(i);
 
         }
-        if(view == misc_buttons[1]){
+        if (view == misc_buttons[1]) {
             Intent i = new Intent(selectMiscActivity.this, dailyGuidelinesActivity.class);
-            i.putExtra("Language",Lang_extra);
+            i.putExtra("Language", Lang_extra);
             startActivity(i);
         }
-        if(view == misc_buttons[2]){
+        if (view == misc_buttons[2]) {
             Intent i = new Intent(selectMiscActivity.this, mythsActivity.class);
-            i.putExtra("Language",Lang_extra);
+            i.putExtra("Language", Lang_extra);
             startActivity(i);
         }
     }
@@ -106,21 +106,22 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
         return super.onOptionsItemSelected(item);
     }
 
-    public void change_to_english(){
+    public void change_to_english() {
 
-        TextView t1 = (TextView)findViewById(R.id.misc_but1_text);
-        TextView t2 = (TextView)findViewById(R.id.misc_but2_text);
-        TextView t3 = (TextView)findViewById(R.id.misc_but3_text);
+        TextView t1 = findViewById(R.id.misc_but1_text);
+        TextView t2 = findViewById(R.id.misc_but2_text);
+        TextView t3 = findViewById(R.id.misc_but3_text);
 
         t1.setText("India COVID Map");
         t2.setText("WHO Guidelines");
         t3.setText("Myth Busters");
     }
-    public void change_to_hindi(){
 
-        TextView t1 = (TextView)findViewById(R.id.misc_but1_text);
-        TextView t2 = (TextView)findViewById(R.id.misc_but2_text);
-        TextView t3 = (TextView)findViewById(R.id.misc_but3_text);
+    public void change_to_hindi() {
+
+        TextView t1 = findViewById(R.id.misc_but1_text);
+        TextView t2 = findViewById(R.id.misc_but2_text);
+        TextView t3 = findViewById(R.id.misc_but3_text);
 
         t1.setText("भारत कॉविड नक्शा");
         t2.setText("डब्ल्यूएचओ के दिशानिर्देश");

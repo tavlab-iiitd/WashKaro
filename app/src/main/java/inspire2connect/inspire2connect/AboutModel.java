@@ -1,6 +1,10 @@
 package inspire2connect.inspire2connect;
 
 public class AboutModel {
+    private String name;
+    private int image_drawable;
+    private String github, linkedin, twitter, email;
+
     public String getGithub() {
         return github;
     }
@@ -32,10 +36,6 @@ public class AboutModel {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String name;
-    private int image_drawable;
-    private String github, linkedin, twitter, email;
 
     public String getName() {
         return name;

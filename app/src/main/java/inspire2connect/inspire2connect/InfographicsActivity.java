@@ -1,7 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
@@ -17,21 +15,22 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class InfographicsActivity extends BaseActivity {
 
+    private static final int NONE = 0;
+    private static final int DRAG = 1;
+    private static final int ZOOM = 2;
     ImageView infog_image;
     ImageView photoview2;
     float[] lastEvent = null;
     float d = 0f;
     float newRot = 0f;
+    float oldDist = 1f;
     private boolean isZoomAndRotate;
     private boolean isOutSide;
-    private static final int NONE = 0;
-    private static final int DRAG = 1;
-    private static final int ZOOM = 2;
     private int mode = NONE;
     private PointF start = new PointF();
     private PointF mid = new PointF();
-    float oldDist = 1f;
     private float xCoOrdinate, yCoOrdinate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +39,7 @@ public class InfographicsActivity extends BaseActivity {
 
         Intent i = this.getIntent();
         String url = i.getStringExtra("image");
-        infog_image=(ImageView)findViewById(R.id.image_view_infog);
+        infog_image = findViewById(R.id.image_view_infog);
 
         put_image(url);
 
@@ -60,7 +59,7 @@ public class InfographicsActivity extends BaseActivity {
     }
 
 
-    public void put_image(String url){
+    public void put_image(String url) {
         Picasso.get().load(url).into(infog_image);
 
         rotate_zoom();
@@ -81,7 +80,7 @@ public class InfographicsActivity extends BaseActivity {
 
     }
 
-// Zoomer and rotator
+    // Zoomer and rotator
     private void viewTransformation(View view, MotionEvent event) {
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
@@ -136,7 +135,7 @@ public class InfographicsActivity extends BaseActivity {
                         }
                         if (lastEvent != null) {
                             newRot = rotation(event);
-                            view.setRotation((float) (view.getRotation() + (newRot - d)));
+                            view.setRotation(view.getRotation() + (newRot - d));
                         }
                     }
                 }
@@ -162,7 +161,6 @@ public class InfographicsActivity extends BaseActivity {
         float y = event.getY(0) + event.getY(1);
         point.set(x / 2, y / 2);
     }
-
 
 
 }

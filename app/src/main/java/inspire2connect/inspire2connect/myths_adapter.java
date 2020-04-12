@@ -3,7 +3,6 @@ package inspire2connect.inspire2connect;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.text.Html;
 import android.text.Spanned;
@@ -13,100 +12,55 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHolder>
-{
+public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHolder> {
+    private static MyClickListener myClickListener;
+    Context context;
     private ArrayList<Boolean> play_pause_list = new ArrayList<Boolean>();
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
     private ArrayList<myth_single_object> List;
-    private static MyClickListener myClickListener;
-    Context context;
-    public myths_adapter()
-    {
+
+    public myths_adapter() {
     }
-    public void share(String toShare)
-    {
+
+    public myths_adapter(Context context, ArrayList<myth_single_object> List) {
+        this.context = context;
+        this.List = List;
+    }
+
+    public void share(String toShare) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/html");
-        Log.d("sharing",toShare);
+        Log.d("sharing", toShare);
         Spanned shareBody = Html.fromHtml(toShare);
-        String share=shareBody.toString();
+        String share = shareBody.toString();
         //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
 
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
-    public ArrayList<custom_media_Class> getMedia_player_list()
-    {
+
+    public ArrayList<custom_media_Class> getMedia_player_list() {
         return media_player_list;
     }
-    public ArrayList<myth_single_object> getResult()
-    {
+
+    public ArrayList<myth_single_object> getResult() {
         return List;
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
 
-        public TextView title;
-        public TextView actual_text;
-        public LinearLayout main_layout;
-        public ImageView play_pause,share_button;
-
-        //public CardView guideline_cv;
-        @Override
-        public void onClick(View v)
-        {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
-        public MyViewHolder(View view)
-        {
-            super(view);
-            title = (TextView) view.findViewById(R.id.myth_title);
-            actual_text=(TextView)view.findViewById(R.id.actual_text);
-            title.setMovementMethod(LinkMovementMethod.getInstance());
-            play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
-            share_button=(ImageView)view.findViewById(R.id.share_button);
-            main_layout = itemView.findViewById(R.id.main_layout);
-            title.setOnClickListener(this);
-            actual_text.setOnClickListener(this);
-            //share_button.setOnClickListener(this);
-        }
-    }
-
-
-    public myths_adapter(Context context,ArrayList<myth_single_object> List)
-    {
-        this.context=context;
-        this.List = List;
-    }
-
-    public void setOnItemClickListener(MyClickListener myClickListener)
-    {
-        this.myClickListener = myClickListener;
-    }
-    public interface MyClickListener {
-        public void onItemClick(int position, View v);
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        myths_adapter.myClickListener = myClickListener;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.myths_2, parent, false);
 
@@ -124,9 +78,8 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
         media_player_list.add(new custom_media_Class(null, true));
         holder.share_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Log.d("sharing","share clicked");
+            public void onClick(View view) {
+                Log.d("sharing", "share clicked");
                 share(movie.getTitle());
             }
         });
@@ -225,5 +178,36 @@ public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHold
     @Override
     public int getItemCount() {
         return List.size();
+    }
+
+    public interface MyClickListener {
+        void onItemClick(int position, View v);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        public TextView title;
+        public TextView actual_text;
+        public LinearLayout main_layout;
+        public ImageView play_pause, share_button;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.myth_title);
+            actual_text = view.findViewById(R.id.actual_text);
+            title.setMovementMethod(LinkMovementMethod.getInstance());
+            play_pause = view.findViewById(R.id.play_pause_myth);
+            share_button = view.findViewById(R.id.share_button);
+            main_layout = itemView.findViewById(R.id.main_layout);
+            title.setOnClickListener(this);
+            actual_text.setOnClickListener(this);
+            //share_button.setOnClickListener(this);
+        }
+
+        //public CardView guideline_cv;
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
     }
 }

@@ -1,11 +1,10 @@
 package inspire2connect.inspire2connect;
 
 import android.util.Log;
-import android.widget.Toast;
 
 public class SlideModel {
-    private String InfoURL;
     Long Sno;
+    private String InfoURL;
 
     public SlideModel() {
         Log.d("FlipperFirebase", " empty init");

@@ -1,14 +1,18 @@
 package inspire2connect.inspire2connect;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.Manifest;
-
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -23,12 +27,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -37,20 +35,20 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class improveActivity extends BaseActivity {
+    private static final String LOG_TAG = "AudioRecordTest";
     private static String fileName;
-    int position;
     final private int STORAGE_PERMISSION = 1;
     final private int MIC_PERMISSION = 2;
+    int position;
     MediaPlayer mMediaPlayer, mMediaPlayer2;
-    private static final String LOG_TAG = "AudioRecordTest";
-    private MediaRecorder recorder;
-    private Button rec_bt;
     FirebaseStorage storage;
-    private DatabaseReference mDatabaseReference;
     StorageReference storageReference;
-    private String curr_col = "RED";
     Uri file;
     StorageReference improve_ref, storage_ref;
+    private MediaRecorder recorder;
+    private Button rec_bt;
+    private DatabaseReference mDatabaseReference;
+    private String curr_col = "RED";
 
     /*private void upload()
     {
@@ -244,7 +242,7 @@ public class improveActivity extends BaseActivity {
         storage = FirebaseStorage.getInstance();
         storage_ref = storage.getReference();
         improve_ref = storage_ref.child("improve");
-        rec_bt = (Button) findViewById(R.id.record_button);
+        rec_bt = findViewById(R.id.record_button);
         fileName = getExternalCacheDir().getAbsolutePath();
         fileName += "/recordaudio_improve.3gp";
         file = Uri.fromFile(new File(fileName));

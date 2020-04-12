@@ -1,11 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -30,13 +30,13 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class governmentUpdatesActivity extends BaseActivity implements Serializable {
-    DatabaseReference dref;
-    private RecyclerView recyclerView;
     public ArrayList<myth_single_object> result;
+    DatabaseReference dref;
     DatabaseReference d;
-    private Government_Updates_Adapter mAdapter;
     TextView centre;
     int curr_lang = 2;
+    private RecyclerView recyclerView;
+    private Government_Updates_Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -56,29 +56,24 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
         if (mAdapter != null)
             media_player_list = mAdapter.getMedia_player_list();
         if (media_player_list != null)
-            for (int i = 0; i < media_player_list.size(); i++)
-            {
-                if (media_player_list.get(i).getMediaPlayer() != null)
-                {
-                    if (media_player_list.get(i).getMediaPlayer().isPlaying())
-                    {
+            for (int i = 0; i < media_player_list.size(); i++) {
+                if (media_player_list.get(i).getMediaPlayer() != null) {
+                    if (media_player_list.get(i).getMediaPlayer().isPlaying()) {
                         media_player_list.get(i).getMediaPlayer().stop();
                         media_player_list.get(i).getMediaPlayer().seekTo(media_player_list.get(i).getMediaPlayer().getDuration());
                     }
                 }
             }
         finish();
-        Log.d("Testing", "Sizze of Media player list=" + Integer.toString(media_player_list.size()));
+        Log.d("Testing", "Sizze of Media player list=" + media_player_list.size());
     }
 
-    private void setGuidelinesHindi()
-    {
+    private void setGuidelinesHindi() {
         curr_lang = 2;
         getSupportActionBar().setTitle(R.string.govt_updates_act_hi);
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
@@ -88,13 +83,11 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<myth_single_object> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
                     String date = snapshot.child("Date").getValue(String.class);
                     String hindi_title = snapshot.child("Title_hin").getValue(String.class);
@@ -106,15 +99,15 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
                     //hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + english_text;
                     //String text = hindi_text+ "<br><a href=" + redirect_url + ">स्रोत:" + redirect_url + "</a>";
-                    hindi_title="<b>" + sno + ". " + hindi_title + "</b><br>"+date;//"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
+                    hindi_title = "<b>" + sno + ". " + hindi_title + "</b><br>" + date;//"<br><a href=" + redirect_url + ">स्रोत"+ "</a>";
                     String text = hindi_text;
                     result.add(new myth_single_object(hindi_title,
-                            text, Integer.toString(count), audio_url,redirect_url));
+                            text, Integer.toString(count), audio_url, redirect_url));
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + hindi_title + "</b><br>" + hindi_text;
                     //Spanned text = Html.fromHtml(ttd +
-                      //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>");
+                    //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>");
                     //result.add(new myth_single_object(hindi_title,ttd +
-                      //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>", Integer.toString(count), audio_url));
+                    //      "<a href=" + redirect_url + "> स्रोत:" + redirect_url + "</a>", Integer.toString(count), audio_url));
                 }
                 populate_recycler_view(result);
             }
@@ -126,8 +119,7 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
         });
     }
 
-    private void setGuidelinesEnglish()
-    {
+    private void setGuidelinesEnglish() {
         curr_lang = 1;
 
         getSupportActionBar().setTitle(R.string.govt_updates_act);
@@ -141,13 +133,11 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-               result = new ArrayList<>();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
                     String date = snapshot.child("Date").getValue(String.class);
                     String english_title = snapshot.child("Title_en").getValue(String.class);
@@ -158,46 +148,43 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
                     //english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
                     //String text = english_text+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
-                    english_title="<b>" + sno + ". " + english_title + "</b><br>"+date;//+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
+                    english_title = "<b>" + sno + ". " + english_title + "</b><br>" + date;//+ "<br><a href=" + redirect_url + "> Source"+ "</a>";
                     //String ttd = "<b>" + sno + ". " + date + "<br>" + english_title + "</b><br>" + english_text;
                     String text = english_text;//+ "<br><a href=" + redirect_url + "> Source:" + redirect_url + "</a>";
 
                     result.add(new myth_single_object(english_title,
-                           text, Integer.toString(count), audio_url,redirect_url));
+                            text, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
 
-    public void populate_recycler_view(ArrayList<myth_single_object> result)
-    {
-        mAdapter = new Government_Updates_Adapter(this,result);
+    public void populate_recycler_view(ArrayList<myth_single_object> result) {
+        mAdapter = new Government_Updates_Adapter(this, result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
 
         recyclerView.setAdapter(mAdapter);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_government__updates);
 
-        result=new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under","under"));
-        mAdapter=new Government_Updates_Adapter(this,result);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_gov_updates);
+        result = new ArrayList<>();
+        result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
+        mAdapter = new Government_Updates_Adapter(this, result);
+        recyclerView = findViewById(R.id.recyclerView_gov_updates);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent i = this.getIntent();
@@ -284,33 +271,32 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        ((Government_Updates_Adapter) mAdapter).setOnItemClickListener(new Government_Updates_Adapter
+        mAdapter.setOnItemClickListener(new Government_Updates_Adapter
                 .MyClickListener() {
             @Override
-            public void onItemClick(int position, View v)
-            {
+            public void onItemClick(int position, View v) {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
                 Intent i = new Intent(governmentUpdatesActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
-                ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
-                Log.d("Testing",result_from_adapter.get(position).getTitle());
+                ArrayList<myth_single_object> result_from_adapter = mAdapter.getResult();
+                Log.d("Testing", result_from_adapter.get(position).getTitle());
                 /*if(mMediaPlayer!=null)
                 {
                     mMediaPlayer.stop();
                     mMediaPlayer.release();
                     mMediaPlayer=null;
                 }*/
-                ArrayList<myth_single_object> single=new ArrayList<>();
+                ArrayList<myth_single_object> single = new ArrayList<>();
                 single.add(result_from_adapter.get(position));
                 //Log.d("Testing",single.get(0).getTitle());
-                i.putExtra("detailed_title",single.get(0).getTitle());
-                i.putExtra("detailed_text",single.get(0).getMyth());
-                i.putExtra("url",single.get(0).getAudio_url());
-                i.putExtra("redirect_url",single.get(0).getRedirect_url());
+                i.putExtra("detailed_title", single.get(0).getTitle());
+                i.putExtra("detailed_text", single.get(0).getMyth());
+                i.putExtra("url", single.get(0).getAudio_url());
+                i.putExtra("redirect_url", single.get(0).getRedirect_url());
                 //i.putExtra("result_list",single);
                 startActivity(i);
             }

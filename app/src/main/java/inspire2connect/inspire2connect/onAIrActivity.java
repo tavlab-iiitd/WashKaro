@@ -7,14 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +15,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-//import com.emozers.cardviewexample.R;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,19 +36,21 @@ import java.util.Map;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
+//import com.emozers.cardviewexample.R;
+
 public class onAIrActivity extends BaseActivity {
+    private static String LOG_TAG = "CardViewActivity";
+    final private int STORAGE_PERMISSION = 1;
+    final private int MIC_PERMISSION = 2;
+    boolean flag = false;
+    ImageView lab_logo, app_logo;
+    Double threshold;
+    DatabaseReference mDatabaseReference, ref, ref_for_thr, ref_for_ver;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private MediaPlayer mMediaPlayer;
-    boolean flag = false;
     private long version_from_database = -1, version_from_app;
-    ImageView lab_logo, app_logo;
-    Double threshold;
-    final private int STORAGE_PERMISSION = 1;
-    final private int MIC_PERMISSION = 2;
-    DatabaseReference mDatabaseReference, ref, ref_for_thr, ref_for_ver;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "CardViewActivity";
 
     private void requestPermission() {
         /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED )
@@ -155,7 +155,7 @@ public class onAIrActivity extends BaseActivity {
         requestPermission();
 
 
-        lab_logo = (ImageView) (findViewById(R.id.progress_bar));
+        lab_logo = findViewById(R.id.progress_bar);
         //app_logo=(ImageView)(findViewById(R.id.app_logo));
         //getSupportActionBar().setBackgroundDrawable(app_logo);
         final ArrayList results = new ArrayList<DataObject>();
@@ -167,13 +167,13 @@ public class onAIrActivity extends BaseActivity {
         //cpd.setBackgroundColor(1);
         //cpd.setCenterRadius(2.0f);
         //ArrayList results = new ArrayList<DataObject>();
-        final ProgressBar cpd = (ProgressBar) findViewById(R.id.circularprogressbar);
+        final ProgressBar cpd = findViewById(R.id.circularprogressbar);
         for (int index = 0; index < 1; index++) {
             DataObject obj = new DataObject("Some Primary Text " + index,
                     "Secondary " + index);
             results.add(index, obj);
         }
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setVisibility(View.INVISIBLE);
         mLayoutManager = new LinearLayoutManager(this);
@@ -225,7 +225,7 @@ public class onAIrActivity extends BaseActivity {
 
                             for (Map.Entry<String, Story_Details> it : hn.entrySet()) {
                                 Log.d("Database", it.getValue().getTitle());
-                                DataObject obj = new DataObject(Integer.toString(count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
+                                DataObject obj = new DataObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
                                 //Log.d("Databse",Integer.toString(it.getValue().getNumber_of_relevant_votes())+" "+Double.toString(threshold));
                                 try {
                                     if (it.getValue().getSimilarity() >= threshold)
@@ -248,7 +248,7 @@ public class onAIrActivity extends BaseActivity {
                             // app_logo.setVisibility(View.INVISIBLE);
                             mRecyclerView.setVisibility(View.VISIBLE);
                             ConstraintLayout currentLayout =
-                                    (ConstraintLayout) findViewById(R.id.constraint_layout);
+                                    findViewById(R.id.constraint_layout);
 
                             //currentLayout.setBackgroundColor(getResources().getColor(R.color.backColor));
                 /*try {
@@ -276,8 +276,8 @@ public class onAIrActivity extends BaseActivity {
         try {
             PackageManager manager = this.getPackageManager();
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
-            version_from_app = (long) info.versionCode;
-            Log.d("threshod", "Version from app" + Long.toString(version_from_app) + Boolean.toString(version_from_app == version_from_database));
+            version_from_app = info.versionCode;
+            Log.d("threshod", "Version from app" + version_from_app + (version_from_app == version_from_database));
         } catch (Exception e) {
             e.printStackTrace();
         }

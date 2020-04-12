@@ -1,11 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -30,15 +30,13 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class mythsActivity extends BaseActivity {
-    TextView centre;
     public ArrayList<myth_single_object> result;
-
+    TextView centre;
     DatabaseReference dref;
-    private RecyclerView recyclerView;
     DatabaseReference d;
-    private myths_adapter mAdapter;
     int curr_lang = 2;  // 2 for hindi  1 for eng
-
+    private RecyclerView recyclerView;
+    private myths_adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -78,10 +76,10 @@ public class mythsActivity extends BaseActivity {
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_hin").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    hin_title=sno+". "+hin_title+"<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
+                    hin_title = sno + ". " + hin_title + "<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
                     //String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
-                    String ttp=g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
+                    String ttp = g_hindi;
+                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -115,9 +113,9 @@ public class mythsActivity extends BaseActivity {
                     String audio_url = snapshot.child("Audio").getValue(String.class);
                     String hin_title = snapshot.child("Title_en").getValue(String.class);
                     String redirect_url = snapshot.child("Source").getValue(String.class);
-                    hin_title=sno+". "+hin_title+"</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
+                    hin_title = sno + ". " + hin_title + "</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
                     String ttp = g_hindi;
-                    result.add(new myth_single_object(hin_title,ttp, Integer.toString(count), audio_url,redirect_url));
+                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -129,14 +127,13 @@ public class mythsActivity extends BaseActivity {
         });
     }
 
-    public void populate_recycler_view(ArrayList<myth_single_object> result)
-    {
-        mAdapter = new myths_adapter(this,result);
+    public void populate_recycler_view(ArrayList<myth_single_object> result) {
+        mAdapter = new myths_adapter(this, result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
 
         recyclerView.setAdapter(mAdapter);
     }
@@ -145,11 +142,11 @@ public class mythsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_guidelines);
-        result=new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence","Under Maintainence","1","Under","under"));
-        mAdapter=new myths_adapter(this,result);
+        result = new ArrayList<>();
+        result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
+        mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         Intent i = this.getIntent();
         String lan = i.getStringExtra("Language");
         if (lan.equalsIgnoreCase("hindi"))
@@ -216,7 +213,7 @@ public class mythsActivity extends BaseActivity {
                 }
             }
         finish();
-        Log.d("Testing", "Sizze of Media player list=" + Integer.toString(media_player_list.size()));
+        Log.d("Testing", "Sizze of Media player list=" + media_player_list.size());
     }
 
 
@@ -238,44 +235,43 @@ public class mythsActivity extends BaseActivity {
         //return super.onSupportNavigateUp();
         return true;
     }
-    public void share(String toShare)
-    {
+
+    public void share(String toShare) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/html");
-        Log.d("sharing",toShare);
+        Log.d("sharing", toShare);
         Spanned shareBody = Html.fromHtml(toShare);
-        String share=shareBody.toString();
+        String share = shareBody.toString();
         //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        ((myths_adapter) mAdapter).setOnItemClickListener(new myths_adapter
+        mAdapter.setOnItemClickListener(new myths_adapter
                 .MyClickListener() {
             @Override
-            public void onItemClick(int position, View v)
-            {
+            public void onItemClick(int position, View v) {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
                 Intent i = new Intent(mythsActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
-                ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
-                Log.d("Testing",result_from_adapter.get(position).getTitle());
+                ArrayList<myth_single_object> result_from_adapter = mAdapter.getResult();
+                Log.d("Testing", result_from_adapter.get(position).getTitle());
                 /*if(mMediaPlayer!=null)
                 {
                     mMediaPlayer.stop();
                     mMediaPlayer.release();
                     mMediaPlayer=null;
                 }*/
-                ArrayList<myth_single_object> single=new ArrayList<>();
+                ArrayList<myth_single_object> single = new ArrayList<>();
                 single.add(result_from_adapter.get(position));
-                Log.d("Testing",single.get(0).getTitle());
-                i.putExtra("detailed_title",single.get(0).getTitle());
-                i.putExtra("detailed_text",single.get(0).getMyth());
-                i.putExtra("url",single.get(0).getAudio_url());
-                i.putExtra("redirect_url",single.get(0).getRedirect_url());
+                Log.d("Testing", single.get(0).getTitle());
+                i.putExtra("detailed_title", single.get(0).getTitle());
+                i.putExtra("detailed_text", single.get(0).getMyth());
+                i.putExtra("url", single.get(0).getAudio_url());
+                i.putExtra("redirect_url", single.get(0).getRedirect_url());
                 //i.putExtra("result_list",single);
 //                if(v==findViewById(R.id.share_button))
 //                {
@@ -283,7 +279,7 @@ public class mythsActivity extends BaseActivity {
 //                    share(single.get(0).getTitle());
 //                }
 //                else
-                    startActivity(i);
+                startActivity(i);
             }
         });
     }

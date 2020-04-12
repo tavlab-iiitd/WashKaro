@@ -50,11 +50,11 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ca_activity_about);
 
-        if(getActionBar()!=null) {
+        if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -118,7 +118,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         String url = "https://www.google.com/";
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iiitdLogo:
                 url = "http://precog.iiitd.edu.in/";
                 break;
@@ -154,7 +154,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.kanav:
             case R.id.kanavTag:
-                url ="https://www.linkedin.com/in/kanav-bhagat-133229130/";
+                url = "https://www.linkedin.com/in/kanav-bhagat-133229130/";
                 break;
             case R.id.bhavika:
             case R.id.bhavikaTag:

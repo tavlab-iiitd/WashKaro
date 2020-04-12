@@ -33,7 +33,7 @@ public class privacyPolicyActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.activity_privacy_policy);
-        webView = (WebView) findViewById(R.id.webview_policy);
+        webView = findViewById(R.id.webview_policy);
         webView.loadData("<!DOCTYPE html>\n" +
                 "    <html>\n" +
                 "    <head>\n" +

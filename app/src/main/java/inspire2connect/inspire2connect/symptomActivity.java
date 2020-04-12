@@ -1,9 +1,8 @@
 package inspire2connect.inspire2connect;
 
 import android.content.Context;
-import android.os.Bundle;
-
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,26 +27,26 @@ public class symptomActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom_activity);
 
-        Intent i=getIntent();
-        if(i.getStringExtra("Language").equalsIgnoreCase("hindi"))
-            curr_lang=2;
+        Intent i = getIntent();
+        if (i.getStringExtra("Language").equalsIgnoreCase("hindi"))
+            curr_lang = 2;
         else
-            curr_lang=1;
+            curr_lang = 1;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.symptom_tracker);
         String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
-        String button_text="BEGIN";
+        String button_text = "BEGIN";
         Button b = findViewById(R.id.startButton);
-        if(curr_lang==2)
-        {
+        if (curr_lang == 2) {
             getSupportActionBar().setTitle(R.string.symptom_tracker);
-            button_text="शुरू करो";
-            title2="<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
+            button_text = "शुरू करो";
+            title2 = "<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
         }
         TextView t = findViewById(R.id.title2Text);
         t.setText(Html.fromHtml(title2));
         b.setText(button_text);
     }
+
     @Override
     public boolean onSupportNavigateUp() {
 
@@ -55,11 +54,13 @@ public class symptomActivity extends BaseActivity {
         //return super.onSupportNavigateUp();
         return true;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_page_menu,menu);
+        getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -93,22 +94,22 @@ public class symptomActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void switch_language()
-    {
+
+    public void switch_language() {
         String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
-        String button_text="BEGIN";
-        if(curr_lang==2)
-        {
+        String button_text = "BEGIN";
+        if (curr_lang == 2) {
             title2 = "<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
-            button_text="शुरू करो";
+            button_text = "शुरू करो";
         }
         Button b = findViewById(R.id.startButton);
         b.setText(button_text);
         TextView t = findViewById(R.id.title2Text);
         t.setText(Html.fromHtml(title2));
     }
+
     public void onClickStart(View view) {
-        Intent intent=new Intent(getApplicationContext(),QuestionsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
 //        RadioGroup  radio_g=(RadioGroup)findViewById(R.id.languageGroup);
 //        RadioButton rb1=(RadioButton)findViewById(R.id.hindiButton);
 //        RadioButton rb2=(RadioButton)findViewById(R.id.englishButton);
@@ -124,7 +125,7 @@ public class symptomActivity extends BaseActivity {
 //        }else {
 //            intent.putExtra("language", "english");
 //        }
-        if(curr_lang==1)
+        if (curr_lang == 1)
             intent.putExtra("Language", "english");
         else
             intent.putExtra("Language", "hindi");

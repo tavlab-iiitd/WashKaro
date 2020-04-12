@@ -6,17 +6,16 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,18 +29,18 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class add_new extends AppCompatActivity {
+    private static final String LOG_TAG = "AudioRecordTest";
     private static String fileName;
-    MediaPlayer mMediaPlayer, mMediaPlayer2;
     final private int STORAGE_PERMISSION = 1;
     final private int MIC_PERMISSION = 2;
-    private static final String LOG_TAG = "AudioRecordTest";
-    private MediaRecorder recorder;
-    private Button rec_bt;
+    MediaPlayer mMediaPlayer, mMediaPlayer2;
     Uri file;
-    private String curr_col = "RED";
     FirebaseStorage storage;
     StorageReference storageReference;
     StorageReference improve_ref, storage_ref;
+    private MediaRecorder recorder;
+    private Button rec_bt;
+    private String curr_col = "RED";
 
     /*private void upload()
     {
@@ -218,7 +217,7 @@ public class add_new extends AppCompatActivity {
         mMediaPlayer2.start();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        rec_bt = (Button) findViewById(R.id.record_button);
+        rec_bt = findViewById(R.id.record_button);
         fileName = getExternalCacheDir().getAbsolutePath();
         fileName += "/recordaudio_add_new.3gp";
         file = Uri.fromFile(new File(fileName));
