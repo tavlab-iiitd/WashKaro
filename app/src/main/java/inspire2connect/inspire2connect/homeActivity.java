@@ -14,8 +14,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,28 +51,29 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     private static final int MY_REQUEST_CODE = 2399;
-    public int w = 0, h = 0;
+    //    public int w = 0, h = 0;
     //    AdapterViewFlipper adapterViewFlipper;
 //    FirebaseStorage firebaseStorage;
     DatabaseReference dRef;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
-    ImageButton[] img_but = new ImageButton[10];
+    //    ImageButton[] img_but = new ImageButton[10];
     //    DatabaseReference dref;
     ImageButton flip_left, flip_right;
-    Animation anim_in, anim_out, anim1, anim2, anim3, anim4;
-    TextView corona_helpline, live_data, mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5,
-            mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
+    //    Animation anim_in, anim_out;
+    Animation anim1, anim2, anim3, anim4;
+    //    TextView corona_helpline, live_data;
+    TextView mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5, mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
     StorageReference storageReference;
     RelativeLayout data_tile;
     LayoutInflater inflater;
-    LinearLayout layout;
+    //    LinearLayout layout;
     float downX, downY, upX, upY;
-    String TAG = "MainActivity";
+//    private static final String TAG = "MainActivity";
     //    DatabaseReference d;
     private ViewFlipper viewFlipper;
     private DatabaseReference databaseReference;
     private List<SlideModel> slideLists;
-    private PopupWindow p_window;
+//    private PopupWindow p_window;
     //View flipper Zoom Variables.......................................................
 
     public void update_handle() {
