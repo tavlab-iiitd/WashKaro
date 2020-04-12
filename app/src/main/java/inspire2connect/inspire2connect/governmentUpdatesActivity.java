@@ -34,7 +34,6 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     DatabaseReference dref;
     DatabaseReference d;
     TextView centre;
-    int curr_lang = 2;
     private RecyclerView recyclerView;
     private Government_Updates_Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -74,10 +73,8 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     }
 
     private void setGuidelinesHindi() {
-        curr_lang = 2;
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
 //        centre.setText("सरकारी जानकारी");
-        FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {
@@ -119,7 +116,6 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
     }
 
     private void setGuidelinesEnglish() {
-        curr_lang = 1;
 
 //        centre = (TextView) findViewById(R.id.centre_view_gov_updates);
 //        centre.setTypeface(null, Typeface.BOLD);
