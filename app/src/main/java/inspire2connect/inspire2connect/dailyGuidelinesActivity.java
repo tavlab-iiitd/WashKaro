@@ -1,25 +1,19 @@
 package inspire2connect.inspire2connect;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -29,9 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class daily_guidelines extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class dailyGuidelinesActivity extends BaseActivity {
     DatabaseReference dref;
     private RecyclerView recyclerView;
     DatabaseReference d;
@@ -203,7 +198,7 @@ public class daily_guidelines extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(daily_guidelines.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(dailyGuidelinesActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             //switch_language();
             if (curr_lang == 2) {
                 curr_lang = 1;
@@ -213,17 +208,17 @@ public class daily_guidelines extends AppCompatActivity {
                 setGuidelinesHindi();
             }
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(daily_guidelines.this, Male_Female.class);
+            Intent i = new Intent(dailyGuidelinesActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(daily_guidelines.this, about.class);
+            Intent i = new Intent(dailyGuidelinesActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(daily_guidelines.this, privacy_policy.class);
+            Intent i = new Intent(dailyGuidelinesActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
@@ -241,7 +236,7 @@ public class daily_guidelines extends AppCompatActivity {
             public void onItemClick(int position, View v)
             {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
-                Intent i = new Intent(daily_guidelines.this, detailed_view.class);
+                Intent i = new Intent(dailyGuidelinesActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
                 ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
                 Log.d("Testing",result_from_adapter.get(position).getTitle());

@@ -1,24 +1,19 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class symptom_activity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class symptomActivity extends BaseActivity {
     int curr_lang = 2;//1 for eng , 2 for Hindi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +56,7 @@ public class symptom_activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(symptom_activity.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(symptomActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             if (curr_lang == 2) {
                 curr_lang = 1;
 
@@ -72,17 +67,17 @@ public class symptom_activity extends AppCompatActivity {
             switch_language();
 
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(symptom_activity.this, Male_Female.class);
+            Intent i = new Intent(symptomActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(symptom_activity.this, about.class);
+            Intent i = new Intent(symptomActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(symptom_activity.this, privacy_policy.class);
+            Intent i = new Intent(symptomActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 

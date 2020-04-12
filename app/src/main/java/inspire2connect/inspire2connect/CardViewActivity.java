@@ -5,17 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +23,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 //import com.emozers.cardviewexample.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +31,12 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CardViewActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class CardViewActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private MediaPlayer mMediaPlayer;
@@ -129,10 +123,10 @@ public class CardViewActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(CardViewActivity.this, about.class);
+            Intent i = new Intent(CardViewActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(CardViewActivity.this, privacy_policy.class);
+            Intent i = new Intent(CardViewActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -380,7 +374,7 @@ public class CardViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                Intent i = new Intent(CardViewActivity.this, text2speech2_2.class);
+                Intent i = new Intent(CardViewActivity.this, text2speech2_2Activity.class);
                 i.putExtra("position", Integer.toString(position));
                 /*if(mMediaPlayer!=null)
                 {

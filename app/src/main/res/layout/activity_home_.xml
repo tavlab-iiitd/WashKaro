@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Home_background_color"
     android:orientation="vertical"
-    tools:context=".Home_Activity">
+    tools:context=".homeActivity">
 
     <ScrollView
         android:layout_width="match_parent"

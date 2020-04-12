@@ -14,7 +14,7 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 
 
 @SuppressWarnings("SpellCheckingInspection")
-public class about extends BaseActivity implements View.OnClickListener {
+public class aboutActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView tavlab;
     private ImageView precog;

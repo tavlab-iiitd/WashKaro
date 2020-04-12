@@ -1,7 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +7,9 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class privacy_policy extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class privacyPolicyActivity extends BaseActivity {
     WebView webView;
 
     @Override
@@ -161,18 +161,18 @@ public class privacy_policy extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(privacy_policy.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(privacyPolicyActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             //switch_language();
 
 
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(privacy_policy.this, Male_Female.class);
+            Intent i = new Intent(privacyPolicyActivity.this, maleFemaleActivity.class);
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(privacy_policy.this, about.class);
+            Intent i = new Intent(privacyPolicyActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(privacy_policy.this, privacy_policy.class);
+            Intent i = new Intent(privacyPolicyActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

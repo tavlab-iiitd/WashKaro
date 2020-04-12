@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.utils.BaseActivity;
 
-public class FirstPage extends AppCompatActivity {
+public class firstPageActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

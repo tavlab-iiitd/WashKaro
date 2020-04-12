@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -43,7 +41,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class text2speech2_2 extends AppCompatActivity //implements Runnable
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class text2speech2_2Activity extends BaseActivity //implements Runnable
 {
     private Button start_bt;
     boolean currently_paused = false;
@@ -125,7 +125,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(text2speech2_2.this, Improve.class);
+            Intent i = new Intent(text2speech2_2Activity.this, improveActivity.class);
             if (mediaPlayer != null) {
                 clearMediaPlayer();
             }
@@ -139,7 +139,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
             startActivity(i);
             finish();
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(text2speech2_2.this, privacy_policy.class);
+            Intent i = new Intent(text2speech2_2Activity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -272,8 +272,8 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
 
         btn_play = (FloatingActionButton) findViewById(R.id.play_bt);
         btn_pause = (FloatingActionButton) findViewById(R.id.pause_bt);
-        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2.this, android.R.drawable.ic_media_pause));
-        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2.this, android.R.drawable.ic_media_play));
+        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_pause));
+        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_play));
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -287,7 +287,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
                 if (progress > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
                     //clearMediaPlayer();
                     //fab.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this,android.R.drawable.ic_media_play));
-                    text2speech2_2.this.mSeekBar.setProgress(current_time);
+                    text2speech2_2Activity.this.mSeekBar.setProgress(current_time);
                 }
             }
 

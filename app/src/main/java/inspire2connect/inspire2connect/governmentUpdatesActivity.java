@@ -1,26 +1,19 @@
 package inspire2connect.inspire2connect;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -31,9 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Government_Updates extends AppCompatActivity implements Serializable {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class governmentUpdatesActivity extends BaseActivity implements Serializable {
     DatabaseReference dref;
     private RecyclerView recyclerView;
     public ArrayList<myth_single_object> result;
@@ -255,7 +249,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(Government_Updates.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(governmentUpdatesActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             //switch_language();
             if (curr_lang == 2) {
                 curr_lang = 1;
@@ -265,17 +259,17 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
                 setGuidelinesHindi();
             }
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(Government_Updates.this, Male_Female.class);
+            Intent i = new Intent(governmentUpdatesActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Government_Updates.this, about.class);
+            Intent i = new Intent(governmentUpdatesActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(Government_Updates.this, privacy_policy.class);
+            Intent i = new Intent(governmentUpdatesActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
@@ -292,7 +286,7 @@ public class Government_Updates extends AppCompatActivity implements Serializabl
             public void onItemClick(int position, View v)
             {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
-                Intent i = new Intent(Government_Updates.this, detailed_view.class);
+                Intent i = new Intent(governmentUpdatesActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
                 ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
                 Log.d("Testing",result_from_adapter.get(position).getTitle());

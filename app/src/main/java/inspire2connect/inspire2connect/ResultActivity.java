@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ResultActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class ResultActivity extends BaseActivity {
     TextView tv, tv2;
     Button btnRestart;
     DatabaseReference ref;
@@ -155,7 +157,7 @@ public class ResultActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),Home_Activity.class);
+                Intent in = new Intent(getApplicationContext(), homeActivity.class);
                 startActivity(in);
                 finish();
             }

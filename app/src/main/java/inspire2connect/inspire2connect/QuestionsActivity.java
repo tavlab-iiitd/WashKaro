@@ -14,7 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuestionsActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class QuestionsActivity extends BaseActivity {
     TextView tv;
     Button submitbutton, prevbutton;
     RadioGroup radio_g;

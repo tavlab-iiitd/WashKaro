@@ -9,7 +9,9 @@ import android.webkit.WebViewClient;
 
 import java.util.ArrayList;
 
-public class map_activity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class mapActivity extends BaseActivity {
     WebView webView;
 
     @Override

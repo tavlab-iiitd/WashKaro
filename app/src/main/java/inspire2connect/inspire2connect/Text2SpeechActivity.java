@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -39,7 +38,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class Text2Speech2 extends AppCompatActivity //implements Runnable
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class Text2SpeechActivity extends BaseActivity //implements Runnable
 {
     private Button start_bt;
     boolean currently_paused = false;
@@ -120,7 +121,7 @@ public class Text2Speech2 extends AppCompatActivity //implements Runnable
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(Text2Speech2.this, Improve.class);
+            Intent i = new Intent(Text2SpeechActivity.this, improveActivity.class);
             if (mediaPlayer != null) {
                 clearMediaPlayer();
             }
@@ -260,8 +261,8 @@ public class Text2Speech2 extends AppCompatActivity //implements Runnable
 
         btn_play = (FloatingActionButton) findViewById(R.id.play_bt);
         btn_pause = (FloatingActionButton) findViewById(R.id.pause_bt);
-        btn_pause.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this, android.R.drawable.ic_media_pause));
-        btn_play.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this, android.R.drawable.ic_media_play));
+        btn_pause.setImageDrawable(ContextCompat.getDrawable(Text2SpeechActivity.this, android.R.drawable.ic_media_pause));
+        btn_play.setImageDrawable(ContextCompat.getDrawable(Text2SpeechActivity.this, android.R.drawable.ic_media_play));
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -273,7 +274,7 @@ public class Text2Speech2 extends AppCompatActivity //implements Runnable
                 if (progress > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
                     //clearMediaPlayer();
                     //fab.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this,android.R.drawable.ic_media_play));
-                    Text2Speech2.this.mSeekBar.setProgress(current_time);
+                    Text2SpeechActivity.this.mSeekBar.setProgress(current_time);
                 }
             }
 
@@ -298,6 +299,8 @@ public class Text2Speech2 extends AppCompatActivity //implements Runnable
             @Override
             public void onPrepared(MediaPlayer mp) {
                 float speed = 0.90f;
+
+                // TODO: Check this Vaibhav: Playback Params Issue
                 mp.setPlaybackParams(mp.getPlaybackParams().setSpeed(speed));
                 mp.start();
                 pb.setVisibility(View.INVISIBLE);

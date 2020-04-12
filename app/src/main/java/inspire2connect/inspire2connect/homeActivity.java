@@ -1,21 +1,13 @@
 package inspire2connect.inspire2connect;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.graphics.Color;
-import android.graphics.PointF;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +16,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 //import android.widget.AdapterViewFlipper;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,7 +32,6 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
-import com.google.common.hash.HashingOutputStream;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,14 +43,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 
-public class Home_Activity extends BaseActivity implements View.OnClickListener {
+public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     //    AdapterViewFlipper adapterViewFlipper;
 //    FirebaseStorage firebaseStorage;
@@ -100,7 +89,7 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
                     try {
                         appUpdateManager.startUpdateFlowForResult(
-                                appUpdateInfo, AppUpdateType.IMMEDIATE, Home_Activity.this, MY_REQUEST_CODE);
+                                appUpdateInfo, AppUpdateType.IMMEDIATE, homeActivity.this, MY_REQUEST_CODE);
                     } catch (IntentSender.SendIntentException e) {
                         e.printStackTrace();
                     }
@@ -108,7 +97,7 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
                 } else if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
                     try {
                         appUpdateManager.startUpdateFlowForResult(
-                                appUpdateInfo, AppUpdateType.FLEXIBLE, Home_Activity.this, MY_REQUEST_CODE);
+                                appUpdateInfo, AppUpdateType.FLEXIBLE, homeActivity.this, MY_REQUEST_CODE);
                     } catch (IntentSender.SendIntentException e) {
                         e.printStackTrace();
                     }
@@ -193,7 +182,7 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
 //        corona_helpline = (TextView)findViewById(R.id.Corona_helpline_text);
 //        live_data=(TextView)findViewById(R.id.state_helpline_text);
 
-        inflater = (LayoutInflater) Home_Activity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) homeActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //layout = inflater.inflate(R.layout.zoom_in, null);
 
 
@@ -245,13 +234,13 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
                             viewFlipper.removeAllViews();
                             usingFirebaseImages(slideLists);
                         } else {
-                            Toast.makeText(Home_Activity.this, "No images in firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(homeActivity.this, "No images in firebase", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(Home_Activity.this, "NO images found \n" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(homeActivity.this, "NO images found \n" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -295,33 +284,33 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
 
         if (view == ll_but[0] )
         {
-            Intent i = new Intent(Home_Activity.this,Government_Updates.class);
+            Intent i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
             i.putExtra("Language", intentLangExtra);
             //Toast.makeText(Home_Activity.this,"Button Clicked 1 ",Toast.LENGTH_SHORT).show();
             startActivity(i);
         }
         if (view == ll_but[1] ) {
-            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
+            Intent i = new Intent(homeActivity.this, symptomActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[2]) {
             //Put contact tracer here
-            Intent i = new Intent(Home_Activity.this, MainActivity.class);
+            Intent i = new Intent(homeActivity.this, MainActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[3] ) {
-            Intent i = new Intent(Home_Activity.this, CardViewActivity.class);
+            Intent i = new Intent(homeActivity.this, CardViewActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[4] ) {
-            Intent i = new Intent(Home_Activity.this,select_chatbot_activity.class);
+            Intent i = new Intent(homeActivity.this, selectChatBotActivity.class);
             startActivity(i);
         }
         if (view == ll_but[5] ) {
-            Intent i = new Intent(Home_Activity.this,select_misc_activity.class);
+            Intent i = new Intent(homeActivity.this, selectMiscActivity.class);
             i.putExtra("Language", intentLangExtra);
             startActivity(i);
 
@@ -341,19 +330,19 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
             switch_language();
 
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(Home_Activity.this, Male_Female.class);
+            Intent i = new Intent(homeActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Home_Activity.this, about.class);
+            Intent i = new Intent(homeActivity.this, aboutActivity.class);
             startActivity(i);
         }
         else if(id==R.id.privacy_policy)
         {
-            Intent i=new Intent(Home_Activity.this,privacy_policy.class);
+            Intent i=new Intent(homeActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
@@ -460,13 +449,13 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
                             viewFlipper.removeAllViews();
                             usingFirebaseImages(slideLists);
                         } else {
-                            Toast.makeText(Home_Activity.this, "No images in firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(homeActivity.this, "No images in firebase", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(Home_Activity.this, "NO images found \n" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(homeActivity.this, "NO images found \n" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -505,7 +494,7 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).getImageUrl();
-        Intent intnt = new Intent(Home_Activity.this,Infographics.class);
+        Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
         intnt.putExtra("image",url);
         startActivity(intnt);
     }

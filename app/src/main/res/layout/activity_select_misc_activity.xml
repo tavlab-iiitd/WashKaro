@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".select_misc_activity">
+    tools:context=".selectMiscActivity">
 
     <LinearLayout
         android:id="@+id/misc_but1_layout"

@@ -1,15 +1,10 @@
 package inspire2connect.inspire2connect;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 //import android.support.v4.view.PagerAdapter;
 //import android.support.v4.view.ViewPager;
@@ -24,13 +19,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class WelcomeActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class WelcomeActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -52,7 +48,7 @@ public class WelcomeActivity extends AppCompatActivity {
         if (!prefManager.isFirstTimeLaunch()) {
 
             //prefManager.setFirstTimeLaunch(false);
-            Intent i = new Intent(WelcomeActivity.this, Home_Activity.class);
+            Intent i = new Intent(WelcomeActivity.this, homeActivity.class);
             startActivity(i);
             finish();
         }
@@ -116,11 +112,11 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private void launchInforGraphic() {
-
-        Intent intent = new Intent(WelcomeActivity.this, InfoGraphic.class);
-        startActivity(intent);
-    }
+//    private void launchInforGraphic() {
+//
+//        Intent intent = new Intent(WelcomeActivity.this, infographicActivity.class);
+//        startActivity(intent);
+//    }
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
@@ -147,7 +143,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
 
-        startActivity(new Intent(WelcomeActivity.this, Home_Activity.class));
+        startActivity(new Intent(WelcomeActivity.this, homeActivity.class));
         finish();
     }
 

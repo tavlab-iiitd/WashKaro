@@ -1,14 +1,12 @@
 package inspire2connect.inspire2connect;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -16,11 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -30,9 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Myths extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class mythsActivity extends BaseActivity {
     TextView centre;
     public ArrayList<myth_single_object> result;
 
@@ -180,17 +175,17 @@ public class Myths extends AppCompatActivity {
                 setGuidelinesHindi();
             }
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(Myths.this, Male_Female.class);
+            Intent i = new Intent(mythsActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Myths.this, about.class);
+            Intent i = new Intent(mythsActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(Myths.this, privacy_policy.class);
+            Intent i = new Intent(mythsActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
@@ -256,7 +251,7 @@ public class Myths extends AppCompatActivity {
             public void onItemClick(int position, View v)
             {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
-                Intent i = new Intent(Myths.this, detailed_view.class);
+                Intent i = new Intent(mythsActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
                 ArrayList<myth_single_object> result_from_adapter=mAdapter.getResult();
                 Log.d("Testing",result_from_adapter.get(position).getTitle());

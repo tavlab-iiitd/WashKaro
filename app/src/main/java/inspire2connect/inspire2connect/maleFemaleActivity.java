@@ -1,6 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -18,12 +17,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +29,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class Male_Female extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class maleFemaleActivity extends BaseActivity {
     private PreferenceManager prefManager;
     Button submit;
     boolean can_Access;
@@ -167,7 +165,7 @@ public class Male_Female extends AppCompatActivity {
                 Double lon1 = location.getLongitude();
                 Geocoder geocoder;
                 List<Address> addresses;
-                geocoder = new Geocoder(Male_Female.this, Locale.getDefault());
+                geocoder = new Geocoder(maleFemaleActivity.this, Locale.getDefault());
 
                 try {
                     addresses = geocoder.getFromLocation(lat1, lon1, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
@@ -232,22 +230,22 @@ public class Male_Female extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(Male_Female.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(maleFemaleActivity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             switch_language();
 
 
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(Male_Female.this, Male_Female.class);
+            Intent i = new Intent(maleFemaleActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Male_Female.this, about.class);
+            Intent i = new Intent(maleFemaleActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(Male_Female.this, privacy_policy.class);
+            Intent i = new Intent(maleFemaleActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -282,7 +280,7 @@ public class Male_Female extends AppCompatActivity {
 
                 if (url.equalsIgnoreCase("https://docs.google.com/forms/d/e/1FAIpQLSd6z9IzgbDvkG08rSjlq2pvTo3ChdHrSAr2u6iRqnl-FX1oFw/formResponse")) {
                     send_data();
-                    Intent i = new Intent(Male_Female.this, Home_Activity.class);
+                    Intent i = new Intent(maleFemaleActivity.this, homeActivity.class);
                     prefManager.setFirstTimeLaunch(false);
                     startActivity(i);
                     finish();
@@ -312,7 +310,7 @@ public class Male_Female extends AppCompatActivity {
 
                 if (url.equalsIgnoreCase("https://docs.google.com/forms/u/0/d/e/1FAIpQLSf-hLHpQPd7sLkoXqNfGf-RT390Q4cSP7JBmrrSXLZmqEYEYw/formResponse")) {
                     send_data();
-                    Intent i = new Intent(Male_Female.this, Home_Activity.class);
+                    Intent i = new Intent(maleFemaleActivity.this, homeActivity.class);
                     prefManager.setFirstTimeLaunch(false);
                     startActivity(i);
                     finish();

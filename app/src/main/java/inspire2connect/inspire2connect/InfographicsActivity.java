@@ -11,7 +11,9 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class Infographics extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class InfographicsActivity extends BaseActivity {
 
     ImageView infog_image;
     ImageView photoview2;

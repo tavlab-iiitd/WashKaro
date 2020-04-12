@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class select_chatbot_activity extends AppCompatActivity implements View.OnClickListener{
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class selectChatBotActivity extends BaseActivity implements View.OnClickListener{
     Button cbot1,cbot2,cbot3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

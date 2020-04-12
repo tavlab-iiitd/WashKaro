@@ -19,7 +19,9 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class detailed_view extends AppCompatActivity implements Serializable
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class detailedViewActivity extends BaseActivity implements Serializable
 {
     public TextView detailed_title;
     public TextView detailed_text;

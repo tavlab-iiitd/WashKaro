@@ -1,8 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +8,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class select_misc_activity extends AppCompatActivity implements View.OnClickListener {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+
+public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 
     LinearLayout misc_buttons[] = new LinearLayout[10];
     int curr_lang =2;
@@ -38,18 +37,18 @@ public class select_misc_activity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if(view == misc_buttons[0]){
-            Intent i = new Intent(select_misc_activity.this,map_activity.class);
+            Intent i = new Intent(selectMiscActivity.this, mapActivity.class);
             i.putExtra("Language",Lang_extra);
             startActivity(i);
 
         }
         if(view == misc_buttons[1]){
-            Intent i = new Intent(select_misc_activity.this,daily_guidelines.class);
+            Intent i = new Intent(selectMiscActivity.this, dailyGuidelinesActivity.class);
             i.putExtra("Language",Lang_extra);
             startActivity(i);
         }
         if(view == misc_buttons[2]){
-            Intent i = new Intent(select_misc_activity.this,Myths.class);
+            Intent i = new Intent(selectMiscActivity.this, mythsActivity.class);
             i.putExtra("Language",Lang_extra);
             startActivity(i);
         }
@@ -81,17 +80,17 @@ public class select_misc_activity extends AppCompatActivity implements View.OnCl
                 change_to_hindi();
             }
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(select_misc_activity.this, Male_Female.class);
+            Intent i = new Intent(selectMiscActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(select_misc_activity.this, about.class);
+            Intent i = new Intent(selectMiscActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(select_misc_activity.this, privacy_policy.class);
+            Intent i = new Intent(selectMiscActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
 
