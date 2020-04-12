@@ -285,30 +285,25 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             viewFlipper.showNext();
         }
 
-        if (view == ll_but[0]) {
-            Intent i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
-            startActivity(i);
-        }
-        if (view == ll_but[1]) {
-            Intent i = new Intent(homeActivity.this, symptomActivity.class);
-            startActivity(i);
-        }
-        if (view == ll_but[2]) {
-            Intent i = new Intent(homeActivity.this, MainActivity.class);
-            startActivity(i);
-        }
-        if (view == ll_but[3]) {
-            Intent i = new Intent(homeActivity.this, onAIrActivity.class);
-            startActivity(i);
-        }
-        if (view == ll_but[4]) {
-            Intent i = new Intent(homeActivity.this, selectChatBotActivity.class);
-            startActivity(i);
-        }
-        if (view == ll_but[5]) {
-            Intent i = new Intent(homeActivity.this, selectMiscActivity.class);
-            startActivity(i);
+        Intent i = null;
 
+        if (view == ll_but[0]) {
+            i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
+        } else if (view == ll_but[1]) {
+            i = new Intent(homeActivity.this, symptomActivity.class);
+        } else if (view == ll_but[2]) {
+            i = new Intent(homeActivity.this, MainActivity.class);
+        } else  if (view == ll_but[3]) {
+            i = new Intent(homeActivity.this, onAIrActivity.class);
+        }else if (view == ll_but[4]) {
+            i = new Intent(homeActivity.this, selectChatBotActivity.class);
+        }else if (view == ll_but[5]) {
+            i = new Intent(homeActivity.this, selectMiscActivity.class);
+        }
+
+        if(i!=null) {
+            startActivity(i);
+//            finish();
         }
     }
 
