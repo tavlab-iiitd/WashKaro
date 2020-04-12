@@ -128,14 +128,15 @@ public class maleFemaleActivity extends BaseActivity {
 
         //progDailog = ProgressDialog.show(this, "Loading","Please wait...", true);
         //progDailog.setCancelable(false);
-        Intent i = this.getIntent();
-        String lan = i.getStringExtra("Language");
 
-        if (lan.equalsIgnoreCase("hindi"))
-            switch_to_hindi();
-        else
-            switch_to_eng();
-        //switch_to_hindi();
+        switch (getCurLang()) {
+            case englishCode:
+                switch_to_eng();
+                break;
+            case hindiCode:
+                switch_to_hindi();
+                break;
+        }
 
     }
 

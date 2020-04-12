@@ -183,8 +183,6 @@
     <string name="chirag">Chirag Jain</string>
     <string name="chirag_tag">Undergraduate, IIIT Delhi</string>
 
-    <string name="development_team">Development Team</string>
-
     <string name="pk">Dr. Ponnurangam Kumaraguru</string>
     <string name="pk_description">Professor (CSE), IIIT Delhi</string>
     <string name="tav">Dr. Tavpritesh Sethi</string>
@@ -204,26 +202,21 @@
     
     <string name="bhavika">Bhavika Rana</string>
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
-    
-    <string name="mentors">Mentor Team</string>
-    
-    <string name="lovedeep">Lovedeep Singh Dhingra</string>
-    <string name="arushi">Arushi Lajja</string>
-    <string name="mudit">Mudit Agarwal</string>
-    <string name="vrinda">Vrinda Narayan</string>
-    <string name="samprati">Samprati</string>
 
 <!--    WK Activities-->
     <string name="govt_updates_act" translatable="false">Government Updates</string>
     <string name="govt_updates_act_hi" translatable="false">सरकारी जानकारी</string>
-    <string name="guidelines_act" translatable="false">Guidelines(By WHO)</string>
-    <string name="guidelines_act_hi" translatable="false">दिशा निर्देश (WHO के द्वारा)</string>
-    <string name="myth_act" translatable="false">Myth Busters(By WHO)</string>
-    <string name="myth_act_hi" translatable="false">मिथक(WHO के द्वारा)</string>
+    <string name="guidelines_act">Guidelines(By WHO)</string>
+    <string name="myth_act">Myth Busters(By WHO)</string>
     <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>
 
 <!--    Myths-->
     <string name="play_audio">PLAY AUDIO</string>
     <string name="playing">PLAYING</string>
+
+<!--    Tiles-->
+    <string name="india_covid_map_tiles">India COVID Map</string>
+    <string name="who_guidelines_tile">WHO Guidelines</string>
+    <string name="myth_busters_tile">Myth Busters</string>
 
 </resources>

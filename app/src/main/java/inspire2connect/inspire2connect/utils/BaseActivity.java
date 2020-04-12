@@ -53,5 +53,9 @@ public class BaseActivity extends AppCompatActivity {
         mActivity.recreate();
     }
 
+    public static String getCurLang() {
+        return Locale.getDefault().getLanguage();
+    }
+
 
 }

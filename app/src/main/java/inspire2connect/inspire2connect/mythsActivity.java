@@ -34,7 +34,6 @@ public class mythsActivity extends BaseActivity {
     TextView centre;
     DatabaseReference dref;
     DatabaseReference d;
-    int curr_lang = 2;  // 2 for hindi  1 for eng
     private RecyclerView recyclerView;
     private myths_adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -56,10 +55,9 @@ public class mythsActivity extends BaseActivity {
     }
 
     private void setGuidelinesHindi() {
-        curr_lang = 2;
         //centre = (TextView) findViewById(R.id.centre_view);
         //centre.setText("मिथक(WHO के द्वारा)");
-        getSupportActionBar().setTitle(R.string.myth_act_hi);
+        getSupportActionBar().setTitle(R.string.myth_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
@@ -92,11 +90,10 @@ public class mythsActivity extends BaseActivity {
     }
 
     private void setGuidelinesEnglish() {
-        curr_lang = 1;
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setTypeface(null, Typeface.BOLD);
         //guid_view.setText("Myth Busters(By WHO)");
-        getSupportActionBar().setTitle(R.string.myth_act_hi);
+        getSupportActionBar().setTitle(R.string.myth_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
@@ -147,13 +144,15 @@ public class mythsActivity extends BaseActivity {
         mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerView);
-        Intent i = this.getIntent();
-        String lan = i.getStringExtra("Language");
-        if (lan.equalsIgnoreCase("hindi"))
-            setGuidelinesHindi();
-        else
-            setGuidelinesEnglish();
 
+        switch (getCurLang()) {
+            case englishCode:
+                setGuidelinesEnglish();
+                break;
+            case hindiCode:
+                setGuidelinesHindi();
+                break;
+        }
 
         //populate_recycler_view(temp);
     }
@@ -170,21 +169,9 @@ public class mythsActivity extends BaseActivity {
 
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            //switch_language();
             toggleLang(this);
-            if (curr_lang == 2) {
-                curr_lang = 1;
-                setGuidelinesEnglish();
-            } else {
-                curr_lang = 2;
-                setGuidelinesHindi();
-            }
         } else if (id == R.id.Survey) {
             Intent i = new Intent(mythsActivity.this, maleFemaleActivity.class);
-            if (curr_lang == 2)
-                i.putExtra("Language", "hindi");
-            else
-                i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
             Intent i = new Intent(mythsActivity.this, aboutActivity.class);

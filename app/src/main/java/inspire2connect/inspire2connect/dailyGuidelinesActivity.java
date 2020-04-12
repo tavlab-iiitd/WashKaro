@@ -32,7 +32,6 @@ public class dailyGuidelinesActivity extends BaseActivity {
     DatabaseReference d;
     TextView centre;
     ArrayList<myth_single_object> result;
-    int curr_lang = 2;//1 for eng , 2 for Hinf=di
     private RecyclerView recyclerView;
     private myths_adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -71,13 +70,13 @@ public class dailyGuidelinesActivity extends BaseActivity {
     }
 
     private void setGuidelinesHindi() {
-        curr_lang = 2;
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setText("दिशा निर्देश (WHO के द्वारा)");
-        getSupportActionBar().setTitle(R.string.guidelines_act_hi);
+        getSupportActionBar().setTitle(R.string.guidelines_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
+
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -106,7 +105,6 @@ public class dailyGuidelinesActivity extends BaseActivity {
     }
 
     private void setGuidelinesEnglish() {
-        curr_lang = 1;
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setTypeface(null, Typeface.BOLD);
         //guid_view.setText("Guidelines(By WHO)");
@@ -164,15 +162,15 @@ public class dailyGuidelinesActivity extends BaseActivity {
         mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerView);
-        Intent i = this.getIntent();
-        String lan = i.getStringExtra("Language");
-        if (lan.equalsIgnoreCase("hindi"))
-            setGuidelinesHindi();
-        else
-            setGuidelinesEnglish();
 
-
-        //populate_recycler_view(temp);
+        switch (getCurLang()) {
+            case englishCode:
+                setGuidelinesEnglish();
+                break;
+            case hindiCode:
+                setGuidelinesHindi();
+                break;
+        }
     }
 
     @Override
@@ -205,20 +203,8 @@ public class dailyGuidelinesActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            //switch_language();
-            if (curr_lang == 2) {
-                curr_lang = 1;
-                setGuidelinesEnglish();
-            } else {
-                curr_lang = 2;
-                setGuidelinesHindi();
-            }
         } else if (id == R.id.Survey) {
             Intent i = new Intent(dailyGuidelinesActivity.this, maleFemaleActivity.class);
-            if (curr_lang == 2)
-                i.putExtra("Language", "hindi");
-            else
-                i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
             Intent i = new Intent(dailyGuidelinesActivity.this, aboutActivity.class);

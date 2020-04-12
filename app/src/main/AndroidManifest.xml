@@ -31,7 +31,7 @@
         <activity android:name=".text2speech2_2Activity" />
         <activity android:name=".aboutActivity" />
         <activity android:name=".onAIrActivity" />
-        <activity android:name=".add_new" />
+<!--        <activity android:name=".add_new" />-->
         <activity android:name=".improveActivity" />
         <activity android:name=".Text2SpeechActivity" />
 <!--        <activity android:name=".Infographic" />-->
