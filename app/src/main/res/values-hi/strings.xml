@@ -168,10 +168,10 @@
     <string name="title_activity_settings">समायोजन</string>
 
     <string name="guidelines_act">दिशा निर्देश (WHO के द्वारा)</string>
-    <string name="myth_act">मिथक(WHO के द्वारा)</string>
+    <string name="myth_act">मिथक (WHO के द्वारा)</string>
 
     <!--    Tiles-->
-    <string name="india_covid_map_tiles">भारत कॉविड नक्शा</string>
+    <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
     <string name="myth_busters_tile">मिथक</string>
 

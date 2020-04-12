@@ -57,7 +57,6 @@ public class mythsActivity extends BaseActivity {
     private void setGuidelinesHindi() {
         //centre = (TextView) findViewById(R.id.centre_view);
         //centre.setText("मिथक(WHO के द्वारा)");
-        getSupportActionBar().setTitle(R.string.myth_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
@@ -93,7 +92,6 @@ public class mythsActivity extends BaseActivity {
         //TextView guid_view = (TextView) findViewById(R.id.centre_view);
         //guid_view.setTypeface(null, Typeface.BOLD);
         //guid_view.setText("Myth Busters(By WHO)");
-        getSupportActionBar().setTitle(R.string.myth_act);
         FirebaseApp.initializeApp(this);
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Myth");
@@ -143,6 +141,7 @@ public class mythsActivity extends BaseActivity {
         result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
         mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.myth_act);
         recyclerView = findViewById(R.id.recyclerView);
 
         switch (getCurLang()) {

@@ -45,9 +45,6 @@
     <string name="del">Delhi</string>
     <string name="nondel">Outside Delhi</string>
     <string name="begin">Begin</string>
-    <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
 
     <string name="label_phone_auth">Phone Number Authentication</string>
     <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
@@ -210,12 +207,22 @@
     <string name="myth_act">Myth Busters(By WHO)</string>
     <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>
 
+<!--    Who Chatbot-->
+    <string name="who_chatbot">WHO Chatbot</string>
+    <string name="delhi_gov_helpdesk">Delhi Gov Corona Helpdesk</string>
+    <string name="my_gov_helpdesk">MyGov Corona Helpdesk</string>
+    <string name="chat_now">Chat Now</string>
+    <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
+
 <!--    Myths-->
     <string name="play_audio">PLAY AUDIO</string>
     <string name="playing">PLAYING</string>
 
 <!--    Tiles-->
-    <string name="india_covid_map_tiles">India COVID Map</string>
+    <string name="chatbot_tile">Chatbot</string>
+    <string name="india_covid_map_tile">India COVID Map</string>
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
 
