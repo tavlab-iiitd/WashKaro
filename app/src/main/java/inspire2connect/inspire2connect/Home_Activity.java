@@ -55,9 +55,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 
-public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
+public class Home_Activity extends BaseActivity implements View.OnClickListener {
 
     //    AdapterViewFlipper adapterViewFlipper;
 //    FirebaseStorage firebaseStorage;
@@ -186,7 +188,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         anim4 = AnimationUtils.loadAnimation(this, R.anim.anim4);
         flip_left = (ImageButton) findViewById(R.id.flipperLeft);
         flip_right = (ImageButton) findViewById(R.id.flipperRight);
-        switchLang();
+//        switchLang();
 //        corona_helpline = (TextView)findViewById(R.id.Corona_helpline_text);
 //        live_data=(TextView)findViewById(R.id.state_helpline_text);
 
@@ -335,7 +337,6 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(Home_Activity.this, "Language Changed", Toast.LENGTH_SHORT).show();
             switch_language();
 
         } else if (id == R.id.Survey) {
@@ -359,15 +360,22 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     public void switch_language() {
         if (curr_lang == 1) {
             curr_lang = 2;
             intentLangExtra = "hindi";
+            changeLang(this, hindiCode);
         } else {
             curr_lang = 1;
             intentLangExtra = "english";
+            changeLang(this, englishCode);
         }
-        switchLang();
+//        switchLang();
     }
 
     public void switchLang() {

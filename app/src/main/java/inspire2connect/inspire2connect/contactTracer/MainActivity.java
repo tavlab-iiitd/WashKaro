@@ -42,6 +42,7 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
 import inspire2connect.inspire2connect.contactTracer.models.User;
 import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -85,6 +86,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
