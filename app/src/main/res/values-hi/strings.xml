@@ -177,6 +177,17 @@
     <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
     <string name="myth_busters_tile">मिथक</string>
+    <string name="govt_advisory_tile">सरकारी निर्देश</string>
+    <string name="symptom_tracker_tile">लक्षण ट्रैकर</string>
+    <string name="contact_tracer_tile">संपर्क ट्रेसर</string>
+    <string name="chatbot_tile">चैटबॉट</string>
+    <string name="onair_tile">समाचार</string>
+    <string name="misc_tile">अधिक जानकारी</string>
+    <string name="passengers_screened_tile">हवाई अड्डे पर यात्री जांच</string>
+    <string name="active_case_tile">सक्रिय COVID19 रोगी</string>
+    <string name="cured_case_tile">कुल ठीक व्यक्ति</string>
+    <string name="death_case_tile">कुल मौत</string>
+    <string name="migrated_patient_tile">प्रव्रजनित व्यक्ति</string>
 
     <!--    SymptomActivity-->
     <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>

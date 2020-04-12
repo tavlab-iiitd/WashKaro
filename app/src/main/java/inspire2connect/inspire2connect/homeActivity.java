@@ -59,8 +59,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     DatabaseReference dRef;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     ImageButton[] img_but = new ImageButton[10];
-    int curr_lang = 1; //1 for eng , 2 for hindi
-    String intentLangExtra = "english";
     //    DatabaseReference dref;
     ImageButton flip_left, flip_right;
     Animation anim_in, anim_out, anim1, anim2, anim3, anim4;
@@ -127,12 +125,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         slideLists = new ArrayList<>();
         slideLists = new ArrayList<>();
-        ll_but[0] = findViewById(R.id.img_but_lay1);
-        ll_but[1] = findViewById(R.id.img_but_lay2);
-        ll_but[2] = findViewById(R.id.img_but_lay3);
-        ll_but[3] = findViewById(R.id.img_but_lay4);
-        ll_but[4] = findViewById(R.id.img_but_lay5);
-        ll_but[5] = findViewById(R.id.img_but_lay6);
+        ll_but[0] = findViewById(R.id.advisories_tile);
+        ll_but[1] = findViewById(R.id.symptom_tracker_tile);
+        ll_but[2] = findViewById(R.id.contact_tracer_tile);
+        ll_but[3] = findViewById(R.id.onair_tile);
+        ll_but[4] = findViewById(R.id.chatbot_tile);
+        ll_but[5] = findViewById(R.id.more_info_tile);
 //        ll_but[6] = findViewById(R.id.img_but_lay7);
 //        ll_but[7] = findViewById(R.id.img_but_lay8);
 //        ll_but[8] = findViewById(R.id.img_but_lay9);
@@ -190,6 +188,15 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         flipper_single_tap();
         fetchset_MOHFW_data();
 
+        switch (getCurLang()) {
+            case englishCode:
+                setEnglishFlipper();
+                break;
+            case hindiCode:
+                setHindiFlipper();
+                break;
+        }
+
 
     }
 
@@ -207,7 +214,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         viewFlipper.addView(imageView);
     }
 
-    private void usingFirebaseDatabase() {
+    private void setHindiFlipper() {
         databaseReference.child("Infographic").child("Hindi")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -281,24 +288,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         if (view == ll_but[0]) {
             Intent i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
-            i.putExtra("Language", intentLangExtra);
-            //Toast.makeText(Home_Activity.this,"Button Clicked 1 ",Toast.LENGTH_SHORT).show();
             startActivity(i);
         }
         if (view == ll_but[1]) {
             Intent i = new Intent(homeActivity.this, symptomActivity.class);
-            i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[2]) {
-            //Put contact tracer here
             Intent i = new Intent(homeActivity.this, MainActivity.class);
-            i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[3]) {
             Intent i = new Intent(homeActivity.this, onAIrActivity.class);
-            i.putExtra("Language", intentLangExtra);
             startActivity(i);
         }
         if (view == ll_but[4]) {
@@ -307,7 +308,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         }
         if (view == ll_but[5]) {
             Intent i = new Intent(homeActivity.this, selectMiscActivity.class);
-            i.putExtra("Language", intentLangExtra);
             startActivity(i);
 
         }
@@ -323,14 +323,9 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            switch_language();
-
+            toggleLang(this);
         } else if (id == R.id.Survey) {
             Intent i = new Intent(homeActivity.this, maleFemaleActivity.class);
-            if (curr_lang == 2)
-                i.putExtra("Language", "hindi");
-            else
-                i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
             Intent i = new Intent(homeActivity.this, aboutActivity.class);
@@ -347,77 +342,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
-    }
-
-    public void switch_language() {
-
-        toggleLang(this);
-
-        if (curr_lang == 1) {
-            curr_lang = 2;
-            intentLangExtra = "hindi";
-        } else {
-            curr_lang = 1;
-            intentLangExtra = "english";
-        }
-//        switchLang();
-    }
-
-    public void switchLang() {
-
-        if (curr_lang == 1) {
-            //get_english_live_data();
-            TextView t1 = findViewById(R.id.imgbut_text1);
-            TextView t2 = findViewById(R.id.imgbut_text2);
-            TextView t3 = findViewById(R.id.imgbut_text3);
-            TextView t4 = findViewById(R.id.imgbut_text4);
-            TextView t5 = findViewById(R.id.imgbut_text5);
-            TextView t6 = findViewById(R.id.imgbut_text6);
-            //TextView t7 = (TextView)findViewById(R.id.imgbut_text5);
-//            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
-//            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
-
-            t1.setText("Govt Advisory");
-            t2.setText("Symptom Tracker");
-            t3.setText("Contact Tracer");
-            t4.setText("onAIr");
-            t5.setText("Chatbots");
-            t6.setText("More Information");
-//            t9.setText("News");
-////            t10.setText("Symptom Tracker");
-            //t7.setText("News");
-            mohfw_tv1.setText("Passesgers screened at airport");
-            mohfw_tv2.setText("Active COVID19\n Cases");
-            mohfw_tv3.setText("Cured/Discharged Cases");
-            mohfw_tv4.setText("Death \nCases");
-            mohfw_tv5.setText("Migrated\nPatient");
-            setEnglishFlipper();
-        } else {
-            //get_hindi_live_data();
-            TextView t1 = findViewById(R.id.imgbut_text1);
-            TextView t2 = findViewById(R.id.imgbut_text2);
-            TextView t3 = findViewById(R.id.imgbut_text3);
-            TextView t4 = findViewById(R.id.imgbut_text4);
-            TextView t5 = findViewById(R.id.imgbut_text5);
-            TextView t6 = findViewById(R.id.imgbut_text6);
-//            TextView t9 = (TextView) findViewById(R.id.imgbut_text9);
-//            TextView t10 = (TextView) findViewById(R.id.imgbut_text10);
-            t1.setText("सरकारी निर्देश");
-            t2.setText("लक्षण ट्रैकर");
-            t3.setText("संपर्क ट्रेसर");
-            t4.setText("समाचार");
-            t5.setText("चैटबॉट");
-            t6.setText("अधिक जानकारी");
-//            t9.setText("समाचार");
-//            t10.setText("लक्षण ट्रैकर");
-            //t6.setText("MapMyIndia लाइव ट्रैकर");
-            mohfw_tv1.setText("हवाई अड्डे पर यात्री जांच");
-            mohfw_tv2.setText("सक्रिय COVID19 रोगी");
-            mohfw_tv3.setText("कुल ठीक व्यक्ति ");
-            mohfw_tv4.setText("कुल मौत");
-            mohfw_tv5.setText("प्रव्रजनित व्यक्ति");
-            usingFirebaseDatabase();
-        }
     }
 
     public void setEnglishFlipper() {

@@ -95,56 +95,10 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/mohfw_ll1"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:clipToPadding="false"
-                            android:background="@drawable/buttonback2"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/mohfw_iv1"
-                                style="@android:style/Widget.Material.Light.ImageButton"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:background="#FFFFFF"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/ic_stat1" />
-
-                            <TextView
-                                android:id="@+id/mohfw_tv1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Passesgers screened at airport"
-                                android:textAlignment="center"
-                                android:fontFamily="@font/mukta_bold"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
-
-                            <TextView
-                                android:id="@+id/mohfw_data1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="xxxx"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
                             android:id="@+id/mohfw_ll2"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="1dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
@@ -168,7 +122,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="Active COVID19 Cases"
+                                android:text="@string/active_case_tile"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -178,7 +132,7 @@
                                 android:id="@+id/mohfw_data2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="xxxx"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -214,7 +168,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="Cured or Discharged Cases"
+                                android:text="@string/cured_case_tile"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -224,7 +178,7 @@
                                 android:id="@+id/mohfw_data3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="xxxx"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -261,7 +215,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/mukta_bold"
-                                android:text="Death \nCases"
+                                android:text="@string/death_case_tile"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_text" />
@@ -270,7 +224,7 @@
                                 android:id="@+id/mohfw_data4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="xxxx"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -306,7 +260,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="Migrated Patient"
+                                android:text="@string/migrated_patient_tile"
                                 android:textAlignment="center"
                                 android:fontFamily="@font/mukta_bold"
                                 android:textColor="@color/blackcolor"
@@ -316,7 +270,53 @@
                                 android:id="@+id/mohfw_data5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="xxxx"
+                                android:text="@string/empty_stats"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_val"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mohfw_ll1"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:clipToPadding="false"
+                            android:background="@drawable/buttonback2"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv1"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_stat1" />
+
+                            <TextView
+                                android:id="@+id/mohfw_tv1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@string/passengers_screened_tile"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mukta_bold"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text" />
+
+                            <TextView
+                                android:id="@+id/mohfw_data1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -344,7 +344,7 @@
                     android:layout_marginBottom="8dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/img_but_lay1"
+                        android:id="@+id/advisories_tile"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:background="@drawable/buttonback2"
@@ -378,7 +378,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
-                            android:text="Advisories"
+                            android:text="@string/govt_advisory_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"
@@ -387,7 +387,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/img_but_lay2"
+                        android:id="@+id/symptom_tracker_tile"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_alignParentEnd="true"
@@ -421,7 +421,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Symptom Tracker"
+                            android:text="@string/symptom_tracker"
                             android:textAlignment="center"
                             android:fontFamily="@font/mukta_semibold"
                             android:textColor="@color/blackcolor"
@@ -443,10 +443,10 @@
                     android:layout_marginBottom="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay3"
+                    android:id="@+id/contact_tracer_tile"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
-                    android:layout_below="@id/img_but_lay1"
+                    android:layout_below="@id/advisories_tile"
                     android:layout_marginRight="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
@@ -477,7 +477,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Contact Tracer"
+                        android:text="@string/contact_tracer_tile"
                         android:textAlignment="center"
                         android:fontFamily="@font/mukta_semibold"
                         android:textColor="@color/blackcolor"
@@ -487,10 +487,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay4"
+                    android:id="@+id/onair_tile"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
-                    android:layout_below="@id/img_but_lay1"
+                    android:layout_below="@id/advisories_tile"
                     android:layout_alignParentEnd="true"
                     android:layout_marginLeft="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
@@ -521,7 +521,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="onAIr"
+                        android:text="@string/onair_tile"
                         android:fontFamily="@font/mukta_semibold"
                         android:textAlignment="center"
                         android:textColor="@color/blackcolor"
@@ -543,10 +543,10 @@
                     android:layout_marginBottom="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay6"
+                    android:id="@+id/more_info_tile"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
-                    android:layout_below="@id/img_but_lay4"
+                    android:layout_below="@id/onair_tile"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
@@ -577,7 +577,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Miscellaneous"
+                        android:text="@string/misc_tile"
                         android:fontFamily="@font/mukta_semibold"
                         android:textAlignment="center"
                         android:textColor="@color/blackcolor"
@@ -588,10 +588,10 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/img_but_lay5"
+                    android:id="@+id/chatbot_tile"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
-                    android:layout_below="@id/img_but_lay3"
+                    android:layout_below="@id/contact_tracer_tile"
                     android:layout_marginLeft="@dimen/home_card_horizontal_margin"
                     android:background="@drawable/buttonback2"
                     android:clickable="true"
@@ -625,7 +625,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Chatbots"
+                        android:text="@string/chatbot_tile"
                         android:textAlignment="center"
                         android:fontFamily="@font/mukta_semibold"
                         android:textColor="@color/blackcolor"

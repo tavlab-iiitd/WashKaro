@@ -226,11 +226,20 @@
     <string name="playing">PLAYING</string>
 
 <!--    Tiles-->
-    <string name="chatbot_tile">Chatbot</string>
-    <string name="onair_tile">onAIr</string>
-    <string name="misc_tile">Misc</string>
     <string name="india_covid_map_tile">India COVID Map</string>
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
+    <string name="empty_stats" translatable="false">0</string>
+    <string name="govt_advisory_tile">Govt Advisory</string>
+    <string name="symptom_tracker_tile">Symptom Tracker</string>
+    <string name="contact_tracer_tile">Contact Tracer</string>
+    <string name="chatbot_tile">Chatbots</string>
+    <string name="onair_tile">onAIr</string>
+    <string name="misc_tile">More Info</string>
+    <string name="passengers_screened_tile">Passesgers screened at airport</string>
+    <string name="active_case_tile">Active COVID19 Cases</string>
+    <string name="cured_case_tile">Cured or Discharged Cases</string>
+    <string name="death_case_tile">Death Cases</string>
+    <string name="migrated_patient_tile">Migrated Patients</string>
 
 </resources>
