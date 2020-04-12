@@ -222,6 +222,7 @@
 
 <!--    Tiles-->
     <string name="chatbot_tile">Chatbot</string>
+    <string name="onair_tile">onAIr</string>
     <string name="india_covid_map_tile">India COVID Map</string>
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>

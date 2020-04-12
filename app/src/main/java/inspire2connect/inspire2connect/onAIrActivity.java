@@ -151,6 +151,7 @@ public class onAIrActivity extends BaseActivity {
         // Making notification bar transparent
 //        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.onair_tile);
 
         requestPermission();
 
