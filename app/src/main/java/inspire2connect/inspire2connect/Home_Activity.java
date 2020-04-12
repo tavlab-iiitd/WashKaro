@@ -323,40 +323,6 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             startActivity(i);
 
         }
-
-
-//        if (view == ll_but[6] ) {
-//            String nmbr = "+919013151515";
-//            openWhatsapp(nmbr);
-//        }
-//        if (view == ll_but[7]  || view==img_but[7]) {
-//            String nmbr = "+41798931892";
-//            openWhatsapp(nmbr);
-//        }
-//        if(view==ll_but[8]  || view==img_but[8])
-//        {
-//            Intent i = new Intent(Home_Activity.this,CardViewActivity.class);
-//            i.putExtra("Language", intentLangExtra);
-//            startActivity(i);
-//        }
-//        if(view==ll_but[9]  || view==img_but[9])
-//        {
-//            Intent i = new Intent(Home_Activity.this,symptom_activity.class);
-//            i.putExtra("Language", intentLangExtra);
-//            startActivity(i);
-//        }
-//        if (view == corona_helpline) {
-//            Intent callintent = new Intent(Intent.ACTION_DIAL);
-//            callintent.setData(Uri.parse("tel:" + corona_helpline.getText().toString()));
-//            startActivity(callintent);
-//        }
-    }
-
-    private void openWhatsapp(String nmbr) {
-        String url = "https://api.whatsapp.com/send?phone=" + nmbr;
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
     }
 
     @Override
