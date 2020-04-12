@@ -53,6 +53,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
@@ -366,14 +367,15 @@ public class Home_Activity extends BaseActivity implements View.OnClickListener 
     }
 
     public void switch_language() {
+
+        toggleLang(this);
+
         if (curr_lang == 1) {
             curr_lang = 2;
             intentLangExtra = "hindi";
-            changeLang(this, hindiCode);
         } else {
             curr_lang = 1;
             intentLangExtra = "english";
-            changeLang(this, englishCode);
         }
 //        switchLang();
     }

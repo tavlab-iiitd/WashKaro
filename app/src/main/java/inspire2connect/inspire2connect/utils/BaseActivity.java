@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
 
@@ -32,5 +34,24 @@ public class BaseActivity extends AppCompatActivity {
         LocaleHelper.setLocale(mActivity, code);
         mActivity.recreate();
     }
+
+    public static void toggleLang(Activity mActivity) {
+
+        String curLang = Locale.getDefault().getLanguage();
+
+        switch (curLang) {
+            case englishCode:
+                LocaleHelper.setLocale(mActivity, hindiCode);
+                break;
+            case hindiCode:
+                LocaleHelper.setLocale(mActivity, englishCode);
+                break;
+            default:
+                Logv("language-washkaro", "wrong language: " + curLang);
+                break;
+        }
+        mActivity.recreate();
+    }
+
 
 }
