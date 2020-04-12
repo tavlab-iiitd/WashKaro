@@ -33,7 +33,7 @@
     <string name="no">No</string>
     <string name="maybe">Maybe</string>
     <string name="nextQues">NEXT</string>
-    <string name="mainMenu">Back to Main Menu</string>
+    <string name="back_to_main_menu">Back to Main Menu</string>
     <string name="english">English</string>
     <string name="hindi">Hindi</string>
     <string name="language">What is your preferred language?</string>
@@ -214,6 +214,12 @@
     <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
     <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
     <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
+
+    <string name="please_select_one_choice">Please select one choice</string>
+
+<!--    SymptomActivity-->
+    <string name="covid_is_present">You are suspected of having COVID 19</string>
+    <string name="covid_is_not_present">You are not suspected of having COVID 19</string>
 
 <!--    Myths-->
     <string name="play_audio">PLAY AUDIO</string>

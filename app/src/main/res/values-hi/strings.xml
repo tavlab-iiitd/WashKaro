@@ -34,7 +34,7 @@
     <string name="no">No</string>
     <string name="maybe">Maybe</string>
     <string name="nextQues">NEXT</string>
-    <string name="mainMenu">Back to Main Menu</string>
+    <string name="back_to_main_menu">मुख्य मेनू में वापस जाएं</string>
     <string name="english" translatable="false">English</string>
     <string name="hindi">Hindi</string>
     <string name="language">What is your preferred language?</string>
@@ -167,6 +167,8 @@
     <string name="privacy_policy_key" translatable="false">privacy_policy</string>
     <string name="title_activity_settings">समायोजन</string>
 
+    <string name="please_select_one_choice">कृपया एक विकल्प चुनें</string>
+
     <string name="guidelines_act">दिशा निर्देश (WHO के द्वारा)</string>
     <string name="myth_act">मिथक (WHO के द्वारा)</string>
     <string name="govt_updates_act">सरकारी जानकारी</string>
@@ -175,5 +177,9 @@
     <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
     <string name="myth_busters_tile">मिथक</string>
+
+    <!--    SymptomActivity-->
+    <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>
+    <string name="covid_is_not_present">आपको COVID 19 होने का संदेह नहीं है</string>
 
 </resources>

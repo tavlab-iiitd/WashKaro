@@ -112,11 +112,16 @@ public class QuestionsActivity extends BaseActivity {
         rb1 = findViewById(R.id.yesButton);
         rb2 = findViewById(R.id.noButton);
         final TextView textView = findViewById(R.id.pageNo);
-        Intent prev_intent = getIntent();
-        if (prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi"))
-            curr_lang = 2;
-        else
-            curr_lang = 1;        //String name= intent.getStringExtra("myname");
+
+        switch (getCurLang()) {
+            case englishCode:
+                curr_lang = 1;
+                break;
+            case hindiCode:
+                curr_lang = 2;
+                break;
+        }
+
         textView.setText((flag + 1) + "/7");
         ans = new int[7];
         submitbutton = findViewById(R.id.nextQues);
@@ -125,12 +130,8 @@ public class QuestionsActivity extends BaseActivity {
             ans[i] = 0;
         if (curr_lang == 2) {
             questions = questionsHindi;
-            rb1.setText("हाँ");
-            rb2.setText("नहीं");
-            submitbutton.setText("आगे");
         } else {
             questions = questionsEnglish;
-            submitbutton.setText("Next");
         }
         tv = findViewById(R.id.question);
 
@@ -141,21 +142,17 @@ public class QuestionsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (radio_g.getCheckedRadioButtonId() == -1) {
-                    if (curr_lang == 1)
-                        Toast.makeText(getApplicationContext(), "Please select one choice", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getApplicationContext(), "कृपया एक विकल्प चुनें", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getApplicationContext(), getString(R.string.please_select_one_choice), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 RadioButton uans = findViewById(radio_g.getCheckedRadioButtonId());
                 String ansText = uans.getText().toString();
                 if (radio_g.getCheckedRadioButtonId() == R.id.yesButton) {
                     ans[flag] = 1;
-                    Log.d("Testing", "Yes selected");
+                    Logd("Testing", "Yes selected");
                 } else {
                     ans[flag] = 2;
-                    Log.d("Testing", "No selected");
+                    Logd("Testing", "No selected");
                 }
 //                if(ansText.equals("Yes"))
 //                {
@@ -171,10 +168,6 @@ public class QuestionsActivity extends BaseActivity {
                     tv.setText(questions[flag]);
                 } else {
                     Intent in = new Intent(getApplicationContext(), ResultActivity.class);
-                    if (curr_lang == 1)
-                        in.putExtra("Language", "english");
-                    else
-                        in.putExtra("Language", "hindi");
                     startActivity(in);
                 }
                 radio_g.clearCheck();

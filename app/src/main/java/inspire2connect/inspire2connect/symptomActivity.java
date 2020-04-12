@@ -27,11 +27,15 @@ public class symptomActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom_activity);
 
-        Intent i = getIntent();
-        if (i.getStringExtra("Language").equalsIgnoreCase("hindi"))
-            curr_lang = 2;
-        else
-            curr_lang = 1;
+        switch (getCurLang()) {
+            case englishCode:
+                curr_lang = 1;
+                break;
+            case hindiCode:
+                curr_lang = 2;
+                break;
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.symptom_tracker);
         String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
@@ -51,7 +55,6 @@ public class symptomActivity extends BaseActivity {
     public boolean onSupportNavigateUp() {
 
         finish();
-        //return super.onSupportNavigateUp();
         return true;
     }
 
@@ -66,21 +69,8 @@ public class symptomActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
-            if (curr_lang == 2) {
-                curr_lang = 1;
-
-            } else {
-                curr_lang = 2;
-
-            }
-            switch_language();
-
         } else if (id == R.id.Survey) {
             Intent i = new Intent(symptomActivity.this, maleFemaleActivity.class);
-            if (curr_lang == 2)
-                i.putExtra("Language", "hindi");
-            else
-                i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
             Intent i = new Intent(symptomActivity.this, aboutActivity.class);
@@ -92,19 +82,6 @@ public class symptomActivity extends BaseActivity {
 
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void switch_language() {
-        String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
-        String button_text = "BEGIN";
-        if (curr_lang == 2) {
-            title2 = "<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
-            button_text = "शुरू करो";
-        }
-        Button b = findViewById(R.id.startButton);
-        b.setText(button_text);
-        TextView t = findViewById(R.id.title2Text);
-        t.setText(Html.fromHtml(title2));
     }
 
     public void onClickStart(View view) {
@@ -124,10 +101,6 @@ public class symptomActivity extends BaseActivity {
 //        }else {
 //            intent.putExtra("language", "english");
 //        }
-        if (curr_lang == 1)
-            intent.putExtra("Language", "english");
-        else
-            intent.putExtra("Language", "hindi");
 
         startActivity(intent);
     }

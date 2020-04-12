@@ -45,15 +45,10 @@ public class ResultActivity extends BaseActivity {
         ref = FirebaseDatabase.getInstance().getReference();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent prev_intent = getIntent();
         tv = findViewById(R.id.prediction);
         tv2 = findViewById(R.id.nameDisp);
         btnRestart = findViewById(R.id.backbutton);
-        if (prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi")) {
-            btnRestart.setText("मुख्य मेनू में वापस जाएं");
-        } else {
-            btnRestart.setText("Back To Main Menu");
-        }
+
         StringBuffer sb = new StringBuffer();
         int[] ans = QuestionsActivity.ans;
         boolean val = true;
@@ -112,18 +107,11 @@ public class ResultActivity extends BaseActivity {
                 val = true;
             }
         }
-        if (prev_intent.getStringExtra("Language").equalsIgnoreCase("hindi")) {
-            if (val) {
-                sb.append("आपको COVID 19 होने का संदेह है");
-            } else {
-                sb.append("आपको COVID 19 होने का संदेह नहीं है");
-            }
+
+        if (val) {
+            sb.append(getString(R.string.covid_is_present));
         } else {
-            if (val) {
-                sb.append("You are suspected of having COVID 19");
-            } else {
-                sb.append("You are not suspected of having COVID 19");
-            }
+            sb.append(getString(R.string.covid_is_not_present));
         }
 
         tv.setText(sb);
