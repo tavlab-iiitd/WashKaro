@@ -1,6 +1,7 @@
 package inspire2connect.inspire2connect.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +51,11 @@ public class BaseActivity extends AppCompatActivity {
                 Logv("language-washkaro", "wrong language: " + curLang);
                 break;
         }
-        mActivity.recreate();
+        Intent i = new Intent(mActivity, mActivity.getClass());
+        mActivity.startActivity(i);
+        mActivity.finish();
+//        mActivity.getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+//        mActivity.recreate();
     }
 
     public static String getCurLang() {
