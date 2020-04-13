@@ -96,11 +96,6 @@ public class symptomActivity extends BaseActivity {
 //        }
 //        RadioButton uans = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
 //        String ansText = uans.getText().toString();
-//        if(ansText.equals("Hindi")) {
-//            intent.putExtra("language", "hindi");
-//        }else {
-//            intent.putExtra("language", "english");
-//        }
 
         startActivity(intent);
     }
