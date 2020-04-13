@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">WashKaro</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Got It</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="nextQues">NEXT</string>
+    <string name="nextQues">Next</string>
     <string name="back_to_main_menu">Back to Main Menu</string>
     <string name="name">Name</string>
     <string name="phone">Number</string>
@@ -116,9 +116,9 @@
     <string name="delhi_gov_helpdesk">Delhi Gov Corona Helpdesk</string>
     <string name="my_gov_helpdesk">MyGov Corona Helpdesk</string>
     <string name="chat_now">Chat Now</string>
-    <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
+    <string name="cbot2_deatils">This Government of India\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreak of coronavirus.</string>
 
     <string name="please_select_one_choice">Please select one choice</string>
 

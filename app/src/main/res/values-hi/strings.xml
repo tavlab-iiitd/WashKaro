@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WashKaro</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="nextQues">NEXT</string>
     <string name="back_to_main_menu">मुख्य मेनू में वापस जाएं</string>
-    <string name="name">Name</string>
-    <string name="phone">Number</string>
-    <string name="pinCode">Pincode</string>
-    <string name="place">You reside in:</string>
-    <string name="del">Delhi</string>
-    <string name="nondel">Outside Delhi</string>
-    <string name="begin">Begin</string>
 
-    <!--    -->
-    <!--    Contact Tracer-->
-    <!--    -->
-
-    <string name="sign_out">प्रस्थान करें</string>
     <string name="start_phone_auth">संदेश</string>
     <string name="verify_phone_auth">सत्यापित करें</string>
     <string name="resend_phone_auth">पुन: भेजें</string>
@@ -52,25 +34,12 @@
     <string name="login">लॉग इन करें</string>
 
 
-    <string name="user_id_key" translatable="false">user_id_key_pref</string>
-    <string name="uuid_id_key" translatable="false">uuid_id_key_pref</string>
-    <string name="phone_key" translatable="false">phone_key_pref</string>
-    <string name="state_key" translatable="false">status_key_pref</string>
-    <string name="shared_prefs_file" translatable="false">shared_prefs</string>
-
-
-    <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
-
     <string name="presented_to_you_by">WashKaro, आपके द्वारा प्रस्तुत किया गया</string>
 
     <string name="priyanka">प्रियंका स्याल</string>
     <string name="priyanka_tag">सॉफ्टवेयर इंजीनियर, माइक्रोसॉफ्ट आईडीसी</string>
     <string name="chirag">चिराग जैन</string>
-    <string name="chirag_tag">CSE अंडरग्रेजुएट, IIIT दिल्ली</string>
-
-    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
-    <string name="default_notification_channel_id" translatable="false">covid_alert_channel</string>
-    <string name="default_notification_channel_name" translatable="false">covidAlert</string>
+    <string name="chirag_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="msg_subscribe_failed">CovidAlert विषय की सदस्यता लेने में विफल</string>
     <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए कोविद मामले के पास हैं</string>
@@ -103,5 +72,50 @@
     <!--    SymptomActivity-->
     <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>
     <string name="covid_is_not_present">आपको COVID 19 होने का संदेह नहीं है</string>
+    <string name="play_audio">ऑडियो चलाएं</string>
+    <string name="cbot1_deatils">यह सेवा आपको कोरोनोवायरस के मौजूदा प्रकोप पर डब्ल्यूएचओ की नवीनतम जानकारी और मार्गदर्शन प्रदान करेगी।</string>
+    <string name="cbot3_deatils">दिल्ली की COVID-19 हेल्पडेस्क की यह सरकार जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करती है।</string>
+    <string name="cbot2_deatils">भारत सरकार की COVID-19 हेल्पडेस्क ने जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करने के लिए।</string>
+    <string name="chat_now">अभी चैट करें</string>
+    <string name="my_gov_helpdesk">MyGov कोरोना हेल्पडेस्क</string>
+    <string name="delhi_gov_helpdesk">दिल्ली सरकार कोरोना हेल्पडेस्क</string>
+    <string name="who_chatbot">WHO चैटबोट</string>
+    <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
+    <string name="you_are_safe">आप सुरक्षित है!</string>
+    <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
+    <string name="you_are_safe_content">कोरोना वायरस के संक्रमण का कम जोखिम।</string>
+    <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
+    <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके COVID-19 के प्रसार को रोकने में मदद करें।</string>
+    <string name="share_this_app">इस एप को शेयर कीजिए</string>
+    <string name="cancel_btn">रद्द करें</string>
+    <string name="symptom_tracker">लक्षण ट्रैकर</string>
+    <string name="pk">डॉ पोन्नुरंगम कुमारगुरु</string>
+    <string name="pk_description">प्रोफेसर (CSE), IIIT दिल्ली</string>
+    <string name="tav">डॉ तवप्रितेश सेठी</string>
+    <string name="tav_description">असिस्टेंट प्रोफेसर (CB), IIIT दिल्ली</string>
+    <string name="rohan">रोहन पांडे</string>
+    <string name="rohan_tag">अंडरग्रेजुएट, SNU</string>
+    <string name="vaibhav_tag">अंडरग्रेजुएट, SNU</string>
+    <string name="kanav">कण्व भगत</string>
+    <string name="kanav_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="vaibhav">वैभव गौतम</string>
+    <string name="himanshu">हिमांशु शर्मा</string>
+    <string name="himanshu_tag">अंडरग्रेजुएट, जीएल बजाज संस्थान</string>
+    <string name="bhavika_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="bhavika">भाविका राणा</string>
+    <string name="next">आगे</string>
+    <string name="skip">छोड़ें</string>
+    <string name="start">समझ गया</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="nextQues">आगे</string>
+    <string name="name">नाम</string>
+    <string name="phone">संख्या</string>
+    <string name="pinCode">पिन कोड</string>
+    <string name="place">आप इसमें रहते हैं:</string>
+    <string name="del">दिल्ली</string>
+    <string name="nondel">दिल्ली के बाहर</string>
+    <string name="begin">शुरू</string>
+    <string name="sign_out">साइन आउट</string>
 
 </resources>
