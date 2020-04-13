@@ -183,10 +183,6 @@
 //            }
 //        } else if (id == R.id.Survey) {
 //            Intent i = new Intent(daily_updates.this, Male_Female.class);
-//            if (curr_lang == 2)
-//                i.putExtra("Language", "hindi");
-//            else
-//                i.putExtra("Language", "english");
 //            startActivity(i);
 //        } else if (id == R.id.developers) {
 //            Intent i = new Intent(daily_updates.this, about.class);

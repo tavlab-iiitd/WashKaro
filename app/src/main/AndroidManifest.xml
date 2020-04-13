@@ -16,7 +16,7 @@
         <activity android:name=".symptomActivity"></activity>
         <activity android:name=".QuestionsActivity"></activity>
         <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".firstPageActivity"></activity>
+<!--        <activity android:name=".firstPageActivity"></activity>-->
         <activity android:name=".privacyPolicyActivity"></activity>
         <activity android:name=".homeActivity" />
 <!--        <activity android:name=".male_female_2" />-->

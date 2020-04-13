@@ -271,7 +271,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.symptom_tracker_box:
                 Intent i=new Intent(MainActivity.this, symptomActivity.class);
-                i.putExtra("Language", "hindi");
                 startActivity(i);
                 break;
             case R.id.share_box:
