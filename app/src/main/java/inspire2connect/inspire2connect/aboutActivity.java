@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,11 +11,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 
 @SuppressWarnings("SpellCheckingInspection")
-public class about extends BaseActivity implements View.OnClickListener {
+public class aboutActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView tavlab;
     private ImageView precog;
@@ -38,17 +40,21 @@ public class about extends BaseActivity implements View.OnClickListener {
     private TextView bhavika;
     private TextView bhavikaTag;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ca_activity_about);
 
-        if(getActionBar()!=null) {
+        if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -112,7 +118,7 @@ public class about extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         String url = "https://www.google.com/";
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iiitdLogo:
                 url = "http://precog.iiitd.edu.in/";
                 break;
@@ -148,7 +154,7 @@ public class about extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.kanav:
             case R.id.kanavTag:
-                url ="https://www.linkedin.com/in/kanav-bhagat-133229130/";
+                url = "https://www.linkedin.com/in/kanav-bhagat-133229130/";
                 break;
             case R.id.bhavika:
             case R.id.bhavikaTag:

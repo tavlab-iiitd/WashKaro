@@ -1,7 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import android.util.Log;
-
 public class Story_Details implements Comparable<Story_Details> {
     private String title;
     private String story;

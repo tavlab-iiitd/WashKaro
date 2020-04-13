@@ -1,9 +1,5 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,13 +14,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,22 +29,25 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class Male_Female extends AppCompatActivity {
-    private PreferenceManager prefManager;
-    Button submit;
-    boolean can_Access;
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
+
+public class maleFemaleActivity extends BaseActivity {
     final int requestcode = 123;
-    int curr_lang = 2; //1 for eng , 2 for hindi
     final private int PERMISSION_ACCESS_FINE_LOCATION = 1;
     public String gender, lat, lon, locatio;
-    DatabaseReference ref;
     public String disease_info;
-    private DatabaseReference mDatabaseReference;
+    Button submit;
+    boolean can_Access;
+    int curr_lang = 2; //1 for eng , 2 for hindi
+    DatabaseReference ref;
     String location_provider = LocationManager.NETWORK_PROVIDER;
     LocationManager mLocationManager;
     LocationListener mLocationListener;
-    private WebView webView;
     Button skip;
+    private PreferenceManager prefManager;
+    private DatabaseReference mDatabaseReference;
+    private WebView webView;
     private ProgressDialog progDailog;
 
     private void send_data() {
@@ -129,13 +128,15 @@ public class Male_Female extends AppCompatActivity {
 
         //progDailog = ProgressDialog.show(this, "Loading","Please wait...", true);
         //progDailog.setCancelable(false);
-        Intent i = this.getIntent();
-        String lan = i.getStringExtra("Language");
-        if (lan.equalsIgnoreCase("hindi"))
-            switch_to_hindi();
-        else
-            switch_to_eng();
-        //switch_to_hindi();
+
+        switch (getCurLang()) {
+            case englishCode:
+                switch_to_eng();
+                break;
+            case hindiCode:
+                switch_to_hindi();
+                break;
+        }
 
     }
 
@@ -167,7 +168,7 @@ public class Male_Female extends AppCompatActivity {
                 Double lon1 = location.getLongitude();
                 Geocoder geocoder;
                 List<Address> addresses;
-                geocoder = new Geocoder(Male_Female.this, Locale.getDefault());
+                geocoder = new Geocoder(maleFemaleActivity.this, Locale.getDefault());
 
                 try {
                     addresses = geocoder.getFromLocation(lat1, lon1, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
@@ -223,6 +224,11 @@ public class Male_Female extends AppCompatActivity {
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -232,22 +238,22 @@ public class Male_Female extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(Male_Female.this, "Language Changed", Toast.LENGTH_SHORT).show();
+            toggleLang(this);
             switch_language();
 
 
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(Male_Female.this, Male_Female.class);
+            Intent i = new Intent(maleFemaleActivity.this, maleFemaleActivity.class);
             if (curr_lang == 2)
                 i.putExtra("Language", "hindi");
             else
                 i.putExtra("Language", "english");
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(Male_Female.this, about.class);
+            Intent i = new Intent(maleFemaleActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(Male_Female.this, privacy_policy.class);
+            Intent i = new Intent(maleFemaleActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -264,7 +270,7 @@ public class Male_Female extends AppCompatActivity {
     }
 
     public void switch_to_hindi() {
-        webView = (WebView) findViewById(R.id.web_view);
+        webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
@@ -282,7 +288,7 @@ public class Male_Female extends AppCompatActivity {
 
                 if (url.equalsIgnoreCase("https://docs.google.com/forms/d/e/1FAIpQLSd6z9IzgbDvkG08rSjlq2pvTo3ChdHrSAr2u6iRqnl-FX1oFw/formResponse")) {
                     send_data();
-                    Intent i = new Intent(Male_Female.this, Home_Activity.class);
+                    Intent i = new Intent(maleFemaleActivity.this, homeActivity.class);
                     prefManager.setFirstTimeLaunch(false);
                     startActivity(i);
                     finish();
@@ -294,7 +300,7 @@ public class Male_Female extends AppCompatActivity {
     }
 
     public void switch_to_eng() {
-        webView = (WebView) findViewById(R.id.web_view);
+        webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
@@ -312,7 +318,7 @@ public class Male_Female extends AppCompatActivity {
 
                 if (url.equalsIgnoreCase("https://docs.google.com/forms/u/0/d/e/1FAIpQLSf-hLHpQPd7sLkoXqNfGf-RT390Q4cSP7JBmrrSXLZmqEYEYw/formResponse")) {
                     send_data();
-                    Intent i = new Intent(Male_Female.this, Home_Activity.class);
+                    Intent i = new Intent(maleFemaleActivity.this, homeActivity.class);
                     prefManager.setFirstTimeLaunch(false);
                     startActivity(i);
                     finish();

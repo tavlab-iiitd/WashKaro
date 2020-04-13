@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".select_misc_activity">
+    tools:context=".selectMiscActivity">
 
     <LinearLayout
         android:id="@+id/misc_but1_layout"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="India COVID Map"
+            android:text="@string/india_covid_map_tile"
             android:fontFamily="@font/mukta_bold"
             android:textAlignment="center"
             android:textColor="@color/blackcolor"
@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="WHO Guidelines"
+            android:text="@string/who_guidelines_tile"
             android:textAlignment="center"
             android:fontFamily="@font/mukta_bold"
             android:textColor="@color/blackcolor"
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Myth Busters"
+            android:text="@string/myth_busters_tile"
             android:fontFamily="@font/mukta_bold"
             android:textAlignment="center"
             android:textColor="@color/blackcolor"

@@ -1,43 +1,12 @@
 <resources>
     <string name="app_name">WashKaro</string>
-    <string name="title_activity_about__section">About_Section</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="title_activity_about">About</string>
-    <string name="link_test">www.google.com</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-    <string name="slide_1_title">Daily News Articles</string>
-    <string name="slide_1_desc">Click on any article to read about it.</string>
-    <string name="slide_2_title">Meditation Techniques </string>
-    <string name="slide_2_desc">Learn about the different meditation techniques and practice them</string>
-    <string name="slide_3_title">Diet Chart</string>
-    <string name="slide_3_desc">Make your diet chart by the help of health experts</string>
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
-    <string name="dis_que">When was the last time someone in your family suffered from a disease?</string>
-    <string-array name="gender_list">
-        <item>MALE</item>
-        <item>FEMALE</item>
-    </string-array>
-    <string-array name="disease_frequency">
-        <item>Last 1 month</item>
-        <item>Last 3 months</item>
-        <item>Last 6 months</item>
-        <item>Last 12 months</item>
-    </string-array>
-    <string name="titleString">Symptom Predictor</string>
-    <string name="START">START</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Got It</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="maybe">Maybe</string>
-    <string name="nextQues">NEXT</string>
-    <string name="mainMenu">Back to Main Menu</string>
-    <string name="english">English</string>
-    <string name="hindi">Hindi</string>
-    <string name="language">What is your preferred language?</string>
-    <string name="intro">Screening Delhi for COVID-19</string>
+    <string name="nextQues">Next</string>
+    <string name="back_to_main_menu">Back to Main Menu</string>
     <string name="name">Name</string>
     <string name="phone">Number</string>
     <string name="pinCode">Pincode</string>
@@ -45,78 +14,34 @@
     <string name="del">Delhi</string>
     <string name="nondel">Outside Delhi</string>
     <string name="begin">Begin</string>
-    <string name="cbot2_deatils">This Government of India\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19  helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreaak of coronavirus</string>
-
-    <string name="label_phone_auth">Phone Number Authentication</string>
-    <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
-    <string name="sign_in">Sign In</string>
     <string name="sign_out">Sign Out</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="signed_in">Signed In</string>
-    <string name="signed_out">Signed Out</string>
-    <string name="auth_failed">Authentication failed</string>
     <string name="start_phone_auth">Send</string>
     <string name="verify_phone_auth">Verify</string>
     <string name="resend_phone_auth">Resend</string>
     <string name="hint_phone_number">Phone Number in +91 format</string>
     <string name="hint_verification_code">Verification Code</string>
-    <string name="status_code_sent">Code Sent</string>
-    <string name="status_verification_failed">Verification failed</string>
     <string name="verification_code_help">You will receive an OTP soon!</string>
-    <string name="status_verification_succeeded">Verification succeeded</string>
-    <string name="status_sign_in_failed">Sign-in failed</string>
     <string name="instant_validation">(instant validation)</string>
     <string name="firebase_status_fmt">Firebase UID: %s</string>
     <string name="firebase_user_management">Firebase User Management</string>
-    <string name="reload">Reload</string>
 
     <string name="tavlab_logo">Tav Lab at IIIT Delhi</string>
     <string name="precog_logo">Precog Lab at IIIT Delhi</string>
     <string name="iiitd_logo">IIIT Delhi</string>
 
-    <string name="signing_in">Signing In</string>
-
-    <string name="bt_not_enabled_leaving">User declined to enable Bluetooth, exiting Bluetooth Advertisements.</string>
-    <string name="activity_main_title">Nearby Devices</string>
-    <string name="broadcast_device">Broadcast Device</string>
-
     <string name="bt_not_supported">Bluetooth is not supported on this device.</string>
     <string name="bt_ads_not_supported">Bluetooth Advertisements are not supported on this device.</string>
 
-    <string name="refresh">Refresh</string>
     <string name="start_error_prefix">Start Advertising failed: </string>
     <string name="start_error_already_started">already started.</string>
     <string name="start_error_too_large">data packet exceeded 31 Byte limit.</string>
     <string name="start_error_unsupported">not supported on this device.</string>
     <string name="start_error_internal">internal error.</string>
     <string name="start_error_too_many">too many advertisers.</string>
-    <string name="bt_null">Error: Bluetooth object null</string>
-    <string name="last_seen">Last Seen:</string>
-    <string name="just_now">just now</string>
-    <string name="minute_ago">minute ago</string>
-    <string name="hour_ago">hour ago</string>
-    <string name="seconds_ago">seconds ago</string>
-    <string name="minutes_ago">minutes ago</string>
-    <string name="hours_ago">hours ago</string>
-    <string name="empty_list">No devices found.</string>
     <string name="seconds">seconds.</string>
     <string name="scan_start_toast">Scanning for</string>
-    <string name="already_scanning">Scanning already started.</string>
-    <string name="no_name">(no name)</string>
     <string name="start_error_unknown">unknown error</string>
     <string name="advertising_timedout">Advertising stopped due to timeout.</string>
-
-    <string name="device">Device</string>
-    <string name="devices">Devices</string>
-
-    <string name="discover">Discover</string>
-    <string name="interactions">See Interactions</string>
-
-    <string name="about">About</string>
-    <string name="logout">Logout</string>
-    <string name="settings">Settings</string>
 
     <string name="login">Login</string>
 
@@ -136,36 +61,13 @@
 
     <string name="msg_subscribe_failed">Failed to subscribe to covidAlert topic</string>
     <string name="fcm_message" translatable="false">WashKaro</string>
-    <string name="alert_about_message">You will see an alert if you are near a confirmed Covid case</string>
-    <string name="alert_about_patient_message">We are working to get an updated source for confirmed cases</string>
     <string name="alert_message">Please maintain social distancing to keep you and your family safe</string>
-    <string name="covid_avengers_message">Alert! You are near a Covid avenger</string>
     <string name="network_not_enabled">Location is not enabled</string>
-    <string name="Cancel">Cancel</string>
     <string name="location_is_not_enabled">Location is not enabled</string>
     <string name="show_location_setting">Enable Location</string>
     <string name="cancel_btn">Cancel</string>
-    <string name="contact_result">Contact</string>
-
-    <!--    Preferences-->
-    <string name="general_cat">General</string>
-    <string name="info_cat">Information</string>
-    <string name="security_cat">Security</string>
-    <string name="security_key" translatable="false">security_key</string>
-    <string name="lang_tile">Language</string>
-    <string name="lang_key" translatable="false">lang_key</string>
-    <string name="lang_summary">Please choose a language of the app.</string>
-    <string name="about_key" translatable="false">about_key</string>
-    <string name="logout_key" translatable="false">logout_key</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="privacy_policy_key" translatable="false">privacy_policy</string>
-    <string name="title_activity_settings">Settings</string>
-
-<!--    Contact Tracer Again-->
     <string name="share_this_app">Share this app</string>
     <string name="share_content">Help stop the spread of COVID-19 by sharing this app with family and friends.</string>
-    <string name="who_guidelines">WHO Guidelines</string>
-    <string name="who_guidelines_content">Read these for preventive measures.</string>
     <string name="symptom_tracker">Symptom Tracker</string>
     <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
@@ -182,8 +84,6 @@
     <string name="priyanka_tag">Software Engineer, Microsoft IDC</string>
     <string name="chirag">Chirag Jain</string>
     <string name="chirag_tag">Undergraduate, IIIT Delhi</string>
-
-    <string name="development_team">Development Team</string>
 
     <string name="pk">Dr. Ponnurangam Kumaraguru</string>
     <string name="pk_description">Professor (CSE), IIIT Delhi</string>
@@ -204,26 +104,47 @@
     
     <string name="bhavika">Bhavika Rana</string>
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
-    
-    <string name="mentors">Mentor Team</string>
-    
-    <string name="lovedeep">Lovedeep Singh Dhingra</string>
-    <string name="arushi">Arushi Lajja</string>
-    <string name="mudit">Mudit Agarwal</string>
-    <string name="vrinda">Vrinda Narayan</string>
-    <string name="samprati">Samprati</string>
 
 <!--    WK Activities-->
-    <string name="govt_updates_act" translatable="false">Government Updates</string>
-    <string name="govt_updates_act_hi" translatable="false">सरकारी जानकारी</string>
-    <string name="guidelines_act" translatable="false">Guidelines(By WHO)</string>
-    <string name="guidelines_act_hi" translatable="false">दिशा निर्देश (WHO के द्वारा)</string>
-    <string name="myth_act" translatable="false">Myth Busters(By WHO)</string>
-    <string name="myth_act_hi" translatable="false">मिथक(WHO के द्वारा)</string>
-    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>
+    <string name="govt_updates_act">Government Updates</string>
+    <string name="guidelines_act">Guidelines (By WHO)</string>
+    <string name="myth_act">Myth Busters(By WHO)</string>
+<!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
+
+<!--    Who Chatbot-->
+    <string name="who_chatbot">WHO Chatbot</string>
+    <string name="delhi_gov_helpdesk">Delhi Gov Corona Helpdesk</string>
+    <string name="my_gov_helpdesk">MyGov Corona Helpdesk</string>
+    <string name="chat_now">Chat Now</string>
+    <string name="cbot2_deatils">This Government of India\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
+    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreak of coronavirus.</string>
+
+    <string name="please_select_one_choice">Please select one choice</string>
+
+<!--    SymptomActivity-->
+    <string name="covid_is_present">You are suspected of having COVID 19</string>
+    <string name="covid_is_not_present">You are not suspected of having COVID 19</string>
 
 <!--    Myths-->
-    <string name="play_audio">PLAY AUDIO</string>
-    <string name="playing">PLAYING</string>
+    <string name="play_audio">Play Audio</string>
+<!--    <string name="playing">PLAYING</string>-->
+
+<!--    Tiles-->
+    <string name="india_covid_map_tile">India COVID Map</string>
+    <string name="who_guidelines_tile">WHO Guidelines</string>
+    <string name="myth_busters_tile">Myth Busters</string>
+    <string name="empty_stats" translatable="false">0</string>
+    <string name="govt_advisory_tile">Govt Advisory</string>
+    <string name="symptom_tracker_tile">Symptom Tracker</string>
+    <string name="contact_tracer_tile">Contact Tracer</string>
+    <string name="chatbot_tile">Chatbots</string>
+    <string name="onair_tile">onAIr</string>
+    <string name="misc_tile">More Info</string>
+    <string name="passengers_screened_tile">Passesgers screened at airport</string>
+    <string name="active_case_tile">Active COVID19 Cases</string>
+    <string name="cured_case_tile">Cured or Discharged Cases</string>
+    <string name="death_case_tile">Death Cases</string>
+    <string name="migrated_patient_tile">Migrated Patients</string>
 
 </resources>

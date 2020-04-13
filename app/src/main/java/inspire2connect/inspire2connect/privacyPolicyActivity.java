@@ -1,7 +1,6 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +8,10 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class privacy_policy extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
+
+public class privacyPolicyActivity extends BaseActivity {
     WebView webView;
 
     @Override
@@ -21,12 +23,17 @@ public class privacy_policy extends AppCompatActivity {
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.activity_privacy_policy);
-        webView = (WebView) findViewById(R.id.webview_policy);
+        webView = findViewById(R.id.webview_policy);
         webView.loadData("<!DOCTYPE html>\n" +
                 "    <html>\n" +
                 "    <head>\n" +
@@ -161,18 +168,15 @@ public class privacy_policy extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
-            Toast.makeText(privacy_policy.this, "Language Changed", Toast.LENGTH_SHORT).show();
-            //switch_language();
-
-
+            toggleLang(this);
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(privacy_policy.this, Male_Female.class);
+            Intent i = new Intent(privacyPolicyActivity.this, maleFemaleActivity.class);
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(privacy_policy.this, about.class);
+            Intent i = new Intent(privacyPolicyActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(privacy_policy.this, privacy_policy.class);
+            Intent i = new Intent(privacyPolicyActivity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

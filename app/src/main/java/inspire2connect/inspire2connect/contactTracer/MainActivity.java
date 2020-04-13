@@ -5,17 +5,14 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.text.Html;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,16 +33,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
+import inspire2connect.inspire2connect.symptomActivity;
+import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
 import inspire2connect.inspire2connect.contactTracer.models.User;
 import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -89,6 +87,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -266,7 +270,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 showLoginActivity();
                 break;
             case R.id.symptom_tracker_box:
-                Intent i=new Intent(MainActivity.this,inspire2connect.inspire2connect.symptom_activity.class);
+                Intent i=new Intent(MainActivity.this, symptomActivity.class);
                 i.putExtra("Language", "hindi");
                 startActivity(i);
                 break;

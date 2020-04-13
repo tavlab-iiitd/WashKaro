@@ -1,19 +1,18 @@
 package inspire2connect.inspire2connect;
 
-public class myth_single_object
-{
+public class myth_single_object {
     String title;
     String myth;
     String position;
     String audio_url;
     String redirect_url;
-    public myth_single_object(String title,String myth, String position, String audio_url,String redirect_url)
-    {
-        this.title=title;
+
+    public myth_single_object(String title, String myth, String position, String audio_url, String redirect_url) {
+        this.title = title;
         this.myth = myth;
         this.position = position;
         this.audio_url = audio_url;
-        this.redirect_url=redirect_url;
+        this.redirect_url = redirect_url;
     }
 
     public String getRedirect_url() {

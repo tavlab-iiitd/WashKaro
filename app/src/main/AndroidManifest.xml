@@ -13,13 +13,13 @@
         android:theme="@style/AppTheme"
         android:name=".contactTracer.BluetoothApplication"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".symptom_activity"></activity>
+        <activity android:name=".symptomActivity"></activity>
         <activity android:name=".QuestionsActivity"></activity>
         <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".FirstPage"></activity>
-        <activity android:name=".privacy_policy"></activity>
-        <activity android:name=".Home_Activity" />
-        <activity android:name=".male_female_2" />
+        <activity android:name=".firstPageActivity"></activity>
+        <activity android:name=".privacyPolicyActivity"></activity>
+        <activity android:name=".homeActivity" />
+<!--        <activity android:name=".male_female_2" />-->
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,19 +27,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Male_Female" />
-        <activity android:name=".text2speech2_2" />
-        <activity android:name=".about" />
-        <activity android:name=".CardViewActivity" />
-        <activity android:name=".add_new" />
-        <activity android:name=".Improve" />
-        <activity android:name=".Text2Speech2" />
-        <activity android:name=".InfoGraphic" />
-        <activity android:name=".daily_guidelines" />
-        <activity android:name=".Myths" />
+        <activity android:name=".maleFemaleActivity" />
+        <activity android:name=".text2speech2_2Activity" />
+        <activity android:name=".aboutActivity" />
+        <activity android:name=".onAIrActivity" />
+<!--        <activity android:name=".add_new" />-->
+        <activity android:name=".improveActivity" />
+        <activity android:name=".Text2SpeechActivity" />
+<!--        <activity android:name=".Infographic" />-->
+        <activity android:name=".dailyGuidelinesActivity" />
+        <activity android:name=".mythsActivity" />
 <!--        <activity android:name=".daily_updates" />-->
-        <activity android:name=".Government_Updates" />
-        <activity android:name=".map_activity" />
+        <activity android:name=".governmentUpdatesActivity" />
+        <activity android:name=".mapActivity" />
 
         <service
             android:name=".MyFirebaseMessagingService"
@@ -49,10 +49,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".select_chatbot_activity"></activity>
-        <activity android:name=".select_misc_activity"></activity>
-        <activity android:name=".detailed_view"></activity>
-        <activity android:name=".Infographics"></activity>
+        <activity android:name=".selectChatBotActivity"></activity>
+        <activity android:name=".selectMiscActivity"></activity>
+        <activity android:name=".detailedViewActivity"></activity>
+        <activity android:name=".InfographicsActivity"></activity>
 
 <!--        Contact Tracer-->
 
