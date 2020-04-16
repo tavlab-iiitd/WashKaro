@@ -1,6 +1,6 @@
 <h1 align="center"> WashKaro </h1> <br>
 <p align="center">
-  <img alt="WashKaro" title="WashKaro" src="./app/src/main/ic_launcher-playstore.pngVShxJHs.png" width="450">
+  <img alt="WashKaro" title="WashKaro" src="./app/src/main/ic_launcher-playstore.png" width="450">
 </p>
 
 <p align="center">
