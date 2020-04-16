@@ -56,7 +56,7 @@
             android:gravity="center"
             android:text="@string/you_are_safe_content"
             android:textColor="@color/app_light_black"
-            android:textSize="12dp" />
+            android:textSize="16dp" />
 
 
     </LinearLayout>
