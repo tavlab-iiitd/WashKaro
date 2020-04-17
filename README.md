@@ -1,6 +1,6 @@
 <h1 align="center"> WashKaro </h1> <br>
 <p align="center">
-  <img alt="WashKaro" title="WashKaro" src="./app/src/main/ic_launcher-playstore.png" width="450">
+  <img alt="WashKaro" title="WashKaro" src="./app/src/main/ic_launcher-playstore.png" width="250">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 <p align="center">
 
   <a href="https://play.google.com/store/apps/details?id=inspire2connect.inspire2connect">
-    <img alt="Get it on Google Play" title="Google Play" src="http://i.imgur.com/mtGRPuM.png" width="140">
+    <img alt="Get it on Google Play" title="Google Play" src="http://i.imgur.com/mtGRPuM.png" width="180">
   </a>
 </p>
 
