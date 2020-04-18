@@ -60,7 +60,7 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
     String story_text;
     SeekBar mSeekBar;
     String news_text, WHO_text;//Variable to store the text in text view before swapping
-    FloatingActionButton btn_play, btn_pause;
+    ImageButton btn_play, btn_pause;
     private Button start_bt;
     private Button stop_bt;
     private boolean already_clicked;
@@ -274,8 +274,6 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
 
         btn_play = findViewById(R.id.play_bt);
         btn_pause = findViewById(R.id.pause_bt);
-        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_pause));
-        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_play));
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -314,6 +312,7 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
             @Override
             public void onPrepared(MediaPlayer mp) {
                 float speed = 0.90f;
+                // TODO: See this @Vaibhav
                 mp.setPlaybackParams(mp.getPlaybackParams().setSpeed(speed));
                 mp.start();
                 pb.setVisibility(View.INVISIBLE);
