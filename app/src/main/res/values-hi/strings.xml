@@ -128,4 +128,7 @@
     <string name="min_ass">2-मिनट स्व-मूल्यांकन</string>
     <string name="min_ass_desc">WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए</string>
 
+    <string name="relevant">मिलता जुलता</string>
+    <string name="irrelevant">व्यर्थ</string>
+
 </resources>

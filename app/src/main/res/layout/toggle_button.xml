@@ -37,7 +37,7 @@
             android:tint="@color/green"
             android:background="@color/transparent"
             android:src="@drawable/ic_check"
-            android:text="RELEVANT" />
+            android:contentDescription="@string/relevant"/>
 
         <Switch
             android:id="@+id/switch1"
@@ -62,7 +62,7 @@
             android:tint="@color/red"
             android:background="@color/transparent"
             android:src="@drawable/ic_clear"
-            android:text="IRRELEVANT" />
+            android:contentDescription="@string/irrelevant" />
 
     </LinearLayout>
 

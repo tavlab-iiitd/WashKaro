@@ -158,4 +158,7 @@
     <string name="min_ass">2-Minute Self Assessment</string>
     <string name="min_ass_desc">Based on WHO Guidelines for Suspect Case Identification</string>
 
+    <string name="relevant">Relevant</string>
+    <string name="irrelevant">Irrelevant</string>
+
 </resources>
