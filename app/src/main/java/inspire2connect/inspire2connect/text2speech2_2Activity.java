@@ -60,9 +60,7 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
     String story_text;
     SeekBar mSeekBar;
     String news_text, WHO_text;//Variable to store the text in text view before swapping
-    FloatingActionButton btn_play, btn_pause;
-    private Button start_bt;
-    private Button stop_bt;
+    ImageButton btn_play, btn_pause;
     private boolean already_clicked;
 
     @Override
@@ -127,7 +125,6 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(text2speech2_2Activity.this, improveActivity.class);
             if (mediaPlayer != null) {
                 clearMediaPlayer();
             }
@@ -137,10 +134,12 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
                 mMediaPlayer.release();
                 mMediaPlayer = null;
             }*/
-            i.putExtra("position", Integer.toString(position));
+            Intent i = new Intent(text2speech2_2Activity.this, aboutActivity.class);
             startActivity(i);
-            finish();
         } else if (id == R.id.privacy_policy) {
+            if (mediaPlayer != null) {
+                clearMediaPlayer();
+            }
             Intent i = new Intent(text2speech2_2Activity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
@@ -274,18 +273,11 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
 
         btn_play = findViewById(R.id.play_bt);
         btn_pause = findViewById(R.id.pause_bt);
-        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_pause));
-        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_play));
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int x = (int) Math.ceil(progress / 1000f);
-                double percent = progress / (double) seekBar.getMax();
-                int offset = seekBar.getThumbOffset();
-                int seekwidth = seekBar.getWidth();
-                int val = (int) Math.round(percent * (seekwidth - 2 * offset));
                 if (progress > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
                     //clearMediaPlayer();
                     //fab.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this,android.R.drawable.ic_media_play));
@@ -314,6 +306,7 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
             @Override
             public void onPrepared(MediaPlayer mp) {
                 float speed = 0.90f;
+                // TODO: See this @Vaibhav
                 mp.setPlaybackParams(mp.getPlaybackParams().setSpeed(speed));
                 mp.start();
                 pb.setVisibility(View.INVISIBLE);

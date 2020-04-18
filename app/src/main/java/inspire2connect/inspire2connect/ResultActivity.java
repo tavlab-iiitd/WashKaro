@@ -31,8 +31,17 @@ public class ResultActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent in = new Intent(getApplicationContext(), homeActivity.class);
+        startActivity(in);
+        finish();
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
 
+        Intent in = new Intent(getApplicationContext(), homeActivity.class);
+        startActivity(in);
         finish();
         //return super.onSupportNavigateUp();
         return true;

@@ -147,4 +147,18 @@
     <string name="death_case_tile">Death Cases</string>
     <string name="migrated_patient_tile">Migrated Patients</string>
 
+<!--    Symptom Tracker Questions-->
+    <string name="question1">Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?</string>
+    <string name="question2">Have you been in close contact with a probable or confirmed COVID-19 patient within the past 14 days?</string>
+    <string name="question3">Do you have fever?</string>
+    <string name="question4">Do you have cough?</string>
+    <string name="question5">Do you have shortness in breath?</string>
+    <string name="question6">Were your symptoms severe enough to require hospital admission?</string>
+    <string name="question7">Did the doctor provide an alternative explanation for the symptoms?</string>
+    <string name="min_ass">2-Minute Self Assessment</string>
+    <string name="min_ass_desc">Based on WHO Guidelines for Suspect Case Identification</string>
+
+    <string name="relevant">Relevant</string>
+    <string name="irrelevant">Irrelevant</string>
+
 </resources>

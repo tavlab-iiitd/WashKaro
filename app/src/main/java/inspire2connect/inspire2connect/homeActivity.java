@@ -187,15 +187,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         flipper_single_tap();
         fetchset_MOHFW_data();
 
-        switch (getCurLang()) {
-            case englishCode:
-                setEnglishFlipper();
-                break;
-            case hindiCode:
-                setHindiFlipper();
-                break;
-        }
-
+        setInfographicFlipper();
 
     }
 
@@ -211,41 +203,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ImageView imageView = new ImageView(this);
         imageView.setImageResource(R.drawable.loading_image);
         viewFlipper.addView(imageView);
-    }
-
-    private void setHindiFlipper() {
-        databaseReference.child("Infographic").child("Hindi")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-                        if (dataSnapshot.exists()) {
-                            slideLists.clear();
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                SlideModel model = snapshot.getValue(SlideModel.class);
-
-                                Long sno = Long.parseLong(snapshot.child("Sno").getValue().toString());
-                                String imageUrl = snapshot.child("InfoURL").getValue(String.class);
-                                model.setImageUrl(imageUrl);
-                                model.setName(sno);
-
-                                slideLists.add(model);
-                            }
-                            //Toast.makeText(Home_Activity.this, "All data fetched", Toast.LENGTH_SHORT).show();
-                            viewFlipper.removeAllViews();
-                            usingFirebaseImages(slideLists);
-                        } else {
-                            Toast.makeText(homeActivity.this, "No images in firebase", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(homeActivity.this, "NO images found \n" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     private void usingFirebaseImages(List<SlideModel> slideLists) {
@@ -338,10 +295,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
-    public void setEnglishFlipper() {
+    public void setInfographicFlipper() {
         initialize_view_flipper();
 
-        databaseReference.child("Infographic").child("English")
+        databaseReference.child("Infographic").child(getCurLangKey())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override

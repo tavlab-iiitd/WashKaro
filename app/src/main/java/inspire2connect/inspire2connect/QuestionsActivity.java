@@ -23,27 +23,8 @@ public class QuestionsActivity extends BaseActivity {
     Button submitbutton, prevbutton;
     RadioGroup radio_g;
     //  final TextView textView=(TextView)findViewById(R.id.pageNo);
-    int curr_lang = 2;//1 for eng , 2 for Hindi
-    RadioButton rb1, rb2, rb3, rb4;
+    RadioButton rb1, rb2;
     String[] questions;
-    String[] questionsEnglish = {
-            "Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?",
-            "Have you been in close contact with a probable or confirmed COVID-19 patient within the past 14 days?",
-            "Do you have fever?",
-            "Do you have cough?",
-            "Do you have shortness in breath?",
-            "Were your symptoms severe enough to require hospital admission?",
-            "Did the doctor provide an alternative explanation for the symptoms?"
-    };
-    String[] questionsHindi = {
-            "क्या आपने पिछले 14 दिनों में COVID 19 की रिपोर्टिंग करने वाले किसी देश / भारतीय राज्य की यात्रा की है?",
-            "क्या आप पिछले 14 दिनों के भीतर एक संभावित या पुष्टि किए गए COVID-19 रोगी के निकट संपर्क में हैं?",
-            "क्या आपको बुखार है?",
-            "क्या आपको खांसी है?",
-            "क्या आपको सांस में तकलीफ है?",
-            "क्या आप अस्पताल गए हैं?",
-            "क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?"
-    };
     int flag = 0;
 
     @Override
@@ -113,14 +94,15 @@ public class QuestionsActivity extends BaseActivity {
         rb2 = findViewById(R.id.noButton);
         final TextView textView = findViewById(R.id.pageNo);
 
-        switch (getCurLang()) {
-            case englishCode:
-                curr_lang = 1;
-                break;
-            case hindiCode:
-                curr_lang = 2;
-                break;
-        }
+        questions = new String[]{
+                getString(R.string.question1),
+                getString(R.string.question2),
+                getString(R.string.question3),
+                getString(R.string.question4),
+                getString(R.string.question5),
+                getString(R.string.question6),
+                getString(R.string.question7)
+        };
 
         textView.setText((flag + 1) + "/7");
         ans = new int[7];
@@ -128,11 +110,7 @@ public class QuestionsActivity extends BaseActivity {
 
         for (int i = 0; i < 7; i++)
             ans[i] = 0;
-        if (curr_lang == 2) {
-            questions = questionsHindi;
-        } else {
-            questions = questionsEnglish;
-        }
+
         tv = findViewById(R.id.question);
 
         radio_g = findViewById(R.id.answers);
