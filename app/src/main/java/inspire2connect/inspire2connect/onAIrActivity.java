@@ -1,24 +1,12 @@
 package inspire2connect.inspire2connect;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,8 +15,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-//import com.emozers.cardviewexample.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,24 +30,27 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CardViewActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
+
+//import com.emozers.cardviewexample.R;
+
+public class onAIrActivity extends BaseActivity {
+    private static String LOG_TAG = "CardViewActivity";
+    final private int STORAGE_PERMISSION = 1;
+    final private int MIC_PERMISSION = 2;
+    boolean flag = false;
+    ImageView lab_logo, app_logo;
+    Double threshold;
+    DatabaseReference mDatabaseReference, ref, ref_for_thr, ref_for_ver;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private MediaPlayer mMediaPlayer;
-    boolean flag = false;
     private long version_from_database = -1, version_from_app;
-    ImageView lab_logo, app_logo;
-    Double threshold;
-    final private int STORAGE_PERMISSION = 1;
-    final private int MIC_PERMISSION = 2;
-    DatabaseReference mDatabaseReference, ref, ref_for_thr, ref_for_ver;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "CardViewActivity";
 
     private void requestPermission() {
         /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED )
@@ -62,9 +58,14 @@ public class CardViewActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(CardViewActivity.this, new String[]{Manifest.permission.RECORD_AUDIO},MIC_PERMISSION);
         }*/
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(CardViewActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION);
+            ActivityCompat.requestPermissions(onAIrActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION);
         }
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
@@ -73,22 +74,22 @@ public class CardViewActivity extends AppCompatActivity {
             case STORAGE_PERMISSION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
-                    Toast.makeText(CardViewActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
                             .show();
                 } else {
                     // Permission Denied
-                    Toast.makeText(CardViewActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
             case MIC_PERMISSION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
-                    Toast.makeText(CardViewActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Granted", Toast.LENGTH_SHORT)
                             .show();
                 } else {
                     // Permission Denied
-                    Toast.makeText(CardViewActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
+                    Toast.makeText(onAIrActivity.this, "Permission Denied", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
@@ -121,7 +122,7 @@ public class CardViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return true;
     }
 
@@ -129,10 +130,15 @@ public class CardViewActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(CardViewActivity.this, about.class);
+            Intent i = new Intent(onAIrActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(CardViewActivity.this, privacy_policy.class);
+            Intent i = new Intent(onAIrActivity.this, privacyPolicyActivity.class);
+            startActivity(i);
+        } else if (id == R.id.lang_togg_butt) {
+            toggleLang(this);
+        } else if (id == R.id.Survey) {
+            Intent i = new Intent(onAIrActivity.this, maleFemaleActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -145,11 +151,12 @@ public class CardViewActivity extends AppCompatActivity {
         // Making notification bar transparent
 //        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.onair_tile);
 
         requestPermission();
 
 
-        lab_logo = (ImageView) (findViewById(R.id.progress_bar));
+        lab_logo = findViewById(R.id.progress_bar);
         //app_logo=(ImageView)(findViewById(R.id.app_logo));
         //getSupportActionBar().setBackgroundDrawable(app_logo);
         final ArrayList results = new ArrayList<DataObject>();
@@ -161,13 +168,13 @@ public class CardViewActivity extends AppCompatActivity {
         //cpd.setBackgroundColor(1);
         //cpd.setCenterRadius(2.0f);
         //ArrayList results = new ArrayList<DataObject>();
-        final ProgressBar cpd = (ProgressBar) findViewById(R.id.circularprogressbar);
+        final ProgressBar cpd = findViewById(R.id.circularprogressbar);
         for (int index = 0; index < 1; index++) {
             DataObject obj = new DataObject("Some Primary Text " + index,
                     "Secondary " + index);
             results.add(index, obj);
         }
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setVisibility(View.INVISIBLE);
         mLayoutManager = new LinearLayoutManager(this);
@@ -219,7 +226,7 @@ public class CardViewActivity extends AppCompatActivity {
 
                             for (Map.Entry<String, Story_Details> it : hn.entrySet()) {
                                 Log.d("Database", it.getValue().getTitle());
-                                DataObject obj = new DataObject(Integer.toString(count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
+                                DataObject obj = new DataObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
                                 //Log.d("Databse",Integer.toString(it.getValue().getNumber_of_relevant_votes())+" "+Double.toString(threshold));
                                 try {
                                     if (it.getValue().getSimilarity() >= threshold)
@@ -242,7 +249,7 @@ public class CardViewActivity extends AppCompatActivity {
                             // app_logo.setVisibility(View.INVISIBLE);
                             mRecyclerView.setVisibility(View.VISIBLE);
                             ConstraintLayout currentLayout =
-                                    (ConstraintLayout) findViewById(R.id.constraint_layout);
+                                    findViewById(R.id.constraint_layout);
 
                             //currentLayout.setBackgroundColor(getResources().getColor(R.color.backColor));
                 /*try {
@@ -270,8 +277,8 @@ public class CardViewActivity extends AppCompatActivity {
         try {
             PackageManager manager = this.getPackageManager();
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
-            version_from_app = (long) info.versionCode;
-            Log.d("threshod", "Version from app" + Long.toString(version_from_app) + Boolean.toString(version_from_app == version_from_database));
+            version_from_app = info.versionCode;
+            Log.d("threshod", "Version from app" + version_from_app + (version_from_app == version_from_database));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -380,7 +387,7 @@ public class CardViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                Intent i = new Intent(CardViewActivity.this, text2speech2_2.class);
+                Intent i = new Intent(onAIrActivity.this, text2speech2_2Activity.class);
                 i.putExtra("position", Integer.toString(position));
                 /*if(mMediaPlayer!=null)
                 {

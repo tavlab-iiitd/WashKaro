@@ -3,15 +3,6 @@ package inspire2connect.inspire2connect;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -27,13 +18,16 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -43,14 +37,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class text2speech2_2 extends AppCompatActivity //implements Runnable
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
+
+public class text2speech2_2Activity extends BaseActivity //implements Runnable
 {
-    private Button start_bt;
     boolean currently_paused = false;
     int current_time;
-    private Button stop_bt;
     Switch toggleSwitch;
-    private boolean already_clicked;
     TextView tot_time, curr_time;
     String key;
     //HashMap<String,Story_Details> hn=new HashMap<>();
@@ -67,6 +61,14 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
     SeekBar mSeekBar;
     String news_text, WHO_text;//Variable to store the text in text view before swapping
     FloatingActionButton btn_play, btn_pause;
+    private Button start_bt;
+    private Button stop_bt;
+    private boolean already_clicked;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     public Boolean alread_clicked_checker(String key) {
         Log.d("already_clicked", "In function with " + key);
@@ -125,7 +127,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about_us) {
-            Intent i = new Intent(text2speech2_2.this, Improve.class);
+            Intent i = new Intent(text2speech2_2Activity.this, improveActivity.class);
             if (mediaPlayer != null) {
                 clearMediaPlayer();
             }
@@ -139,7 +141,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
             startActivity(i);
             finish();
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(text2speech2_2.this, privacy_policy.class);
+            Intent i = new Intent(text2speech2_2Activity.this, privacyPolicyActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
@@ -157,11 +159,11 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
         toast.show();
         getSupportActionBar().hide();
         //final Button swap=(Button)(findViewById(R.id.WHO_text_swap_button));
-        tot_time = (TextView) findViewById(R.id.total_time);
-        curr_time = (TextView) findViewById(R.id.cur_time);
+        tot_time = findViewById(R.id.total_time);
+        curr_time = findViewById(R.id.cur_time);
         observer = new MediaObserver();
-        final ImageButton relevant_button = (ImageButton) findViewById(R.id.relevant_button);
-        final ImageButton irrelevant_button = (ImageButton) findViewById(R.id.irrelevant_button);
+        final ImageButton relevant_button = findViewById(R.id.relevant_button);
+        final ImageButton irrelevant_button = findViewById(R.id.irrelevant_button);
         relevant_button.setVisibility(View.INVISIBLE);
         irrelevant_button.setVisibility(View.INVISIBLE);
         relevant_button.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +254,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
 //            relevant_button.setVisibility(View.INVISIBLE);
 //            irrelevant_button.setVisibility(View.INVISIBLE);
 //        }
-        pb = (ProgressBar) findViewById(R.id.wait_state);
+        pb = findViewById(R.id.wait_state);
         pb.setVisibility(View.INVISIBLE);
         pb.setVisibility(View.INVISIBLE);
         /*try
@@ -264,16 +266,16 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
             e.printStackTrace();
         }
         mMediaPlayer.start();*/
-        mSeekBar = (SeekBar) findViewById(R.id.seekbar);
+        mSeekBar = findViewById(R.id.seekbar);
         final Thread t = new Thread(observer);
         t.start();
 
         mediaPlayer = new MediaPlayer();
 
-        btn_play = (FloatingActionButton) findViewById(R.id.play_bt);
-        btn_pause = (FloatingActionButton) findViewById(R.id.pause_bt);
-        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2.this, android.R.drawable.ic_media_pause));
-        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2.this, android.R.drawable.ic_media_play));
+        btn_play = findViewById(R.id.play_bt);
+        btn_pause = findViewById(R.id.pause_bt);
+        btn_pause.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_pause));
+        btn_play.setImageDrawable(ContextCompat.getDrawable(text2speech2_2Activity.this, android.R.drawable.ic_media_play));
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -287,7 +289,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
                 if (progress > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
                     //clearMediaPlayer();
                     //fab.setImageDrawable(ContextCompat.getDrawable(Text2Speech2.this,android.R.drawable.ic_media_play));
-                    text2speech2_2.this.mSeekBar.setProgress(current_time);
+                    text2speech2_2Activity.this.mSeekBar.setProgress(current_time);
                 }
             }
 
@@ -404,7 +406,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
 
             }
         });
-        tv = (TextView) findViewById(R.id.display_text);
+        tv = findViewById(R.id.display_text);
         tv.setMovementMethod(new ScrollingMovementMethod());
         ref = FirebaseDatabase.getInstance().getReference();
 
@@ -412,7 +414,7 @@ public class text2speech2_2 extends AppCompatActivity //implements Runnable
         Intent i = getIntent();
         position = Integer.parseInt(i.getStringExtra("position"));
         WHO_text = "This is WHO report";
-        toggleSwitch = (Switch) (findViewById(R.id.switch1));
+        toggleSwitch = findViewById(R.id.switch1);
         toggleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override

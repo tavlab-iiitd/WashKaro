@@ -1,7 +1,6 @@
 package inspire2connect.inspire2connect;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -11,23 +10,27 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class Infographics extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 
+public class InfographicsActivity extends BaseActivity {
+
+    private static final int NONE = 0;
+    private static final int DRAG = 1;
+    private static final int ZOOM = 2;
     ImageView infog_image;
     ImageView photoview2;
     float[] lastEvent = null;
     float d = 0f;
     float newRot = 0f;
+    float oldDist = 1f;
     private boolean isZoomAndRotate;
     private boolean isOutSide;
-    private static final int NONE = 0;
-    private static final int DRAG = 1;
-    private static final int ZOOM = 2;
     private int mode = NONE;
     private PointF start = new PointF();
     private PointF mid = new PointF();
-    float oldDist = 1f;
     private float xCoOrdinate, yCoOrdinate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +39,15 @@ public class Infographics extends AppCompatActivity {
 
         Intent i = this.getIntent();
         String url = i.getStringExtra("image");
-        infog_image=(ImageView)findViewById(R.id.image_view_infog);
+        infog_image = findViewById(R.id.image_view_infog);
 
         put_image(url);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
@@ -51,13 +59,13 @@ public class Infographics extends AppCompatActivity {
     }
 
 
-    public void put_image(String url){
+    public void put_image(String url) {
         Picasso.get().load(url).into(infog_image);
 
         rotate_zoom();
     }
 
-    public void rotate_zoom(){
+    public void rotate_zoom() {
 
 
         infog_image.setOnTouchListener(new View.OnTouchListener() {
@@ -72,13 +80,7 @@ public class Infographics extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-// Zoomer and rotator
+    // Zoomer and rotator
     private void viewTransformation(View view, MotionEvent event) {
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
@@ -133,7 +135,7 @@ public class Infographics extends AppCompatActivity {
                         }
                         if (lastEvent != null) {
                             newRot = rotation(event);
-                            view.setRotation((float) (view.getRotation() + (newRot - d)));
+                            view.setRotation(view.getRotation() + (newRot - d));
                         }
                     }
                 }
@@ -159,7 +161,6 @@ public class Infographics extends AppCompatActivity {
         float y = event.getY(0) + event.getY(1);
         point.set(x / 2, y / 2);
     }
-
 
 
 }

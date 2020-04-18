@@ -35,7 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.concurrent.TimeUnit;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
+import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.models.User;
 
 public class PhoneAuthActivity extends BaseActivity implements

@@ -1,20 +1,10 @@
 package inspire2connect.inspire2connect;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-//import android.support.v4.view.PagerAdapter;
-//import android.support.v4.view.ViewPager;
-//import android.support.v7.app.AppCompatActivity;
-//import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +14,19 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class WelcomeActivity extends AppCompatActivity {
+import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
+
+//import android.support.v4.view.PagerAdapter;
+//import android.support.v4.view.ViewPager;
+//import android.support.v7.app.AppCompatActivity;
+//import android.preference.PreferenceManager;
+
+public class WelcomeActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -40,7 +36,45 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
     private Button btnSkip, btnNext;
+    //  viewpager change listener
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            addBottomDots(position);
+
+            // changing the next button text 'NEXT' / 'GOT IT'
+            if (position == layouts.length - 1) {
+                // last page. make button text to GOT IT
+                btnNext.setText(getString(R.string.start));
+                btnSkip.setVisibility(View.GONE);
+            } else {
+                // still pages are left
+                btnNext.setText(getString(R.string.next));
+                btnSkip.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+        }
+    };
     private PreferenceManager prefManager;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+//    private void launchInforGraphic() {
+//
+//        Intent intent = new Intent(WelcomeActivity.this, infographicActivity.class);
+//        startActivity(intent);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +86,7 @@ public class WelcomeActivity extends AppCompatActivity {
         if (!prefManager.isFirstTimeLaunch()) {
 
             //prefManager.setFirstTimeLaunch(false);
-            Intent i = new Intent(WelcomeActivity.this, Home_Activity.class);
+            Intent i = new Intent(WelcomeActivity.this, homeActivity.class);
             startActivity(i);
             finish();
         }
@@ -66,10 +100,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.view_pager);
+        dotsLayout = findViewById(R.id.layoutDots);
+        btnSkip = findViewById(R.id.btn_skip);
+        btnNext = findViewById(R.id.btn_next);
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -116,12 +150,6 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private void launchInforGraphic() {
-
-        Intent intent = new Intent(WelcomeActivity.this, InfoGraphic.class);
-        startActivity(intent);
-    }
-
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
 
@@ -147,37 +175,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
 
-        startActivity(new Intent(WelcomeActivity.this, Home_Activity.class));
+        startActivity(new Intent(WelcomeActivity.this, homeActivity.class));
         finish();
     }
-
-    //  viewpager change listener
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.GONE);
-            } else {
-                // still pages are left
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-        }
-    };
 
     /**
      * Making notification bar transparent
