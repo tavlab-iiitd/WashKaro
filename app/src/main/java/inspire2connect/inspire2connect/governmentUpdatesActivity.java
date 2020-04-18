@@ -122,6 +122,7 @@ public class governmentUpdatesActivity extends BaseActivity implements Serializa
 
 //        centre.setText("Government Updates");
 //        FirebaseApp.initializeApp(this);
+
         d = FirebaseDatabase.getInstance().getReference();
         dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("Government");
         dref.addValueEventListener(new ValueEventListener() {

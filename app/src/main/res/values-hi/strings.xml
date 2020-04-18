@@ -117,5 +117,15 @@
     <string name="nondel">दिल्ली के बाहर</string>
     <string name="begin">शुरू</string>
     <string name="sign_out">साइन आउट</string>
+    
+    <string name="question1">क्या आपने पिछले 14 दिनों में COVID 19 की रिपोर्टिंग करने वाले किसी देश / भारतीय राज्य की यात्रा की है?</string>
+    <string name="question2">क्या आप पिछले 14 दिनों के भीतर एक संभावित या पुष्टि किए गए COVID-19 रोगी के निकट संपर्क में हैं?</string>
+    <string name="question3">क्या आपको बुखार है?</string>
+    <string name="question4">क्या आपको खांसी है?</string>
+    <string name="question5">क्या आपको सांस में तकलीफ है?</string>
+    <string name="question6">क्या आप अस्पताल गए हैं?</string>
+    <string name="question7">क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?</string>
+    <string name="min_ass">2-मिनट स्व-मूल्यांकन</string>
+    <string name="min_ass_desc">WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए</string>
 
 </resources>
