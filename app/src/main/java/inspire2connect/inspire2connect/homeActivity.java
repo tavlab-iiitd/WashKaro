@@ -54,7 +54,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     //    public int w = 0, h = 0;
     //    AdapterViewFlipper adapterViewFlipper;
 //    FirebaseStorage firebaseStorage;
-    DatabaseReference dRef;
+//    DatabaseReference dRef;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     //    ImageButton[] img_but = new ImageButton[10];
     //    DatabaseReference dref;
@@ -116,7 +116,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_);
-        dRef = FirebaseDatabase.getInstance().getReference().child("Infographic");
+//        dRef = FirebaseDatabase.getInstance().getReference().child("Infographic");
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         update_handle();
@@ -433,7 +433,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     public void fetchset_MOHFW_data() {
 
-        databaseReference.child("Mohfw").child("Data").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Mohfw").child("Data").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
