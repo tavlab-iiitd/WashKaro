@@ -36,8 +36,6 @@ import java.util.Map;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-//import com.emozers.cardviewexample.R;
-
 public class onAIrActivity extends BaseActivity {
     private static String LOG_TAG = "CardViewActivity";
     final private int STORAGE_PERMISSION = 1;
