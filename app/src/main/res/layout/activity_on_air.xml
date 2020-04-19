@@ -12,7 +12,7 @@
         android:layout_width="297dp"
         android:layout_height="93dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/tavlab"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.429"

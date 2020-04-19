@@ -9,14 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class symptomActivity extends BaseActivity {
-    int curr_lang = 2;//1 for eng , 2 for Hindi
-
+public class symptomActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
@@ -27,28 +24,13 @@ public class symptomActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom_activity);
 
-        switch (getCurLang()) {
-            case englishCode:
-                curr_lang = 1;
-                break;
-            case hindiCode:
-                curr_lang = 2;
-                break;
-        }
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.symptom_tracker);
-        String title2 = "<b> 2-Minute Self Assessment </b> <br> Based on WHO Guidelines for Suspect Case Identification";
-        String button_text = "BEGIN";
+        String title2 = "<b>" + getString(R.string.min_ass) + " </b> <br> " + getString(R.string.min_ass_desc);
         Button b = findViewById(R.id.startButton);
-        if (curr_lang == 2) {
-            getSupportActionBar().setTitle(R.string.symptom_tracker);
-            button_text = "शुरू करो";
-            title2 = "<b> 2-मिनट स्व-मूल्यांकन </ b> <br> WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए";
-        }
         TextView t = findViewById(R.id.title2Text);
         t.setText(Html.fromHtml(title2));
-        b.setText(button_text);
+        b.setOnClickListener(this);
     }
 
     @Override
@@ -84,20 +66,16 @@ public class symptomActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickStart(View view) {
-        Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-//        RadioGroup  radio_g=(RadioGroup)findViewById(R.id.languageGroup);
-//        RadioButton rb1=(RadioButton)findViewById(R.id.hindiButton);
-//        RadioButton rb2=(RadioButton)findViewById(R.id.englishButton);
-//        if(radio_g.getCheckedRadioButtonId()==-1)
-//        {
-//            Toast.makeText(getApplicationContext(), "Please select a language.", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        RadioButton uans = (RadioButton) findViewById(radio_g.getCheckedRadioButtonId());
-//        String ansText = uans.getText().toString();
-
-        startActivity(intent);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.startButton:
+                Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 }
 

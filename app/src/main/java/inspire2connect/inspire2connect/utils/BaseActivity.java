@@ -9,13 +9,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
 
+    // TODO: Add Code for New Language Here
     public static final String englishCode = "en";
     public static final String hindiCode = "hi";
+
+    // TODO: Add Firebase Key for Language Here
+    private static final String englishKey = "English";
+    private static final String hindiKey = "Hindi";
+
+    private static final HashMap<String, String> langKeyMap = new HashMap<String, String>() {
+        {
+            // TODO: Add put entry here
+            put(englishCode, englishKey);
+            put(hindiCode, hindiKey);
+        }
+    };
 
     public static DatabaseReference usersDB = FirebaseDatabase.getInstance().getReference("users");
 
@@ -29,11 +43,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public static final void Logd(String TAG, String message) {
         Log.d(TAG, message);
-    }
-
-    public static void changeLang(Activity mActivity, String code) {
-        LocaleHelper.setLocale(mActivity, code);
-        mActivity.recreate();
     }
 
     public static void toggleLang(Activity mActivity) {
@@ -60,6 +69,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public static String getCurLang() {
         return Locale.getDefault().getLanguage();
+    }
+
+    public static String getCurLangKey() {
+        return langKeyMap.get(getCurLang());
     }
 
 
