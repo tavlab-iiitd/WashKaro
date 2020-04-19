@@ -12,6 +12,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Locale;
 
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.selectMiscActivity;
+import inspire2connect.inspire2connect.urlActivity;
+
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
 
@@ -75,5 +79,11 @@ public class BaseActivity extends AppCompatActivity {
         return langKeyMap.get(getCurLang());
     }
 
+    public static void openPrivacyPolicy(Activity activity) {
+        Intent i = new Intent(activity, urlActivity.class);
+        i.putExtra("url", activity.getString(R.string.privacy_policy_url));
+        i.putExtra("name", activity.getString(R.string.privacy_policy));
+        activity.startActivity(i);
+    }
 
 }

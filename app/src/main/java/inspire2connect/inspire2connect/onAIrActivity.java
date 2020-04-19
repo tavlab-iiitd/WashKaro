@@ -131,8 +131,7 @@ public class onAIrActivity extends BaseActivity {
             Intent i = new Intent(onAIrActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(onAIrActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         } else if (id == R.id.lang_togg_butt) {
             toggleLang(this);
         } else if (id == R.id.Survey) {

@@ -176,8 +176,7 @@ public class mythsActivity extends BaseActivity {
             Intent i = new Intent(mythsActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(mythsActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
 
         return super.onOptionsItemSelected(item);

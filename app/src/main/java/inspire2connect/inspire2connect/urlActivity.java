@@ -1,20 +1,28 @@
 package inspire2connect.inspire2connect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
-public class mapActivity extends BaseActivity {
+public class urlActivity extends BaseActivity {
     WebView webView;
+
+    public String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_activity);
+        setContentView(R.layout.activity_url);
+
+        Intent intent = getIntent();
+        url = intent.getStringExtra("url");
+        String title = intent.getStringExtra("name");
+
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -35,7 +43,7 @@ public class mapActivity extends BaseActivity {
         });
 
 
-        webView.loadUrl("https://hspandit.github.io/washkaro-map/");
+        webView.loadUrl(url);
 
     }
 

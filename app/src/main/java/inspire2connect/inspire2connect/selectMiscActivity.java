@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -40,7 +39,9 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view == misc_buttons[0]) {
-            Intent i = new Intent(selectMiscActivity.this, mapActivity.class);
+            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
+            i.putExtra("url", getString(R.string.covid_map));
+            i.putExtra("name", getString(R.string.india_covid_map_tile));
             startActivity(i);
 
         }
@@ -79,8 +80,7 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
             Intent i = new Intent(selectMiscActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(selectMiscActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
 
         return super.onOptionsItemSelected(item);

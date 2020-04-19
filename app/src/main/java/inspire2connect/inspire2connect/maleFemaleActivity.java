@@ -249,8 +249,7 @@ public class maleFemaleActivity extends BaseActivity {
             Intent i = new Intent(maleFemaleActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(maleFemaleActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
         return super.onOptionsItemSelected(item);
     }

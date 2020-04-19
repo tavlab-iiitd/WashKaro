@@ -209,8 +209,7 @@ public class dailyGuidelinesActivity extends BaseActivity {
             Intent i = new Intent(dailyGuidelinesActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(dailyGuidelinesActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
 
 
