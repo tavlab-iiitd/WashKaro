@@ -58,8 +58,7 @@ public class symptomActivity extends BaseActivity implements View.OnClickListene
             Intent i = new Intent(symptomActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(symptomActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
 
 

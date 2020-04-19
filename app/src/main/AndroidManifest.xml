@@ -17,7 +17,6 @@
         <activity android:name=".QuestionsActivity"></activity>
         <activity android:name=".ResultActivity"></activity>
 <!--        <activity android:name=".firstPageActivity"></activity>-->
-        <activity android:name=".privacyPolicyActivity"></activity>
         <activity android:name=".homeActivity" />
 <!--        <activity android:name=".male_female_2" />-->
         <activity android:name=".WelcomeActivity">
@@ -32,8 +31,8 @@
         <activity android:name=".aboutActivity" />
         <activity android:name=".onAIrActivity" />
 <!--        <activity android:name=".add_new" />-->
-        <activity android:name=".improveActivity" />
-        <activity android:name=".Text2SpeechActivity" />
+<!--        <activity android:name=".improveActivity" />-->
+<!--        <activity android:name=".Text2SpeechActivity" />-->
 <!--        <activity android:name=".Infographic" />-->
         <activity android:name=".dailyGuidelinesActivity" />
         <activity android:name=".mythsActivity" />

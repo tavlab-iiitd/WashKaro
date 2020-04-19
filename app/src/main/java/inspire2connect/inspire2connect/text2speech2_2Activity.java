@@ -140,8 +140,7 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
             if (mediaPlayer != null) {
                 clearMediaPlayer();
             }
-            Intent i = new Intent(text2speech2_2Activity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
         return super.onOptionsItemSelected(item);
     }

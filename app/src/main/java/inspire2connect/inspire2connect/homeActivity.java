@@ -282,8 +282,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             Intent i = new Intent(homeActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(homeActivity.this, privacyPolicyActivity.class);
-            startActivity(i);
+            openPrivacyPolicy(this);
         }
 
 
