@@ -161,4 +161,13 @@
     <string name="relevant">Relevant</string>
     <string name="irrelevant">Irrelevant</string>
 
+<!--    URL-->
+    <string name="covid_map" translatable="false">https://hspandit.github.io/washkaro-map/</string>
+    <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
+
+<!--    Menu-->
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about_us">About Us</string>
+    <string name="survey">Survey</string>
+
 </resources>

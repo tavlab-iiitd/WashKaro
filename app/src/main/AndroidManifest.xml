@@ -39,7 +39,7 @@
         <activity android:name=".mythsActivity" />
 <!--        <activity android:name=".daily_updates" />-->
         <activity android:name=".governmentUpdatesActivity" />
-        <activity android:name=".mapActivity" />
+        <activity android:name=".urlActivity" />
 
         <service
             android:name=".MyFirebaseMessagingService"
