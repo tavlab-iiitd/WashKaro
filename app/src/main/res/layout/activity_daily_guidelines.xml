@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".daily_guidelines">
+    tools:context=".dailyGuidelinesActivity">
 
 <!--    <TextView  -->
  <!--       android:id="@+id/centre_view"

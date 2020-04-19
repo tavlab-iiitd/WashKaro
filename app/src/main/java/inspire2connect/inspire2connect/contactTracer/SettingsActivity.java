@@ -25,7 +25,7 @@
 //import java.util.Locale;
 //
 //import inspire2connect.inspire2connect.R;
-//import inspire2connect.inspire2connect.contactTracer.base.BaseActivity;
+//import inspire2connect.inspire2connect.utils.BaseActivity;
 //
 //public class SettingsActivity extends BaseActivity {
 //

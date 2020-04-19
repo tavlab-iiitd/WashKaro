@@ -3,9 +3,7 @@ package inspire2connect.inspire2connect;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -14,99 +12,54 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Government_Updates_Adapter extends RecyclerView.
         Adapter<Government_Updates_Adapter.MyViewHolder> {
+    private static MyClickListener myClickListener;
+    Context context;
+    Float X, Y;
     private ArrayList<Boolean> play_pause_list = new ArrayList<Boolean>();
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
     private ArrayList<myth_single_object> List;
-    private static MyClickListener myClickListener;
-    Context context;
-    public ArrayList<custom_media_Class> getMedia_player_list()
-    {
+
+    public Government_Updates_Adapter(Context context, ArrayList<myth_single_object> List) {
+        this.context = context;
+        this.List = List;
+    }
+
+    public ArrayList<custom_media_Class> getMedia_player_list() {
         return media_player_list;
     }
 
-    Float X, Y;
-    public ArrayList<myth_single_object> getResult()
-    {
+    public ArrayList<myth_single_object> getResult() {
         return List;
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
-        public TextView title;
-        public TextView actual_text;
-        public LinearLayout main_layout;
-        public ImageView play_pause,share_button;
-        private LinearLayout linearLayout;
-        public CardView cardView;
-        //public CardView guideline_cv;
-        @Override
-        public void onClick(View v)
-        {
-            myClickListener.onItemClick(getAdapterPosition(), v);
-        }
-        public MyViewHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.myth_title);
-            actual_text=(TextView)view.findViewById(R.id.actual_text);
-            title.setMovementMethod(LinkMovementMethod.getInstance());
-            play_pause = (ImageView) view.findViewById(R.id.play_pause_myth);
-            main_layout = view.findViewById(R.id.main_layout);
-            cardView=(CardView) view.findViewById(R.id.cardView);
-            title.setOnClickListener(this);
-            actual_text.setOnClickListener(this);
-            share_button=(ImageView)view.findViewById(R.id.share_button);
-            //cardView.setOnClickListener(this);
-            //linearLayout=(LinearLayout)itemView.findViewById(R.id.Linear_layout);
-        }
-    }
 
-    public void share(String toShare)
-    {
+    public void share(String toShare) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/html");
-        Log.d("sharing",toShare);
+        Log.d("sharing", toShare);
         Spanned shareBody = Html.fromHtml(toShare);
-        String share=shareBody.toString();
+        String share = shareBody.toString();
         //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
-    public Government_Updates_Adapter(Context context,ArrayList<myth_single_object> List)
-    {
-        this.context=context;
-        this.List = List;
-    }
 
-    public void setOnItemClickListener(MyClickListener myClickListener)
-    {
-        this.myClickListener = myClickListener;
-    }
-
-    public interface MyClickListener {
-        public void onItemClick(int position, View v);
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        Government_Updates_Adapter.myClickListener = myClickListener;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.myths_2, parent, false);
 
@@ -124,16 +77,15 @@ public class Government_Updates_Adapter extends RecyclerView.
         media_player_list.add(new custom_media_Class(null, true));
         holder.share_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Log.d("sharing","share clicked");
+            public void onClick(View view) {
+                Log.d("sharing", "share clicked");
                 share(movie.getTitle());
             }
         });
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.d("Testing", "Card" + Integer.toString(position) + "clicked");
+                Log.d("Testing", "Card" + position + "clicked");
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN: {
 //                        Log.d("On_Click_DOWN",Float.toString(motionEvent.getX())+" "+Float.toString(motionEvent.getY()));
@@ -156,12 +108,9 @@ public class Government_Updates_Adapter extends RecyclerView.
                             //media_player_list.get(position).setPaused(false);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();
                             try {
-                                if (false)
-                                {
-                                } else
-                                    {
-                                    if (temp == null)
-                                    {
+                                if (false) {
+                                } else {
+                                    if (temp == null) {
                                         temp = new MediaPlayer();
                                         media_player_list.get(position).setMediaPlayer(temp);
                                         Log.d("Testing", "Step1" + List.get(position).getAudio_url());
@@ -211,10 +160,8 @@ public class Government_Updates_Adapter extends RecyclerView.
                             //play_pause_list.set(position,false);
                             //media_player_list.get(position).setPaused(true);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();
-                            if (temp != null)
-                            {
-                                if (temp.isPlaying())
-                                {
+                            if (temp != null) {
+                                if (temp.isPlaying()) {
                                     temp.pause();
                                     Log.d("Testing", "Step2");
                                     media_player_list.get(position).setPaused(true);
@@ -234,5 +181,39 @@ public class Government_Updates_Adapter extends RecyclerView.
     @Override
     public int getItemCount() {
         return List.size();
+    }
+
+    public interface MyClickListener {
+        void onItemClick(int position, View v);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView title;
+        public TextView actual_text;
+        public LinearLayout main_layout;
+        public ImageView play_pause, share_button;
+        public CardView cardView;
+        private LinearLayout linearLayout;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.myth_title);
+            actual_text = view.findViewById(R.id.actual_text);
+            title.setMovementMethod(LinkMovementMethod.getInstance());
+            play_pause = view.findViewById(R.id.play_pause_myth);
+            main_layout = view.findViewById(R.id.main_layout);
+            cardView = view.findViewById(R.id.cardView);
+            title.setOnClickListener(this);
+            actual_text.setOnClickListener(this);
+            share_button = view.findViewById(R.id.share_button);
+            //cardView.setOnClickListener(this);
+            //linearLayout=(LinearLayout)itemView.findViewById(R.id.Linear_layout);
+        }
+
+        //public CardView guideline_cv;
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
     }
 }

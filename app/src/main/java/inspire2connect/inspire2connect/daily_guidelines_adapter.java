@@ -1,7 +1,6 @@
 package inspire2connect.inspire2connect;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.text.Html;
 import android.util.Log;
@@ -9,61 +8,33 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guidelines_adapter.MyViewHolder> {
+    private static MyClickListener myClickListener;
     private ArrayList<Boolean> play_pause_list = new ArrayList<Boolean>();
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
     private ArrayList<guideline_sigle_object> List;
-    private static MyClickListener myClickListener;
 
     public daily_guidelines_adapter() {
+    }
+
+    public daily_guidelines_adapter(ArrayList<guideline_sigle_object> List) {
+        this.List = List;
     }
 
     public ArrayList<custom_media_Class> getMedia_player_list() {
         return media_player_list;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
-        public ConstraintLayout constraintLayout;
-        public ImageView play_pause;
-
-        //public CardView guideline_cv;
-        public MyViewHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.guideline_view);
-            play_pause = (ImageView) view.findViewById(R.id.play_pause);
-            constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.constraint);
-
-        }
-    }
-
-
-    public daily_guidelines_adapter(ArrayList<guideline_sigle_object> List) {
-        this.List = List;
-    }
-
     public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }
-
-    public interface MyClickListener {
-        public void onItemClick(int position, View v);
+        daily_guidelines_adapter.myClickListener = myClickListener;
     }
 
     @Override
@@ -79,7 +50,7 @@ public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guideli
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         guideline_sigle_object movie = List.get(position);
         holder.title.setText(Html.fromHtml(movie.getGuideline()));
-        holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+        holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         play_pause_list.add(false);
         media_player_list.add(new custom_media_Class(null, true));
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
@@ -100,7 +71,7 @@ public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guideli
                         }
                         if (media_player_list.get(position).getPaused()) {
                             holder.play_pause.setImageDrawable(null);
-                            holder.play_pause.setBackgroundResource(R.drawable.pause_icon);
+                            holder.play_pause.setBackgroundResource(R.drawable.ic_pause_black_34dp);
                             //media_player_list.get(position).setPaused(false);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();
                             try {
@@ -124,7 +95,7 @@ public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guideli
                                             public void onCompletion(MediaPlayer mediaPlayer) {
                                                 Log.d("Testing", "Media Player finished");
                                                 media_player_list.get(position).setPaused(true);
-                                                holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+                                                holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
                                                 mediaPlayer = null;
                                             }
                                         });
@@ -152,7 +123,7 @@ public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guideli
                                 e.printStackTrace();
                             }
                         } else {
-                            holder.play_pause.setBackgroundResource(R.drawable.play_icon);
+                            holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
                             //play_pause_list.set(position,false);
                             //media_player_list.get(position).setPaused(true);
                             MediaPlayer temp = media_player_list.get(position).getMediaPlayer();
@@ -177,5 +148,24 @@ public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guideli
     @Override
     public int getItemCount() {
         return List.size();
+    }
+
+    public interface MyClickListener {
+        void onItemClick(int position, View v);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title;
+        public ConstraintLayout constraintLayout;
+        public ImageView play_pause;
+
+        //public CardView guideline_cv;
+        public MyViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.guideline_view);
+            play_pause = view.findViewById(R.id.play_pause);
+            constraintLayout = itemView.findViewById(R.id.constraint);
+
+        }
     }
 }

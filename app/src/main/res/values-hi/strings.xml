@@ -1,170 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WashKaro</string>
-    <string name="title_activity_about__section">About_Section</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="title_activity_about">About</string>
-    <string name="link_test">www.google.com</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-    <string name="slide_1_title">Daily News Articles</string>
-    <string name="slide_1_desc">Click on any article to read about it.</string>
-    <string name="slide_2_title">Meditation Techniques </string>
-    <string name="slide_2_desc">Learn about the different meditation techniques and practice them</string>
-    <string name="slide_3_title">Diet Chart</string>
-    <string name="slide_3_desc">Make your diet chart by the help of health experts</string>
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
-    <string name="dis_que">When was the last time someone in your family suffered from a disease?</string>
-    <string-array name="gender_list">
-        <item>MALE</item>
-        <item>FEMALE</item>
-    </string-array>
-    <string-array name="disease_frequency">
-        <item>Last 1 month</item>
-        <item>Last 3 motnhs</item>
-        <item>Last 6 motnhs</item>
-        <item>Last 12 motnhs</item>
-    </string-array>
-    <string name="titleString">Symptom Predictor</string>
-    <string name="START">START</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="maybe">Maybe</string>
-    <string name="nextQues">NEXT</string>
-    <string name="mainMenu">Back to Main Menu</string>
-    <string name="english" translatable="false">English</string>
-    <string name="hindi">Hindi</string>
-    <string name="language">What is your preferred language?</string>
-    <string name="intro">Screening Delhi for COVID-19</string>
-    <string name="name">Name</string>
-    <string name="phone">Number</string>
-    <string name="pinCode">Pincode</string>
-    <string name="place">You reside in:</string>
-    <string name="del">Delhi</string>
-    <string name="nondel">Outside Delhi</string>
-    <string name="begin">Begin</string>
+    <string name="back_to_main_menu">मुख्य मेनू में वापस जाएं</string>
 
-    <!--    -->
-    <!--    Contact Tracer-->
-    <!--    -->
-
-    <string name="label_phone_auth">फ़ोन नंबर प्रमाणीकरण</string>
-    <string name="desc_phone_auth">फायरबेस के साथ प्रमाणित करने के लिए फोन नंबर का उपयोग करें।</string>
-    <string name="sign_in">साइन इन करें</string>
-    <string name="sign_out">प्रस्थान करें</string>
-    <string name="disconnect">डिस्कनेक्ट</string>
-    <string name="signed_in">साइन इन किया</string>
-    <string name="signed_out">साइन आउट</string>
-    <string name="auth_failed">प्रमाणीकरण विफल हो गया</string>
     <string name="start_phone_auth">संदेश</string>
     <string name="verify_phone_auth">सत्यापित करें</string>
     <string name="resend_phone_auth">पुन: भेजें</string>
     <string name="hint_phone_number">91 प्रारूप में फोन नंबर</string>
     <string name="hint_verification_code">पुष्टि संख्या</string>
-    <string name="status_code_sent">कोड भेजा गया</string>
-    <string name="status_verification_failed">सत्यापन में विफल</string>
     <string name="verification_code_help">आपको जल्द ही एक OTP प्राप्त होगा!</string>
-    <string name="status_verification_succeeded">सत्यापन सफल हुआ</string>
-    <string name="status_sign_in_failed">भाग लेना विफल हुआ</string>
     <string name="instant_validation">(तत्काल सत्यापन)</string>
     <string name="firebase_status_fmt">फायरबेस UID: %s</string>
     <string name="firebase_user_management">फायरबेस यूजर मैनेजमेंट</string>
-    <string name="reload">पुनः लोड करें</string>
 
     <string name="tavlab_logo">IIIT दिल्ली में Tav Lab</string>
     <string name="precog_logo">IIIT दिल्ली में Precog Lab</string>
     <string name="iiitd_logo">आईआईआईटी दिल्ली</string>
 
-    <string name="signing_in">अंदर आना</string>
-
-    <string name="bt_not_enabled_leaving">उपयोगकर्ता ने ब्लूटूथ को सक्षम करने से मना कर दिया, ब्लूटूथ विज्ञापन से बाहर निकल गया।</string>
-    <string name="activity_main_title">निकट के उपकरण</string>
-    <string name="broadcast_device">प्रसारण उपकरण</string>
-
     <string name="bt_not_supported">इस डिवाइस पर ब्लूटूथ समर्थित नहीं है।</string>
     <string name="bt_ads_not_supported">इस उपकरण पर ब्लूटूथ विज्ञापन समर्थित नहीं हैं।</string>
 
-    <string name="refresh">ताज़ा करना</string>
     <string name="start_error_prefix">प्रारंभ विज्ञापन विफल:</string>
     <string name="start_error_already_started">पहले ही शुरू हो चुका है।</string>
     <string name="start_error_too_large">डेटा पैकेट 31 बाइट सीमा से अधिक है।</string>
     <string name="start_error_unsupported">इस उपकरण पर समर्थित नहीं है।</string>
     <string name="start_error_internal">आंतरिक गलती।</string>
     <string name="start_error_too_many">बहुत सारे विज्ञापनदाता।</string>
-    <string name="bt_null">त्रुटि: ब्लूटूथ ऑब्जेक्ट नल</string>
-    <string name="last_seen">अंतिम बार देखा गया:</string>
-    <string name="just_now">अभी</string>
-    <string name="minute_ago">एक मिनट पहले</string>
-    <string name="hour_ago">घंटे पहले</string>
-    <string name="seconds_ago">एक सेकंड पहले</string>
-    <string name="minutes_ago">कुछ देर पहले</string>
-    <string name="hours_ago">घंटो पहले</string>
-    <string name="empty_list">कोई यंत्र नहीं मिले।</string>
     <string name="seconds">सेकंड।</string>
     <string name="scan_start_toast">के लिए स्कैनिंग</string>
-    <string name="already_scanning">स्कैनिंग शुरू हो चुकी है।</string>
-    <string name="no_name">(कोई नाम नहीं)</string>
     <string name="start_error_unknown">अज्ञात त्रुटि</string>
     <string name="advertising_timedout">समय समाप्त होने के कारण विज्ञापन बंद हो गया।</string>
 
-    <string name="device">युक्ति</string>
-    <string name="devices">उपकरण</string>
-
-    <string name="discover">डिस्कवर</string>
-    <string name="interactions">बातचीत देखें</string>
-
-    <string name="about">के बारे में</string>
-    <string name="logout">लॉग आउट</string>
-    <string name="settings">समायोजन</string>
-
     <string name="login">लॉग इन करें</string>
 
-
-    <string name="user_id_key" translatable="false">user_id_key_pref</string>
-    <string name="uuid_id_key" translatable="false">uuid_id_key_pref</string>
-    <string name="phone_key" translatable="false">phone_key_pref</string>
-    <string name="state_key" translatable="false">status_key_pref</string>
-    <string name="shared_prefs_file" translatable="false">shared_prefs</string>
-
-
-    <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
 
     <string name="presented_to_you_by">WashKaro, आपके द्वारा प्रस्तुत किया गया</string>
 
     <string name="priyanka">प्रियंका स्याल</string>
     <string name="priyanka_tag">सॉफ्टवेयर इंजीनियर, माइक्रोसॉफ्ट आईडीसी</string>
     <string name="chirag">चिराग जैन</string>
-    <string name="chirag_tag">CSE अंडरग्रेजुएट, IIIT दिल्ली</string>
-
-    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
-    <string name="default_notification_channel_id" translatable="false">covid_alert_channel</string>
-    <string name="default_notification_channel_name" translatable="false">covidAlert</string>
+    <string name="chirag_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="msg_subscribe_failed">CovidAlert विषय की सदस्यता लेने में विफल</string>
-    <string name="alert_about_message">यदि आप एक पुष्टि किए गए कोविद मामले के पास हैं तो आपको एक चेतावनी दिखाई देगी</string>
-    <string name="alert_about_patient_message">हम पुष्ट मामलों के लिए एक अद्यतन स्रोत प्राप्त करने के लिए काम कर रहे हैं</string>
     <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए कोविद मामले के पास हैं</string>
-    <string name="covid_avengers_message">चेतावनी! आप कोविद एवेंजर के पास हैं</string>
     <string name="network_not_enabled">स्थान सक्षम नहीं है</string>
-    <string name="Cancel">रद्द करना</string>
     <string name="location_is_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="show_location_setting">अपनी स्थान सेटिंग से स्थान सक्षम करें</string>
-    <string name="contact_result">संपर्क करें</string>
 
-    <string name="general_cat">सामान्य</string>
-    <string name="info_cat">जानकारी</string>
-    <string name="security_cat">सुरक्षा</string>
-    <string name="security_key" translatable="false">security_key</string>
-    <string name="lang_tile">भाषा: हिन्दी</string>
-    <string name="lang_key" translatable="false">lang_key</string>
-    <string name="lang_summary">कृपया एप्लिकेशन की एक भाषा चुनें।</string>
-    <string name="about_key" translatable="false">about_key</string>
-    <string name="logout_key" translatable="false">logout_key</string>
-    <string name="privacy_policy">गोपनीयता नीति</string>
-    <string name="privacy_policy_key" translatable="false">privacy_policy</string>
-    <string name="title_activity_settings">समायोजन</string>
+    <string name="please_select_one_choice">कृपया एक विकल्प चुनें</string>
+
+    <string name="guidelines_act">दिशा निर्देश (WHO के द्वारा)</string>
+    <string name="myth_act">मिथक (WHO के द्वारा)</string>
+    <string name="govt_updates_act">सरकारी जानकारी</string>
+
+    <!--    Tiles-->
+    <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
+    <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
+    <string name="myth_busters_tile">मिथक</string>
+    <string name="govt_advisory_tile">सरकारी निर्देश</string>
+    <string name="symptom_tracker_tile">लक्षण ट्रैकर</string>
+    <string name="contact_tracer_tile">संपर्क ट्रेसर</string>
+    <string name="chatbot_tile">चैटबॉट</string>
+    <string name="onair_tile">समाचार</string>
+    <string name="misc_tile">अधिक जानकारी</string>
+    <string name="passengers_screened_tile">हवाई अड्डे पर यात्री जांच</string>
+    <string name="active_case_tile">सक्रिय COVID19 रोगी</string>
+    <string name="cured_case_tile">कुल ठीक व्यक्ति</string>
+    <string name="death_case_tile">कुल मौत</string>
+    <string name="migrated_patient_tile">प्रव्रजनित व्यक्ति</string>
+
+    <!--    SymptomActivity-->
+    <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>
+    <string name="covid_is_not_present">आपको COVID 19 होने का संदेह नहीं है</string>
+    <string name="play_audio">ऑडियो चलाएं</string>
+    <string name="cbot1_deatils">यह सेवा आपको कोरोनोवायरस के मौजूदा प्रकोप पर डब्ल्यूएचओ की नवीनतम जानकारी और मार्गदर्शन प्रदान करेगी।</string>
+    <string name="cbot3_deatils">दिल्ली की COVID-19 हेल्पडेस्क की यह सरकार जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करती है।</string>
+    <string name="cbot2_deatils">भारत सरकार की COVID-19 हेल्पडेस्क ने जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करने के लिए।</string>
+    <string name="chat_now">अभी चैट करें</string>
+    <string name="my_gov_helpdesk">MyGov कोरोना हेल्पडेस्क</string>
+    <string name="delhi_gov_helpdesk">दिल्ली सरकार कोरोना हेल्पडेस्क</string>
+    <string name="who_chatbot">WHO चैटबोट</string>
+    <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
+    <string name="you_are_safe">आप सुरक्षित है!</string>
+    <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
+    <string name="you_are_safe_content">कोरोना वायरस के संक्रमण का कम जोखिम।</string>
+    <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
+    <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके COVID-19 के प्रसार को रोकने में मदद करें।</string>
+    <string name="share_this_app">इस एप को शेयर कीजिए</string>
+    <string name="cancel_btn">रद्द करें</string>
+    <string name="symptom_tracker">लक्षण ट्रैकर</string>
+    <string name="pk">डॉ पोन्नुरंगम कुमारगुरु</string>
+    <string name="pk_description">प्रोफेसर (CSE), IIIT दिल्ली</string>
+    <string name="tav">डॉ तवप्रितेश सेठी</string>
+    <string name="tav_description">असिस्टेंट प्रोफेसर (CB), IIIT दिल्ली</string>
+    <string name="rohan">रोहन पांडे</string>
+    <string name="rohan_tag">अंडरग्रेजुएट, SNU</string>
+    <string name="vaibhav_tag">अंडरग्रेजुएट, SNU</string>
+    <string name="kanav">कण्व भगत</string>
+    <string name="kanav_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="vaibhav">वैभव गौतम</string>
+    <string name="himanshu">हिमांशु शर्मा</string>
+    <string name="himanshu_tag">अंडरग्रेजुएट, जीएल बजाज संस्थान</string>
+    <string name="bhavika_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="bhavika">भाविका राणा</string>
+    <string name="next">आगे</string>
+    <string name="skip">छोड़ें</string>
+    <string name="start">समझ गया</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="nextQues">आगे</string>
+    <string name="name">नाम</string>
+    <string name="phone">संख्या</string>
+    <string name="pinCode">पिन कोड</string>
+    <string name="place">आप इसमें रहते हैं:</string>
+    <string name="del">दिल्ली</string>
+    <string name="nondel">दिल्ली के बाहर</string>
+    <string name="begin">शुरू</string>
+    <string name="sign_out">साइन आउट</string>
+    
+    <string name="question1">क्या आपने पिछले 14 दिनों में COVID 19 की रिपोर्टिंग करने वाले किसी देश / भारतीय राज्य की यात्रा की है?</string>
+    <string name="question2">क्या आप पिछले 14 दिनों के भीतर एक संभावित या पुष्टि किए गए COVID-19 रोगी के निकट संपर्क में हैं?</string>
+    <string name="question3">क्या आपको बुखार है?</string>
+    <string name="question4">क्या आपको खांसी है?</string>
+    <string name="question5">क्या आपको सांस में तकलीफ है?</string>
+    <string name="question6">क्या आप अस्पताल गए हैं?</string>
+    <string name="question7">क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?</string>
+    <string name="min_ass">2-मिनट स्व-मूल्यांकन</string>
+    <string name="min_ass_desc">WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए</string>
+
+    <string name="relevant">मिलता जुलता</string>
+    <string name="irrelevant">व्यर्थ</string>
 
 </resources>
