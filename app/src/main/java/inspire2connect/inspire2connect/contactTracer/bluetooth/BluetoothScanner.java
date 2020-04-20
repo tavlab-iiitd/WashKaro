@@ -17,7 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -29,7 +28,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
 import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
 
 import static inspire2connect.inspire2connect.contactTracer.base.Base.Logd;
@@ -102,7 +101,7 @@ public class BluetoothScanner {
         }
         scanResultArrayList = new ArrayList<>();
         bluetoothScanCallback = null;
-        MainActivity.isSafe = true;
+        ContactTracerActivity.isSafe = true;
         // Even if no new results, update 'last seen' times.
       //  bluetoothScanResultAdapter.notifyDataSetChanged();
     }
@@ -179,7 +178,7 @@ public class BluetoothScanner {
         }
 
         private void sendNotificationOnResult(ScanResult result) {
-            MainActivity.isSafe = false;
+            ContactTracerActivity.isSafe = false;
             ScanRecord rec = result.getScanRecord();
             String uuidInfo = new String(rec.getServiceData().get(Constants.Service_UUID), StandardCharsets.UTF_8);
             int existingPosition = getPosition(uuidInfo);
@@ -205,7 +204,7 @@ public class BluetoothScanner {
             // TODO: Add Notification when two devices come in contact according to different state
             if (!isPresent) {
 
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, ContactTracerActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0 /* Request code */, intent,
                         PendingIntent.FLAG_ONE_SHOT);

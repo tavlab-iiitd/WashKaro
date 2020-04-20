@@ -39,7 +39,7 @@ import java.util.List;
 import inspire2connect.inspire2connect.symptomTracker.QuestionsActivity;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
 import inspire2connect.inspire2connect.mythGuidelineUpdates.governmentUpdatesActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
@@ -211,7 +211,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         } else if (view == ll_but[1]) {
             i = new Intent(homeActivity.this, QuestionsActivity.class);
         } else if (view == ll_but[2]) {
-            i = new Intent(homeActivity.this, MainActivity.class);
+            i = new Intent(homeActivity.this, ContactTracerActivity.class);
         } else  if (view == ll_but[3]) {
             i = new Intent(homeActivity.this, onAIrActivity.class);
         }else if (view == ll_but[4]) {

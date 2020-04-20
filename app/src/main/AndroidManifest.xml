@@ -59,7 +59,7 @@
 
 <!--        <activity android:name=".contactTracer.InteractionsActivity" />-->
 
-        <activity android:name=".contactTracer.MainActivity"/>
+        <activity android:name=".contactTracer.ContactTracerActivity"/>
 
         <activity android:name=".contactTracer.PhoneAuthActivity" />
         

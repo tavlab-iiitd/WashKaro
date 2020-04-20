@@ -11,13 +11,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.contactTracer.BluetoothApplication;
-import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
 
 
 public class BluetoothService extends Service {
@@ -65,7 +64,7 @@ public class BluetoothService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             this.CreateChannelIfNeeded();
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, ContactTracerActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
