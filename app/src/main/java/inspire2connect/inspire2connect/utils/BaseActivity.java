@@ -19,6 +19,13 @@ import inspire2connect.inspire2connect.urlActivity;
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
 
+    // Firebase References
+    public static final DatabaseReference infographicReference = FirebaseDatabase.getInstance().getReference("washkaro-infographic");
+    public static final DatabaseReference guidelinesReference = FirebaseDatabase.getInstance().getReference("washkaro-guidelines");
+    public static final DatabaseReference governmentReference = FirebaseDatabase.getInstance().getReference("washkaro-government");
+    public static final DatabaseReference mythReference = FirebaseDatabase.getInstance().getReference("washkaro-myth");
+    public static final DatabaseReference whoReference = FirebaseDatabase.getInstance().getReference("washkaro-who");
+
     // TODO: Add Code for New Language Here
     public static final String englishCode = "en";
     public static final String hindiCode = "hi";
