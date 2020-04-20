@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import inspire2connect.inspire2connect.MyRecyclerViewAdapter;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.models.Story;
