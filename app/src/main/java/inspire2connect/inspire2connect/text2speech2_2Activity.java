@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -19,9 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import inspire2connect.inspire2connect.models.Story;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
@@ -465,12 +463,12 @@ public class text2speech2_2Activity extends BaseActivity //implements Runnable
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int count = 0;
-                HashMap<String, Story_Details> hn = new HashMap<>();
+                HashMap<String, Story> hn = new HashMap<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Story_Details user = snapshot.getValue(Story_Details.class);
+                    Story user = snapshot.getValue(Story.class);
                     hn.put(snapshot.getKey(), user);
                 }
-                for (Map.Entry<String, Story_Details> it : hn.entrySet()) {
+                for (Map.Entry<String, Story> it : hn.entrySet()) {
                     if (count == position) {
                         key = it.getKey();
                         Log.d("already_clicked_?", Boolean.toString(alread_clicked_checker(key)));
