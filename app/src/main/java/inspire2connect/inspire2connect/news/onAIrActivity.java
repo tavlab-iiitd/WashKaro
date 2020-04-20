@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +34,6 @@ import java.util.Map;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.models.Story;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;

@@ -36,7 +36,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.models.Story;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
