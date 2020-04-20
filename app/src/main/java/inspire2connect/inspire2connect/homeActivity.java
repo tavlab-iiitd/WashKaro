@@ -232,7 +232,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         if(i!=null) {
             startActivity(i);
-//            finish();
         }
     }
 
@@ -335,29 +334,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         startActivity(intnt);
     }
 
-    //call new infographics activity here
-
-//        viewFlipper.stopFlipping();
-//        int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
-//        Log.d("Zoomintest", "Index of child" + Integer.toString(i));
-//        String url = slideLists.get(i).getImageUrl();
-//        Log.d("Zoomintest", "Url of child" + url);
-//        Picasso.get().load(url).into(zoo_image);
-//
-//        zoo_image.setBackground(new ColorDrawable(Color.TRANSPARENT));
-//
-//        // Log.d("Zoomintest",Integer.toString(w)+" "+Integer.toString(h));
-//        PopupWindow window = new PopupWindow(layout, 800, 1400, true);
-//
-//        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        window.setOutsideTouchable(true);
-//        window.setElevation(60);
-//
-//        window.showAtLocation(layout, Gravity.CENTER, 10, 10);
-
-//
-
-
     public void fetchset_MOHFW_data() {
 
         statsReference.addValueEventListener(new ValueEventListener() {
@@ -378,27 +354,3 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     }
 }
-//    private void populateViewFlipper() {
-//        Toast.makeText(Home_Activity.this,"PLease wait",Toast.LENGTH_LONG).show();
-//        adapterViewFlipper = (AdapterViewFlipper)findViewById(R.id.adapterViewFlipper);
-//        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(),names, images);
-//        adapterViewFlipper.setAdapter(customAdapter);
-//        adapterViewFlipper.setFlipInterval(3000);
-//        adapterViewFlipper.setAutoStart(true);
-//        Toast.makeText(Home_Activity.this,"Done",Toast.LENGTH_SHORT).show();
-//    }
-
-//    public void init_pie_chart(){
-//        pieChartView = findViewById(R.id.chart);
-//        pieData.add(new SliceValue(15, Color.BLUE).setLabel("France:"+"180"));
-//        pieData.add(new SliceValue(25, Color.GRAY).setLabel("China"+"1200"));
-//        pieData.add(new SliceValue(10, Color.RED).setLabel("India:"+"150"));
-//        pieData.add(new SliceValue(60, Color.MAGENTA).setLabel("Italy:"+"6000"));
-//
-//        PieChartData pieChartData = new PieChartData(pieData);
-//
-//        pieChartData.setHasLabels(true).setValueLabelTextSize(14);
-//        pieChartData.setHasCenterCircle(true).setCenterText1("Cases of COVID19").setCenterText1FontSize(16);
-//        //pieChartData.setHasCenterCircle(true).setCenterText1("Sales in million").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#0097A7"));
-//        pieChartView.setPieChartData(pieChartData);
-//    }
