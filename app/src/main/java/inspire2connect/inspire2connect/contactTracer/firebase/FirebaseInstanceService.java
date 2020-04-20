@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
 import inspire2connect.inspire2connect.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -78,7 +78,7 @@ public class FirebaseInstanceService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ContactTracerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
               PendingIntent.FLAG_ONE_SHOT);
