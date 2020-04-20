@@ -1,6 +1,6 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.models;
 
-public class Story_Details implements Comparable<Story_Details> {
+public class Story implements Comparable<Story> {
     private String title;
     private String story;
     private int number;
@@ -13,11 +13,11 @@ public class Story_Details implements Comparable<Story_Details> {
     private int number_of_relevant_votes;
     private int number_of_irrelevant_votes;
 
-    public Story_Details() {
+    public Story() {
     }
 
-    public Story_Details(String title, String story, int number, String url, String who_url, String who_article_text, String who_summary,
-                         int number_of_relevant_votes, int number_of_irrelevant_votes, String date, Double similarity) {
+    public Story(String title, String story, int number, String url, String who_url, String who_article_text, String who_summary,
+                 int number_of_relevant_votes, int number_of_irrelevant_votes, String date, Double similarity) {
         this.title = title;
         this.story = story;
         this.url = url;
@@ -33,7 +33,7 @@ public class Story_Details implements Comparable<Story_Details> {
     }
 
     @Override
-    public int compareTo(Story_Details s) {
+    public int compareTo(Story s) {
 
         if (this.getSimilarity() > s.getSimilarity())
             return 0;

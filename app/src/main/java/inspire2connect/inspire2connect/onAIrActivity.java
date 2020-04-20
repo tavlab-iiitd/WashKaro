@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import inspire2connect.inspire2connect.models.Story;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
@@ -207,9 +208,9 @@ public class onAIrActivity extends BaseActivity {
                             //cpd.start();
                             int count = 0;
                             ArrayList results2 = new ArrayList<DataObject>();
-                            HashMap<String, Story_Details> hn = new HashMap<>();
+                            HashMap<String, Story> hn = new HashMap<>();
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                Story_Details user = snapshot.getValue(Story_Details.class);
+                                Story user = snapshot.getValue(Story.class);
                                 hn.put(snapshot.getKey(), user);
                             }
 //                            ArrayList<Story_Details> temp=new ArrayList<Story_Details>();
@@ -221,7 +222,7 @@ public class onAIrActivity extends BaseActivity {
 //                            Collections.sort(temp);
 //                            Log.d("Before_Sorting",Double.toString(temp.get(0).getSimilarity())+" "+Double.toString(temp.get(1).getSimilarity()));
 
-                            for (Map.Entry<String, Story_Details> it : hn.entrySet()) {
+                            for (Map.Entry<String, Story> it : hn.entrySet()) {
                                 Log.d("Database", it.getValue().getTitle());
                                 DataObject obj = new DataObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
                                 //Log.d("Databse",Integer.toString(it.getValue().getNumber_of_relevant_votes())+" "+Double.toString(threshold));
