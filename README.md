@@ -24,11 +24,17 @@ Wash Karo is a free Android-based app which aims to spread awareness among the m
 5. Human curated information
 6. Multilingual text and speech support
 
-### Authors
+### Developers
 1. Chirag Jain 
 2. Priyanka Syal 
 3. Vaibhav Gautam
 4. Rohan Pandey
 5. Himanshu Sharma 
-6. Bhavika Rana 
-7. Kanav Bhagat 
+
+### Designers
+1. Bhavika Rana
+2. Tanuj Dabas
+
+### Faculty
+1. Tavpritesh Sethi
+2. Ponnurangam Kumaraguru
