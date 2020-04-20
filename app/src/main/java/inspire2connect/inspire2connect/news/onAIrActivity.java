@@ -41,7 +41,7 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class onAIrActivity extends BaseActivity {
-    private static String LOG_TAG = "CardViewActivity";
+    private static String LOG_TAG = "onAIrActivity";
     final private int STORAGE_PERMISSION = 1;
     final private int MIC_PERMISSION = 2;
     boolean flag = false;
@@ -200,7 +200,7 @@ public class onAIrActivity extends BaseActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     //threshold_class obj_th=snapshot.getValue(threshold_class.class);
                     threshold = (Double) snapshot.getValue();
-                    Log.d("threshold", Double.toString(threshold));
+                    Logd("threshold", Double.toString(threshold));
                 }
                 ref = FirebaseDatabase.getInstance().getReference();
                 Query lastQuery = ref.child("hindi").orderByKey();
@@ -226,7 +226,7 @@ public class onAIrActivity extends BaseActivity {
 //                            Log.d("Before_Sorting",Double.toString(temp.get(0).getSimilarity())+" "+Double.toString(temp.get(1).getSimilarity()));
 
                             for (Map.Entry<String, Story> it : hn.entrySet()) {
-                                Log.d("Database", it.getValue().getTitle());
+                                Logd("Database", it.getValue().getTitle());
                                 newsObject obj = new newsObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
                                 //Log.d("Databse",Integer.toString(it.getValue().getNumber_of_relevant_votes())+" "+Double.toString(threshold));
                                 try {
@@ -272,14 +272,14 @@ public class onAIrActivity extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("threshold", "The read failed: " + databaseError.getCode());
+                Logd("threshold", "The read failed: " + databaseError.getCode());
             }
         });
         try {
             PackageManager manager = this.getPackageManager();
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
             version_from_app = info.versionCode;
-            Log.d("threshod", "Version from app" + version_from_app + (version_from_app == version_from_database));
+            Logd("threshod", "Version from app" + version_from_app + (version_from_app == version_from_database));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -292,7 +292,7 @@ public class onAIrActivity extends BaseActivity {
                     //threshold_class obj_th=snapshot.getValue(threshold_class.class);
                     version_from_database = (Long) snapshot.getValue();
 
-                    Log.d("threshodl", Long.toString(version_from_database));
+                    Logd("threshold", Long.toString(version_from_database));
 //                    if (version_from_app != version_from_database) {
 //                        AlertDialog.Builder builder = new AlertDialog.Builder(CardViewActivity.this);
 //                        builder.setTitle(R.string.app_name);
@@ -387,7 +387,6 @@ public class onAIrActivity extends BaseActivity {
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Log.i(LOG_TAG, " Clicked on Item " + position);
                 Intent i = new Intent(onAIrActivity.this, text2speech2_2Activity.class);
                 i.putExtra("position", Integer.toString(position));
                 /*if(mMediaPlayer!=null)

@@ -19,7 +19,7 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
@@ -30,7 +30,7 @@
         card_view:cardBackgroundColor="#dfedf5">
 
         <RelativeLayout
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_width="fill_parent">
 
             <TextView
@@ -44,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/textView2"
+                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/textView" />
 
