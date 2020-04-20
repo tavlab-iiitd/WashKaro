@@ -10,9 +10,7 @@ import android.widget.LinearLayout;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.dailyGuidelinesActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.mythsActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 import inspire2connect.inspire2connect.utils.urlActivity;
@@ -49,14 +47,13 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
             i.putExtra("url", getString(R.string.covid_map));
             i.putExtra("name", getString(R.string.india_covid_map_tile));
             startActivity(i);
-
         }
         if (view == misc_buttons[1]) {
-            Intent i = new Intent(selectMiscActivity.this, dailyGuidelinesActivity.class);
+            Intent i = getGuidelinesIntent(this);
             startActivity(i);
         }
         if (view == misc_buttons[2]) {
-            Intent i = new Intent(selectMiscActivity.this, mythsActivity.class);
+            Intent i = getMythIntent(this);
             startActivity(i);
         }
     }

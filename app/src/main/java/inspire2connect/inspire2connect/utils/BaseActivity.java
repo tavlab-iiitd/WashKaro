@@ -13,9 +13,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.dailyGuidelinesActivity;
 import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdateActivity;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.mythsActivity;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
@@ -112,14 +110,14 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public static Intent getGuidelinesIntent(Activity activity) {
-        Intent i = new Intent(activity, dailyGuidelinesActivity.class);
+        Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, GUIDELINES);
         i.putExtra(DATE, DATE_NO);
         return i;
     }
 
     public static Intent getMythIntent(Activity activity) {
-        Intent i = new Intent(activity, mythsActivity.class);
+        Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, MYTH);
         i.putExtra(DATE, DATE_NO);
         return i;

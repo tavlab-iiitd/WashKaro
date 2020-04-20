@@ -32,8 +32,6 @@
 <!--        <activity android:name=".improveActivity" />-->
 <!--        <activity android:name=".Text2SpeechActivity" />-->
 <!--        <activity android:name=".Infographic" />-->
-        <activity android:name=".mythGuidelineUpdates.dailyGuidelinesActivity" />
-        <activity android:name=".mythGuidelineUpdates.mythsActivity" />
 <!--        <activity android:name=".daily_updates" />-->
         <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
         <activity android:name=".utils.urlActivity" />

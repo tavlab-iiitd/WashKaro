@@ -114,7 +114,7 @@ public class UpdateActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_government__updates);
+        setContentView(R.layout.activity_updates);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
