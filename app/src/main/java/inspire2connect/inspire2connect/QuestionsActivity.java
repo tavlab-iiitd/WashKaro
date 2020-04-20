@@ -103,7 +103,7 @@ public class QuestionsActivity extends AppCompatActivity {
     public void yes_clicked(View view){
         recyclerView.smoothScrollToPosition(customAdapter.getItemCount());
 
-        items.add("yes");
+        items.add(getString(R.string.yes));
         customAdapter.notifyItemInserted(items.size() -1);
         ans[flag] =1;
         flag++;
@@ -122,7 +122,7 @@ public class QuestionsActivity extends AppCompatActivity {
     public void no_clicked(View view){
         recyclerView.smoothScrollToPosition(customAdapter.getItemCount());
 
-        items.add("no");
+        items.add(getString(R.string.no));
         customAdapter.notifyItemInserted(items.size() -1);
         ans[flag] =2;
         flag++;
