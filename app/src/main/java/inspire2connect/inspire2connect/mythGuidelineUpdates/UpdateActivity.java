@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -15,11 +14,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -30,23 +27,25 @@ import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class dailyGuidelinesActivity extends BaseActivity {
-    DatabaseReference dref;
-    DatabaseReference d;
-    TextView centre;
-    ArrayList<guidelinesObject> result;
+public class UpdateActivity extends BaseActivity {
+    public ArrayList<guidelinesObject> result;
+    DatabaseReference databaseReference;
     private RecyclerView recyclerView;
-    private myths_adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private Government_Updates_Adapter mAdapter;
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
+    public static final String TAG = "UpdateActivity";
+
+    private boolean setDate;
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
     }
 
     @Override
@@ -72,65 +71,25 @@ public class dailyGuidelinesActivity extends BaseActivity {
         Log.d("Testing", "Sizze of Media player list=" + media_player_list.size());
     }
 
-    private void setGuidelinesHindi() {
-        //TextView guid_view = (TextView) findViewById(R.id.centre_view);
-        //guid_view.setText("दिशा निर्देश (WHO के द्वारा)");
-        FirebaseApp.initializeApp(this);
-        d = FirebaseDatabase.getInstance().getReference();
-        dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
-
-        dref.addValueEventListener(new ValueEventListener() {
+    private void setUpdates() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<guidelinesObject> result = new ArrayList<>();
-                String guidelnines = "";
+                result = new ArrayList<>();
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
-                    String g_hindi = snapshot.child("Guideline_hin").getValue(String.class);
-                    String hin_title = snapshot.child("Title_hin").getValue(String.class);
-                    String sno = snapshot.child("Sno").getValue().toString();
-                    String audio_url = snapshot.child("Audio").getValue(String.class);
-                    String redirect_url = snapshot.child("Source").getValue(String.class);
-                    hin_title = sno + ". " + hin_title + "<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
-                    String ttp = g_hindi;
-                    result.add(new guidelinesObject(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
-                }
-                populate_recycler_view(result);
-            }
+                    updateObject obj = new updateObject();
+                    if(setDate) {
+                        obj.date = snapshot.child("date").getValue().toString();
+                    }
+                    obj.title = snapshot.child("title_" + getCurLang()).getValue().toString();
+                    obj.content = snapshot.child("content_" + getCurLang()).getValue().toString();
+                    obj.source = snapshot.child("source").getValue().toString();
+                    String audio_url = "";
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void setGuidelinesEnglish() {
-        //TextView guid_view = (TextView) findViewById(R.id.centre_view);
-        //guid_view.setTypeface(null, Typeface.BOLD);
-        //guid_view.setText("Guidelines(By WHO)");
-        FirebaseApp.initializeApp(this);
-        d = FirebaseDatabase.getInstance().getReference();
-        dref = FirebaseDatabase.getInstance().getReference().child("Coronavirus").child("guidelines");
-        dref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<guidelinesObject> result = new ArrayList<>();
-                String guidelnines = "";
-                int count = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    count += 1;
-                    String hin_title = snapshot.child("Title_en").getValue(String.class);
-                    String g_hindi = snapshot.child("Guideline_en").getValue(String.class);
-                    String sno = snapshot.child("Sno").getValue().toString();
-                    String audio_url = snapshot.child("Audio").getValue(String.class);
-                    String redirect_url = snapshot.child("Source").getValue(String.class);
-                    //String ttp = "<b>" + sno + ". " + en_title+ "</b><br />" + g_english;
-                    hin_title = sno + ". " + hin_title + "</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
-                    String ttp = g_hindi;
-                    result.add(new guidelinesObject(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
-                    //result.add(new myth_single_object(en_t,ttp, Integer.toString(count), audio_url));
+                    result.add(new guidelinesObject(obj.title,
+                            obj.content, Integer.toString(count), audio_url, obj.source));
                 }
                 populate_recycler_view(result);
             }
@@ -143,36 +102,62 @@ public class dailyGuidelinesActivity extends BaseActivity {
     }
 
     public void populate_recycler_view(ArrayList<guidelinesObject> result) {
-        mAdapter = new myths_adapter(this, result);
+        mAdapter = new Government_Updates_Adapter(this, result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
+
         recyclerView.setAdapter(mAdapter);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_guidelines);
-//        centre=(TextView)findViewById(R.id.centre_view);
-//        centre.setText("दिशा निर्देश");
-        result = new ArrayList<>();
-        result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
-        mAdapter = new myths_adapter(this, result);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.guidelines_act);
-        recyclerView = findViewById(R.id.recyclerView);
+        setContentView(R.layout.activity_updates);
 
-        switch (getCurLang()) {
-            case englishCode:
-                setGuidelinesEnglish();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setDate = false;
+
+        Intent i = getIntent();
+
+        String type = i.getStringExtra(TYPE);
+        String date = i .getStringExtra(DATE);
+
+        switch (date) {
+            case DATE_YES:
+                setDate = true;
                 break;
-            case hindiCode:
-                setGuidelinesHindi();
+            default:
+                setDate = false;
                 break;
         }
+
+        switch (type) {
+            case UPDATES:
+                databaseReference = governmentReference;
+                getSupportActionBar().setTitle(R.string.govt_updates_act);
+                break;
+            case GUIDELINES:
+                databaseReference = guidelinesReference;
+                getSupportActionBar().setTitle(R.string.guidelines_act);
+                break;
+            case MYTH:
+                databaseReference = mythReference;
+                getSupportActionBar().setTitle(R.string.myth_act);
+                break;
+            default:
+                Logv(TAG, "Invalid Intent");
+                break;
+        }
+
+        result = new ArrayList<>();
+        result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
+        mAdapter = new Government_Updates_Adapter(this, result);
+        recyclerView = findViewById(R.id.recyclerView_gov_updates);
+
+        setUpdates();
     }
 
     @Override
@@ -190,7 +175,6 @@ public class dailyGuidelinesActivity extends BaseActivity {
                 }
             }
         finish();
-        //return super.onSupportNavigateUp();
         return true;
     }
 
@@ -206,10 +190,10 @@ public class dailyGuidelinesActivity extends BaseActivity {
         if (id == R.id.lang_togg_butt) {
             toggleLang(this);
         } else if (id == R.id.Survey) {
-            Intent i = new Intent(dailyGuidelinesActivity.this, maleFemaleActivity.class);
+            Intent i = new Intent(UpdateActivity.this, maleFemaleActivity.class);
             startActivity(i);
         } else if (id == R.id.developers) {
-            Intent i = new Intent(dailyGuidelinesActivity.this, aboutActivity.class);
+            Intent i = new Intent(UpdateActivity.this, aboutActivity.class);
             startActivity(i);
         } else if (id == R.id.privacy_policy) {
             openPrivacyPolicy(this);
@@ -222,12 +206,12 @@ public class dailyGuidelinesActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mAdapter.setOnItemClickListener(new myths_adapter
+        mAdapter.setOnItemClickListener(new Government_Updates_Adapter
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
-                Intent i = new Intent(dailyGuidelinesActivity.this, detailedViewActivity.class);
+                Intent i = new Intent(UpdateActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
                 ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
                 Log.d("Testing", result_from_adapter.get(position).getTitle());
@@ -239,12 +223,11 @@ public class dailyGuidelinesActivity extends BaseActivity {
                 }*/
                 ArrayList<guidelinesObject> single = new ArrayList<>();
                 single.add(result_from_adapter.get(position));
-                Log.d("Testing", single.get(0).getTitle());
+                //Log.d("Testing",single.get(0).getTitle());
                 i.putExtra("detailed_title", single.get(0).getTitle());
                 i.putExtra("detailed_text", single.get(0).getMyth());
                 i.putExtra("url", single.get(0).getAudio_url());
                 i.putExtra("redirect_url", single.get(0).getRedirect_url());
-
                 //i.putExtra("result_list",single);
                 startActivity(i);
             }
