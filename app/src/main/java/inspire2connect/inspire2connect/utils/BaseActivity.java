@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.dailyGuidelinesActivity;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdateActivity;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.mythsActivity;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
@@ -25,13 +28,22 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference whoReference = FirebaseDatabase.getInstance("https://washkaro-who.firebaseio.com").getReference();
     public static final DatabaseReference statsReference = FirebaseDatabase.getInstance("https://washkaro-stats.firebaseio.com").getReference();
 
+    // mythGuidelineUpdatesKey
+    public static final String TYPE = "T";
+    public static final String GUIDELINES = "0";
+    public static final String UPDATES = "1";
+    public static final String MYTH = "2";
+    public static final String DATE = "D";
+    public static final String DATE_YES = "1";
+    public static final String DATE_NO = "0";
+
     // TODO: Add Code for New Language Here
     public static final String englishCode = "en";
     public static final String hindiCode = "hi";
 
     // TODO: Add Firebase Key for Language Here
-    private static final String englishKey = "English";
-    private static final String hindiKey = "Hindi";
+    private static final String englishKey = "english";
+    private static final String hindiKey = "hindi";
 
     private static final HashMap<String, String> langKeyMap = new HashMap<String, String>() {
         {
@@ -90,6 +102,27 @@ public class BaseActivity extends AppCompatActivity {
         i.putExtra("url", activity.getString(R.string.privacy_policy_url));
         i.putExtra("name", activity.getString(R.string.privacy_policy));
         activity.startActivity(i);
+    }
+
+    public static Intent getGovernmentIntent(Activity activity) {
+        Intent i = new Intent(activity, UpdateActivity.class);
+        i.putExtra(TYPE, UPDATES);
+        i.putExtra(DATE, DATE_YES);
+        return i;
+    }
+
+    public static Intent getGuidelinesIntent(Activity activity) {
+        Intent i = new Intent(activity, dailyGuidelinesActivity.class);
+        i.putExtra(TYPE, GUIDELINES);
+        i.putExtra(DATE, DATE_NO);
+        return i;
+    }
+
+    public static Intent getMythIntent(Activity activity) {
+        Intent i = new Intent(activity, mythsActivity.class);
+        i.putExtra(TYPE, MYTH);
+        i.putExtra(DATE, DATE_NO);
+        return i;
     }
 
 }

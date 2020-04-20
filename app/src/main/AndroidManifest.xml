@@ -35,7 +35,7 @@
         <activity android:name=".mythGuidelineUpdates.dailyGuidelinesActivity" />
         <activity android:name=".mythGuidelineUpdates.mythsActivity" />
 <!--        <activity android:name=".daily_updates" />-->
-        <activity android:name=".mythGuidelineUpdates.governmentUpdatesActivity" />
+        <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
         <activity android:name=".utils.urlActivity" />
 
         <service
