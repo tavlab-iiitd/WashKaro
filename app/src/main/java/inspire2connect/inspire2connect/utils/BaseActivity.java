@@ -20,11 +20,12 @@ import inspire2connect.inspire2connect.urlActivity;
 public class BaseActivity extends AppCompatActivity {
 
     // Firebase References
-    public static final DatabaseReference infographicReference = FirebaseDatabase.getInstance().getReference("washkaro-infographic");
-    public static final DatabaseReference guidelinesReference = FirebaseDatabase.getInstance().getReference("washkaro-guidelines");
-    public static final DatabaseReference governmentReference = FirebaseDatabase.getInstance().getReference("washkaro-government");
-    public static final DatabaseReference mythReference = FirebaseDatabase.getInstance().getReference("washkaro-myth");
-    public static final DatabaseReference whoReference = FirebaseDatabase.getInstance().getReference("washkaro-who");
+    public static final DatabaseReference infographicReference = FirebaseDatabase.getInstance("https://washkaro-infographic.firebaseio.com").getReference();
+    public static final DatabaseReference guidelinesReference = FirebaseDatabase.getInstance("https://washkaro-guidelines.firebaseio.com").getReference();
+    public static final DatabaseReference governmentReference = FirebaseDatabase.getInstance("https://washkaro-government.firebaseio.com").getReference();
+    public static final DatabaseReference mythReference = FirebaseDatabase.getInstance("https://washkaro-myth.firebaseio.com").getReference();
+    public static final DatabaseReference whoReference = FirebaseDatabase.getInstance("https://washkaro-who.firebaseio.com").getReference();
+    public static final DatabaseReference statsReference = FirebaseDatabase.getInstance("https://washkaro-stats.firebaseio.com").getReference();
 
     // TODO: Add Code for New Language Here
     public static final String englishCode = "en";

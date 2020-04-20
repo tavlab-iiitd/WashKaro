@@ -31,29 +31,23 @@ import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
+import inspire2connect.inspire2connect.models.Infographics;
+import inspire2connect.inspire2connect.models.Stats;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
-
-//import android.widget.AdapterViewFlipper;
-
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     private static final int MY_REQUEST_CODE = 2399;
     //    public int w = 0, h = 0;
     //    AdapterViewFlipper adapterViewFlipper;
-//    FirebaseStorage firebaseStorage;
 //    DatabaseReference dRef;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     //    ImageButton[] img_but = new ImageButton[10];
@@ -63,7 +57,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     Animation anim1, anim2, anim3, anim4;
     //    TextView corona_helpline, live_data;
     TextView mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5, mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
-    StorageReference storageReference;
     RelativeLayout data_tile;
     LayoutInflater inflater;
     //    LinearLayout layout;
@@ -71,7 +64,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 //    private static final String TAG = "MainActivity";
     //    DatabaseReference d;
     private ViewFlipper viewFlipper;
-    private DatabaseReference databaseReference;
     private List<SlideModel> slideLists;
 //    private PopupWindow p_window;
     //View flipper Zoom Variables.......................................................
@@ -116,9 +108,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_);
-//        dRef = FirebaseDatabase.getInstance().getReference().child("Infographic");
-        storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
         update_handle();
         initialize_view_flipper();
 
@@ -130,27 +119,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[3] = findViewById(R.id.onair_tile);
         ll_but[4] = findViewById(R.id.chatbot_tile);
         ll_but[5] = findViewById(R.id.more_info_tile);
-//        ll_but[6] = findViewById(R.id.img_but_lay7);
-//        ll_but[7] = findViewById(R.id.img_but_lay8);
-//        ll_but[8] = findViewById(R.id.img_but_lay9);
-//        ll_but[9] = findViewById(R.id.img_but_lay10);
-
-
-//        img_but[0] = findViewById(R.id.image_button1);
-//        img_but[1] = findViewById(R.id.image_button2);
-//        img_but[2] = findViewById(R.id.image_button3);
-//        img_but[3] = findViewById(R.id.image_button4);
-//        ll_but[4]=findViewById(R.id.img_but_lay5);
-//        img_but[5] = findViewById(R.id.image_button6);
-//        img_but[6] = findViewById(R.id.image_button7);
-//        img_but[7] = findViewById(R.id.image_button8);
-//        img_but[8] = findViewById(R.id.image_button9);
-//        img_but[9] = findViewById(R.id.image_button10);
 
         int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
 
         for (int i = 0; i < btnToAdd.length; i++) {
-            //img_but[btnToAdd[i]].setOnClickListener(this);
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
@@ -297,7 +269,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     public void setInfographicFlipper() {
         initialize_view_flipper();
 
-        databaseReference.child("Infographic").child(getCurLangKey())
+        infographicReference.child(getCurLangKey().toLowerCase())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
@@ -307,13 +279,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 SlideModel model = snapshot.getValue(SlideModel.class);
 
-                                Long sno = Long.parseLong(snapshot.child("Sno").getValue().toString());
-                                String imageUrl = snapshot.child("InfoURL").getValue(String.class);
-                                model.setImageUrl(imageUrl);
-                                model.setName(sno);
+                                Infographics graphic = snapshot.getValue(Infographics.class);
+
+                                model.setImageUrl(graphic.InfoURL);
+                                model.setName(graphic.Sno);
                                 slideLists.add(model);
                             }
-                            //Toast.makeText(Home_Activity.this, "All data fetched", Toast.LENGTH_SHORT).show();
                             viewFlipper.removeAllViews();
                             usingFirebaseImages(slideLists);
                         } else {
@@ -389,20 +360,15 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     public void fetchset_MOHFW_data() {
 
-        databaseReference.child("Mohfw").child("Data").addValueEventListener(new ValueEventListener() {
+        statsReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String active_cases = dataSnapshot.child("Active").getValue().toString();
-                String airport_check = dataSnapshot.child("Airport").getValue().toString();
-                String noof_deaths = dataSnapshot.child("Deaths").getValue().toString();
-                String noof_discharged = dataSnapshot.child("Discharged").getValue().toString();
-                String noof_migrated = dataSnapshot.child("Migrated").getValue().toString();
-                mohfw_data1.setText(airport_check);
-                mohfw_data2.setText(active_cases);
-                mohfw_data3.setText(noof_discharged);
-                mohfw_data4.setText(noof_deaths);
-                mohfw_data5.setText(noof_migrated);
+                Stats stats = dataSnapshot.getValue(Stats.class);
+                mohfw_data1.setText(stats.Airport);
+                mohfw_data2.setText(stats.Active);
+                mohfw_data3.setText(stats.Discharged);
+                mohfw_data4.setText(stats.Deaths);
+                mohfw_data5.setText(stats.Migrated);
             }
 
             @Override
@@ -411,8 +377,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         });
 
     }
-
-
 }
 //    private void populateViewFlipper() {
 //        Toast.makeText(Home_Activity.this,"PLease wait",Toast.LENGTH_LONG).show();
