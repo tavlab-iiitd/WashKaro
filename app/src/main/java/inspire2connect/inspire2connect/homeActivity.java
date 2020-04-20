@@ -53,7 +53,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     LayoutInflater inflater;
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
-    private List<SlideModel> slideLists;
+    private List<Infographics> slideLists;
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -164,9 +164,9 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         viewFlipper.addView(imageView);
     }
 
-    private void usingFirebaseImages(List<SlideModel> slideLists) {
+    private void usingFirebaseImages(List<Infographics> slideLists) {
         for (int i = 0; i < slideLists.size(); i++) {
-            String downloadImageUrl = slideLists.get(i).getImageUrl();
+            String downloadImageUrl = slideLists.get(i).InfoURL;
             flipImages(downloadImageUrl);
 
 
@@ -183,7 +183,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         viewFlipper.startFlipping();
         viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
         viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
-
     }
 
     @Override
@@ -263,13 +262,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                         if (dataSnapshot.exists()) {
                             slideLists.clear();
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                SlideModel model = snapshot.getValue(SlideModel.class);
 
                                 Infographics graphic = snapshot.getValue(Infographics.class);
 
-                                model.setImageUrl(graphic.InfoURL);
-                                model.setName(graphic.Sno);
-                                slideLists.add(model);
+                                slideLists.add(graphic);
                             }
                             viewFlipper.removeAllViews();
                             usingFirebaseImages(slideLists);
@@ -315,7 +311,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
-        String url = slideLists.get(i).getImageUrl();
+        String url = slideLists.get(i).InfoURL;
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
         intnt.putExtra("image", url);
         startActivity(intnt);
