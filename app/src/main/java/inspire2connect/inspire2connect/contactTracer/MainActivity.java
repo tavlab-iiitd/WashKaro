@@ -39,7 +39,6 @@ import java.util.TimerTask;
 
 import inspire2connect.inspire2connect.QuestionsActivity;
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.symptomActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
 import inspire2connect.inspire2connect.contactTracer.models.User;
