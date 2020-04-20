@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.about.aboutActivity;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.dailyGuidelinesActivity;
+import inspire2connect.inspire2connect.survey.maleFemaleActivity;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.mythsActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
+import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 

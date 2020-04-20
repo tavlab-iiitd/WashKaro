@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +36,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import inspire2connect.inspire2connect.symptomTracker.QuestionsActivity;
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.contactTracer.MainActivity;
-import inspire2connect.inspire2connect.models.Infographics;
-import inspire2connect.inspire2connect.models.Stats;
+import inspire2connect.inspire2connect.mythGuidelineUpdates.governmentUpdatesActivity;
+import inspire2connect.inspire2connect.survey.maleFemaleActivity;
+import inspire2connect.inspire2connect.news.onAIrActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 

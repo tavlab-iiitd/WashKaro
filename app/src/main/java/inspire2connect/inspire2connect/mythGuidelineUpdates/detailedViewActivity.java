@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 
+import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class detailedViewActivity extends BaseActivity implements Serializable {

@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.about.aboutActivity;
+import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class mythsActivity extends BaseActivity {
-    public ArrayList<myth_single_object> result;
+    public ArrayList<guidelinesObject> result;
     TextView centre;
     DatabaseReference dref;
     DatabaseReference d;
@@ -63,7 +66,7 @@ public class mythsActivity extends BaseActivity {
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<myth_single_object> result = new ArrayList<>();
+                ArrayList<guidelinesObject> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -76,7 +79,7 @@ public class mythsActivity extends BaseActivity {
                     hin_title = sno + ". " + hin_title + "<br>";//<a href=" + redirect_url + ">स्रोत" + "</a>";
                     //String ttp = "<b>" + sno + ". " + hin_title + "</b><br />" + g_hindi;
                     String ttp = g_hindi;
-                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
+                    result.add(new guidelinesObject(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -98,7 +101,7 @@ public class mythsActivity extends BaseActivity {
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<myth_single_object> result = new ArrayList<>();
+                ArrayList<guidelinesObject> result = new ArrayList<>();
                 String guidelnines = "";
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -110,7 +113,7 @@ public class mythsActivity extends BaseActivity {
                     String redirect_url = snapshot.child("Source").getValue(String.class);
                     hin_title = sno + ". " + hin_title + "</b><br>";//<a href=" + redirect_url + ">Source" + "</a>";
                     String ttp = g_hindi;
-                    result.add(new myth_single_object(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
+                    result.add(new guidelinesObject(hin_title, ttp, Integer.toString(count), audio_url, redirect_url));
                 }
                 populate_recycler_view(result);
             }
@@ -122,7 +125,7 @@ public class mythsActivity extends BaseActivity {
         });
     }
 
-    public void populate_recycler_view(ArrayList<myth_single_object> result) {
+    public void populate_recycler_view(ArrayList<guidelinesObject> result) {
         mAdapter = new myths_adapter(this, result);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -138,7 +141,7 @@ public class mythsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_guidelines);
         result = new ArrayList<>();
-        result.add(new myth_single_object("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
+        result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
         mAdapter = new myths_adapter(this, result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.myth_act);
@@ -242,7 +245,7 @@ public class mythsActivity extends BaseActivity {
                 Log.d("Testing", " Clicked on Item gov_updates " + position);
                 Intent i = new Intent(mythsActivity.this, detailedViewActivity.class);
                 //Log.d("Testing",result.get(position).getTitle());
-                ArrayList<myth_single_object> result_from_adapter = mAdapter.getResult();
+                ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
                 Log.d("Testing", result_from_adapter.get(position).getTitle());
                 /*if(mMediaPlayer!=null)
                 {
@@ -250,7 +253,7 @@ public class mythsActivity extends BaseActivity {
                     mMediaPlayer.release();
                     mMediaPlayer=null;
                 }*/
-                ArrayList<myth_single_object> single = new ArrayList<>();
+                ArrayList<guidelinesObject> single = new ArrayList<>();
                 single.add(result_from_adapter.get(position));
                 Log.d("Testing", single.get(0).getTitle());
                 i.putExtra("detailed_title", single.get(0).getTitle());

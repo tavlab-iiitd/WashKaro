@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.media.MediaPlayer;
 

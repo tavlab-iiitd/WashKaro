@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,31 +16,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Government_Updates_Adapter extends RecyclerView.
-        Adapter<Government_Updates_Adapter.MyViewHolder> {
+import inspire2connect.inspire2connect.R;
+
+public class myths_adapter extends RecyclerView.Adapter<myths_adapter.MyViewHolder> {
     private static MyClickListener myClickListener;
     Context context;
-    Float X, Y;
     private ArrayList<Boolean> play_pause_list = new ArrayList<Boolean>();
     private ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
-    private ArrayList<myth_single_object> List;
+    private ArrayList<guidelinesObject> List;
 
-    public Government_Updates_Adapter(Context context, ArrayList<myth_single_object> List) {
+    public myths_adapter() {
+    }
+
+    public myths_adapter(Context context, ArrayList<guidelinesObject> List) {
         this.context = context;
         this.List = List;
-    }
-
-    public ArrayList<custom_media_Class> getMedia_player_list() {
-        return media_player_list;
-    }
-
-    public ArrayList<myth_single_object> getResult() {
-        return List;
     }
 
     public void share(String toShare) {
@@ -51,11 +45,20 @@ public class Government_Updates_Adapter extends RecyclerView.
         String share = shareBody.toString();
         //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
+    public ArrayList<custom_media_Class> getMedia_player_list() {
+        return media_player_list;
+    }
+
+    public ArrayList<guidelinesObject> getResult() {
+        return List;
+    }
+
     public void setOnItemClickListener(MyClickListener myClickListener) {
-        Government_Updates_Adapter.myClickListener = myClickListener;
+        myths_adapter.myClickListener = myClickListener;
     }
 
     @Override
@@ -69,9 +72,9 @@ public class Government_Updates_Adapter extends RecyclerView.
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final myth_single_object movie = List.get(position);
+        final guidelinesObject movie = List.get(position);
         holder.title.setText(Html.fromHtml(movie.getTitle()));
-        holder.actual_text.setText(movie.getMyth());
+        holder.actual_text.setText(Html.fromHtml(movie.getMyth()));
         holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         play_pause_list.add(false);
         media_player_list.add(new custom_media_Class(null, true));
@@ -85,14 +88,11 @@ public class Government_Updates_Adapter extends RecyclerView.
         holder.play_pause.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.d("Testing", "Card" + position + "clicked");
                 switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
-//                        Log.d("On_Click_DOWN",Float.toString(motionEvent.getX())+" "+Float.toString(motionEvent.getY()));
-//                        X = motionEvent.getX();
-//                        Y = motionEvent.getY();
-//                        if (motionEvent.getX() > 820.0)
-//                        {
+                    case MotionEvent.ACTION_DOWN:
+//                        Log.d("Testing", "x=" + motionEvent.getX() + "y=" + motionEvent.getY());
+//                        if(motionEvent.getX()>820.0) {
+//                        Log.d("Testing", "Button Touched");
                         for (int i = 0; i < media_player_list.size(); i++) {
                             if (i != position) {
                                 MediaPlayer temp = media_player_list.get(i).getMediaPlayer();
@@ -101,7 +101,6 @@ public class Government_Updates_Adapter extends RecyclerView.
                                 }
                             }
                         }
-                        Log.d("Testing", "Button Touched");
                         if (media_player_list.get(position).getPaused()) {
                             holder.play_pause.setImageDrawable(null);
                             holder.play_pause.setBackgroundResource(R.drawable.ic_pause_black_34dp);
@@ -113,7 +112,7 @@ public class Government_Updates_Adapter extends RecyclerView.
                                     if (temp == null) {
                                         temp = new MediaPlayer();
                                         media_player_list.get(position).setMediaPlayer(temp);
-                                        Log.d("Testing", "Step1" + List.get(position).getAudio_url());
+                                        Log.d("Testing", "Step1");
                                         temp.setDataSource(List.get(position).getAudio_url());
                                         temp.prepare();
                                         temp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -170,7 +169,7 @@ public class Government_Updates_Adapter extends RecyclerView.
                             }
                         }
 //                        }
-                    }
+                        return true;
                 }
                 return false;
             }
@@ -188,12 +187,11 @@ public class Government_Updates_Adapter extends RecyclerView.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         public TextView title;
         public TextView actual_text;
         public LinearLayout main_layout;
         public ImageView play_pause, share_button;
-        public CardView cardView;
-        private LinearLayout linearLayout;
 
         public MyViewHolder(View view) {
             super(view);
@@ -201,13 +199,11 @@ public class Government_Updates_Adapter extends RecyclerView.
             actual_text = view.findViewById(R.id.actual_text);
             title.setMovementMethod(LinkMovementMethod.getInstance());
             play_pause = view.findViewById(R.id.play_pause_myth);
-            main_layout = view.findViewById(R.id.main_layout);
-            cardView = view.findViewById(R.id.cardView);
+            share_button = view.findViewById(R.id.share_button);
+            main_layout = itemView.findViewById(R.id.main_layout);
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
-            share_button = view.findViewById(R.id.share_button);
-            //cardView.setOnClickListener(this);
-            //linearLayout=(LinearLayout)itemView.findViewById(R.id.Linear_layout);
+            //share_button.setOnClickListener(this);
         }
 
         //public CardView guideline_cv;

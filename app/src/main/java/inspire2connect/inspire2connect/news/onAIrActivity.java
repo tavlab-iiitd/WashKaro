@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.news;
 
 import android.Manifest;
 import android.content.Context;
@@ -33,7 +33,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import inspire2connect.inspire2connect.MyRecyclerViewAdapter;
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.models.Story;
+import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
@@ -157,7 +161,7 @@ public class onAIrActivity extends BaseActivity {
         lab_logo = findViewById(R.id.progress_bar);
         //app_logo=(ImageView)(findViewById(R.id.app_logo));
         //getSupportActionBar().setBackgroundDrawable(app_logo);
-        final ArrayList results = new ArrayList<DataObject>();
+        final ArrayList results = new ArrayList<newsObject>();
         //final CircularProgressDrawable cpd=new CircularProgressDrawable(this);
 
         //cpd=(CircularProgressDrawable)findViewById(R.id.circularprogressbar);
@@ -168,7 +172,7 @@ public class onAIrActivity extends BaseActivity {
         //ArrayList results = new ArrayList<DataObject>();
         final ProgressBar cpd = findViewById(R.id.circularprogressbar);
         for (int index = 0; index < 1; index++) {
-            DataObject obj = new DataObject("Some Primary Text " + index,
+            newsObject obj = new newsObject("Some Primary Text " + index,
                     "Secondary " + index);
             results.add(index, obj);
         }
@@ -207,7 +211,7 @@ public class onAIrActivity extends BaseActivity {
                         if (!flag) {
                             //cpd.start();
                             int count = 0;
-                            ArrayList results2 = new ArrayList<DataObject>();
+                            ArrayList results2 = new ArrayList<newsObject>();
                             HashMap<String, Story> hn = new HashMap<>();
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 Story user = snapshot.getValue(Story.class);
@@ -224,7 +228,7 @@ public class onAIrActivity extends BaseActivity {
 
                             for (Map.Entry<String, Story> it : hn.entrySet()) {
                                 Log.d("Database", it.getValue().getTitle());
-                                DataObject obj = new DataObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
+                                newsObject obj = new newsObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
                                 //Log.d("Databse",Integer.toString(it.getValue().getNumber_of_relevant_votes())+" "+Double.toString(threshold));
                                 try {
                                     if (it.getValue().getSimilarity() >= threshold)

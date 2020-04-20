@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.selectMiscActivity;
-import inspire2connect.inspire2connect.urlActivity;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {

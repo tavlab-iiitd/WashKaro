@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
@@ -15,6 +15,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import inspire2connect.inspire2connect.R;
 
 public class daily_guidelines_adapter extends RecyclerView.Adapter<daily_guidelines_adapter.MyViewHolder> {
     private static MyClickListener myClickListener;

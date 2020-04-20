@@ -13,43 +13,43 @@
         android:theme="@style/AppTheme"
         android:name=".contactTracer.BluetoothApplication"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".QuestionsActivity"></activity>
+        <activity android:name=".symptomTracker.QuestionsActivity"></activity>
 <!--        <activity android:name=".firstPageActivity"></activity>-->
-        <activity android:name=".homeActivity" />
+        <activity android:name=".home.homeActivity" />
 <!--        <activity android:name=".male_female_2" />-->
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".home.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".maleFemaleActivity" />
-        <activity android:name=".text2speech2_2Activity" />
-        <activity android:name=".aboutActivity" />
-        <activity android:name=".onAIrActivity" />
+        <activity android:name=".survey.maleFemaleActivity" />
+        <activity android:name=".news.text2speech2_2Activity" />
+        <activity android:name=".about.aboutActivity" />
+        <activity android:name=".news.onAIrActivity" />
 <!--        <activity android:name=".add_new" />-->
 <!--        <activity android:name=".improveActivity" />-->
 <!--        <activity android:name=".Text2SpeechActivity" />-->
 <!--        <activity android:name=".Infographic" />-->
-        <activity android:name=".dailyGuidelinesActivity" />
-        <activity android:name=".mythsActivity" />
+        <activity android:name=".mythGuidelineUpdates.dailyGuidelinesActivity" />
+        <activity android:name=".mythGuidelineUpdates.mythsActivity" />
 <!--        <activity android:name=".daily_updates" />-->
-        <activity android:name=".governmentUpdatesActivity" />
-        <activity android:name=".urlActivity" />
+        <activity android:name=".mythGuidelineUpdates.governmentUpdatesActivity" />
+        <activity android:name=".utils.urlActivity" />
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name=".utils.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".selectChatBotActivity"></activity>
-        <activity android:name=".selectMiscActivity"></activity>
-        <activity android:name=".detailedViewActivity"></activity>
-        <activity android:name=".InfographicsActivity"></activity>
+        <activity android:name=".home.selectChatBotActivity"></activity>
+        <activity android:name=".home.selectMiscActivity"></activity>
+        <activity android:name=".mythGuidelineUpdates.detailedViewActivity"></activity>
+        <activity android:name=".home.InfographicsActivity"></activity>
 
 <!--        Contact Tracer-->
 

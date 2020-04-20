@@ -1,10 +1,10 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.news;
 
-public class DataObject {
+public class newsObject {
     private String mText1;
     private String mText2;
 
-    DataObject(String text1, String text2) {
+    newsObject(String text1, String text2) {
         mText1 = text1;
         mText2 = text2;
     }

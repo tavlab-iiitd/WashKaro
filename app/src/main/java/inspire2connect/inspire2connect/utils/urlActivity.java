@@ -1,10 +1,11 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.utils;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class urlActivity extends BaseActivity {

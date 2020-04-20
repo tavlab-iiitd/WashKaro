@@ -37,7 +37,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import inspire2connect.inspire2connect.QuestionsActivity;
+import inspire2connect.inspire2connect.symptomTracker.QuestionsActivity;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;

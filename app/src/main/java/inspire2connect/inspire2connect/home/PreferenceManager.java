@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.home;
 
 import android.content.Context;
 import android.content.SharedPreferences;

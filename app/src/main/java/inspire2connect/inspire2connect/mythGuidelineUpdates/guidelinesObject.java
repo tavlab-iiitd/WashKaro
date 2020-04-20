@@ -1,13 +1,13 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
-public class myth_single_object {
+public class guidelinesObject {
     String title;
     String myth;
     String position;
     String audio_url;
     String redirect_url;
 
-    public myth_single_object(String title, String myth, String position, String audio_url, String redirect_url) {
+    public guidelinesObject(String title, String myth, String position, String audio_url, String redirect_url) {
         this.title = title;
         this.myth = myth;
         this.position = position;

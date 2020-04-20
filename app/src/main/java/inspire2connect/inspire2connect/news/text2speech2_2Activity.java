@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect;
+package inspire2connect.inspire2connect.news;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.models.Story;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;

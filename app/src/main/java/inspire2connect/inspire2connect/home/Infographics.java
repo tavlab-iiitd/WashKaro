@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.models;
+package inspire2connect.inspire2connect.home;
 
 public class Infographics {
     public long Sno;
