@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.models;
+package inspire2connect.inspire2connect.news;
 
 public class Story implements Comparable<Story> {
     private String title;
