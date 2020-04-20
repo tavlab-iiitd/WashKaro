@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,27 +45,15 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     private static final int MY_REQUEST_CODE = 2399;
-    //    public int w = 0, h = 0;
-    //    AdapterViewFlipper adapterViewFlipper;
-//    DatabaseReference dRef;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
-    //    ImageButton[] img_but = new ImageButton[10];
-    //    DatabaseReference dref;
     ImageButton flip_left, flip_right;
-    //    Animation anim_in, anim_out;
     Animation anim1, anim2, anim3, anim4;
-    //    TextView corona_helpline, live_data;
     TextView mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5, mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
     RelativeLayout data_tile;
     LayoutInflater inflater;
-    //    LinearLayout layout;
     float downX, downY, upX, upY;
-//    private static final String TAG = "MainActivity";
-    //    DatabaseReference d;
     private ViewFlipper viewFlipper;
     private List<SlideModel> slideLists;
-//    private PopupWindow p_window;
-    //View flipper Zoom Variables.......................................................
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -99,7 +86,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
-                Log.e("UPDATE_STATUS", "Update flow failed! Result code: " + resultCode);
+                Loge("UPDATE_STATUS", "Update flow failed! Result code: " + resultCode);
             }
         }
     }
