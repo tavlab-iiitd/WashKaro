@@ -247,7 +247,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         if (view == ll_but[0]) {
             i = new Intent(homeActivity.this, governmentUpdatesActivity.class);
         } else if (view == ll_but[1]) {
-            i = new Intent(homeActivity.this, symptomActivity.class);
+            i = new Intent(homeActivity.this, QuestionsActivity.class);
         } else if (view == ll_but[2]) {
             i = new Intent(homeActivity.this, MainActivity.class);
         } else  if (view == ll_but[3]) {
