@@ -37,7 +37,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
     @Override
     public void onBindViewHolder( QuestionsAdapter.MyViewHolder holder, int position) {
 
-        if(questions.get(position).equalsIgnoreCase("yes") || questions.get(position).equalsIgnoreCase("no")){
+        if(questions.get(position).equals(context.getString(R.string.yes)) || questions.get(position).equals(context.getString(R.string.no))){
             holder.rightText.setText(questions.get(position));
             holder.leftText.setVisibility(View.GONE);
         }
