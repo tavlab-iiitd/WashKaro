@@ -38,291 +38,320 @@
         app:layout_constraintTop_toTopOf="@+id/precogLogo"
         app:srcCompat="@drawable/iiitd" />
 
-    <androidx.core.widget.NestedScrollView
+    <GridView
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="500dp"
+        android:columnWidth="200dp"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="spacingWidthUniform"
+        android:verticalSpacing="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/precogLogo">
+        app:layout_constraintTop_toBottomOf="@id/precogLogo" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/about_bottom_margin"
-            android:gravity="center"
-            android:orientation="vertical">
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/precogLogo">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="@dimen/about_bottom_margin"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/development_team"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/development_team"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_blue"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_medium"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_cat_title" />&ndash;&gt;-->
 
 <!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/development_team"-->
+<!--                android:id="@+id/bhavika"-->
 <!--                android:layout_width="wrap_content"-->
+
+<!--                android:fontFamily="@font/mukta_semibold"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/development_team"-->
-<!--                android:textColor="@color/app_blue"-->
+<!--                android:text="@string/bhavika"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/bhavikaTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 <!--                android:fontFamily="@font/mukta_medium"-->
-<!--                android:textSize="@dimen/about_cat_title" />-->
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/bhavika"
-                android:layout_width="wrap_content"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/bhavika"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/bhavikaTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="8dp"
-                android:text="@string/bhavika_tag"
-                android:textColor="@color/app_light_black"
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/chirag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/chirag"
-                android:textColor="@color/app_black"
-
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/chiragTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/chirag_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/himanshu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/himanshu"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/himanshuTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="8dp"
-                android:text="@string/himanshu_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/kanav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/kanav"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/kanavTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/kanav_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/priyanka"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/priyanka"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/priyankaTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="8dp"
-                android:text="@string/priyanka_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/rohan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/rohan"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/rohanTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/rohan_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/vaibhav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:text="@string/vaibhav"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/vaibhavTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/vaibhav_tag"
-                android:textColor="@color/app_light_black"
-
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/tav"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tavTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/mukta_medium"
-                android:layout_marginTop="8dp"
-                android:text="@string/tav_description"
-                android:textColor="@color/app_light_black"
-                android:textSize="@dimen/about_content" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/pk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/about_bottom_margin"
-                android:fontFamily="@font/mukta_semibold"
-                android:text="@string/pk"
-                android:textColor="@color/app_black"
-                android:textSize="@dimen/about_title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/pkTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/mukta_medium"
-                android:text="@string/pk_description"
-                android:textColor="@color/app_light_black"
-                android:textSize="@dimen/about_content" />
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="@string/bhavika_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+<!--                android:textSize="@dimen/about_content" />-->
 
 <!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/mentor_team"-->
+<!--                android:id="@+id/chirag"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
 
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:text="@string/chirag"-->
+<!--                android:textColor="@color/app_black"-->
+
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/chiragTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
 <!--                android:fontFamily="@font/mukta_medium"-->
-<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/mentors"-->
-<!--                android:textColor="@color/app_blue"-->
-<!--                android:textSize="@dimen/about_cat_title" />-->
+<!--                android:text="@string/chirag_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+
+<!--                android:textSize="@dimen/about_content" />-->
 
 <!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/arushi"-->
+<!--                android:id="@+id/himanshu"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/arushi"-->
-<!--                android:fontFamily="@font/mukta_bold"-->
-<!--                android:textColor="@color/app_black"-->
-<!--                android:textSize="@dimen/about_title" />-->
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/lovedeep"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/himanshu"-->
 
 <!--                android:fontFamily="@font/mukta_semibold"-->
-<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/lovedeep"-->
 <!--                android:textColor="@color/app_black"-->
 <!--                android:textSize="@dimen/about_title" />-->
+
 <!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/mudit"-->
+<!--                android:id="@+id/himanshuTag"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="@string/himanshu_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
 
-<!--                android:fontFamily="@font/mukta_semibold"-->
-<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/mudit"-->
-<!--                android:textColor="@color/app_black"-->
-<!--                android:textSize="@dimen/about_title" />-->
+<!--                android:textSize="@dimen/about_content" />-->
+
 <!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:id="@+id/samprati"-->
+<!--                android:id="@+id/kanav"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
 
 <!--                android:fontFamily="@font/mukta_semibold"-->
-<!--                android:text="@string/samprati"-->
+<!--                android:text="@string/kanav"-->
 <!--                android:textColor="@color/app_black"-->
 <!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/kanavTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:text="@string/kanav_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+
+<!--                android:textSize="@dimen/about_content" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/priyanka"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/priyanka"-->
+
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/priyankaTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="@string/priyanka_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+
+<!--                android:textSize="@dimen/about_content" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/rohan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/rohan"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/rohanTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:text="@string/rohan_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+
+<!--                android:textSize="@dimen/about_content" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/vaibhav"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:text="@string/vaibhav"-->
+
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/vaibhavTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:text="@string/vaibhav_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
+
+<!--                android:textSize="@dimen/about_content" />-->
+
 <!--            <com.google.android.material.textview.MaterialTextView-->
 <!--                android:id="@+id/vrinda"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
-<!--                android:text="@string/vrinda"-->
+<!--                android:text="Vrinda Narayan"-->
 
 <!--                android:fontFamily="@font/mukta_semibold"-->
 <!--                android:textColor="@color/app_black"-->
 <!--                android:textSize="@dimen/about_title" />-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/vrindaTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:text="@string/chirag_tag"-->
+<!--                android:textColor="@color/app_light_black"-->
 
-        </LinearLayout>
+<!--                android:textSize="@dimen/about_content" />-->
 
-    </androidx.core.widget.NestedScrollView>
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/tav"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:text="@string/tav"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/tavTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="@string/tav_description"-->
+<!--                android:textColor="@color/app_light_black"-->
+<!--                android:textSize="@dimen/about_content" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/pk"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/about_bottom_margin"-->
+<!--                android:fontFamily="@font/mukta_semibold"-->
+<!--                android:text="@string/pk"-->
+<!--                android:textColor="@color/app_black"-->
+<!--                android:textSize="@dimen/about_title" />-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/pkTag"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:fontFamily="@font/mukta_medium"-->
+<!--                android:text="@string/pk_description"-->
+<!--                android:textColor="@color/app_light_black"-->
+<!--                android:textSize="@dimen/about_content" />-->
+
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/mentor_team"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_medium"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/mentors"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_blue"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_cat_title" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/arushi"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/arushi"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_black"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_title" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/lovedeep"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/lovedeep"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_black"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_title" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/mudit"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/mudit"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_black"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_title" />&ndash;&gt;-->
+<!--&lt;!&ndash;            <com.google.android.material.textview.MaterialTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/samprati"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="@dimen/about_bottom_margin"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                android:fontFamily="@font/mukta_semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="@string/samprati"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textColor="@color/app_black"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="@dimen/about_title" />&ndash;&gt;-->
+<!--            -->
+
+<!--        </LinearLayout>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView"
