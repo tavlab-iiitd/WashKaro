@@ -19,7 +19,7 @@ import java.io.Serializable;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
-public class detailedViewActivity extends BaseActivity implements Serializable {
+public class guidelineViewActivity extends BaseActivity implements Serializable {
     public TextView detailed_title;
     public TextView detailed_text;
     public ImageButton detailed_play_button, detailed_share_button;
@@ -49,7 +49,7 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_view);
+        setContentView(R.layout.activity_full_guideline_view);
         detailed_title = findViewById(R.id.detailed_title);
         detailed_title.setMovementMethod(LinkMovementMethod.getInstance());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,9 +61,8 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
         currently_paused = false;
         final Intent i = getIntent();
         String redirect_url = i.getStringExtra("redirect_url");
-        //ArrayList<myth_single_object> single=(ArrayList<myth_single_object>) i.getSerializableExtra("result_list");
-        detailed_title.setText(Html.fromHtml(i.getStringExtra("detailed_title") + "<br><a href=" + redirect_url + ">Source" + "</a>"));
-        detailed_text.setText(Html.fromHtml(i.getStringExtra("detailed_text")));
+        detailed_title.setText(i.getStringExtra("detailed_title"));
+        detailed_text.setText(i.getStringExtra("detailed_text"));
         mediaPlayer = new MediaPlayer();
 
         detailed_share_button.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +166,6 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
             mediaPlayer.release();
         }
         finish();
-        //return super.onSupportNavigateUp();
         return true;
     }
 }

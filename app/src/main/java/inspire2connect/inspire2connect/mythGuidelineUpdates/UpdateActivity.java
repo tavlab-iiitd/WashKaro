@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -31,7 +32,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     public ArrayList<guidelinesObject> result;
     DatabaseReference databaseReference;
     private RecyclerView recyclerView;
-    private Government_Updates_Adapter mAdapter;
+    private UpdatesAdapter mAdapter;
     private TextToSpeech tts;
     private boolean setDate;
 
@@ -51,14 +52,16 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                     updateObject obj = new updateObject();
                     if (setDate) {
                         obj.date = snapshot.child("date").getValue().toString();
+                        obj.title = snapshot.child("title_" + getCurLang()).getValue().toString() + " | " + obj.date;
+                    } else {
+                        obj.title = snapshot.child("title_" + getCurLang()).getValue().toString();
                     }
                     obj.title = snapshot.child("title_" + getCurLang()).getValue().toString();
                     obj.content = snapshot.child("content_" + getCurLang()).getValue().toString();
                     obj.source = snapshot.child("source").getValue().toString();
-                    String audio_url = "";
 
                     result.add(new guidelinesObject(obj.title,
-                            obj.content, Integer.toString(count), audio_url, obj.source));
+                            obj.content, Integer.toString(count), obj.source));
                 }
                 populate_recycler_view(result);
             }
@@ -71,7 +74,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     }
 
     public void populate_recycler_view(ArrayList<guidelinesObject> result) {
-        mAdapter = new Government_Updates_Adapter(this, result);
+        mAdapter = new UpdatesAdapter(this, result);
         mAdapter.setTTS(tts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -123,8 +126,8 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         }
 
         result = new ArrayList<>();
-        result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under", "under"));
-        mAdapter = new Government_Updates_Adapter(this, result);
+        result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under"));
+        mAdapter = new UpdatesAdapter(this, result);
         recyclerView = findViewById(R.id.recyclerView_gov_updates);
 
         setUpdates();
@@ -171,42 +174,28 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        mAdapter.setOnItemClickListener(new Government_Updates_Adapter
-//                .MyClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//                Log.d("Testing", " Clicked on Item gov_updates " + position);
-//                Intent i = new Intent(UpdateActivity.this, detailedViewActivity.class);
-//                //Log.d("Testing",result.get(position).getTitle());
-//                ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
-//                Log.d("Testing", result_from_adapter.get(position).getTitle());
-//                /*if(mMediaPlayer!=null)
-//                {
-//                    mMediaPlayer.stop();
-//                    mMediaPlayer.release();
-//                    mMediaPlayer=null;
-//                }*/
-//                ArrayList<guidelinesObject> single = new ArrayList<>();
-//                single.add(result_from_adapter.get(position));
-//                //Log.d("Testing",single.get(0).getTitle());
-//                i.putExtra("detailed_title", single.get(0).getTitle());
-//                i.putExtra("detailed_text", single.get(0).getMyth());
-//                i.putExtra("url", single.get(0).getAudio_url());
-//                i.putExtra("redirect_url", single.get(0).getRedirect_url());
-//                //i.putExtra("result_list",single);
-//                startActivity(i);
-//            }
-//        });
-//    }
-
     @Override
     protected void onDestroy() {
         if (tts != null) {
             tts.shutdown();
         }
         super.onDestroy();
+    }
+
+        @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.setOnItemClickListener(new UpdatesAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent(UpdateActivity.this, guidelineViewActivity.class);
+                ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
+                i.putExtra("detailed_title", result_from_adapter.get(position).getTitle());
+                i.putExtra("detailed_text", result_from_adapter.get(position).getContent());
+                i.putExtra("url", "");
+                i.putExtra("redirect_url", result_from_adapter.get(position).getSource());
+                startActivity(i);
+            }
+        });
     }
 }
