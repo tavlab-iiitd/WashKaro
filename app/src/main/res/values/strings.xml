@@ -165,7 +165,7 @@
     <string name="irrelevant">Irrelevant</string>
 
 <!--    URL-->
-    <string name="covid_map" translatable="false">https://hspandit.github.io/washkaro-map/</string>
+    <string name="covid_map" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/map.html</string>
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
 
 <!--    Menu-->
