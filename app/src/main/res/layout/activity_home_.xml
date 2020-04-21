@@ -106,6 +106,7 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:clickable="false"
                                 android:id="@+id/mohfw_iv2"
                                 style="@android:style/Widget.Material.Light.ImageButton"
                                 android:layout_width="40dp"
@@ -117,6 +118,7 @@
                                 app:srcCompat="@drawable/ic_stat2" />
 
                             <TextView
+                                android:clickable="false"
                                 android:id="@+id/mohfw_tv2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -128,6 +130,7 @@
                                 android:textSize="@dimen/home_stat_text" />
 
                             <TextView
+                                android:clickable="false"
                                 android:id="@+id/mohfw_data2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -153,6 +156,7 @@
 
                             <ImageView
                                 android:id="@+id/mohfw_iv3"
+                                android:clickable="false"
                                 style="@android:style/Widget.Material.Light.ImageButton"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
@@ -164,6 +168,7 @@
 
                             <TextView
                                 android:id="@+id/mohfw_tv3"
+                                android:clickable="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -178,6 +183,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/empty_stats"
+                                android:clickable="false"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -201,6 +207,7 @@
                                 android:id="@+id/mohfw_iv4"
                                 style="@android:style/Widget.Material.Light.ImageButton"
                                 android:layout_width="40dp"
+                                android:clickable="false"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
@@ -211,6 +218,7 @@
                             <TextView
                                 android:id="@+id/mohfw_tv4"
                                 android:layout_width="match_parent"
+                                android:clickable="false"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/mukta_bold"
@@ -224,6 +232,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/empty_stats"
+                                android:clickable="false"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
@@ -250,6 +259,7 @@
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:clickable="false"
                                 android:background="#FFFFFF"
                                 android:scaleType="fitCenter"
                                 app:srcCompat="@drawable/ic_stat5" />
@@ -262,6 +272,7 @@
                                 android:fontFamily="@font/mukta_bold"
                                 android:text="@string/migrated_patient_tile"
                                 android:textAlignment="center"
+                                android:clickable="false"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_text" />
 
@@ -272,6 +283,7 @@
                                 android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
+                                android:clickable="false"
                                 android:textSize="@dimen/home_stat_val"
                                 android:textStyle="bold" />
 
