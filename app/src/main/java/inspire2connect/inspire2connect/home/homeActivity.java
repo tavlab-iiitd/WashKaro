@@ -177,13 +177,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == flip_left) {
+        if (view == flip_right) {
             viewFlipper.stopFlipping();
             viewFlipper.setInAnimation(anim2);
             viewFlipper.setOutAnimation(anim3);
             viewFlipper.showPrevious();
         }
-        if (view == flip_right) {
+        if (view == flip_left) {
             viewFlipper.stopFlipping();
             viewFlipper.setInAnimation(anim1);
             viewFlipper.setOutAnimation(anim4);
