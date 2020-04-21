@@ -108,6 +108,10 @@
     <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
     <string name="vrinda">Vrinda Narayan</string>
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
+
+    <string name="tanuj">Tanuj Dabas</string>
+    <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
+
 <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
