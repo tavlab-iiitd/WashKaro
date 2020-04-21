@@ -351,7 +351,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/advisories_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev">
@@ -408,7 +408,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/symptom_tracker_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev">
@@ -417,7 +417,7 @@
                             android:id="@+id/image_button2"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/imgbut_text2"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
@@ -465,7 +465,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/contact_tracer_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
@@ -476,7 +476,7 @@
                             android:id="@+id/image_button3"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/imgbut_text3"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
@@ -524,7 +524,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/onair_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
@@ -535,7 +535,7 @@
                             android:id="@+id/image_button4"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/imgbut_text4"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
@@ -582,7 +582,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/more_info_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
@@ -593,7 +593,7 @@
                             android:id="@+id/image_button6"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/imgbut_text6"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
@@ -640,7 +640,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/chatbot_tile"
                         android:layout_width="150dp"
-                        android:layout_height="100dp"
+                        android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
@@ -651,7 +651,7 @@
                             android:id="@+id/image_button5"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/imgbut_text5"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"

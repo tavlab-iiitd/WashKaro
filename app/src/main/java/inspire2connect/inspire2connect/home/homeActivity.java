@@ -53,8 +53,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     Animation anim1, anim2, anim3, anim4;
 //    TextView mohfw_data1
     TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
-//        mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
-//    RelativeLayout data_tile;
     LayoutInflater inflater;
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
@@ -137,29 +135,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         anim4 = AnimationUtils.loadAnimation(this, R.anim.anim4);
         flip_left = findViewById(R.id.flipperLeft);
         flip_right = findViewById(R.id.flipperRight);
-//        switchLang();
-//        corona_helpline = (TextView)findViewById(R.id.Corona_helpline_text);
-//        live_data=(TextView)findViewById(R.id.state_helpline_text);
 
         inflater = (LayoutInflater) homeActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //layout = inflater.inflate(R.layout.zoom_in, null);
-
 
         flip_left.setOnClickListener(this);
         flip_right.setOnClickListener(this);
-//        corona_helpline.setOnClickListener(this);
 
         flipper_single_tap();
         fetchset_MOHFW_data();
 
         setInfographicFlipper();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //usingFirebaseDatabase();
     }
 
     private void initialize_view_flipper() {
@@ -174,8 +160,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         for (int i = 0; i < slideLists.size(); i++) {
             String downloadImageUrl = slideLists.get(i).InfoURL;
             flipImages(downloadImageUrl);
-
-
         }
     }
 
