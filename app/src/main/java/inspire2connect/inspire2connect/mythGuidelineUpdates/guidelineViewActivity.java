@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.io.Serializable;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class guidelineViewActivity extends BaseActivity implements Serializable {
     public TextView detailed_title;
@@ -35,6 +37,10 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
             mSeekbarUpdateHandler.postDelayed(this, 50);
         }
     };
+
+    public ImageButton sourceBtn;
+
+    private Context context;
 
     @Override
     public void onBackPressed() {
@@ -60,10 +66,23 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
         detailed_share_button = findViewById(R.id.detailed_share);
         currently_paused = false;
         final Intent i = getIntent();
-        String redirect_url = i.getStringExtra("redirect_url");
+        final String redirect_url = i.getStringExtra("redirect_url");
         detailed_title.setText(i.getStringExtra("detailed_title"));
         detailed_text.setText(i.getStringExtra("detailed_text"));
         mediaPlayer = new MediaPlayer();
+
+        context = this;
+
+        sourceBtn = findViewById(R.id.detailed_source);
+        sourceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, urlActivity.class);
+                i.putExtra("url", redirect_url);
+                i.putExtra("name", getString(R.string.india_covid_map_tile));
+                startActivity(i);
+            }
+        });
 
         detailed_share_button.setOnClickListener(new View.OnClickListener() {
             @Override
