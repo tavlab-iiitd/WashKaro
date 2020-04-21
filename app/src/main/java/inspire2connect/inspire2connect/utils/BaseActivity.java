@@ -43,6 +43,9 @@ public class BaseActivity extends AppCompatActivity {
     private static final String englishKey = "english";
     private static final String hindiKey = "hindi";
 
+    // TTS
+    public static final int SPEECH_REQUEST_CODE = 1500;
+
     private static final HashMap<String, String> langKeyMap = new HashMap<String, String>() {
         {
             // TODO: Add put entry here
@@ -80,11 +83,8 @@ public class BaseActivity extends AppCompatActivity {
                 Logv("language-washkaro", "wrong language: " + curLang);
                 break;
         }
-        Intent i = new Intent(mActivity, mActivity.getClass());
-        mActivity.startActivity(i);
+        mActivity.startActivity(mActivity.getIntent());
         mActivity.finish();
-//        mActivity.getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
-//        mActivity.recreate();
     }
 
     public static String getCurLang() {
