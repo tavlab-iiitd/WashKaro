@@ -51,8 +51,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     ImageButton flip_left, flip_right;
     Animation anim1, anim2, anim3, anim4;
-    TextView mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5, mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
-    RelativeLayout data_tile;
+//    TextView mohfw_data1
+    TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
+//        mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
+//    RelativeLayout data_tile;
     LayoutInflater inflater;
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
@@ -116,17 +118,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
-        mohfw_data1 = findViewById(R.id.mohfw_data1);
+//        mohfw_data1 = findViewById(R.id.mohfw_data1);
+        mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
         mohfw_data5 = findViewById(R.id.mohfw_data5);
-        mohfw_tv1 = findViewById(R.id.mohfw_tv1);
-        mohfw_tv2 = findViewById(R.id.mohfw_tv2);
-        mohfw_tv3 = findViewById(R.id.mohfw_tv3);
-        mohfw_tv4 = findViewById(R.id.mohfw_tv4);
-        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
-        data_tile = findViewById(R.id.data_tile);
+//        mohfw_tv1 = findViewById(R.id.mohfw_tv1);
+//        mohfw_tv2 = findViewById(R.id.mohfw_tv2);
+//        mohfw_tv3 = findViewById(R.id.mohfw_tv3);
+//        mohfw_tv4 = findViewById(R.id.mohfw_tv4);
+//        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
+//        data_tile = findViewById(R.id.data_tile);
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
@@ -326,7 +329,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Stats stats = dataSnapshot.getValue(Stats.class);
-                mohfw_data1.setText(stats.Airport);
+//                mohfw_data1.setText(stats.Airport);
                 mohfw_data2.setText(stats.Active);
                 mohfw_data3.setText(stats.Discharged);
                 mohfw_data4.setText(stats.Deaths);

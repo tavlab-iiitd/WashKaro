@@ -277,51 +277,51 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/mohfw_ll1"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="1dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/buttonback2"
-                            android:clipToPadding="false"
-                            android:orientation="vertical">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/mohfw_ll1"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="1dp"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:background="@drawable/buttonback2"-->
+<!--                            android:clipToPadding="false"-->
+<!--                            android:orientation="vertical">-->
 
-                            <ImageView
-                                android:id="@+id/mohfw_iv1"
-                                style="@android:style/Widget.Material.Light.ImageButton"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:background="#FFFFFF"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/ic_stat1" />
+<!--                            <ImageView-->
+<!--                                android:id="@+id/mohfw_iv1"-->
+<!--                                style="@android:style/Widget.Material.Light.ImageButton"-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:background="#FFFFFF"-->
+<!--                                android:scaleType="fitCenter"-->
+<!--                                app:srcCompat="@drawable/ic_stat1" />-->
 
-                            <TextView
-                                android:id="@+id/mohfw_tv1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/mukta_bold"
-                                android:text="@string/passengers_screened_tile"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/mohfw_tv1"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:fontFamily="@font/mukta_bold"-->
+<!--                                android:text="@string/passengers_screened_tile"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/blackcolor"-->
+<!--                                android:textSize="@dimen/home_stat_text" />-->
 
-                            <TextView
-                                android:id="@+id/mohfw_data1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/empty_stats"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/mohfw_data1"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="@string/empty_stats"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/blackcolor"-->
+<!--                                android:textSize="@dimen/home_stat_val"-->
+<!--                                android:textStyle="bold" />-->
 
-                        </LinearLayout>
+<!--                        </LinearLayout>-->
                     </LinearLayout>
                 </HorizontalScrollView>
 
