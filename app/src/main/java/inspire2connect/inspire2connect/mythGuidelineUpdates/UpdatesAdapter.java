@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -23,8 +22,7 @@ import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 
-public class Government_Updates_Adapter extends RecyclerView.
-        Adapter<Government_Updates_Adapter.MyViewHolder> {
+public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHolder> {
     private static MyClickListener myClickListener;
     Context context;
 
@@ -32,7 +30,7 @@ public class Government_Updates_Adapter extends RecyclerView.
 
     private ArrayList<guidelinesObject> List;
 
-    public Government_Updates_Adapter(Context context, ArrayList<guidelinesObject> List) {
+    public UpdatesAdapter(Context context, ArrayList<guidelinesObject> List) {
         this.context = context;
         this.List = List;
     }
@@ -57,14 +55,13 @@ public class Government_Updates_Adapter extends RecyclerView.
     }
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
-        Government_Updates_Adapter.myClickListener = myClickListener;
+        UpdatesAdapter.myClickListener = myClickListener;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.myths_2, parent, false);
-
+                .inflate(R.layout.updates_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -72,8 +69,8 @@ public class Government_Updates_Adapter extends RecyclerView.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final guidelinesObject movie = List.get(position);
-        holder.title.setText(Html.fromHtml(movie.getTitle()));
-        holder.actual_text.setText(movie.getMyth());
+        holder.title.setText(movie.getTitle());
+        holder.actual_text.setText(movie.getContent());
         holder.play_pause.setBackgroundResource(R.drawable.ic_play_arrow_black_34dp);
         holder.share_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,27 +81,7 @@ public class Government_Updates_Adapter extends RecyclerView.
         holder.play_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                holder.play_pause.setBackgroundDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
-                tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-                    @Override
-                    public void onStart(String utteranceId) {
-                        Log.v("chirag", "hi there");
-                        Log.v("chirag", utteranceId);
-                        holder.play_pause.setBackgroundDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
-                    }
-
-                    @Override
-                    public void onDone(String utteranceId) {
-                        Log.v("chirag", "hi there2");
-                        Log.v("chirag", utteranceId);
-                        holder.play_pause.setBackgroundDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
-                    }
-
-                    @Override
-                    public void onError(String utteranceId) {
-                        holder.play_pause.setBackgroundDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
-                    }
-                });
+                holder.play_pause.setBackgroundDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
                 tts.speak(movie.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
@@ -137,11 +114,8 @@ public class Government_Updates_Adapter extends RecyclerView.
             title.setOnClickListener(this);
             actual_text.setOnClickListener(this);
             share_button = view.findViewById(R.id.share_button);
-            //cardView.setOnClickListener(this);
-            //linearLayout=(LinearLayout)itemView.findViewById(R.id.Linear_layout);
         }
 
-        //public CardView guideline_cv;
         @Override
         public void onClick(View v) {
             myClickListener.onItemClick(getAdapterPosition(), v);

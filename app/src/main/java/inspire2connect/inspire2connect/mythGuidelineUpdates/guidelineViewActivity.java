@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,8 +19,9 @@ import java.io.Serializable;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.urlActivity;
 
-public class detailedViewActivity extends BaseActivity implements Serializable {
+public class guidelineViewActivity extends BaseActivity implements Serializable {
     public TextView detailed_title;
     public TextView detailed_text;
     public ImageButton detailed_play_button, detailed_share_button;
@@ -36,6 +38,10 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
         }
     };
 
+    public ImageButton sourceBtn;
+
+    private Context context;
+
     @Override
     public void onBackPressed() {
         mSeekbarUpdateHandler.removeCallbacks(mUpdateSeekbar);
@@ -49,7 +55,7 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_view);
+        setContentView(R.layout.activity_full_guideline_view);
         detailed_title = findViewById(R.id.detailed_title);
         detailed_title.setMovementMethod(LinkMovementMethod.getInstance());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,11 +66,23 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
         detailed_share_button = findViewById(R.id.detailed_share);
         currently_paused = false;
         final Intent i = getIntent();
-        String redirect_url = i.getStringExtra("redirect_url");
-        //ArrayList<myth_single_object> single=(ArrayList<myth_single_object>) i.getSerializableExtra("result_list");
-        detailed_title.setText(Html.fromHtml(i.getStringExtra("detailed_title") + "<br><a href=" + redirect_url + ">Source" + "</a>"));
-        detailed_text.setText(Html.fromHtml(i.getStringExtra("detailed_text")));
+        final String redirect_url = i.getStringExtra("redirect_url");
+        detailed_title.setText(i.getStringExtra("detailed_title"));
+        detailed_text.setText(i.getStringExtra("detailed_text"));
         mediaPlayer = new MediaPlayer();
+
+        context = this;
+
+        sourceBtn = findViewById(R.id.detailed_source);
+        sourceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, urlActivity.class);
+                i.putExtra("url", redirect_url);
+                i.putExtra("name", getString(R.string.india_covid_map_tile));
+                startActivity(i);
+            }
+        });
 
         detailed_share_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +185,6 @@ public class detailedViewActivity extends BaseActivity implements Serializable {
             mediaPlayer.release();
         }
         finish();
-        //return super.onSupportNavigateUp();
         return true;
     }
 }

@@ -46,7 +46,7 @@
 
         <activity android:name=".home.selectChatBotActivity"></activity>
         <activity android:name=".home.selectMiscActivity"></activity>
-        <activity android:name=".mythGuidelineUpdates.detailedViewActivity"></activity>
+        <activity android:name=".mythGuidelineUpdates.guidelineViewActivity"></activity>
         <activity android:name=".home.InfographicsActivity"></activity>
 
 <!--        Contact Tracer-->

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
+    android:background="@color/app_white"
     android:layout_height="match_parent">
 
     <ImageButton
@@ -30,12 +31,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_share_black_24dp" />
 
+    <ImageButton
+        android:id="@+id/detailed_source"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/transparent"
+        android:tint="@color/app_pink"
+        app:layout_constraintBottom_toBottomOf="@+id/detailed_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detailed_share"
+        app:srcCompat="@drawable/ic_source" />
+
     <SeekBar
         android:id="@+id/detailed_seekBar"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:visibility="gone"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/detailed_play_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,10 +60,12 @@
         android:id="@+id/detailed_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="@font/mukta_medium"
+        android:background="@color/Home_background_color"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="4dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/opensans_regular"
         android:lineSpacingExtra="3dp"
         android:paddingLeft="10dp"
         android:paddingRight="5dp"
@@ -65,10 +81,11 @@
     <TextView
         android:id="@+id/detailed_title"
         android:layout_width="0dp"
+        android:background="@color/Home_background_color"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="4dp"
         android:fontFamily="@font/mukta_semibold"
         android:paddingLeft="10dp"
         android:paddingRight="5dp"

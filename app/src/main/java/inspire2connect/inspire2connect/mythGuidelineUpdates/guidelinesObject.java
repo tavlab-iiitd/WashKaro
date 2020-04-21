@@ -2,25 +2,23 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 public class guidelinesObject {
     String title;
-    String myth;
+    String content;
     String position;
-    String audio_url;
-    String redirect_url;
+    String source;
 
-    public guidelinesObject(String title, String myth, String position, String audio_url, String redirect_url) {
+    public guidelinesObject(String title, String content, String position, String source) {
         this.title = title;
-        this.myth = myth;
+        this.content = content;
         this.position = position;
-        this.audio_url = audio_url;
-        this.redirect_url = redirect_url;
+        this.source = source;
     }
 
-    public String getRedirect_url() {
-        return redirect_url;
+    public String getSource() {
+        return source;
     }
 
-    public void setRedirect_url(String redirect_url) {
-        this.redirect_url = redirect_url;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public String getTitle() {
@@ -31,20 +29,12 @@ public class guidelinesObject {
         this.title = title;
     }
 
-    public String getMyth() {
-        return myth;
+    public String getContent() {
+        return content;
     }
 
-    public void setMyth(String myth) {
-        this.myth = myth;
-    }
-
-    public String getAudio_url() {
-        return audio_url;
-    }
-
-    public void setAudio_url(String audio_url) {
-        this.audio_url = audio_url;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getPosition() {
