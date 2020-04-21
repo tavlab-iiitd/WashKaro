@@ -3,10 +3,9 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -27,48 +26,18 @@ import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class UpdateActivity extends BaseActivity {
+public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitListener {
+    public static final String TAG = "UpdateActivity";
     public ArrayList<guidelinesObject> result;
     DatabaseReference databaseReference;
     private RecyclerView recyclerView;
     private Government_Updates_Adapter mAdapter;
-
-    public static final String TAG = "UpdateActivity";
-
+    private TextToSpeech tts;
     private boolean setDate;
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void onBackPressed() {
-        ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
-        if (mAdapter != null)
-            media_player_list = mAdapter.getMedia_player_list();
-        if (media_player_list != null)
-            for (int i = 0; i < media_player_list.size(); i++) {
-                if (media_player_list.get(i).getMediaPlayer() != null) {
-                    if (media_player_list.get(i).getMediaPlayer().isPlaying()) {
-                        media_player_list.get(i).getMediaPlayer().stop();
-                        media_player_list.get(i).getMediaPlayer().seekTo(media_player_list.get(i).getMediaPlayer().getDuration());
-                    }
-                }
-            }
-        finish();
-        Log.d("Testing", "Sizze of Media player list=" + media_player_list.size());
     }
 
     private void setUpdates() {
@@ -80,7 +49,7 @@ public class UpdateActivity extends BaseActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
                     updateObject obj = new updateObject();
-                    if(setDate) {
+                    if (setDate) {
                         obj.date = snapshot.child("date").getValue().toString();
                     }
                     obj.title = snapshot.child("title_" + getCurLang()).getValue().toString();
@@ -103,6 +72,7 @@ public class UpdateActivity extends BaseActivity {
 
     public void populate_recycler_view(ArrayList<guidelinesObject> result) {
         mAdapter = new Government_Updates_Adapter(this, result);
+        mAdapter.setTTS(tts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -123,7 +93,7 @@ public class UpdateActivity extends BaseActivity {
         Intent i = getIntent();
 
         String type = i.getStringExtra(TYPE);
-        String date = i .getStringExtra(DATE);
+        String date = i.getStringExtra(DATE);
 
         switch (date) {
             case DATE_YES:
@@ -161,21 +131,19 @@ public class UpdateActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        ArrayList<custom_media_Class> media_player_list = new ArrayList<>();
-        if (mAdapter != null)
-            media_player_list = mAdapter.getMedia_player_list();
-        if (media_player_list != null)
-            for (int i = 0; i < media_player_list.size(); i++) {
-                if (media_player_list.get(i).getMediaPlayer() != null) {
-                    if (media_player_list.get(i).getMediaPlayer().isPlaying()) {
-                        media_player_list.get(i).getMediaPlayer().stop();
-                        media_player_list.get(i).getMediaPlayer().seekTo(media_player_list.get(i).getMediaPlayer().getDuration());
-                    }
-                }
-            }
-        finish();
-        return true;
+    protected void onStart() {
+        super.onStart();
+        tts = new TextToSpeech(this, this);
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+//            button
+        } else {
+            Loge(TAG, "Can't speak");
+            finish();
+        }
     }
 
     @Override
@@ -203,34 +171,42 @@ public class UpdateActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        mAdapter.setOnItemClickListener(new Government_Updates_Adapter
+//                .MyClickListener() {
+//            @Override
+//            public void onItemClick(int position, View v) {
+//                Log.d("Testing", " Clicked on Item gov_updates " + position);
+//                Intent i = new Intent(UpdateActivity.this, detailedViewActivity.class);
+//                //Log.d("Testing",result.get(position).getTitle());
+//                ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
+//                Log.d("Testing", result_from_adapter.get(position).getTitle());
+//                /*if(mMediaPlayer!=null)
+//                {
+//                    mMediaPlayer.stop();
+//                    mMediaPlayer.release();
+//                    mMediaPlayer=null;
+//                }*/
+//                ArrayList<guidelinesObject> single = new ArrayList<>();
+//                single.add(result_from_adapter.get(position));
+//                //Log.d("Testing",single.get(0).getTitle());
+//                i.putExtra("detailed_title", single.get(0).getTitle());
+//                i.putExtra("detailed_text", single.get(0).getMyth());
+//                i.putExtra("url", single.get(0).getAudio_url());
+//                i.putExtra("redirect_url", single.get(0).getRedirect_url());
+//                //i.putExtra("result_list",single);
+//                startActivity(i);
+//            }
+//        });
+//    }
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        mAdapter.setOnItemClickListener(new Government_Updates_Adapter
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Log.d("Testing", " Clicked on Item gov_updates " + position);
-                Intent i = new Intent(UpdateActivity.this, detailedViewActivity.class);
-                //Log.d("Testing",result.get(position).getTitle());
-                ArrayList<guidelinesObject> result_from_adapter = mAdapter.getResult();
-                Log.d("Testing", result_from_adapter.get(position).getTitle());
-                /*if(mMediaPlayer!=null)
-                {
-                    mMediaPlayer.stop();
-                    mMediaPlayer.release();
-                    mMediaPlayer=null;
-                }*/
-                ArrayList<guidelinesObject> single = new ArrayList<>();
-                single.add(result_from_adapter.get(position));
-                //Log.d("Testing",single.get(0).getTitle());
-                i.putExtra("detailed_title", single.get(0).getTitle());
-                i.putExtra("detailed_text", single.get(0).getMyth());
-                i.putExtra("url", single.get(0).getAudio_url());
-                i.putExtra("redirect_url", single.get(0).getRedirect_url());
-                //i.putExtra("result_list",single);
-                startActivity(i);
-            }
-        });
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 }
