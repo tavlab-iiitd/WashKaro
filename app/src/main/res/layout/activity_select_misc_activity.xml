@@ -3,159 +3,199 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/Home_background_color"
     android:layout_height="match_parent"
     tools:context=".home.selectMiscActivity">
 
-    <LinearLayout
-        android:id="@+id/misc_but1_layout"
-        android:layout_width="150dp"
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonback2"
-        android:clickable="true"
-        android:elevation="@dimen/home_card_elev"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/home_card_margin_cont_top"
+        app:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        android:orientation="vertical"
-        android:gravity="center">
+        app:rowCount="2"
+        app:useDefaultMargins="true">
 
-        <TextView
-            android:id="@+id/misc_but1_text"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/india_covid_map_tile"
-            android:fontFamily="@font/mukta_bold"
-            android:textAlignment="center"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="12dp"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="0"
+            app:layout_columnSpan="1"
+            app:layout_rowSpan="1"
+            android:paddingBottom="@dimen/home_card_elev"
+            app:layout_columnWeight="1"
+            app:layout_row="0">
 
 
-        <ImageButton
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/misc_but1_layout"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonback2"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev">
 
-            style="@android:style/Widget.Material.Light.ImageButton"
-            android:layout_width="wrap_content"
+                <ImageButton
+                    style="@android:style/Widget.Material.Light.ImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/misc_but1_text"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#FFFFFF"
+                    android:clickable="false"
+                    android:contentDescription="Card Image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/misc_but1_text"
+                    app:srcCompat="@drawable/iconsinspection" />
+
+                <TextView
+                    android:id="@+id/misc_but1_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="@string/india_covid_map_tile"
+                    android:textAlignment="center"
+                    android:textColor="@color/blackcolor"
+                    android:textSize="@dimen/home_card_font"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgbut_text1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="2dp"
-            android:background="#FFFFFF"
-            android:clickable="false"
-            android:contentDescription="Card Image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-            app:srcCompat="@drawable/iconsinspection" />
-    </LinearLayout>
+            android:layout_marginBottom="12dp"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_columnSpan="1"
+            app:layout_rowSpan="2"
+            app:layout_gravity="fill_vertical"
+            android:padding="@dimen/home_card_elev"
+            app:layout_row="0">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/misc_but2_layout"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonback2"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev">
 
-    <LinearLayout
-        android:id="@+id/misc_but2_layout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttonback2"
-        android:clickable="true"
-        android:elevation="@dimen/home_card_elev"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        android:gravity="center"
-        android:orientation="vertical">
+                <ImageButton
+                    style="@android:style/Widget.Material.Light.ImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/misc_but2_text"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#FFFFFF"
+                    android:clickable="false"
+                    android:contentDescription="Card Image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/misc_but2_text"
+                    app:srcCompat="@drawable/ic_who_guidelines" />
 
-        <TextView
-            android:id="@+id/misc_but2_text"
-            android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/misc_but2_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="@string/who_guidelines_tile"
+                    android:textAlignment="center"
+                    android:textColor="@color/blackcolor"
+                    android:textSize="@dimen/home_card_font"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_rowSpan="1"
+            app:layout_columnSpan="1"
+            app:layout_column="0"
+            android:paddingBottom="@dimen/home_card_elev"
+            app:layout_columnWeight="1"
+            app:layout_row="1">
 
-            android:text="@string/who_guidelines_tile"
-            android:textAlignment="center"
-            android:fontFamily="@font/mukta_bold"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/misc_but3_layout"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonback2"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev"
+                app:layout_column="0"
+                app:layout_row="1">
 
-        <ImageButton
+                <ImageButton
+                    style="@android:style/Widget.Material.Light.ImageButton"
+                    android:layout_width="39dp"
+                    android:layout_height="43dp"
+                    android:layout_below="@+id/misc_but3_text"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="2dp"
+                    android:background="#FFFFFF"
+                    android:clickable="false"
+                    android:contentDescription="Card Image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/misc_but3_text"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_mask_group_3" />
 
-            style="@android:style/Widget.Material.Light.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgbut_text1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="4dp"
-            android:background="#FFFFFF"
-            android:clickable="false"
-            android:contentDescription="Card Image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-            app:srcCompat="@drawable/ic_who_guidelines" />
+                <TextView
+                    android:id="@+id/misc_but3_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="@string/myth_busters_tile"
+                    android:textAlignment="center"
+                    android:textColor="@color/blackcolor"
+                    android:textSize="@dimen/home_card_font"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/misc_but3_layout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttonback2"
-        android:clickable="true"
-        android:elevation="@dimen/home_card_elev"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/misc_but1_layout"
-        app:layout_constraintVertical_bias="0.05"
-        android:orientation="vertical"
-        android:gravity="center">
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/misc_but3_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/myth_busters_tile"
-            android:fontFamily="@font/mukta_bold"
-            android:textAlignment="center"
-            android:textColor="@color/blackcolor"
-            android:textSize="@dimen/home_card_font"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageButton
-
-            style="@android:style/Widget.Material.Light.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgbut_text1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="2dp"
-            android:background="#FFFFFF"
-            android:clickable="false"
-            android:contentDescription="Card Image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"
-            app:srcCompat="@drawable/ic_mask_group_3" />
+    </androidx.gridlayout.widget.GridLayout>
 
 
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
