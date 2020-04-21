@@ -104,7 +104,10 @@
     
     <string name="bhavika">Bhavika Rana</string>
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
-
+    <string name="harsh">Harsh Bandhey</string>
+    <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
+    <string name="vrinda">Vrinda Narayan</string>
+    <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
 <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
