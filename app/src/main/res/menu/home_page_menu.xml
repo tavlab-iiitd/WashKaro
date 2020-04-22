@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="?attr/actionBarPopupTheme"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/lang_togg_butt"
-        android:title="हिं/En"
+        android:title="@string/language"
+        android:icon="@drawable/ic_language"
+        android:iconTint="@color/app_pink"
         app:showAsAction="always"/>
     <item
         android:id="@+id/Survey"
-        android:title="Survey"
+        android:title="@string/survey"
         app:showAsAction="never"/>
     <item
         android:id="@+id/developers"
-        android:title="About Us"
+        android:title="@string/about_us"
         app:showAsAction="never"/>
     <item
         android:id="@+id/privacy_policy"
 
-        android:title="Privacy Policy"
+        android:title="@string/privacy_policy"
         app:showAsAction="never"
         />
 
