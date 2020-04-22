@@ -3,6 +3,7 @@ package inspire2connect.inspire2connect.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +22,8 @@ import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -227,6 +230,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_page_menu, menu);
+        Drawable drawable = menu.findItem(R.id.lang_togg_butt).getIcon();
+        drawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(drawable, ContextCompat.getColor(this,R.color.app_pink));
+        menu.findItem(R.id.lang_togg_butt).setIcon(drawable);
         return super.onCreateOptionsMenu(menu);
     }
 
