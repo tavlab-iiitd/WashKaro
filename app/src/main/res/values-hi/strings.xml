@@ -107,6 +107,8 @@
     <string name="bhavika">भाविका राणा</string>
     <string name="harsh">हर्ष बंधे</string>
     <string name="vrinda">वृंदा नारायण</string>
+    <string name="tanuj">तनुज डबास</string>
+    <string name="tanuj_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="next">आगे</string>
     <string name="skip">छोड़ें</string>
@@ -135,5 +137,7 @@
 
     <string name="relevant">मिलता जुलता</string>
     <string name="irrelevant">व्यर्थ</string>
+
+    <string name="privacy_policy">गोपनीयता नीति</string>
 
 </resources>

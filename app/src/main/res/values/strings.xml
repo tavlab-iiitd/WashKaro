@@ -108,6 +108,10 @@
     <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
     <string name="vrinda">Vrinda Narayan</string>
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
+
+    <string name="tanuj">Tanuj Dabas</string>
+    <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
+
 <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
@@ -165,7 +169,7 @@
     <string name="irrelevant">Irrelevant</string>
 
 <!--    URL-->
-    <string name="covid_map" translatable="false">https://hspandit.github.io/washkaro-map/</string>
+    <string name="covid_map" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/map.html</string>
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
 
 <!--    Menu-->

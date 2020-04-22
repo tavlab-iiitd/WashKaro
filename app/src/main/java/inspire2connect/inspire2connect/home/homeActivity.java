@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
+import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -51,8 +53,9 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     ImageButton flip_left, flip_right;
     Animation anim1, anim2, anim3, anim4;
-    TextView mohfw_data1, mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5, mohfw_tv1, mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
-    RelativeLayout data_tile;
+//    TextView mohfw_data1
+    TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
+    LinearLayout[] statLayouts = new LinearLayout[4];
     LayoutInflater inflater;
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
@@ -116,17 +119,20 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
-        mohfw_data1 = findViewById(R.id.mohfw_data1);
+        mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
         mohfw_data5 = findViewById(R.id.mohfw_data5);
-        mohfw_tv1 = findViewById(R.id.mohfw_tv1);
-        mohfw_tv2 = findViewById(R.id.mohfw_tv2);
-        mohfw_tv3 = findViewById(R.id.mohfw_tv3);
-        mohfw_tv4 = findViewById(R.id.mohfw_tv4);
-        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
-        data_tile = findViewById(R.id.data_tile);
+
+        statLayouts[0] = findViewById(R.id.mohfw_ll2);
+        statLayouts[1] = findViewById(R.id.mohfw_ll3);
+        statLayouts[2] = findViewById(R.id.mohfw_ll4);
+        statLayouts[3] = findViewById(R.id.mohfw_ll5);
+
+        for (int i=0; i<statLayouts.length; i++) {
+            statLayouts[i].setOnClickListener(this);
+        }
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
@@ -134,29 +140,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         anim4 = AnimationUtils.loadAnimation(this, R.anim.anim4);
         flip_left = findViewById(R.id.flipperLeft);
         flip_right = findViewById(R.id.flipperRight);
-//        switchLang();
-//        corona_helpline = (TextView)findViewById(R.id.Corona_helpline_text);
-//        live_data=(TextView)findViewById(R.id.state_helpline_text);
 
         inflater = (LayoutInflater) homeActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //layout = inflater.inflate(R.layout.zoom_in, null);
-
 
         flip_left.setOnClickListener(this);
         flip_right.setOnClickListener(this);
-//        corona_helpline.setOnClickListener(this);
 
         flipper_single_tap();
         fetchset_MOHFW_data();
 
         setInfographicFlipper();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //usingFirebaseDatabase();
     }
 
     private void initialize_view_flipper() {
@@ -171,8 +165,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         for (int i = 0; i < slideLists.size(); i++) {
             String downloadImageUrl = slideLists.get(i).InfoURL;
             flipImages(downloadImageUrl);
-
-
         }
     }
 
@@ -190,13 +182,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == flip_left) {
+        if (view == flip_right) {
             viewFlipper.stopFlipping();
             viewFlipper.setInAnimation(anim2);
             viewFlipper.setOutAnimation(anim3);
             viewFlipper.showPrevious();
         }
-        if (view == flip_right) {
+        if (view == flip_left) {
             viewFlipper.stopFlipping();
             viewFlipper.setInAnimation(anim1);
             viewFlipper.setOutAnimation(anim4);
@@ -204,6 +196,14 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         }
 
         Intent i = null;
+
+        for(int z=0; z<statLayouts.length; z++) {
+            if(view == statLayouts[z]) {
+                i = new Intent(this, urlActivity.class);
+                i.putExtra("url", getString(R.string.covid_map));
+                i.putExtra("name", getString(R.string.india_covid_map_tile));
+            }
+        }
 
         if (view == ll_but[0]) {
             i = getGovernmentIntent(this);
@@ -326,7 +326,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Stats stats = dataSnapshot.getValue(Stats.class);
-                mohfw_data1.setText(stats.Airport);
+//                mohfw_data1.setText(stats.Airport);
                 mohfw_data2.setText(stats.Active);
                 mohfw_data3.setText(stats.Discharged);
                 mohfw_data4.setText(stats.Deaths);

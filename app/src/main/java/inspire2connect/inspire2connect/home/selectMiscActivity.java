@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
@@ -17,7 +19,7 @@ import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 
-    LinearLayout[] misc_buttons = new LinearLayout[10];
+    ConstraintLayout[] misc_buttons = new ConstraintLayout[10];
 
     @Override
     protected void attachBaseContext(Context newBase) {
