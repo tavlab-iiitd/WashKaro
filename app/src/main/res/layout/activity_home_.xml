@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/mohfw_ll2"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -105,48 +105,57 @@
                             android:clipToPadding="false"
                             android:orientation="vertical">
 
-                            <ImageView
+                            <TextView
+                                android:id="@+id/mohfw_tv2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:clickable="false"
+                                android:fontFamily="@font/mukta_bold"
+                                android:text="@string/active_case_tile"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_iv2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
                                 android:id="@+id/mohfw_iv2"
                                 style="@android:style/Widget.Material.Light.ImageButton"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="4dp"
                                 android:background="#FFFFFF"
+                                android:clickable="false"
                                 android:scaleType="fitCenter"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:srcCompat="@drawable/ic_stat2" />
 
                             <TextView
-                                android:clickable="false"
-                                android:id="@+id/mohfw_tv2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/mukta_bold"
-                                android:text="@string/active_case_tile"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
-
-                            <TextView
-                                android:clickable="false"
                                 android:id="@+id/mohfw_data2"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:clickable="false"
                                 android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/mohfw_ll3"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="1dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
@@ -154,103 +163,136 @@
                             android:clipToPadding="false"
                             android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/mohfw_iv3"
-                                android:clickable="false"
-                                style="@android:style/Widget.Material.Light.ImageButton"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:background="#FFFFFF"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/ic_stat3" />
-
                             <TextView
                                 android:id="@+id/mohfw_tv3"
-                                android:clickable="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:clickable="false"
                                 android:fontFamily="@font/mukta_bold"
                                 android:text="@string/cured_case_tile"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_iv3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/mohfw_iv3"
+                                style="@android:style/Widget.Material.Light.ImageButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="4dp"
+                                android:background="#FFFFFF"
+                                android:clickable="false"
+                                android:scaleType="fitCenter"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:srcCompat="@drawable/ic_stat3" />
 
                             <TextView
                                 android:id="@+id/mohfw_data3"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/empty_stats"
                                 android:clickable="false"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/mohfw_ll4"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="1dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:background="@drawable/buttonback2"
                             android:clipToPadding="false"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/mohfw_tv4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:fontFamily="@font/mukta_bold"
+                                android:text="@string/death_case_tile"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_iv4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageView
                                 android:id="@+id/mohfw_iv4"
                                 style="@android:style/Widget.Material.Light.ImageButton"
                                 android:layout_width="40dp"
-                                android:clickable="false"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="4dp"
                                 android:background="#FFFFFF"
+                                android:clickable="false"
                                 android:scaleType="fitCenter"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:srcCompat="@drawable/ic_stat4" />
 
                             <TextView
-                                android:id="@+id/mohfw_tv4"
-                                android:layout_width="match_parent"
-                                android:clickable="false"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/mukta_bold"
-                                android:text="@string/death_case_tile"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
-
-                            <TextView
                                 android:id="@+id/mohfw_data4"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/empty_stats"
                                 android:clickable="false"
+                                android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
                                 android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/mohfw_ll5"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="1dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:background="@drawable/buttonback2"
                             android:clipToPadding="false"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/mohfw_tv5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:fontFamily="@font/mukta_bold"
+                                android:text="@string/migrated_patient_tile"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_iv5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageView
                                 android:id="@+id/mohfw_iv5"
@@ -258,36 +300,30 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:clickable="false"
+                                android:layout_marginBottom="4dp"
                                 android:background="#FFFFFF"
+                                android:clickable="false"
                                 android:scaleType="fitCenter"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:srcCompat="@drawable/ic_stat5" />
 
                             <TextView
-                                android:id="@+id/mohfw_tv5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/mukta_bold"
-                                android:text="@string/migrated_patient_tile"
-                                android:textAlignment="center"
-                                android:clickable="false"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text" />
-
-                            <TextView
                                 android:id="@+id/mohfw_data5"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:clickable="false"
                                 android:text="@string/empty_stats"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
-                                android:clickable="false"
                                 android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--                        <LinearLayout-->
 <!--                            android:id="@+id/mohfw_ll1"-->
