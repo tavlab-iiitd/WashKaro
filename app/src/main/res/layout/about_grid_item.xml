@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/aboutName"
+        android:layout_width="wrap_content"
+
+        android:fontFamily="@font/mukta_semibold"
+        android:layout_height="wrap_content"
+        android:text="@string/bhavika"
+        android:textColor="@color/app_black"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/aboutTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mukta_medium"
+        android:layout_marginBottom="8dp"
+        android:textAlignment="center"
+        android:text="@string/bhavika_tag"
+        android:textColor="@color/app_light_black"
+        android:textSize="16sp" />
+
+</LinearLayout>
