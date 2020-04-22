@@ -22,7 +22,7 @@
     <string name="hint_verification_code">Verification Code</string>
     <string name="verification_code_help">You will receive an OTP soon!</string>
     <string name="instant_validation">(instant validation)</string>
-    <string name="firebase_status_fmt">Firebase UID: %s</string>
+    <string name="firebase_status_fmt" translatable="false">Firebase UID: %s</string>
     <string name="firebase_user_management">Firebase User Management</string>
 
     <string name="tavlab_logo">Tav Lab at IIIT Delhi</string>
