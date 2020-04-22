@@ -411,11 +411,11 @@
                     android:clipToPadding="false"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_column="1"
+                    app:layout_column="0"
                     app:layout_columnWeight="1"
                     android:padding="@dimen/home_card_elev"
                     app:layout_gravity="fill_horizontal"
-                    app:layout_row="0">
+                    app:layout_row="1">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/symptom_tracker_tile"
@@ -468,7 +468,7 @@
                     android:clipToPadding="false"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_column="0"
+                    app:layout_column="1"
                     android:paddingBottom="@dimen/home_card_elev"
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal"
@@ -531,7 +531,7 @@
                     app:layout_column="1"
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal"
-                    app:layout_row="1">
+                    app:layout_row="0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/onair_tile"
@@ -541,7 +541,7 @@
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
                         app:layout_column="1"
-                        app:layout_row="1">
+                        app:layout_row="0">
 
                         <ImageButton
                             android:id="@+id/image_button4"
@@ -585,7 +585,7 @@
                     android:clipToPadding="false"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_column="0"
+                    app:layout_column="1"
                     android:paddingBottom="@dimen/home_card_elev"
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal"
@@ -643,7 +643,7 @@
                     android:clipToPadding="false"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_column="1"
+                    app:layout_column="0"
                     app:layout_columnWeight="1"
                     android:paddingBottom="@dimen/home_card_elev"
                     app:layout_gravity="fill_horizontal"

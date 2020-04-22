@@ -196,5 +196,6 @@
     <string name="survey">Survey</string>
     <string name="hunger_relief">Hunger Relief</string>
     <string name="shelter_relief">Shelter Relief</string>
+    <string name="language">Language</string>
 
 </resources>
