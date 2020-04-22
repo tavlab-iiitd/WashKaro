@@ -198,4 +198,9 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
             }
         });
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 }
