@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -68,5 +69,7 @@ dependencies {
     implementation 'com.llollox:androidtoggleswitch:2.0.1'
     implementation 'com.sefford:circular-progress-drawable:1.31@aar'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta04'
 
 }
