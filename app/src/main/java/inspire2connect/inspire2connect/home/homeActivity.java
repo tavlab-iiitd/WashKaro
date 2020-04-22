@@ -58,7 +58,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     Animation anim1, anim2, anim3, anim4;
 //    TextView mohfw_data1
     TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
-    LinearLayout[] statLayouts = new LinearLayout[4];
+    ConstraintLayout[] statLayouts = new ConstraintLayout[4];
     LayoutInflater inflater;
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
