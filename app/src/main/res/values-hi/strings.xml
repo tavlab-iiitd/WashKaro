@@ -10,7 +10,6 @@
     <string name="hint_verification_code">पुष्टि संख्या</string>
     <string name="verification_code_help">आपको जल्द ही एक OTP प्राप्त होगा!</string>
     <string name="instant_validation">(तत्काल सत्यापन)</string>
-    <string name="firebase_status_fmt">फायरबेस UID: %s</string>
     <string name="firebase_user_management">फायरबेस यूजर मैनेजमेंट</string>
 
     <string name="tavlab_logo">IIIT दिल्ली में Tav Lab</string>

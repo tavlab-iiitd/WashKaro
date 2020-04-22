@@ -22,7 +22,7 @@
     <string name="hint_verification_code">Verification Code</string>
     <string name="verification_code_help">You will receive an OTP soon!</string>
     <string name="instant_validation">(instant validation)</string>
-    <string name="firebase_status_fmt">Firebase UID: %s</string>
+    <string name="firebase_status_fmt" translatable="false">Firebase UID: %s</string>
     <string name="firebase_user_management">Firebase User Management</string>
 
     <string name="tavlab_logo">Tav Lab at IIIT Delhi</string>
@@ -111,6 +111,22 @@
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
+    
+    <string name="precogURL" translatable="false">http://precog.iiitd.edu.in/</string>
+    <string name="iiitdURL" translatable="false">https://www.iiitd.ac.in/</string>
+    <string name="tavlabURL" translatable="false">https://tavlab.iiitd.edu.in/</string>
+    <string name="chiragURL" translatable="false">https://www.linkedin.com/in/jnchirag/</string>
+    <string name="priyankaURL" translatable="false">https://www.linkedin.com/in/priyanka-syal-671b9495/</string>
+    <string name="pkURL" translatable="false">https://www.linkedin.com/in/ponguru/</string>
+    <string name="tavURL" translatable="false">https://www.linkedin.com/in/tavpritesh/</string>
+    <string name="rohanURL" translatable="false">https://www.linkedin.com/in/rohan-pandey-145170175/</string>
+    <string name="himanshuURL" translatable="false">https://www.linkedin.com/in/himanshu-sharma2950/</string>
+    <string name="kanavURL" translatable="false">https://www.linkedin.com/in/kanav-bhagat-133229130/</string>
+    <string name="bhavikaURL" translatable="false">https://www.linkedin.com/in/bhavikarana/</string>
+    <string name="vaibhavURL" translatable="false">https://www.linkedin.com/in/vaibhav-gautam-171775187/</string>
+    <string name="harshURL" translatable="false">https://www.linkedin.com/in/harshbandhey/</string>
+    <string name="vrindaURL" translatable="false">https://www.linkedin.com/in/vrinda-narayan-6a42a71a3/</string>
+    <string name="tanujURL" translatable="false">https://www.linkedin.com/in/tanuj-dabas-7b28a9151/</string>
 
 <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>

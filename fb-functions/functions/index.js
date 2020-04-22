@@ -7,7 +7,8 @@ admin.initializeApp();
 
 const url = 'https://www.mohfw.gov.in/';
 
-exports.scheduledStats = functions.pubsub.schedule('* */6 * * *')
+exports.scheduledStats = functions.pubsub.schedule('1 */1 * * *')
+  .timeZone("Asia/Calcutta")
   .onRun((context) => {
 		rp(url)
 		  .then((html) => {

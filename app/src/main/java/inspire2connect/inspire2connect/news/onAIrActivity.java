@@ -187,7 +187,7 @@ public class onAIrActivity extends BaseActivity {
         // Code to remove an item with default animation
         //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
         ref_for_thr = FirebaseDatabase.getInstance().getReference();
-        ref_for_thr.child("information").child("d1").child("Gender").setValue("Male");
+//        ref_for_thr.child("information").child("d1").child("Gender").setValue("Male");
         Query thr_query = ref_for_thr.child("threshold");
 
         thr_query.addValueEventListener(new ValueEventListener() {

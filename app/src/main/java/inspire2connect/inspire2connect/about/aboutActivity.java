@@ -24,8 +24,9 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
     private ImageView tavlab;
     private ImageView precog;
     private ImageView iiitd;
-    public String names[];
-    public String sal[],urls[];
+
+    aboutElem[] elems;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
@@ -33,38 +34,39 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        elems = new aboutElem[]{
+                new aboutElem(this, R.string.bhavika, R.string.bhavika_tag, R.string.bhavikaURL),
+                new aboutElem(this, R.string.chirag, R.string.chirag_tag, R.string.chiragURL),
+                new aboutElem(this, R.string.harsh, R.string.harsh_tag, R.string.harshURL),
+                new aboutElem(this, R.string.himanshu, R.string.himanshu_tag, R.string.himanshuURL),
+                new aboutElem(this, R.string.kanav, R.string.kanav_tag, R.string.kanavURL),
+                new aboutElem(this, R.string.priyanka, R.string.priyanka_tag, R.string.priyankaURL),
+                new aboutElem(this, R.string.rohan, R.string.rohan_tag, R.string.rohanURL),
+                new aboutElem(this, R.string.tanuj, R.string.tanuj_tag, R.string.tanujURL),
+                new aboutElem(this, R.string.vaibhav, R.string.vaibhav_tag, R.string.vaibhavURL),
+                new aboutElem(this, R.string.vrinda, R.string.vrinda_tag, R.string.vrindaURL),
+                new aboutElem(this, R.string.tav, R.string.tav_description, R.string.tavURL),
+                new aboutElem(this, R.string.pk, R.string.pk_description, R.string.pkURL)
+        };
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ca_activity_about);
 
 
         if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setTitle(getString(R.string.about_us));
         }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getString(R.string.about_us));
         }
 
-        names = new String[]{getString(R.string.tav),getString(R.string.pk),
-                getString(R.string.rohan),getString(R.string.vaibhav),getString(R.string.priyanka),
-                getString(R.string.himanshu),getString(R.string.chirag),getString(R.string.bhavika),getString(R.string.kanav),
-                getString(R.string.harsh),getString(R.string.vrinda)
-        };
-        sal = new String[]{getString(R.string.tav_description),getString(R.string.pk_description),
-                getString(R.string.rohan_tag),getString(R.string.vaibhav_tag),getString(R.string.priyanka_tag),
-                getString(R.string.himanshu_tag),getString(R.string.chirag_tag),getString(R.string.bhavika_tag),getString(R.string.kanav_tag),
-                getString(R.string.harsh_tag),getString(R.string.vrinda_tag)
-        };
-
-        urls=new String[]{"https://www.linkedin.com/in/tavpritesh/","https://www.linkedin.com/in/ponguru/", "https://www.linkedin.com/in/rohan-pandey-145170175/","https://www.linkedin.com/in/vaibhav-gautam-171775187/",
-                "https://www.linkedin.com/in/priyanka-syal-671b9495/","https://www.linkedin.com/in/himanshu-sharma2950/",
-                "https://www.linkedin.com/in/jnchirag/","https://www.linkedin.com/in/bhavikarana/","https://www.linkedin.com/in/kanav-bhagat-133229130/",
-                "https://www.linkedin.com/in/harshbandhey/","https://www.linkedin.com/in/vrinda-narayan-6a42a71a3/"
-        };
-        GridView gridView = (GridView)findViewById(R.id.gridview);
-        about_adapter aboutAdapter = new about_adapter(this, names,sal);
+        GridView gridView = findViewById(R.id.gridview);
+        about_adapter aboutAdapter = new about_adapter(this, elems);
         gridView.setAdapter(aboutAdapter);
-
 
         tavlab = findViewById(R.id.tavlabLogo);
         precog = findViewById(R.id.iiitdLogo);
@@ -77,10 +79,10 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-                String url = urls[position];
+                String url = elems[position].url;
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
-                 startActivity(i);
+                startActivity(i);
             }
         });
 
@@ -102,16 +104,16 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        String url = "https://www.google.com/";
+        String url = getString(R.string.iiitdURL);
         switch (view.getId()) {
             case R.id.iiitdLogo:
-                url = "http://precog.iiitd.edu.in/";
+                url = getString(R.string.iiitdURL);
                 break;
             case R.id.precogLogo:
-                url = "https://www.iiitd.ac.in/";
+                url = getString(R.string.precogURL);
                 break;
             case R.id.tavlabLogo:
-                url = "https://tavlab.iiitd.edu.in/";
+                url = getString(R.string.tavlabURL);
                 break;
         }
         Intent i = new Intent(Intent.ACTION_VIEW);
