@@ -187,10 +187,14 @@
 <!--    URL-->
     <string name="covid_map" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/map.html</string>
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
+    <string name="hunger_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/hreliefapi.html</string>
+    <string name="shelter_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/tsreliefapi.html</string>
 
 <!--    Menu-->
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_us">About Us</string>
     <string name="survey">Survey</string>
+    <string name="hunger_relief">Hunger Relief</string>
+    <string name="shelter_relief">Shelter Relief</string>
 
 </resources>

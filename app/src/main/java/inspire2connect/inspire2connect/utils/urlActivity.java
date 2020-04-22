@@ -43,16 +43,20 @@ public class urlActivity extends BaseActivity {
             }
         });
 
-
         webView.loadUrl(url);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
 
         finish();
-        //return super.onSupportNavigateUp();
         return true;
     }
 }
