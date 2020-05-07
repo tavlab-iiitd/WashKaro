@@ -76,7 +76,7 @@
     <string name="you_are_safe_content">Low risk of corona virus infection.</string>
     <string name="you_are_unsafe_content">Please maintain social distancing.</string>
 
-<!--    about-->
+    <!--    about-->
 
     <string name="presented_to_you_by">WashKaro, presented to you by</string>
 
@@ -92,16 +92,16 @@
 
     <string name="rohan">Rohan Pandey</string>
     <string name="rohan_tag">Undergraduate, SNU</string>
-    
+
     <string name="kanav">Kanav Bhagat</string>
     <string name="kanav_tag">Undergraduate, IIIT Delhi</string>
-    
+
     <string name="vaibhav">Vaibhav Gautam</string>
     <string name="vaibhav_tag">Undergraduate, SNU</string>
-    
+
     <string name="himanshu">Himanshu Sharma</string>
     <string name="himanshu_tag">Undergraduate, GL Bajaj Institute</string>
-    
+
     <string name="bhavika">Bhavika Rana</string>
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
     <string name="harsh">Harsh Bandhey</string>
@@ -111,7 +111,7 @@
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
-    
+
     <string name="precogURL" translatable="false">http://precog.iiitd.edu.in/</string>
     <string name="iiitdURL" translatable="false">https://www.iiitd.ac.in/</string>
     <string name="tavlabURL" translatable="false">https://tavlab.iiitd.edu.in/</string>
@@ -128,13 +128,13 @@
     <string name="vrindaURL" translatable="false">https://www.linkedin.com/in/vrinda-narayan-6a42a71a3/</string>
     <string name="tanujURL" translatable="false">https://www.linkedin.com/in/tanuj-dabas-7b28a9151/</string>
 
-<!--    WK Activities-->
+    <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
     <string name="myth_act">Myth Busters(By WHO)</string>
-<!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
+    <!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
 
-<!--    Who Chatbot-->
+    <!--    Who Chatbot-->
     <string name="who_chatbot">WHO Chatbot</string>
     <string name="delhi_gov_helpdesk">Delhi Gov Corona Helpdesk</string>
     <string name="my_gov_helpdesk">MyGov Corona Helpdesk</string>
@@ -145,15 +145,15 @@
 
     <string name="please_select_one_choice">Please select one choice</string>
 
-<!--    SymptomActivity-->
+    <!--    SymptomActivity-->
     <string name="covid_is_present">You are suspected of having COVID 19</string>
     <string name="covid_is_not_present">You are not suspected of having COVID 19</string>
 
-<!--    Myths-->
+    <!--    Myths-->
     <string name="play_audio">Play Audio</string>
-<!--    <string name="playing">PLAYING</string>-->
+    <!--    <string name="playing">PLAYING</string>-->
 
-<!--    Tiles-->
+    <!--    Tiles-->
     <string name="india_covid_map_tile">India COVID Map</string>
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
@@ -170,7 +170,7 @@
     <string name="death_case_tile">Death Cases</string>
     <string name="migrated_patient_tile">Migrated Patients</string>
 
-<!--    Symptom Tracker Questions-->
+    <!--    Symptom Tracker Questions-->
     <string name="question1">Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?</string>
     <string name="question2">Have you been in close contact with a probable or confirmed COVID-19 patient within the past 14 days?</string>
     <string name="question3">Do you have fever?</string>
@@ -184,13 +184,13 @@
     <string name="relevant">Relevant</string>
     <string name="irrelevant">Irrelevant</string>
 
-<!--    URL-->
+    <!--    URL-->
     <string name="covid_map" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/map.html</string>
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
     <string name="hunger_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/hreliefapi.html</string>
     <string name="shelter_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/tsreliefapi.html</string>
 
-<!--    Menu-->
+    <!--    Menu-->
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_us">About Us</string>
     <string name="survey">Survey</string>
