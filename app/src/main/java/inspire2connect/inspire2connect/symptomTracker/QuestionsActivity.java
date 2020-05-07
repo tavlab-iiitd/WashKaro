@@ -55,6 +55,8 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getSupportActionBar().setTitle(R.string.symptom_tracker);
+
 //        final TextView textView = findViewById(R.id.pageNo);
         ref = FirebaseDatabase.getInstance().getReference();
 
@@ -77,7 +79,7 @@ public class QuestionsActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-         customAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
+        customAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
         recyclerView.setAdapter(customAdapter);
 
 

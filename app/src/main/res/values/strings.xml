@@ -200,4 +200,6 @@
 
     <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>
 
+    <string name="satya_chatbot">Satya Chatbot</string>
+
 </resources>
