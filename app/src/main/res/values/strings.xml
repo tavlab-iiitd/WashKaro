@@ -198,4 +198,6 @@
     <string name="shelter_relief">Shelter Relief</string>
     <string name="language">Language</string>
 
+    <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>
+
 </resources>
