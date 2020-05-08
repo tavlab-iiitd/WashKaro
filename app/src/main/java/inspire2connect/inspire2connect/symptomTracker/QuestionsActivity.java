@@ -22,7 +22,7 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
     public static int[] ans;
     public ListView questionsListView;
     ArrayList<String> items;
-    String questions[];
+    String[] questions;
     int flag = 0;
     QuestionsAdapter customAdapter;
     DatabaseReference ref;
@@ -47,9 +47,10 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        getSupportActionBar().setTitle(R.string.symptom_tracker);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(R.string.symptom_tracker);
+        }
 
         context = this;
         isAllQuestionsAsked = false;
@@ -74,7 +75,7 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
         yesBT.setOnClickListener(this);
         noBT.setOnClickListener(this);
 
-        items = new ArrayList<String>();
+        items = new ArrayList<>();
         questionsListView = findViewById(R.id.msgs_recycler);
         customAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
         questionsListView.setAdapter(customAdapter);
