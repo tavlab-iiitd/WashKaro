@@ -18,7 +18,9 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class ChatActivity extends BaseActivity {
 
-    private static String baseUrl;
+    private Context context;
+    private RequestQueue requestQueue;
+    private String answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +28,34 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.satya_chatbot);
+        context = this;
+        requestQueue = Volley.newRequestQueue(context);
+        answer = "answer";
 
-        baseUrl = getString(R.string.satya_chatbot_url) + "?query=something&lang=en";
+        sendRequest(requestQueue, getString(R.string.hello));
 
-        RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest ExampleRequest = new JsonObjectRequest(Request.Method.GET, baseUrl, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Logv("Chirag", response.toString());
-            }
+    }
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        ExampleRequestQueue.add(ExampleRequest);
+    private void sendRequest(RequestQueue requestQueue, String text) {
 
+//        JsonObjectRequest ExampleRequest = new JsonObjectRequest(Request.Method.GET, createURL(context, text), null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+////                Logv("Chirag", response.getString(answer));
+//            }
+//
+//        }, new Response.ErrorListener() {
+//            @Override-
+//            public void onErrorResponse(VolleyError error) {
+//            }
+//        });
+//        requestQueue.add(ExampleRequest);
+
+    }
+
+    private static String createURL(Context ctx, String text) {
+        text = text.trim();
+        return ctx.getString(R.string.satya_chatbot_url) + "?query=" + text + "&lang=" + getCurLang();
     }
 
     @Override

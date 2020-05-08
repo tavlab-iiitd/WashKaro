@@ -4,16 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 
-public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyViewHolder> {
+public class QuestionsAdapter extends BaseAdapter {
 
     ArrayList<String> questions;
     Context context;
@@ -23,47 +20,53 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
         this.questions = questions;
     }
 
-
-    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        MyViewHolder holder;
+        if(convertView==null) {
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist,parent,false);
+            holder = new MyViewHolder(convertView);
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist,parent,false);
-       MyViewHolder vh = new MyViewHolder(v);
+            convertView.setTag(holder);
 
-        return vh;
-    }
-
-
-
-    @Override
-    public void onBindViewHolder( QuestionsAdapter.MyViewHolder holder, int position) {
+        } else {
+            holder = (MyViewHolder) convertView.getTag();
+        }
 
         if(questions.get(position).equals(context.getString(R.string.yes)) || questions.get(position).equals(context.getString(R.string.no))){
             holder.rightText.setText(questions.get(position));
-            holder.leftText.setVisibility(View.GONE);
+            holder.leftText.setVisibility(View.INVISIBLE);
+            holder.rightText.setVisibility(View.VISIBLE);
         }
         else{
             holder.leftText.setText(questions.get(position));
-            holder.rightText.setVisibility(View.GONE);
+            holder.rightText.setVisibility(View.INVISIBLE);
+            holder.leftText.setVisibility(View.VISIBLE);
         }
 
+        return convertView;
     }
 
     @Override
-    public int getItemCount() {
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public int getCount() {
         return questions.size();
     }
 
-
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder {
         TextView rightText,leftText;
         public MyViewHolder(View itemView) {
-            super(itemView);
-            rightText = (TextView) itemView.findViewById(R.id.rightText);
-
-                leftText = (TextView)itemView.findViewById(R.id.leftText);
+            rightText = itemView.findViewById(R.id.rightText);
+            leftText = itemView.findViewById(R.id.leftText);
         }
     }
 

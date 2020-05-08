@@ -111,6 +111,10 @@
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
+    
+    <string name="rishabh">Rishabh Jalan</string>
+    <string name="ayush">Ayush Garg</string>
+    <string name="akshat">Akshat Wadhwa</string>
 
     <string name="precogURL" translatable="false">http://precog.iiitd.edu.in/</string>
     <string name="iiitdURL" translatable="false">https://www.iiitd.ac.in/</string>
@@ -127,6 +131,10 @@
     <string name="harshURL" translatable="false">https://www.linkedin.com/in/harshbandhey/</string>
     <string name="vrindaURL" translatable="false">https://www.linkedin.com/in/vrinda-narayan-6a42a71a3/</string>
     <string name="tanujURL" translatable="false">https://www.linkedin.com/in/tanuj-dabas-7b28a9151/</string>
+    
+    <string name="rishabhURL" translatable="false">https://www.linkedin.com/in/jalanrishabh</string>
+    <string name="ayushURL" translatable="false">https://www.linkedin.com/in/ayush-garg-6019aa1a2</string>
+    <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
 
     <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
@@ -201,5 +209,6 @@
     <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>
 
     <string name="satya_chatbot">Satya Chatbot</string>
+    <string name="hello">Hello</string>
 
 </resources>
