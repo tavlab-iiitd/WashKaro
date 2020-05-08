@@ -7,19 +7,51 @@
     android:background="@color/Home_background_color"
     tools:context=".satyaChat.ChatActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/msgs_recycler"
+    <ListView
+        android:id="@+id/chat_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/Home_background_color"
+        android:clipToPadding="false"
+        android:divider="@null"
         android:paddingTop="10dp"
         android:paddingBottom="50dp"
-        android:clipToPadding="false"
-        android:background="@color/Home_background_color"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        app:layout_constraintBottom_toTopOf="@+id/textInpField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="50dp"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInpField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/send_but_pad"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1.0"
+        android:fontFamily="@font/mukta_medium"
+        android:hint="@string/enter_text"
+        android:textColor="@color/app_black"
+        android:textColorHint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:textSize="@dimen/chat_font_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="@dimen/chat_send_but_size"
+        android:layout_height="@dimen/chat_send_but_size"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:padding="@dimen/send_but_pad"
+        android:src="@drawable/chat_send_but"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/textInpField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInpField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

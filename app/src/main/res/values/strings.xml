@@ -210,5 +210,6 @@
 
     <string name="satya_chatbot">Satya Chatbot</string>
     <string name="hello">Hello</string>
+    <string name="enter_text">Enter Text</string>
 
 </resources>

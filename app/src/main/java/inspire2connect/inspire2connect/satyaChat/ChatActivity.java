@@ -38,18 +38,18 @@ public class ChatActivity extends BaseActivity {
 
     private void sendRequest(RequestQueue requestQueue, String text) {
 
-//        JsonObjectRequest ExampleRequest = new JsonObjectRequest(Request.Method.GET, createURL(context, text), null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-////                Logv("Chirag", response.getString(answer));
-//            }
-//
-//        }, new Response.ErrorListener() {
-//            @Override-
-//            public void onErrorResponse(VolleyError error) {
-//            }
-//        });
-//        requestQueue.add(ExampleRequest);
+        JsonObjectRequest ExampleRequest = new JsonObjectRequest(Request.Method.GET, createURL(context, text), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+//                Logv("Chirag", response.getString(answer));
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        requestQueue.add(ExampleRequest);
 
     }
 
