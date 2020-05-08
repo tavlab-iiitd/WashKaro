@@ -68,8 +68,8 @@ public class ChatActivity extends BaseActivity {
         chatListView.setAdapter(chatAdapter);
 
         String hello = getString(R.string.hello);
-        items.add(new ChatElem(hello, true));
-        updateListView();
+//        items.add(new ChatElem(hello, true));
+//        updateListView();
         sendRequest(requestQueue, hello);
     }
 
