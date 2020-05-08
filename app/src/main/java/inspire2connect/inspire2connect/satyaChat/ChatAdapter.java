@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.symptomTracker;
+package inspire2connect.inspire2connect.satyaChat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,18 +6,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 
-public class QuestionsAdapter extends BaseAdapter {
+public class ChatAdapter extends BaseAdapter {
 
-    ArrayList<String> questions;
+    ArrayList<ChatElem> messages;
     Context context;
 
-    public QuestionsAdapter(Context context, ArrayList<String> questions){
+    public ChatAdapter(Context context, ArrayList<ChatElem> messages){
         this.context = context;
-        this.questions = questions;
+        this.messages = messages;
+    }
+
+    @Override
+    public int getCount() {
+        return messages.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
@@ -33,33 +49,18 @@ public class QuestionsAdapter extends BaseAdapter {
             holder = (MyViewHolder) convertView.getTag();
         }
 
-        if(questions.get(position).equals(context.getString(R.string.yes)) || questions.get(position).equals(context.getString(R.string.no))){
-            holder.rightText.setText(questions.get(position));
+        if(messages.get(position).isMe){
+            holder.rightText.setText(messages.get(position).text);
             holder.leftText.setVisibility(View.INVISIBLE);
             holder.rightText.setVisibility(View.VISIBLE);
         }
         else{
-            holder.leftText.setText(questions.get(position));
+            holder.leftText.setText(messages.get(position).text);
             holder.rightText.setVisibility(View.INVISIBLE);
             holder.leftText.setVisibility(View.VISIBLE);
         }
 
         return convertView;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public int getCount() {
-        return questions.size();
     }
 
     public class MyViewHolder {

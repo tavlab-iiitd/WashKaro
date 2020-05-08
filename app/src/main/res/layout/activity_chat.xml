@@ -18,13 +18,13 @@
         android:paddingBottom="50dp"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
-        app:layout_constraintBottom_toTopOf="@+id/textInpField"
+        app:layout_constraintBottom_toTopOf="@+id/chatInpField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInpField"
+        android:id="@+id/chatInpField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,11 +38,11 @@
         android:backgroundTint="@color/colorPrimary"
         android:textSize="@dimen/chat_font_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/chatSendButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/chatSendButton"
         android:layout_width="@dimen/chat_send_but_size"
         android:layout_height="@dimen/chat_send_but_size"
         android:scaleType="fitXY"
@@ -50,8 +50,8 @@
         android:padding="@dimen/send_but_pad"
         android:src="@drawable/chat_send_but"
         android:tint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/textInpField"
+        app:layout_constraintBottom_toBottomOf="@+id/chatInpField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInpField" />
+        app:layout_constraintTop_toTopOf="@+id/chatInpField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

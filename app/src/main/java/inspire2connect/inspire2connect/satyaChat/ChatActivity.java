@@ -2,6 +2,12 @@ package inspire2connect.inspire2connect.satyaChat;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,6 +18,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -20,7 +28,15 @@ public class ChatActivity extends BaseActivity {
 
     private Context context;
     private RequestQueue requestQueue;
-    private String answer;
+    private static final String answer = "answer";
+
+    public ListView chatListView;
+    ArrayList<ChatElem> items;
+
+    private ChatAdapter chatAdapter;
+
+    private EditText sendText;
+    private ImageButton sendButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +46,41 @@ public class ChatActivity extends BaseActivity {
         getSupportActionBar().setTitle(R.string.satya_chatbot);
         context = this;
         requestQueue = Volley.newRequestQueue(context);
-        answer = "answer";
 
-        sendRequest(requestQueue, getString(R.string.hello));
+        items = new ArrayList<>();
 
+        sendText = findViewById(R.id.chatInpField);
+        sendButton = findViewById(R.id.chatSendButton);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txtToSend = sendText.getText().toString().trim();
+                items.add(new ChatElem(txtToSend, true));
+                sendRequest(requestQueue, txtToSend);
+                updateListView();
+                sendText.setText("");
+            }
+        });
+
+        chatListView = findViewById(R.id.chat_list);
+        chatAdapter = new ChatAdapter(this, items);
+        chatListView.setAdapter(chatAdapter);
+
+        String hello = getString(R.string.hello);
+        items.add(new ChatElem(hello, true));
+        updateListView();
+        sendRequest(requestQueue, hello);
+
+    }
+
+    private void updateListView() {
+        chatAdapter.notifyDataSetChanged();
+        final View v1 = chatListView.getChildAt(chatListView.getLastVisiblePosition() - chatListView.getFirstVisiblePosition());
+        final Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.chat_item_add_anim);
+        if (v1 != null) {
+            v1.startAnimation(animation1);
+        }
     }
 
     private void sendRequest(RequestQueue requestQueue, String text) {
@@ -41,7 +88,13 @@ public class ChatActivity extends BaseActivity {
         JsonObjectRequest ExampleRequest = new JsonObjectRequest(Request.Method.GET, createURL(context, text), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-//                Logv("Chirag", response.getString(answer));
+                try {
+                    String responseMsg = response.getString(answer);
+                    items.add(new ChatElem(responseMsg, false));
+                    updateListView();
+                } catch (Exception e) {
+
+                }
             }
 
         }, new Response.ErrorListener() {
