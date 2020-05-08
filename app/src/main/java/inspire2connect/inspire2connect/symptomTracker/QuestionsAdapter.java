@@ -35,12 +35,12 @@ public class QuestionsAdapter extends BaseAdapter {
 
         if(questions.get(position).equals(context.getString(R.string.yes)) || questions.get(position).equals(context.getString(R.string.no))){
             holder.rightText.setText(questions.get(position));
-            holder.leftText.setVisibility(View.INVISIBLE);
+            holder.leftText.setVisibility(View.GONE);
             holder.rightText.setVisibility(View.VISIBLE);
         }
         else{
             holder.leftText.setText(questions.get(position));
-            holder.rightText.setVisibility(View.INVISIBLE);
+            holder.rightText.setVisibility(View.GONE);
             holder.leftText.setVisibility(View.VISIBLE);
         }
 

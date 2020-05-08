@@ -40,7 +40,7 @@ public class ChatAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         MyViewHolder holder;
         if(convertView==null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist,parent,false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist, parent,false);
             holder = new MyViewHolder(convertView);
 
             convertView.setTag(holder);
@@ -50,13 +50,13 @@ public class ChatAdapter extends BaseAdapter {
         }
 
         if(messages.get(position).isMe){
-            holder.rightText.setText(messages.get(position).text);
-            holder.leftText.setVisibility(View.INVISIBLE);
+            holder.rightText.setText(messages.get(position).text.trim());
+            holder.leftText.setVisibility(View.GONE);
             holder.rightText.setVisibility(View.VISIBLE);
         }
         else{
-            holder.leftText.setText(messages.get(position).text);
-            holder.rightText.setVisibility(View.INVISIBLE);
+            holder.leftText.setText(messages.get(position).text.trim());
+            holder.rightText.setVisibility(View.GONE);
             holder.leftText.setVisibility(View.VISIBLE);
         }
 

@@ -71,7 +71,6 @@ public class ChatActivity extends BaseActivity {
         items.add(new ChatElem(hello, true));
         updateListView();
         sendRequest(requestQueue, hello);
-
     }
 
     private void updateListView() {
@@ -89,7 +88,7 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    String responseMsg = response.getString(answer);
+                    String responseMsg = response.getString(answer).trim();
                     items.add(new ChatElem(responseMsg, false));
                     updateListView();
                 } catch (Exception e) {
