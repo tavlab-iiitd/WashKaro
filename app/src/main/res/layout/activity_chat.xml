@@ -15,7 +15,7 @@
         android:clipToPadding="false"
         android:divider="@null"
         android:paddingTop="10dp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="10dp"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
         app:layout_constraintBottom_toTopOf="@+id/chatInpField"
