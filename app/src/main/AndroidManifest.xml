@@ -2,21 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="inspire2connect.inspire2connect">
+    <!-- TODO: Why -->
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- TODO: Why? -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".contactTracer.BluetoothApplication"
         android:allowBackup="true"
         android:appComponentFactory="whateverString"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        android:name=".contactTracer.BluetoothApplication"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".symptomTracker.QuestionsActivity"></activity>
-<!--        <activity android:name=".firstPageActivity"></activity>-->
-        <activity android:name=".home.homeActivity" />
-<!--        <activity android:name=".male_female_2" />-->
+        <activity android:name=".satyaChat.ChatActivity"></activity>
+        <activity android:name=".symptomTracker.QuestionsActivity" /> <!-- <activity android:name=".firstPageActivity"></activity> -->
+        <activity android:name=".home.homeActivity" /> <!-- <activity android:name=".male_female_2" /> -->
         <activity android:name=".home.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +38,11 @@
         <activity android:name=".survey.maleFemaleActivity" />
         <activity android:name=".news.text2speech2_2Activity" />
         <activity android:name=".about.aboutActivity" />
-        <activity android:name=".news.onAIrActivity" />
-<!--        <activity android:name=".add_new" />-->
-<!--        <activity android:name=".improveActivity" />-->
-<!--        <activity android:name=".Text2SpeechActivity" />-->
-<!--        <activity android:name=".Infographic" />-->
-<!--        <activity android:name=".daily_updates" />-->
+        <activity android:name=".news.onAIrActivity" /> <!-- <activity android:name=".add_new" /> -->
+        <!-- <activity android:name=".improveActivity" /> -->
+        <!-- <activity android:name=".Text2SpeechActivity" /> -->
+        <!-- <activity android:name=".Infographic" /> -->
+        <!-- <activity android:name=".daily_updates" /> -->
         <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
         <activity android:name=".utils.urlActivity" />
 
@@ -44,27 +54,20 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".home.selectChatBotActivity"></activity>
-        <activity android:name=".home.selectMiscActivity"></activity>
-        <activity android:name=".mythGuidelineUpdates.guidelineViewActivity"></activity>
-        <activity android:name=".home.InfographicsActivity"></activity>
-
-<!--        Contact Tracer-->
-
-<!--        <activity-->
-<!--            android:name=".contactTracer.SettingsActivity"-->
-<!--            android:label="@string/title_activity_settings"></activity>-->
-
-<!--        <activity android:name=".contactTracer.InteractionsActivity" />-->
-
-        <activity android:name=".contactTracer.ContactTracerActivity"/>
-
+        <activity android:name=".home.selectChatBotActivity" />
+        <activity android:name=".home.selectMiscActivity" />
+        <activity android:name=".mythGuidelineUpdates.guidelineViewActivity" />
+        <activity android:name=".home.InfographicsActivity" /> <!-- Contact Tracer -->
+        <!-- <activity -->
+        <!-- android:name=".contactTracer.SettingsActivity" -->
+        <!-- android:label="@string/title_activity_settings"></activity> -->
+        <!-- <activity android:name=".contactTracer.InteractionsActivity" /> -->
+        <activity android:name=".contactTracer.ContactTracerActivity" />
         <activity android:name=".contactTracer.PhoneAuthActivity" />
-        
+
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="false" />
-
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
@@ -83,7 +86,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".contactTracer.firebase.FirebaseBroadcastReceiver"
             android:exported="true"
@@ -92,22 +94,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
-
-
     </application>
-<!--    TODO: Why-->
-    <uses-feature android:name="android.hardware.location.gps" />
-
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
-<!--    TODO: Why?-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
 </manifest>

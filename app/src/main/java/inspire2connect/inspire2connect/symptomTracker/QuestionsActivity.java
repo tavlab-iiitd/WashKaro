@@ -4,14 +4,10 @@ package inspire2connect.inspire2connect.symptomTracker;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,33 +15,31 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class QuestionsActivity extends AppCompatActivity {
-    public RecyclerView recyclerView;
-    public static String myName;
+public class QuestionsActivity extends BaseActivity implements View.OnClickListener {
     public static int[] ans;
-    TextView tv;
-    Button yes_button, no_button;
-    RadioGroup radio_g;
-    //  final TextView textView=(TextView)findViewById(R.id.pageNo);
-    RadioButton rb1, rb2;
-    ArrayList<String>items;
-    String questions[];
+    public ListView questionsListView;
+    ArrayList<String> items;
+    String[] questions;
     int flag = 0;
-    QuestionsAdapter customAdapter;
+    QuestionsAdapter questionsAdapter;
     DatabaseReference ref;
+    Button yesBT;
+    Button noBT;
+    Button actBT;
+    private Context context;
+    private boolean isAllQuestionsAsked;
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
-
-
     @Override
     public boolean onSupportNavigateUp() {
-            finish();
+        finish();
         return true;
     }
 
@@ -53,9 +47,14 @@ public class QuestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(R.string.symptom_tracker);
+        }
 
-//        final TextView textView = findViewById(R.id.pageNo);
+        context = this;
+        isAllQuestionsAsked = false;
+
         ref = FirebaseDatabase.getInstance().getReference();
 
         questions = new String[]{
@@ -67,81 +66,118 @@ public class QuestionsActivity extends AppCompatActivity {
                 getString(R.string.question6),
                 getString(R.string.question7)
         };
-        items = new ArrayList<String>();
+
+        yesBT = findViewById(R.id.st_bot_yes);
+        noBT = findViewById(R.id.st_bot_no);
+        actBT = findViewById(R.id.bot_back_button);
+
+        actBT.setOnClickListener(this);
+        yesBT.setOnClickListener(this);
+        noBT.setOnClickListener(this);
+
+        items = new ArrayList<>();
+        questionsListView = findViewById(R.id.msgs_recycler);
+        questionsAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
+        questionsListView.setAdapter(questionsAdapter);
+
         items.add("Hello! Please give correct answers!");
         items.add(questions[flag]);
 
-
-        recyclerView = (RecyclerView)findViewById(R.id.msgs_recycler);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
-         customAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
-        recyclerView.setAdapter(customAdapter);
-
+        updateListView();
 
         ans = new int[7];
         for (int i = 0; i < 7; i++)
             ans[i] = 0;
-
-
-    Button back = (Button)findViewById(R.id.bot_back_button);
-    back.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
-    });
     }
 
-    public void yes_clicked(View view){
-        recyclerView.smoothScrollToPosition(customAdapter.getItemCount());
+    private void updateListView() {
+        questionsAdapter.notifyDataSetChanged();
+        final View v1 = questionsListView.getChildAt(questionsListView.getLastVisiblePosition() - questionsListView.getFirstVisiblePosition() - 1);
+        final View v2 = questionsListView.getChildAt(questionsListView.getLastVisiblePosition() - questionsListView.getFirstVisiblePosition());
+        final Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.chat_item_add_anim);
+        final Animation animation2 = AnimationUtils.loadAnimation(context, R.anim.chat_item_add_anim);
+        if (v1 != null) {
+            v1.startAnimation(animation1);
+        }
+        if (v2 != null) {
+            v2.setVisibility(View.GONE);
+        }
+
+        animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (v2 != null) {
+                    v2.setVisibility(View.VISIBLE);
+                    v2.startAnimation(animation2);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+        animation2.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                if (isAllQuestionsAsked) {
+                    yesBT.setVisibility(View.GONE);
+                    noBT.setVisibility(View.GONE);
+                    actBT.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+    }
+
+    public void yes_clicked() {
 
         items.add(getString(R.string.yes));
-        customAdapter.notifyItemInserted(items.size() -1);
-        ans[flag] =1;
+        ans[flag] = 1;
         flag++;
+        updateListView();
 
-
-        if(flag == 7){
+        if (flag == 7) {
             all_questions_asked();
-        }
-        else{
+        } else {
             items.add(questions[flag]);
-            customAdapter.notifyItemInserted(items.size() -1);
-
+            updateListView();
         }
 
     }
-    public void no_clicked(View view){
-        recyclerView.smoothScrollToPosition(customAdapter.getItemCount());
+
+    public void no_clicked() {
 
         items.add(getString(R.string.no));
-        customAdapter.notifyItemInserted(items.size() -1);
-        ans[flag] =2;
+        ans[flag] = 2;
         flag++;
+        updateListView();
 
-        if(flag == 7){
+        if (flag == 7) {
             all_questions_asked();
-        }
-        else{
+        } else {
             items.add(questions[flag]);
-            customAdapter.notifyItemInserted(items.size() -1);
-
+            updateListView();
         }
     }
 
-    public void  all_questions_asked(){
-        Button b1 = (Button)findViewById(R.id.st_bot_yes);
-        Button b2 = (Button)findViewById(R.id.st_bot_no);
-        Button b3 = (Button)findViewById(R.id.bot_back_button);
-        b1.setVisibility(View.GONE);
-        b2.setVisibility(View.GONE);
-        b3.setVisibility(View.VISIBLE);
+    public void all_questions_asked() {
 
-        //calculating result
-        String sb ="" ;
+        isAllQuestionsAsked = true;
+
+        String sb = "";
         boolean val = true;
         String to_push = "";
         for (int i = 0; i < ans.length; i++) {
@@ -173,16 +209,30 @@ public class QuestionsActivity extends AppCompatActivity {
         }
 
         if (val) {
-            sb+=(getString(R.string.covid_is_present));
+            sb += (getString(R.string.covid_is_present));
         } else {
-            sb+=(getString(R.string.covid_is_not_present));
+            sb += (getString(R.string.covid_is_not_present));
         }
 
         items.add(sb);
-        customAdapter.notifyItemInserted(items.size() -1);
-        ans=new int[7];
-        //tv2.setText(QuestionsActivity.myName);
-
+        updateListView();
+        ans = new int[7];
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.st_bot_yes:
+                yes_clicked();
+                break;
+            case R.id.st_bot_no:
+                no_clicked();
+                break;
+            case R.id.bot_back_button:
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
 }

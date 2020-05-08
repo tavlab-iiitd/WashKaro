@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.symptomTracker;
+package inspire2connect.inspire2connect.satyaChat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,45 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 
-public class QuestionsAdapter extends BaseAdapter {
+public class ChatAdapter extends BaseAdapter {
 
-    ArrayList<String> questions;
+    ArrayList<ChatElem> messages;
     Context context;
 
-    public QuestionsAdapter(Context context, ArrayList<String> questions){
+    public ChatAdapter(Context context, ArrayList<ChatElem> messages){
         this.context = context;
-        this.questions = questions;
+        this.messages = messages;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        MyViewHolder holder;
-        if(convertView==null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist,parent,false);
-            holder = new MyViewHolder(convertView);
-
-            convertView.setTag(holder);
-
-        } else {
-            holder = (MyViewHolder) convertView.getTag();
-        }
-
-        if(questions.get(position).equals(context.getString(R.string.yes)) || questions.get(position).equals(context.getString(R.string.no))){
-            holder.rightText.setText(questions.get(position));
-            holder.leftText.setVisibility(View.GONE);
-            holder.rightText.setVisibility(View.VISIBLE);
-        }
-        else{
-            holder.leftText.setText(questions.get(position));
-            holder.rightText.setVisibility(View.GONE);
-            holder.leftText.setVisibility(View.VISIBLE);
-        }
-
-        return convertView;
+    public int getCount() {
+        return messages.size();
     }
 
     @Override
@@ -58,8 +37,30 @@ public class QuestionsAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return questions.size();
+    public View getView(int position, View convertView, ViewGroup parent) {
+        MyViewHolder holder;
+        if(convertView==null) {
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.msglist, parent,false);
+            holder = new MyViewHolder(convertView);
+
+            convertView.setTag(holder);
+
+        } else {
+            holder = (MyViewHolder) convertView.getTag();
+        }
+
+        if(messages.get(position).isMe){
+            holder.rightText.setText(messages.get(position).text.trim());
+            holder.leftText.setVisibility(View.GONE);
+            holder.rightText.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.leftText.setText(messages.get(position).text.trim());
+            holder.rightText.setVisibility(View.GONE);
+            holder.leftText.setVisibility(View.VISIBLE);
+        }
+
+        return convertView;
     }
 
     public class MyViewHolder {

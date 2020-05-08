@@ -31,10 +31,17 @@
     <dimen name="home_stat_val">14dp</dimen>
     <dimen name="about_bottom_margin">20dp</dimen>
 
+    <dimen name="yes_no_size">16sp</dimen>
+
     <dimen name="home_card_horizontal_margin">5dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
     <dimen name="alert_btn_margin">4dp</dimen>
 
     <dimen name="app_bar_bottom_margin">8dp</dimen>
+
+    <dimen name="send_but_pad">4dp</dimen>
+    <dimen name="chat_font_size">16sp</dimen>
+    <dimen name="chat_padding">12dp</dimen>
+    <dimen name="chat_send_but_size">48dp</dimen>
 </resources>

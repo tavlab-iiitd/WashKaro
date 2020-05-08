@@ -8,21 +8,26 @@ import android.view.View;
 import android.widget.Button;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class selectChatBotActivity extends BaseActivity implements View.OnClickListener {
-    Button cbot1, cbot2, cbot3;
+    Button cbot0, cbot1, cbot2, cbot3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.chatbot_tile);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(R.string.chatbot_tile);
+        }
         setContentView(R.layout.activity_select_chatbot_activity);
+        cbot0 = findViewById(R.id.cbot0);
         cbot1 = findViewById(R.id.cbot1);
         cbot2 = findViewById(R.id.cbot2);
         cbot3 = findViewById(R.id.cbot3);
+        cbot0.setOnClickListener(this);
         cbot1.setOnClickListener(this);
         cbot2.setOnClickListener(this);
         cbot3.setOnClickListener(this);
@@ -35,6 +40,10 @@ public class selectChatBotActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+        if(view == cbot0) {
+            Intent intent = new Intent(this, ChatActivity.class);
+            startActivity(intent);
+        }
         if (view == cbot1) {
             String nmbr = "+41798931892";
             openWhatsapp(nmbr);

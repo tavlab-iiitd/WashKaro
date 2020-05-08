@@ -36,12 +36,15 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
 
         elems = new aboutElem[]{
+                new aboutElem(this, R.string.akshat, R.string.tanuj_tag, R.string.akshatURL),
+                new aboutElem(this, R.string.ayush, R.string.tanuj_tag, R.string.tanujURL),
                 new aboutElem(this, R.string.bhavika, R.string.bhavika_tag, R.string.bhavikaURL),
                 new aboutElem(this, R.string.chirag, R.string.chirag_tag, R.string.chiragURL),
                 new aboutElem(this, R.string.harsh, R.string.harsh_tag, R.string.harshURL),
                 new aboutElem(this, R.string.himanshu, R.string.himanshu_tag, R.string.himanshuURL),
                 new aboutElem(this, R.string.kanav, R.string.kanav_tag, R.string.kanavURL),
                 new aboutElem(this, R.string.priyanka, R.string.priyanka_tag, R.string.priyankaURL),
+                new aboutElem(this, R.string.rishabh, R.string.tanuj_tag, R.string.rishabhURL),
                 new aboutElem(this, R.string.rohan, R.string.rohan_tag, R.string.rohanURL),
                 new aboutElem(this, R.string.tanuj, R.string.tanuj_tag, R.string.tanujURL),
                 new aboutElem(this, R.string.vaibhav, R.string.vaibhav_tag, R.string.vaibhavURL),

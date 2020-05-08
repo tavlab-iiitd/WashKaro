@@ -8,29 +8,33 @@
         android:id="@+id/leftText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentStart="true"
-        android:text="Hello this is me!!"
-        android:padding="8dp"
+        android:text="12345"
+        android:textSize="@dimen/chat_font_size"
+        android:padding="@dimen/chat_padding"
         android:fontFamily="@font/mukta_medium"
         android:textColor="@color/chat_other"
         android:background="@drawable/left_background"
         android:elevation="2dp"
         />
 
-
     <TextView
         android:id="@+id/rightText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentEnd="true"
-        android:text="Hi!! How are you!!"
+        android:text="12345"
+        android:textSize="@dimen/chat_font_size"
         android:fontFamily="@font/mukta_medium"
         android:background="@drawable/right_background"
         android:textColor="@color/chat_me"
-        android:padding="8dp"
+        android:padding="@dimen/chat_padding"
         android:elevation="2dp"/>
-
 
 </RelativeLayout>

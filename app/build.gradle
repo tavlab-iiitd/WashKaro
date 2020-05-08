@@ -8,8 +8,8 @@ android {
         applicationId "inspire2connect.inspire2connect"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 16
-        versionName "3.2"
+        versionCode 17
+        versionName "3.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -46,6 +46,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.1.0'
     implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.android.volley:volley:1.1.1'
 
     // Firebase
     implementation 'com.google.firebase:firebase-database:19.2.1'
@@ -57,6 +58,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.1.3'
     implementation 'com.google.firebase:firebase-core:17.3.0'
     implementation 'com.google.firebase:firebase-iid:20.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta04'
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -69,7 +71,5 @@ dependencies {
     implementation 'com.llollox:androidtoggleswitch:2.0.1'
     implementation 'com.sefford:circular-progress-drawable:1.31@aar'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
-
-    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta04'
 
 }
