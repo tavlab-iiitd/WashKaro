@@ -41,7 +41,7 @@
     <dimen name="app_bar_bottom_margin">8dp</dimen>
 
     <dimen name="send_but_pad">4dp</dimen>
-    <dimen name="chat_font_size">18sp</dimen>
+    <dimen name="chat_font_size">16sp</dimen>
     <dimen name="chat_padding">12dp</dimen>
     <dimen name="chat_send_but_size">48dp</dimen>
 </resources>
