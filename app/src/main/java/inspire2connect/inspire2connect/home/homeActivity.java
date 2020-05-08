@@ -220,7 +220,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         }else if (view == ll_but[4]) {
             i = new Intent(homeActivity.this, selectChatBotActivity.class);
         }else if (view == ll_but[5]) {
-            i = new Intent(homeActivity.this, ChatActivity.class);
+            i = new Intent(homeActivity.this, selectMiscActivity.class);
         }
 
         if(i!=null) {
