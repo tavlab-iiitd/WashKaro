@@ -24,7 +24,7 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
     ArrayList<String> items;
     String[] questions;
     int flag = 0;
-    QuestionsAdapter customAdapter;
+    QuestionsAdapter questionsAdapter;
     DatabaseReference ref;
     Button yesBT;
     Button noBT;
@@ -77,8 +77,8 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
 
         items = new ArrayList<>();
         questionsListView = findViewById(R.id.msgs_recycler);
-        customAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
-        questionsListView.setAdapter(customAdapter);
+        questionsAdapter = new QuestionsAdapter(QuestionsActivity.this, items);
+        questionsListView.setAdapter(questionsAdapter);
 
         items.add("Hello! Please give correct answers!");
         items.add(questions[flag]);
@@ -91,7 +91,7 @@ public class QuestionsActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void updateListView() {
-        customAdapter.notifyDataSetChanged();
+        questionsAdapter.notifyDataSetChanged();
         final View v1 = questionsListView.getChildAt(questionsListView.getLastVisiblePosition() - questionsListView.getFirstVisiblePosition() - 1);
         final View v2 = questionsListView.getChildAt(questionsListView.getLastVisiblePosition() - questionsListView.getFirstVisiblePosition());
         final Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.chat_item_add_anim);
