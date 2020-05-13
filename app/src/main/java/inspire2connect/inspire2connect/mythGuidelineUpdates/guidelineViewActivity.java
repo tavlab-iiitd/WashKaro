@@ -2,9 +2,9 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -12,7 +12,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -25,31 +24,61 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     public TextView detailed_title;
     public TextView detailed_text;
     public ImageButton detailed_play_button, detailed_share_button;
-    public SeekBar detailed_seekBar;
-    public MediaPlayer mediaPlayer;
-    int current_time;
-    boolean currently_paused;
-    private Handler mSeekbarUpdateHandler = new Handler();
-    private Runnable mUpdateSeekbar = new Runnable() {
-        @Override
-        public void run() {
-            detailed_seekBar.setProgress(mediaPlayer.getCurrentPosition());
-            mSeekbarUpdateHandler.postDelayed(this, 50);
-        }
-    };
-
     public ImageButton sourceBtn;
-
+    boolean isSpeaking;
+    TextToSpeech mTTS;
+    private String title;
+    private String content;
     private Context context;
 
     @Override
-    public void onBackPressed() {
-        mSeekbarUpdateHandler.removeCallbacks(mUpdateSeekbar);
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
+    protected void onPause() {
+        super.onPause();
+        if (mTTS.isSpeaking()) {
+            mTTS.stop();
+            isSpeaking = false;
         }
-        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isSpeaking = false;
+        detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_black_34dp));
+        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.ERROR) {
+                    isSpeaking = false;
+                    mTTS.stop();
+                    detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_black_34dp));
+                } else if (status == TextToSpeech.SUCCESS) {
+                    mTTS.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                        @Override
+                        public void onStart(String utteranceId) {
+                            if (!isSpeaking) {
+                                isSpeaking = true;
+                                detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_pause_black_34dp));
+                            }
+                        }
+
+                        @Override
+                        public void onDone(String utteranceId) {
+                            if (isSpeaking) {
+                                isSpeaking = false;
+                                mTTS.stop();
+                                detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_black_34dp));
+                            }
+                        }
+
+                        @Override
+                        public void onError(String utteranceId) {
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @Override
@@ -58,18 +87,22 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
         setContentView(R.layout.activity_full_guideline_view);
         detailed_title = findViewById(R.id.detailed_title);
         detailed_title.setMovementMethod(LinkMovementMethod.getInstance());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         detailed_text = findViewById(R.id.detailed_text);
         detailed_text.setMovementMethod(new ScrollingMovementMethod());
         detailed_play_button = findViewById(R.id.detailed_play_button);
-        detailed_seekBar = findViewById(R.id.detailed_seekBar);
         detailed_share_button = findViewById(R.id.detailed_share);
-        currently_paused = false;
+        isSpeaking = false;
         final Intent i = getIntent();
         final String redirect_url = i.getStringExtra("redirect_url");
-        detailed_title.setText(i.getStringExtra("detailed_title"));
-        detailed_text.setText(i.getStringExtra("detailed_text"));
-        mediaPlayer = new MediaPlayer();
+
+        title = i.getStringExtra("detailed_title");
+        content = i.getStringExtra("detailed_text");
+
+        detailed_title.setText(title);
+        detailed_text.setText(content);
 
         context = this;
 
@@ -90,74 +123,18 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
                 share(i.getStringExtra("detailed_text"));
             }
         });
-        detailed_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (mediaPlayer != null && fromUser)
-                    mediaPlayer.seekTo(progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                detailed_seekBar.setProgress(mp.getCurrentPosition());
-                mediaPlayer.seekTo(0);
-                current_time = 0;
-                currently_paused = true;
-                detailed_play_button.setImageResource(R.drawable.ic_play_arrow_black_34dp);
-                mSeekbarUpdateHandler.removeCallbacks(mUpdateSeekbar);
-
-            }
-        });
 
         detailed_play_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                if (currently_paused) {
-                    if (mediaPlayer != null) {
-                        mediaPlayer.seekTo(current_time);
-                        mediaPlayer.start();
-                        detailed_play_button.setImageResource(R.drawable.ic_pause_black_34dp);
-                        currently_paused = false;
-                        mSeekbarUpdateHandler.postDelayed(mUpdateSeekbar, 0);
-                    }
+            public void onClick(View v) {
+                if (isSpeaking) {
+                    isSpeaking = false;
+                    mTTS.stop();
+                    detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_black_34dp));
                 } else {
-                    if (mediaPlayer.isPlaying()) {
-                        mediaPlayer.pause();
-                        current_time = mediaPlayer.getCurrentPosition();
-                        detailed_play_button.setImageResource(R.drawable.ic_play_arrow_black_34dp);
-                        mSeekbarUpdateHandler.removeCallbacks(mUpdateSeekbar);
-                        currently_paused = true;
-                    } else {
-                        try {
-                            mediaPlayer.setDataSource(i.getStringExtra("url"));
-                            mediaPlayer.prepare();
-                            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                                @Override
-                                public void onPrepared(MediaPlayer mp) {
-                                    mp.start();
-                                    Log.d("testing", "Prepared");
-                                    detailed_seekBar.setMax(mp.getDuration());
-                                    mSeekbarUpdateHandler.postDelayed(mUpdateSeekbar, 0);
-                                    detailed_play_button.setImageResource(R.drawable.ic_pause_black_34dp);
-                                    currently_paused = false;
-                                }
-                            });
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    mTTS.speak(title + " " + content, TextToSpeech.QUEUE_FLUSH, null);
+                    isSpeaking = true;
+                    detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_pause_black_34dp));
                 }
             }
         });
@@ -170,7 +147,6 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
         Log.d("sharing", toShare);
         Spanned shareBody = Html.fromHtml(toShare);
         String share = shareBody.toString();
-        //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
@@ -178,12 +154,6 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     @Override
     public boolean onSupportNavigateUp() {
 
-        //finish();
-        mSeekbarUpdateHandler.removeCallbacks(mUpdateSeekbar);
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-        }
         finish();
         return true;
     }
