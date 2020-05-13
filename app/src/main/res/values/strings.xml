@@ -108,6 +108,8 @@
     <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
     <string name="vrinda">Vrinda Narayan</string>
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
+    <string name="yashwin">Yashwin Agrawal</string>
+    <string name="yashwin_tag">Undergraduate, IIIT Delhi</string>
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
@@ -135,6 +137,7 @@
     <string name="rishabhURL" translatable="false">https://www.linkedin.com/in/jalanrishabh</string>
     <string name="ayushURL" translatable="false">https://www.linkedin.com/in/ayush-garg-6019aa1a2</string>
     <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
+    <string name="yashwinURL" translatable="false">https://www.linkedin.com/in/yashwin-agrawal-6b28bb176</string>
 
     <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>

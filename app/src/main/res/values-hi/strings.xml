@@ -72,6 +72,7 @@
     <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>
     <string name="covid_is_not_present">आपको COVID 19 होने का संदेह नहीं है</string>
     <string name="play_audio">ऑडियो चलाएं</string>
+    <string name="cbot0_deatils">यह सेवा आपको सही समय पर सही जानकारी खोजने में मदद करती है।</string>
     <string name="cbot1_deatils">यह सेवा आपको कोरोनोवायरस के मौजूदा प्रकोप पर डब्ल्यूएचओ की नवीनतम जानकारी और मार्गदर्शन प्रदान करेगी।</string>
     <string name="cbot3_deatils">दिल्ली की COVID-19 हेल्पडेस्क की यह सरकार जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करती है।</string>
     <string name="cbot2_deatils">भारत सरकार की COVID-19 हेल्पडेस्क ने जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करने के लिए।</string>
@@ -79,6 +80,7 @@
     <string name="my_gov_helpdesk">MyGov कोरोना हेल्पडेस्क</string>
     <string name="delhi_gov_helpdesk">दिल्ली सरकार कोरोना हेल्पडेस्क</string>
     <string name="who_chatbot">WHO चैटबोट</string>
+    <string name="satya_chatbot">Satya चैटबोट</string>
     <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
     <string name="you_are_safe">आप सुरक्षित है!</string>
     <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
@@ -106,8 +108,13 @@
     <string name="bhavika">भाविका राणा</string>
     <string name="harsh">हर्ष बंधे</string>
     <string name="vrinda">वृंदा नारायण</string>
+    <string name="yashwin">यशविन अग्रवाल</string>
+    <string name="akshat">अक्षत वाधवा</string>
+    <string name="ayush">आयुष गर्ग</string>
+    <string name="rishabh">ऋषभ जालान</string>
     <string name="tanuj">तनुज डबास</string>
     <string name="tanuj_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="yashwin_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="next">आगे</string>
     <string name="skip">छोड़ें</string>
@@ -138,5 +145,10 @@
     <string name="irrelevant">व्यर्थ</string>
 
     <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="survey">सर्वेक्षण</string>
+    <string name="language">भाषा</string>
+    <string name="shelter_relief">आश्रय राहत</string>
+    <string name="hunger_relief">भूख से राहत</string>
+    <string name="about_us">हमारे बारे में</string>
 
 </resources>
