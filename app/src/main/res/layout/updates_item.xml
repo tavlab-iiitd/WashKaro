@@ -31,27 +31,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/share_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_share_black_24dp" />
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/actual_text">
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/share_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_share_black_24dp" />
 
                 <ImageView
                     android:id="@+id/play_pause_myth"
@@ -67,29 +65,30 @@
                     android:layout_marginLeft="4dp"
                     android:fontFamily="@font/mukta_semibold"
                     android:text="@string/play_audio"
-                    android:textColor="@color/app_blue" />
+                    android:textColor="@color/app_blue"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
             <TextView
                 android:id="@+id/myth_title"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/mukta_semibold"
                 android:paddingLeft="4dp"
                 android:paddingTop="4dp"
                 android:paddingRight="4dp"
                 android:paddingBottom="4dp"
                 android:text="Titledfngjsfgjfn"
+                android:gravity="center_vertical"
                 android:textColor="@color/blackcolor"
                 android:textSize="@dimen/about_content"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="@+id/share_button"
-                app:layout_constraintEnd_toStartOf="@+id/share_button"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/share_button" />
+                app:layout_constraintTop_toTopOf="@+id/linearLayout5" />
 
             <TextView
                 android:id="@+id/actual_text"
