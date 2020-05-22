@@ -29,8 +29,8 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference statsReference = FirebaseDatabase.getInstance("https://washkaro-stats.firebaseio.com").getReference();
 
     // Firebase Authenticaiton
-    public static final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    public static FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+    public static FirebaseAuth firebaseAuth;
+    public static FirebaseUser firebaseUser;
 
     // mythGuidelineUpdatesKey
     public static final String TYPE = "T";

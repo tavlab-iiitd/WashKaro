@@ -91,6 +91,8 @@ public class WelcomeActivity extends BaseActivity {
         getSupportActionBar().hide();
 
         // Firebase Anonymous Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser == null){
             firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
