@@ -34,9 +34,6 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -69,9 +66,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
     private List<Infographics> slideLists;
-
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -115,21 +109,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_home_);
         update_handle();
         initialize_view_flipper();
-
-        // Firebase Anonymous Auth
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-
-        if(firebaseUser == null){
-            firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull com.google.android.gms.tasks.Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        firebaseUser = firebaseAuth.getCurrentUser();
-                    }
-                }
-            });
-        }
 
         slideLists = new ArrayList<>();
         slideLists = new ArrayList<>();

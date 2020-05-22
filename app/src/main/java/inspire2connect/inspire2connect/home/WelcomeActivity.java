@@ -42,10 +42,6 @@ public class WelcomeActivity extends BaseActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
-
     private Button btnSkip, btnNext;
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -93,21 +89,8 @@ public class WelcomeActivity extends BaseActivity {
 
         // Checking for first time launch - before calling setContentView()
         getSupportActionBar().hide();
-        prefManager = new PreferenceManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-
-            //prefManager.setFirstTimeLaunch(false);
-            Intent i = new Intent(WelcomeActivity.this, homeActivity.class);
-            startActivity(i);
-            finish();
-        }
-        prefManager.setFirstTimeLaunch(false);
 
         // Firebase Anonymous Auth
-        // Firebase Anonymous Auth
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-
         if(firebaseUser == null){
             firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -118,6 +101,16 @@ public class WelcomeActivity extends BaseActivity {
                 }
             });
         }
+
+        prefManager = new PreferenceManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+
+            //prefManager.setFirstTimeLaunch(false);
+            Intent i = new Intent(WelcomeActivity.this, homeActivity.class);
+            startActivity(i);
+            finish();
+        }
+        prefManager.setFirstTimeLaunch(false);
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
