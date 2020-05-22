@@ -15,6 +15,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -35,6 +43,8 @@ public class WelcomeActivity extends BaseActivity {
     private TextView[] dots;
     private int[] layouts;
 
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     private Button btnSkip, btnNext;
     //  viewpager change listener
@@ -93,6 +103,21 @@ public class WelcomeActivity extends BaseActivity {
         }
         prefManager.setFirstTimeLaunch(false);
 
+        // Firebase Anonymous Auth
+        // Firebase Anonymous Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        if(firebaseUser == null){
+            firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        firebaseUser = firebaseAuth.getCurrentUser();
+                    }
+                }
+            });
+        }
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
