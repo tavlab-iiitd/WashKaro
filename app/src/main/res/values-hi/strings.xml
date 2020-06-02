@@ -59,6 +59,7 @@
     <string name="govt_advisory_tile">सरकारी निर्देश</string>
     <string name="symptom_tracker_tile">लक्षण ट्रैकर</string>
     <string name="contact_tracer_tile">संपर्क ट्रेसर</string>
+    <string name="social_distancing_tile">सोशल डिस्टन्सिंग</string>
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
     <string name="misc_tile">अधिक जानकारी</string>
@@ -107,11 +108,13 @@
     <string name="vrinda_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
     <string name="bhavika">भाविका राणा</string>
     <string name="harsh">हर्ष बंधे</string>
+    <string name="vihaan">विहान मिश्रा</string>
     <string name="vrinda">वृंदा नारायण</string>
     <string name="yashwin">यशविन अग्रवाल</string>
     <string name="akshat">अक्षत वाधवा</string>
     <string name="ayush">आयुष गर्ग</string>
     <string name="rishabh">ऋषभ जालान</string>
+    <string name="vihaan_tag">अंडरग्रेजुएट, DTU</string>
     <string name="tanuj">तनुज डबास</string>
     <string name="tanuj_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
     <string name="yashwin_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>

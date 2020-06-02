@@ -106,6 +106,8 @@
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
     <string name="harsh">Harsh Bandhey</string>
     <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
+    <string name="vihaan">Vihaan Misra</string>
+    <string name="vihaan_tag">Undergraduate, DTU</string>
     <string name="vrinda">Vrinda Narayan</string>
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
     <string name="yashwin">Yashwin Agrawal</string>
@@ -137,6 +139,7 @@
     <string name="rishabhURL" translatable="false">https://www.linkedin.com/in/jalanrishabh</string>
     <string name="ayushURL" translatable="false">https://www.linkedin.com/in/ayush-garg-6019aa1a2</string>
     <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
+    <string name="vihaanURL" translatable="false">https://www.linkedin.com/in/vihaan-m-a3841811a/</string>
     <string name="yashwinURL" translatable="false">https://www.linkedin.com/in/yashwin-agrawal-6b28bb176</string>
 
     <!--    WK Activities-->
@@ -173,7 +176,8 @@
     <string name="govt_advisory_tile">Govt Advisory</string>
     <string name="symptom_tracker_tile">Symptom Tracker</string>
     <string name="contact_tracer_tile">Contact Tracer</string>
-    <string name="chatbot_tile">Chatbots</string>
+    <string name="social_distancing_tile">Social Distancing</string>
+    <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
     <string name="misc_tile">More Info</string>
     <string name="passengers_screened_tile">Passesgers screened at airport</string>

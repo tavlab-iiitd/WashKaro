@@ -112,14 +112,14 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         slideLists = new ArrayList<>();
         slideLists = new ArrayList<>();
-        ll_but[0] = findViewById(R.id.advisories_tile);
-        ll_but[1] = findViewById(R.id.symptom_tracker_tile);
-        ll_but[2] = findViewById(R.id.contact_tracer_tile);
-        ll_but[3] = findViewById(R.id.onair_tile);
-        ll_but[4] = findViewById(R.id.chatbot_tile);
-        ll_but[5] = findViewById(R.id.more_info_tile);
+//        ll_but[0] = findViewById(R.id.advisories_tile);
+//        ll_but[1] = findViewById(R.id.symptom_tracker_tile);
+        ll_but[0] = findViewById(R.id.contact_tracer_tile);
+        ll_but[1] = findViewById(R.id.onair_tile);
+        ll_but[2] = findViewById(R.id.chatbot_tile);
+        ll_but[3] = findViewById(R.id.more_info_tile);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
+        int[] btnToAdd = new int[]{0, 1, 2, 3};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -211,17 +211,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             }
         }
 
+//        if (view == ll_but[0]) {
+//            i = getGovernmentIntent(this);
+//        } else if (view == ll_but[1]) {
+//            i = new Intent(homeActivity.this, QuestionsActivity.class);
+//        } else
         if (view == ll_but[0]) {
-            i = getGovernmentIntent(this);
-        } else if (view == ll_but[1]) {
-            i = new Intent(homeActivity.this, QuestionsActivity.class);
-        } else if (view == ll_but[2]) {
             i = new Intent(homeActivity.this, ContactTracerActivity.class);
-        } else  if (view == ll_but[3]) {
+        } else  if (view == ll_but[1]) {
             i = new Intent(homeActivity.this, onAIrActivity.class);
-        }else if (view == ll_but[4]) {
+        }else if (view == ll_but[2]) {
             i = new Intent(homeActivity.this, selectChatBotActivity.class);
-        }else if (view == ll_but[5]) {
+        }else if (view == ll_but[3]) {
             i = new Intent(homeActivity.this, selectMiscActivity.class);
         }
 

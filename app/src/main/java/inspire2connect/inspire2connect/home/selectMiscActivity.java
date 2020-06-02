@@ -19,7 +19,7 @@ import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class selectMiscActivity extends BaseActivity implements View.OnClickListener {
 
-    ConstraintLayout[] misc_buttons = new ConstraintLayout[5];
+    ConstraintLayout[] misc_buttons = new ConstraintLayout[4];
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -33,11 +33,11 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.misc_tile);
-        misc_buttons[0] = findViewById(R.id.misc_but1_layout);
-        misc_buttons[1] = findViewById(R.id.misc_but2_layout);
-        misc_buttons[2] = findViewById(R.id.misc_but3_layout);
-        misc_buttons[3] = findViewById(R.id.hunger_relief_layout);
-        misc_buttons[4] = findViewById(R.id.shelter_relief_layout);
+//        misc_buttons[0] = findViewById(R.id.misc_but1_layout);
+        misc_buttons[0] = findViewById(R.id.misc_but2_layout);
+        misc_buttons[1] = findViewById(R.id.misc_but3_layout);
+        misc_buttons[2] = findViewById(R.id.hunger_relief_layout);
+        misc_buttons[3] = findViewById(R.id.shelter_relief_layout);
 
         for (int i = 0; i < misc_buttons.length; i++) {
             if(misc_buttons[i]!=null) {
@@ -48,27 +48,27 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+//        if (view == misc_buttons[0]) {
+//            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
+//            i.putExtra("url", getString(R.string.covid_map));
+//            i.putExtra("name", getString(R.string.india_covid_map_tile));
+//            startActivity(i);
+//        }
         if (view == misc_buttons[0]) {
-            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
-            i.putExtra("url", getString(R.string.covid_map));
-            i.putExtra("name", getString(R.string.india_covid_map_tile));
-            startActivity(i);
-        }
-        if (view == misc_buttons[1]) {
             Intent i = getGuidelinesIntent(this);
             startActivity(i);
         }
-        if (view == misc_buttons[2]) {
+        if (view == misc_buttons[1]) {
             Intent i = getMythIntent(this);
             startActivity(i);
         }
-        if (view == misc_buttons[3]) {
+        if (view == misc_buttons[2]) {
             Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
             i.putExtra("url", getString(R.string.hunger_relief_url));
             i.putExtra("name", getString(R.string.hunger_relief));
             startActivity(i);
         }
-        if (view == misc_buttons[4]) {
+        if (view == misc_buttons[3]) {
             Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
             i.putExtra("url", getString(R.string.shelter_relief_url));
             i.putExtra("name", getString(R.string.shelter_relief));

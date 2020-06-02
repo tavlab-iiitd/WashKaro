@@ -24,13 +24,13 @@ public class selectChatBotActivity extends BaseActivity implements View.OnClickL
         }
         setContentView(R.layout.activity_select_chatbot_activity);
         cbot0 = findViewById(R.id.cbot0);
-        cbot1 = findViewById(R.id.cbot1);
-        cbot2 = findViewById(R.id.cbot2);
-        cbot3 = findViewById(R.id.cbot3);
+//        cbot1 = findViewById(R.id.cbot1);
+//        cbot2 = findViewById(R.id.cbot2);
+//        cbot3 = findViewById(R.id.cbot3);
         cbot0.setOnClickListener(this);
-        cbot1.setOnClickListener(this);
-        cbot2.setOnClickListener(this);
-        cbot3.setOnClickListener(this);
+//        cbot1.setOnClickListener(this);
+//        cbot2.setOnClickListener(this);
+//        cbot3.setOnClickListener(this);
     }
 
     @Override
@@ -44,18 +44,18 @@ public class selectChatBotActivity extends BaseActivity implements View.OnClickL
             Intent intent = new Intent(this, ChatActivity.class);
             startActivity(intent);
         }
-        if (view == cbot1) {
-            String nmbr = "+41798931892";
-            openWhatsapp(nmbr);
-        }
-        if (view == cbot2) {
-            String nmbr = "+919013151515";
-            openWhatsapp(nmbr);
-        }
-        if (view == cbot3) {
-            String nmbr = "+918800007722";
-            openWhatsapp(nmbr);
-        }
+//        if (view == cbot1) {
+//            String nmbr = "+41798931892";
+//            openWhatsapp(nmbr);
+//        }
+//        if (view == cbot2) {
+//            String nmbr = "+919013151515";
+//            openWhatsapp(nmbr);
+//        }
+//        if (view == cbot3) {
+//            String nmbr = "+918800007722";
+//            openWhatsapp(nmbr);
+//        }
 
     }
 
@@ -66,11 +66,11 @@ public class selectChatBotActivity extends BaseActivity implements View.OnClickL
         return true;
     }
 
-    private void openWhatsapp(String nmbr) {
-        String url = "https://api.whatsapp.com/send?phone=" + nmbr;
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
-    }
+//    private void openWhatsapp(String nmbr) {
+//        String url = "https://api.whatsapp.com/send?phone=" + nmbr;
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        i.setData(Uri.parse(url));
+//        startActivity(i);
+//    }
 
 }
