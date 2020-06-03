@@ -116,8 +116,8 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 //        ll_but[1] = findViewById(R.id.symptom_tracker_tile);
         ll_but[0] = findViewById(R.id.contact_tracer_tile);
         ll_but[1] = findViewById(R.id.onair_tile);
-        ll_but[2] = findViewById(R.id.chatbot_tile);
-        ll_but[3] = findViewById(R.id.more_info_tile);
+        ll_but[2] = findViewById(R.id.guidelines_tile);
+        ll_but[3] = findViewById(R.id.myth_busters_tile);
 
         int[] btnToAdd = new int[]{0, 1, 2, 3};
 
@@ -188,47 +188,109 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == flip_right) {
-            viewFlipper.stopFlipping();
-            viewFlipper.setInAnimation(anim2);
-            viewFlipper.setOutAnimation(anim3);
-            viewFlipper.showPrevious();
-        }
-        if (view == flip_left) {
-            viewFlipper.stopFlipping();
-            viewFlipper.setInAnimation(anim1);
-            viewFlipper.setOutAnimation(anim4);
-            viewFlipper.showNext();
-        }
-
         Intent i = null;
-
-        for(int z=0; z<statLayouts.length; z++) {
-            if(view == statLayouts[z]) {
-                i = new Intent(this, urlActivity.class);
-                i.putExtra("url", getString(R.string.covid_map));
-                i.putExtra("name", getString(R.string.india_covid_map_tile));
-            }
+        switch (view.getId()){
+            case R.id.flipperLeft:
+                viewFlipper.stopFlipping();
+                viewFlipper.setInAnimation(anim1);
+                viewFlipper.setOutAnimation(anim4);
+                viewFlipper.showNext();
+                break;
+            case R.id.flipperRight:
+                viewFlipper.stopFlipping();
+                viewFlipper.setInAnimation(anim2);
+                viewFlipper.setOutAnimation(anim3);
+                viewFlipper.showPrevious();
+                break;
+//            case R.id.mohfw_ll2:
+//                i = new Intent(this, urlActivity.class);
+//                i.putExtra("url", getString(R.string.covid_map));
+//                i.putExtra("name", getString(R.string.india_covid_map_tile));
+//                startActivity(i);
+//                break;
+//            case R.id.mohfw_ll3:
+//                i = new Intent(this, urlActivity.class);
+//                i.putExtra("url", getString(R.string.covid_map));
+//                i.putExtra("name", getString(R.string.india_covid_map_tile));
+//                startActivity(i);
+//                break;
+//            case R.id.mohfw_ll4:
+//                i = new Intent(this, urlActivity.class);
+//                i.putExtra("url", getString(R.string.covid_map));
+//                i.putExtra("name", getString(R.string.india_covid_map_tile));
+//                startActivity(i);
+//                break;
+//            case R.id.mohfw_ll5:
+//                i = new Intent(this, urlActivity.class);
+//                i.putExtra("url", getString(R.string.covid_map));
+//                i.putExtra("name", getString(R.string.india_covid_map_tile));
+//                startActivity(i);
+//                break;
+            case R.id.contact_tracer_tile:
+                i = new Intent(homeActivity.this, ContactTracerActivity.class);
+                startActivity(i);
+                break;
+            case R.id.onair_tile:
+                i = new Intent(homeActivity.this, onAIrActivity.class);
+                startActivity(i);
+                break;
+            case R.id.guidelines_tile:
+                i = getGuidelinesIntent(this);
+                startActivity(i);
+                break;
+            case R.id.myth_busters_tile:
+                i = getMythIntent(this);
+                startActivity(i);
+                break;
+            default:
+                i = null;
+                break;
         }
+
+//        if (view == flip_right) {
+//            viewFlipper.stopFlipping();
+//            viewFlipper.setInAnimation(anim2);
+//            viewFlipper.setOutAnimation(anim3);
+//            viewFlipper.showPrevious();
+//        }
+//        if (view == flip_left) {
+//            viewFlipper.stopFlipping();
+//            viewFlipper.setInAnimation(anim1);
+//            viewFlipper.setOutAnimation(anim4);
+//            viewFlipper.showNext();
+//        }
+
+//        Intent i = null;
+
+//        for(int z=0; z<statLayouts.length; z++) {
+//            if(view == statLayouts[z]) {
+//                i = new Intent(this, urlActivity.class);
+//                i.putExtra("url", getString(R.string.covid_map));
+//                i.putExtra("name", getString(R.string.india_covid_map_tile));
+//            }
+//        }
+
+
+
 
 //        if (view == ll_but[0]) {
 //            i = getGovernmentIntent(this);
 //        } else if (view == ll_but[1]) {
 //            i = new Intent(homeActivity.this, QuestionsActivity.class);
 //        } else
-        if (view == ll_but[0]) {
-            i = new Intent(homeActivity.this, ContactTracerActivity.class);
-        } else  if (view == ll_but[1]) {
-            i = new Intent(homeActivity.this, onAIrActivity.class);
-        }else if (view == ll_but[2]) {
-            i = new Intent(homeActivity.this, selectChatBotActivity.class);
-        }else if (view == ll_but[3]) {
-            i = new Intent(homeActivity.this, selectMiscActivity.class);
-        }
-
-        if(i!=null) {
-            startActivity(i);
-        }
+//        if (view == ll_but[0]) {
+//            i = new Intent(homeActivity.this, ContactTracerActivity.class);
+//        } else  if (view == ll_but[1]) {
+//            i = new Intent(homeActivity.this, onAIrActivity.class);
+//        }else if (view == ll_but[2]) {
+//            i = new Intent(homeActivity.this, selectChatBotActivity.class);
+//        }else if (view == ll_but[3]) {
+//            i = new Intent(homeActivity.this, selectMiscActivity.class);
+//        }
+//
+//        if(i!=null) {
+//            startActivity(i);
+//        }
     }
 
     @Override
@@ -243,18 +305,39 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = null;
         int id = item.getItemId();
-        if (id == R.id.lang_togg_butt) {
-            toggleLang(this);
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(homeActivity.this, maleFemaleActivity.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(homeActivity.this, aboutActivity.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            openPrivacyPolicy(this);
+        switch (id){
+            case R.id.lang_togg_butt:
+                toggleLang(this);
+                break;
+            case R.id.Survey:
+                i = new Intent(homeActivity.this, maleFemaleActivity.class);
+                startActivity(i);
+                break;
+            case R.id.developers:
+                i = new Intent(homeActivity.this, aboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.privacy_policy:
+                openPrivacyPolicy(this);
+                break;
+            default:
+                startActivity(i);
+                break;
         }
+
+//        if (id == R.id.lang_togg_butt) {
+//            toggleLang(this);
+//        } else if (id == R.id.Survey) {
+//            Intent i = new Intent(homeActivity.this, maleFemaleActivity.class);
+//            startActivity(i);
+//        } else if (id == R.id.developers) {
+//            Intent i = new Intent(homeActivity.this, aboutActivity.class);
+//            startActivity(i);
+//        } else if (id == R.id.privacy_policy) {
+//            openPrivacyPolicy(this);
+//        }
 
 
         return super.onOptionsItemSelected(item);

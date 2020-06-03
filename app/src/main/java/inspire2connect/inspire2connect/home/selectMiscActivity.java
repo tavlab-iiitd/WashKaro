@@ -54,26 +54,50 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
 //            i.putExtra("name", getString(R.string.india_covid_map_tile));
 //            startActivity(i);
 //        }
-        if (view == misc_buttons[0]) {
-            Intent i = getGuidelinesIntent(this);
-            startActivity(i);
+        Intent i = null;
+        switch(view.getId()){
+            case R.id.misc_but2_layout:
+                i = getGuidelinesIntent(this);
+                break;
+            case R.id.misc_but3_layout:
+                i = getMythIntent(this);
+                break;
+            case R.id.hunger_relief_layout:
+                i = new Intent(selectMiscActivity.this, urlActivity.class);
+                i.putExtra("url", getString(R.string.hunger_relief_url));
+                i.putExtra("name", getString(R.string.hunger_relief));
+                break;
+            case R.id.shelter_relief_layout:
+                i = new Intent(selectMiscActivity.this, urlActivity.class);
+                i.putExtra("url", getString(R.string.shelter_relief_url));
+                i.putExtra("name", getString(R.string.shelter_relief));
+                break;
+            default :
+                i = new Intent(selectMiscActivity.this, selectMiscActivity.class);
+                break;
         }
-        if (view == misc_buttons[1]) {
-            Intent i = getMythIntent(this);
-            startActivity(i);
-        }
-        if (view == misc_buttons[2]) {
-            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
-            i.putExtra("url", getString(R.string.hunger_relief_url));
-            i.putExtra("name", getString(R.string.hunger_relief));
-            startActivity(i);
-        }
-        if (view == misc_buttons[3]) {
-            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
-            i.putExtra("url", getString(R.string.shelter_relief_url));
-            i.putExtra("name", getString(R.string.shelter_relief));
-            startActivity(i);
-        }
+        startActivity(i);
+
+//        if (view == misc_buttons[0]) {
+//            Intent i = getGuidelinesIntent(this);
+//            startActivity(i);
+//        }
+//        if (view == misc_buttons[1]) {
+//            Intent i = getMythIntent(this);
+//            startActivity(i);
+//        }
+//        if (view == misc_buttons[2]) {
+//            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
+//            i.putExtra("url", getString(R.string.hunger_relief_url));
+//            i.putExtra("name", getString(R.string.hunger_relief));
+//            startActivity(i);
+//        }
+//        if (view == misc_buttons[3]) {
+//            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
+//            i.putExtra("url", getString(R.string.shelter_relief_url));
+//            i.putExtra("name", getString(R.string.shelter_relief));
+//            startActivity(i);
+//        }
     }
 
     @Override
@@ -91,18 +115,38 @@ public class selectMiscActivity extends BaseActivity implements View.OnClickList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent i = null;
         int id = item.getItemId();
-        if (id == R.id.lang_togg_butt) {
-            toggleLang(this);
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(selectMiscActivity.this, maleFemaleActivity.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(selectMiscActivity.this, aboutActivity.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            openPrivacyPolicy(this);
+        switch (id){
+            case R.id.lang_togg_butt:
+                toggleLang(this);
+                break;
+            case R.id.Survey:
+                i = new Intent(selectMiscActivity.this, maleFemaleActivity.class);
+                startActivity(i);
+                break;
+            case R.id.developers:
+                i = new Intent(selectMiscActivity.this, aboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.privacy_policy:
+                openPrivacyPolicy(this);
+                break;
+            default:
+                startActivity(i);
+                break;
         }
+//        if (id == R.id.lang_togg_butt) {
+//            toggleLang(this);
+//        } else if (id == R.id.Survey) {
+//            Intent i = new Intent(selectMiscActivity.this, maleFemaleActivity.class);
+//            startActivity(i);
+//        } else if (id == R.id.developers) {
+//            Intent i = new Intent(selectMiscActivity.this, aboutActivity.class);
+//            startActivity(i);
+//        } else if (id == R.id.privacy_policy) {
+//            openPrivacyPolicy(this);
+//        }
 
         return super.onOptionsItemSelected(item);
     }
