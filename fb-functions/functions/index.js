@@ -22,7 +22,7 @@ exports.scheduledStats = functions.pubsub.schedule('1 */1 * * *')
 		    	'Active': statNums[0],
 		    	'Discharged': statNums[1],
 		    	'Deaths': statNums[2],
-		    	'Migrated': statNums[3],
+		    	'Migrated': statNums[3]
 		    });
 		    // return null;
 		    // console.log(statNums);
