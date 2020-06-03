@@ -40,8 +40,8 @@
     <string name="chirag">चिराग जैन</string>
     <string name="chirag_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
-    <string name="msg_subscribe_failed">CovidAlert विषय की सदस्यता लेने में विफल</string>
-    <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए कोविद मामले के पास हैं</string>
+    <string name="msg_subscribe_failed">संक्रमण विषय की सदस्यता लेने में विफल</string>
+    <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए संक्रमण मामले के पास हैं</string>
     <string name="network_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="location_is_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="show_location_setting">अपनी स्थान सेटिंग से स्थान सक्षम करें</string>
@@ -52,6 +52,9 @@
     <string name="myth_act">मिथक (WHO के द्वारा)</string>
     <string name="govt_updates_act">सरकारी जानकारी</string>
 
+    <string name="relevant">मिलता जुलता</string>
+    <string name="irrelevant">व्यर्थ</string>
+
     <!--    Tiles-->
     <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
@@ -59,32 +62,23 @@
     <string name="govt_advisory_tile">सरकारी निर्देश</string>
     <string name="symptom_tracker_tile">लक्षण ट्रैकर</string>
     <string name="contact_tracer_tile">संपर्क ट्रेसर</string>
+    <string name="social_distancing_tile">सोशल डिस्टन्सिंग</string>
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
     <string name="misc_tile">अधिक जानकारी</string>
-    <string name="passengers_screened_tile">हवाई अड्डे पर यात्री जांच</string>
-    <string name="active_case_tile">सक्रिय COVID19 रोगी</string>
-    <string name="cured_case_tile">कुल ठीक व्यक्ति</string>
-    <string name="death_case_tile">कुल मौत</string>
-    <string name="migrated_patient_tile">प्रव्रजनित व्यक्ति</string>
+
 
     <!--    SymptomActivity-->
-    <string name="covid_is_present">आपको COVID 19 होने का संदेह है</string>
-    <string name="covid_is_not_present">आपको COVID 19 होने का संदेह नहीं है</string>
+    <string name="infection_is_present">आपको संक्रमण होने का संदेह है</string>
+    <string name="infection_is_not_present">आपको संक्रमण होने का संदेह नहीं है</string>
     <string name="play_audio">ऑडियो चलाएं</string>
-    <string name="cbot1_deatils">यह सेवा आपको कोरोनोवायरस के मौजूदा प्रकोप पर डब्ल्यूएचओ की नवीनतम जानकारी और मार्गदर्शन प्रदान करेगी।</string>
-    <string name="cbot3_deatils">दिल्ली की COVID-19 हेल्पडेस्क की यह सरकार जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करती है।</string>
-    <string name="cbot2_deatils">भारत सरकार की COVID-19 हेल्पडेस्क ने जागरूकता पैदा करने और आपको और आपके परिवार को सुरक्षित रखने में मदद करने के लिए।</string>
-    <string name="chat_now">अभी चैट करें</string>
-    <string name="my_gov_helpdesk">MyGov कोरोना हेल्पडेस्क</string>
-    <string name="delhi_gov_helpdesk">दिल्ली सरकार कोरोना हेल्पडेस्क</string>
-    <string name="who_chatbot">WHO चैटबोट</string>
+    <string name="satya_chatbot">Satya चैटबोट</string>
     <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
     <string name="you_are_safe">आप सुरक्षित है!</string>
     <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
     <string name="you_are_safe_content">कोरोना वायरस के संक्रमण का कम जोखिम।</string>
     <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
-    <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके COVID-19 के प्रसार को रोकने में मदद करें।</string>
+    <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके रोगों के प्रसार को रोकने में मदद करें।</string>
     <string name="share_this_app">इस एप को शेयर कीजिए</string>
     <string name="cancel_btn">रद्द करें</string>
     <string name="symptom_tracker">लक्षण ट्रैकर</string>
@@ -105,9 +99,16 @@
     <string name="vrinda_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
     <string name="bhavika">भाविका राणा</string>
     <string name="harsh">हर्ष बंधे</string>
+    <string name="vihaan">विहान मिश्रा</string>
     <string name="vrinda">वृंदा नारायण</string>
+    <string name="yashwin">यशविन अग्रवाल</string>
+    <string name="akshat">अक्षत वाधवा</string>
+    <string name="ayush">आयुष गर्ग</string>
+    <string name="rishabh">ऋषभ जालान</string>
+    <string name="vihaan_tag">अंडरग्रेजुएट, NSUT</string>
     <string name="tanuj">तनुज डबास</string>
     <string name="tanuj_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="yashwin_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="next">आगे</string>
     <string name="skip">छोड़ें</string>
@@ -123,20 +124,18 @@
     <string name="nondel">दिल्ली के बाहर</string>
     <string name="begin">शुरू</string>
     <string name="sign_out">साइन आउट</string>
-    
-    <string name="question1">क्या आपने पिछले 14 दिनों में COVID 19 की रिपोर्टिंग करने वाले किसी देश / भारतीय राज्य की यात्रा की है?</string>
-    <string name="question2">क्या आप पिछले 14 दिनों के भीतर एक संभावित या पुष्टि किए गए COVID-19 रोगी के निकट संपर्क में हैं?</string>
-    <string name="question3">क्या आपको बुखार है?</string>
-    <string name="question4">क्या आपको खांसी है?</string>
-    <string name="question5">क्या आपको सांस में तकलीफ है?</string>
-    <string name="question6">क्या आप अस्पताल गए हैं?</string>
-    <string name="question7">क्या डॉक्टर ने लक्षणों के लिए एक वैकल्पिक स्पष्टीकरण प्रदान किया है?</string>
-    <string name="min_ass">2-मिनट स्व-मूल्यांकन</string>
-    <string name="min_ass_desc">WHO दिशानिर्देशों के आधार पर संदिग्ध मामले की पहचान के लिए</string>
 
-    <string name="relevant">मिलता जुलता</string>
-    <string name="irrelevant">व्यर्थ</string>
 
     <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="survey">सर्वेक्षण</string>
+    <string name="language">भाषा</string>
+    <string name="shelter_relief">आश्रय राहत</string>
+    <string name="hunger_relief">भूख से राहत</string>
+    <string name="about_us">हमारे बारे में</string>
+    <string name="fact_1">उचित स्वच्छता के लिए दुर्गम</string>
+    <string name="fact_2">शौचालय के लिए दुर्गम</string>
+    <string name="fact_3">सुरक्षित पेयजल के लिए दुर्गम</string>
+    <string name="fact_4">सुरक्षित पेयजल की उपलब्धता</string>
+
 
 </resources>

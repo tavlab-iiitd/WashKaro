@@ -37,7 +37,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import inspire2connect.inspire2connect.symptomTracker.QuestionsActivity;
+
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
@@ -98,14 +98,12 @@ public class ContactTracerActivity extends BaseActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.ca_activity_main);
-        symptom=findViewById(R.id.symptom_tracker_box);
         traceImage = findViewById(R.id.tracer_photo);
         traceTitle = findViewById(R.id.tracer_title);
         traceContent = findViewById(R.id.tracer_content);
         share_layout=findViewById(R.id.share_box);
         getSupportActionBar().hide();
 
-        symptom.setOnClickListener(this);
         share_layout.setOnClickListener(this);
         mContext = this;
         isSafe = true;
@@ -268,10 +266,6 @@ public class ContactTracerActivity extends BaseActivity implements View.OnClickL
 
             case R.id.login_bt:
                 showLoginActivity();
-                break;
-            case R.id.symptom_tracker_box:
-                Intent i=new Intent(ContactTracerActivity.this, QuestionsActivity.class);
-                startActivity(i);
                 break;
             case R.id.share_box:
                 share("Download the app. https://play.google.com/store/apps/details?id=inspire2connect.inspire2connect");

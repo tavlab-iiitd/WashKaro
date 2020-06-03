@@ -14,8 +14,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -41,7 +39,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import inspire2connect.inspire2connect.satyaChat.ChatActivity;
-import inspire2connect.inspire2connect.symptomTracker.QuestionsActivity;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
@@ -57,7 +54,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     ImageButton flip_left, flip_right;
     Animation anim1, anim2, anim3, anim4;
-//    TextView mohfw_data1
+    //    TextView mohfw_data1
     TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
     ConstraintLayout[] statLayouts = new ConstraintLayout[4];
     LayoutInflater inflater;
@@ -110,14 +107,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         slideLists = new ArrayList<>();
         slideLists = new ArrayList<>();
-        ll_but[0] = findViewById(R.id.advisories_tile);
-        ll_but[1] = findViewById(R.id.symptom_tracker_tile);
-        ll_but[2] = findViewById(R.id.contact_tracer_tile);
-        ll_but[3] = findViewById(R.id.onair_tile);
-        ll_but[4] = findViewById(R.id.chatbot_tile);
-        ll_but[5] = findViewById(R.id.more_info_tile);
+        ll_but[0] = findViewById(R.id.contact_tracer_tile);
+        ll_but[1] = findViewById(R.id.onair_tile);
+        ll_but[2] = findViewById(R.id.misc_but3_layout);
+        ll_but[3] = findViewById(R.id.misc_but2_layout);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
+        int[] btnToAdd = new int[]{0, 1, 2, 3};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -128,15 +123,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
         mohfw_data5 = findViewById(R.id.mohfw_data5);
-
-        statLayouts[0] = findViewById(R.id.mohfw_ll2);
-        statLayouts[1] = findViewById(R.id.mohfw_ll3);
-        statLayouts[2] = findViewById(R.id.mohfw_ll4);
-        statLayouts[3] = findViewById(R.id.mohfw_ll5);
-
-        for (int i=0; i<statLayouts.length; i++) {
-            statLayouts[i].setOnClickListener(this);
-        }
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
@@ -151,7 +137,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         flip_right.setOnClickListener(this);
 
         flipper_single_tap();
-        fetchset_MOHFW_data();
+        fetchset_facts ();
 
         setInfographicFlipper();
 
@@ -201,26 +187,19 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         Intent i = null;
 
-        for(int z=0; z<statLayouts.length; z++) {
-            if(view == statLayouts[z]) {
-                i = new Intent(this, urlActivity.class);
-                i.putExtra("url", getString(R.string.covid_map));
-                i.putExtra("name", getString(R.string.india_covid_map_tile));
-            }
-        }
-
+//        if (view == ll_but[0]) {
+//            i = getGovernmentIntent(this);
+//        } else if (view == ll_but[1]) {
+//            i = new Intent(homeActivity.this, QuestionsActivity.class);
+//        } else
         if (view == ll_but[0]) {
-            i = getGovernmentIntent(this);
-        } else if (view == ll_but[1]) {
-            i = new Intent(homeActivity.this, QuestionsActivity.class);
-        } else if (view == ll_but[2]) {
             i = new Intent(homeActivity.this, ContactTracerActivity.class);
-        } else  if (view == ll_but[3]) {
+        } else  if (view == ll_but[1]) {
             i = new Intent(homeActivity.this, onAIrActivity.class);
-        }else if (view == ll_but[4]) {
-            i = new Intent(homeActivity.this, selectChatBotActivity.class);
-        }else if (view == ll_but[5]) {
-            i = new Intent(homeActivity.this, selectMiscActivity.class);
+        }else if (view == ll_but[2]) {
+            i = getMythIntent(this);
+        }else if (view == ll_but[3]) {
+            i = getGuidelinesIntent(this);
         }
 
         if(i!=null) {
@@ -328,17 +307,16 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         startActivity(intnt);
     }
 
-    public void fetchset_MOHFW_data() {
+    public void fetchset_facts() {
 
         statsReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Stats stats = dataSnapshot.getValue(Stats.class);
-//                mohfw_data1.setText(stats.Airport);
-                mohfw_data2.setText(stats.Active);
-                mohfw_data3.setText(stats.Discharged);
-                mohfw_data4.setText(stats.Deaths);
-                mohfw_data5.setText(stats.Migrated);
+                mohfw_data2.setText(stats.Fact1 );
+                mohfw_data3.setText(stats.Fact3 );
+                mohfw_data4.setText(stats.Fact2 );
+                mohfw_data5.setText(stats.Fact4 );
             }
 
             @Override

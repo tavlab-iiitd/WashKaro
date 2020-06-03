@@ -56,8 +56,8 @@
     <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
 
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
-    <string name="default_notification_channel_id" translatable="false">covid_alert_channel</string>
-    <string name="default_notification_channel_name" translatable="false">covidAlert</string>
+    <string name="default_notification_channel_id" translatable="false">infection_alert_channel</string>
+    <string name="default_notification_channel_name" translatable="false">infectionAlert</string>
 
     <string name="msg_subscribe_failed">Failed to subscribe to covidAlert topic</string>
     <string name="fcm_message" translatable="false">WashKaro</string>
@@ -67,18 +67,21 @@
     <string name="show_location_setting">Enable Location</string>
     <string name="cancel_btn">Cancel</string>
     <string name="share_this_app">Share this app</string>
-    <string name="share_content">Help stop the spread of COVID-19 by sharing this app with family and friends.</string>
+    <string name="share_content">Help stop the spread of WASH diseases by sharing this app with family and friends.</string>
     <string name="symptom_tracker">Symptom Tracker</string>
     <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
     <string name="you_are_safe">You are safe!</string>
     <string name="you_are_unsafe">You are maybe at risk!</string>
-    <string name="you_are_safe_content">Low risk of corona virus infection.</string>
+    <string name="you_are_safe_content">Low risk of infection.</string>
     <string name="you_are_unsafe_content">Please maintain social distancing.</string>
 
     <!--    about-->
 
     <string name="presented_to_you_by">WashKaro, presented to you by</string>
+
+    <string name="relevant">Relevant</string>
+    <string name="irrelevant">Irrelevant</string>
 
     <string name="priyanka">Priyanka Syal</string>
     <string name="priyanka_tag">Software Engineer, Microsoft IDC</string>
@@ -106,12 +109,16 @@
     <string name="bhavika_tag">Undergraduate, IIIT Delhi</string>
     <string name="harsh">Harsh Bandhey</string>
     <string name="harsh_tag">Undergraduate, IIIT Delhi</string>
+    <string name="vihaan">Vihaan Misra</string>
+    <string name="vihaan_tag">Undergraduate, NSUT</string>
     <string name="vrinda">Vrinda Narayan</string>
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
+    <string name="yashwin">Yashwin Agrawal</string>
+    <string name="yashwin_tag">Undergraduate, IIIT Delhi</string>
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
-    
+
     <string name="rishabh">Rishabh Jalan</string>
     <string name="ayush">Ayush Garg</string>
     <string name="akshat">Akshat Wadhwa</string>
@@ -131,10 +138,12 @@
     <string name="harshURL" translatable="false">https://www.linkedin.com/in/harshbandhey/</string>
     <string name="vrindaURL" translatable="false">https://www.linkedin.com/in/vrinda-narayan-6a42a71a3/</string>
     <string name="tanujURL" translatable="false">https://www.linkedin.com/in/tanuj-dabas-7b28a9151/</string>
-    
+
     <string name="rishabhURL" translatable="false">https://www.linkedin.com/in/jalanrishabh</string>
     <string name="ayushURL" translatable="false">https://www.linkedin.com/in/ayush-garg-6019aa1a2</string>
     <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
+    <string name="vihaanURL" translatable="false">https://www.linkedin.com/in/vihaan-m-a3841811a/</string>
+    <string name="yashwinURL" translatable="false">https://www.linkedin.com/in/yashwin-agrawal-6b28bb176</string>
 
     <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
@@ -142,21 +151,11 @@
     <string name="myth_act">Myth Busters(By WHO)</string>
     <!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
 
-    <!--    Who Chatbot-->
-    <string name="who_chatbot">WHO Chatbot</string>
-    <string name="delhi_gov_helpdesk">Delhi Gov Corona Helpdesk</string>
-    <string name="my_gov_helpdesk">MyGov Corona Helpdesk</string>
-    <string name="chat_now">Chat Now</string>
-    <string name="cbot2_deatils">This Government of India\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot3_deatils">This Government of Delhi\'s COVID-19 helpdesk to create awareness and help you and your family stay safe.</string>
-    <string name="cbot1_deatils">This service will provide you with the latest information and guidance from WHO on the current outbreak of coronavirus.</string>
-    <string name="cbot0_deatils">This Chatbot helps you find find the right information at the right time!</string>
-
     <string name="please_select_one_choice">Please select one choice</string>
 
     <!--    SymptomActivity-->
-    <string name="covid_is_present">You are suspected of having COVID 19</string>
-    <string name="covid_is_not_present">You are not suspected of having COVID 19</string>
+    <string name="infection_is_present">You are suspected of having COVID 19</string>
+    <string name="infection_is_not_present">You are not suspected of having COVID 19</string>
 
     <!--    Myths-->
     <string name="play_audio">Play Audio</string>
@@ -170,34 +169,13 @@
     <string name="govt_advisory_tile">Govt Advisory</string>
     <string name="symptom_tracker_tile">Symptom Tracker</string>
     <string name="contact_tracer_tile">Contact Tracer</string>
-    <string name="chatbot_tile">Chatbots</string>
+    <string name="social_distancing_tile">Social Distancer</string>
+    <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
     <string name="misc_tile">More Info</string>
-    <string name="passengers_screened_tile">Passesgers screened at airport</string>
-    <string name="active_case_tile">Active COVID19 Cases</string>
-    <string name="cured_case_tile">Cured or Discharged Cases</string>
-    <string name="death_case_tile">Death Cases</string>
-    <string name="migrated_patient_tile">Migrated Patients</string>
-
-    <!--    Symptom Tracker Questions-->
-    <string name="question1">Have you traveled or lived a country/Indian state reporting community transmission in the last 14 days?</string>
-    <string name="question2">Have you been in close contact with a probable or confirmed COVID-19 patient within the past 14 days?</string>
-    <string name="question3">Do you have fever?</string>
-    <string name="question4">Do you have cough?</string>
-    <string name="question5">Do you have shortness in breath?</string>
-    <string name="question6">Were your symptoms severe enough to require hospital admission?</string>
-    <string name="question7">Did the doctor provide an alternative explanation for the symptoms?</string>
-    <string name="min_ass">2-Minute Self Assessment</string>
-    <string name="min_ass_desc">Based on WHO Guidelines for Suspect Case Identification</string>
-
-    <string name="relevant">Relevant</string>
-    <string name="irrelevant">Irrelevant</string>
 
     <!--    URL-->
-    <string name="covid_map" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/map.html</string>
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
-    <string name="hunger_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/hreliefapi.html</string>
-    <string name="shelter_relief_url" translatable="false">http://coronaactionindia.tavlab.iiitd.edu.in/pages/tsreliefapi.html</string>
 
     <!--    Menu-->
     <string name="privacy_policy">Privacy Policy</string>
@@ -212,5 +190,9 @@
     <string name="satya_chatbot">Satya Chatbot</string>
     <string name="hello">Hello</string>
     <string name="enter_text">Enter Text</string>
+    <string name="fact_1">Inaccess to proper sanitation</string>
+    <string name="fact_2">Inaccess to toilets</string>
+    <string name="fact_3">Inaccess to safe drinking water</string>
+    <string name="fact_4">Freshwater availability</string>
 
 </resources>

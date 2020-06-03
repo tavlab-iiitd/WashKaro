@@ -36,7 +36,7 @@ public class BluetoothService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        bluetoothApplication = (BluetoothApplication) getApplication();
+        bluetoothApplication = getApplication();
         bluetoothAdvertiser = new BluetoothAdvertiser(bluetoothApplication.getApplicationContext(), BluetoothAdapter.getDefaultAdapter());
         bluetoothScanner = new BluetoothScanner(bluetoothApplication.getApplicationContext(), BluetoothAdapter.getDefaultAdapter());
 
