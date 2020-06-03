@@ -23,10 +23,6 @@ exports.scheduledStats = functions.pubsub.schedule('1 */1 * * *')
 		    	'Discharged': statNums[1],
 		    	'Deaths': statNums[2],
 		    	'Migrated': statNums[3],
-		    	'Fact1': '2 billion',
-		    	'Fact2': '673 million',
-		    	'Fact3': '785 million',
-		    	'Fact4': '0.007%',
 		    });
 		    // return null;
 		    // console.log(statNums);
