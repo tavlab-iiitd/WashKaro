@@ -60,7 +60,7 @@
         android:textColor="@color/blackcolor"
         android:textSize="@dimen/chat_font_size"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/st_bot_yes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

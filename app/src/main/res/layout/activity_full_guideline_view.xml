@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:background="@color/app_white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/app_white">
 
     <ImageButton
         android:id="@+id/detailed_play_button"
@@ -49,8 +48,8 @@
         android:layout_height="66dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:visibility="gone"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/detailed_play_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,15 +59,15 @@
         android:id="@+id/detailed_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/Home_background_color"
-        android:paddingStart="8dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="4dp"
         android:layout_marginBottom="24dp"
+        android:background="@color/Home_background_color"
         android:fontFamily="@font/opensans_regular"
         android:lineSpacingExtra="3dp"
+        android:paddingStart="8dp"
         android:paddingLeft="10dp"
+        android:paddingEnd="4dp"
         android:paddingRight="5dp"
+        android:paddingBottom="4dp"
         android:text="these are the details"
 
         android:textColor="@color/app_light_black"
@@ -81,13 +80,13 @@
     <TextView
         android:id="@+id/detailed_title"
         android:layout_width="0dp"
-        android:background="@color/Home_background_color"
         android:layout_height="wrap_content"
+        android:background="@color/Home_background_color"
+        android:fontFamily="@font/mukta_semibold"
         android:paddingStart="8dp"
+        android:paddingLeft="10dp"
         android:paddingTop="4dp"
         android:paddingEnd="4dp"
-        android:fontFamily="@font/mukta_semibold"
-        android:paddingLeft="10dp"
         android:paddingRight="5dp"
         android:text="this is the heading"
         android:textColor="@color/app_black"

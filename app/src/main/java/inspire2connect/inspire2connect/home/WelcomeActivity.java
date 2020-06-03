@@ -15,6 +15,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -34,8 +42,6 @@ public class WelcomeActivity extends BaseActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-
-
     private Button btnSkip, btnNext;
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -83,6 +89,21 @@ public class WelcomeActivity extends BaseActivity {
 
         // Checking for first time launch - before calling setContentView()
         getSupportActionBar().hide();
+
+        // Firebase Anonymous Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser == null){
+            firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        firebaseUser = firebaseAuth.getCurrentUser();
+                    }
+                }
+            });
+        }
+
         prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
 
@@ -92,7 +113,6 @@ public class WelcomeActivity extends BaseActivity {
             finish();
         }
         prefManager.setFirstTimeLaunch(false);
-
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

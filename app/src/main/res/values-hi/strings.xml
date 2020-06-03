@@ -72,6 +72,7 @@
     <string name="infection_is_present">आपको संक्रमण होने का संदेह है</string>
     <string name="infection_is_not_present">आपको संक्रमण होने का संदेह नहीं है</string>
     <string name="play_audio">ऑडियो चलाएं</string>
+
     <string name="satya_chatbot">Satya चैटबोट</string>
     <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
     <string name="you_are_safe">आप सुरक्षित है!</string>
@@ -106,6 +107,7 @@
     <string name="ayush">आयुष गर्ग</string>
     <string name="rishabh">ऋषभ जालान</string>
     <string name="vihaan_tag">अंडरग्रेजुएट, NSUT</string>
+
     <string name="tanuj">तनुज डबास</string>
     <string name="tanuj_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
     <string name="yashwin_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
@@ -139,3 +141,5 @@
 
 
 </resources>
+
+

@@ -6,28 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".news.text2speech2_2Activity">
 
-    <!--    <androidx.appcompat.widget.Toolbar-->
-    <!--        android:id="@+id/toolbar"-->
-    <!--        android:layout_width="362dp"-->
-    <!--        android:layout_height="41dp"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:background="@drawable/image"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.129"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--    </androidx.appcompat.widget.Toolbar>-->
-
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/seekbar"
-        app:layout_constraintStart_toStartOf="@+id/seekbar">
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/play_pause_layout"
+        app:layout_constraintStart_toStartOf="@+id/play_pause_layout">
 
         <ImageButton
             android:id="@+id/relevant_button"
@@ -66,42 +53,6 @@
 
     </LinearLayout>
 
-    <SeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/play_pause_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/cur_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Loading"
-        android:fontFamily="@font/mukta_regular"
-        android:textColor="#1da1f2"
-        app:layout_constraintStart_toStartOf="@+id/seekbar"
-        app:layout_constraintTop_toBottomOf="@+id/seekbar" />
-
-    <TextView
-        android:id="@+id/total_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Loading"
-        android:textColor="#1da1f2"
-        android:fontFamily="@font/mukta_regular"
-        app:layout_constraintEnd_toEndOf="@+id/seekbar"
-        app:layout_constraintTop_toBottomOf="@+id/seekbar" />
-
     <TextView
         android:id="@+id/display_text"
         android:layout_width="match_parent"
@@ -137,23 +88,6 @@
             android:layout_marginEnd="8dp"
             android:background="@color/transparent"
             android:src="@drawable/ic_play_arrow_black_34dp" />
-
-        <ProgressBar
-            android:id="@+id/wait_state"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <ImageButton
-            android:id="@+id/pause_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_pause_black_34dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
