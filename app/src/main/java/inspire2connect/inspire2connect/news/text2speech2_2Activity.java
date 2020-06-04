@@ -316,7 +316,6 @@ public class text2speech2_2Activity extends BaseActivity
                         relevant_num = it.getValue().getNumber_of_relevant_votes();
                         irrelevant_num = it.getValue().getNumber_of_irrelevant_votes();
                         WHO_download_url = it.getValue().getWho_url();
-                        Log.d("Story_Title", WHO_download_url);
                         WHO_text = it.getValue().getWho_article_text();
                         tv.setText(story_text);
                         news_text = story_text;

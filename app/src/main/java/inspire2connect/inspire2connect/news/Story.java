@@ -1,11 +1,10 @@
 package inspire2connect.inspire2connect.news;
 
-public class Story implements Comparable<Story> {
+public class Story {
     private String title;
     private String story;
     private int number;
     private String date;
-    private Double similarity;
     private String url;
     private String who_url;
     private String who_article_text;
@@ -28,17 +27,6 @@ public class Story implements Comparable<Story> {
         this.number_of_relevant_votes = number_of_relevant_votes;
         this.number_of_irrelevant_votes = number_of_irrelevant_votes;
         this.date = date;
-        this.similarity = similarity;
-
-    }
-
-    @Override
-    public int compareTo(Story s) {
-
-        if (this.getSimilarity() > s.getSimilarity())
-            return 0;
-        else
-            return 1;
     }
 
     public String getTitle() {
@@ -79,10 +67,6 @@ public class Story implements Comparable<Story> {
 
     public String getDate() {
         return date;
-    }
-
-    public Double getSimilarity() {
-        return similarity;
     }
 
 }
