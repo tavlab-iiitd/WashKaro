@@ -56,7 +56,7 @@
     <string name="irrelevant">व्यर्थ</string>
 
     <!--    Tiles-->
-    <string name="india_covid_map_tile">भारत कॉविड नक्शा</string>
+    <string name="information_link">जानकारी का श्रोत</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
     <string name="myth_busters_tile">मिथक</string>
     <string name="govt_advisory_tile">सरकारी निर्देश</string>
