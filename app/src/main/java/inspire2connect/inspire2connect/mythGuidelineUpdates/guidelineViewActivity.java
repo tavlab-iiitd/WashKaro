@@ -112,7 +112,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
             public void onClick(View v) {
                 Intent i = new Intent(context, urlActivity.class);
                 i.putExtra("url", redirect_url);
-                i.putExtra("name", getString(R.string.india_covid_map_tile));
+                i.putExtra("name", getString(R.string.information_link ));
                 startActivity(i);
             }
         });

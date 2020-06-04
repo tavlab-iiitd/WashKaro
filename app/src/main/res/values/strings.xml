@@ -154,15 +154,15 @@
     <string name="please_select_one_choice">Please select one choice</string>
 
     <!--    SymptomActivity-->
-    <string name="infection_is_present">You are suspected of having COVID 19</string>
-    <string name="infection_is_not_present">You are not suspected of having COVID 19</string>
+    <string name="infection_is_present">You are suspected of having an infection</string>
+    <string name="infection_is_not_present">You are not suspected of having an infection</string>
 
     <!--    Myths-->
     <string name="play_audio">Play Audio</string>
     <!--    <string name="playing">PLAYING</string>-->
 
     <!--    Tiles-->
-    <string name="india_covid_map_tile">India COVID Map</string>
+    <string name="information_link">Information Source</string>
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
     <string name="empty_stats" translatable="false">0</string>
