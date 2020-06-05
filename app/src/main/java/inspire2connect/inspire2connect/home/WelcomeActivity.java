@@ -90,6 +90,9 @@ public class WelcomeActivity extends BaseActivity {
         // Checking for first time launch - before calling setContentView()
         getSupportActionBar().hide();
 
+        // Firebase Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         // Firebase Anonymous Auth
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();

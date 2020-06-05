@@ -173,6 +173,8 @@
     <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
     <string name="misc_tile">More Info</string>
+    <string name="currency_crore">crore</string>
+    <string name="currency_percent">percent</string>
 
     <!--    URL-->
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
@@ -190,9 +192,9 @@
     <string name="satya_chatbot">Satya Chatbot</string>
     <string name="hello">Hello</string>
     <string name="enter_text">Enter Text</string>
-    <string name="fact_1">Inaccess to proper sanitation</string>
-    <string name="fact_2">Inaccess to toilets</string>
-    <string name="fact_3">Inaccess to safe drinking water</string>
+    <string name="fact_1">Lack proper sanitation</string>
+    <string name="fact_2">Lack access to toilets</string>
+    <string name="fact_3">Lack safe drinking water</string>
     <string name="fact_4">Freshwater availability</string>
 
 </resources>
