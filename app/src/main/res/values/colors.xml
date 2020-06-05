@@ -5,11 +5,7 @@
     <!--color name="colorPrimaryDark">#00574B</color-->
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="GreenColor">#c1f215</color>
-    <color name="RedColor">#f85f68</color>
-    <color name="backColor">#4dffff</color>
     <color name="blackcolor">#000000</color>
-    <color name="home_buton_color">#A9F0F0</color>
     <color name="Home_background_color">#F8F8F8</color>
     <!-- Screens background color-->
 
@@ -17,9 +13,6 @@
     <color name="bg_slider_screen2">#16bc7d</color>
     <color name="bg_slider_screen3">#203d8c</color>-->
     <color name="bg_tint">#dfedf5</color>
-    <color name="bg_slider_screen1">#f85f68</color>
-    <color name="bg_slider_screen2">#16bc7d</color>
-    <color name="bg_slider_screen3">#203d8c</color>
     <!-- dots inactive colors -->
     <color name="dot_inactive_screen1">#0e1e49</color>
     <color name="dot_inactive_screen2">#0e1e49</color>
@@ -28,8 +21,6 @@
     <color name="dot_active_screen1">#3a67e0</color>
     <color name="dot_active_screen2">#3a67e0</color>
     <color name="dot_active_screen3">#3a67e0</color>
-    <color name="newColour">#8075CDD8</color>
-    <color name ="Shadow"> #39000000</color>
     <array name="array_dot_active">
         <item>@color/dot_active_screen1</item>
         <item>@color/dot_active_screen2</item>
@@ -43,18 +34,15 @@
         <item>@color/dot_inactive_screen1</item>
     </array>
 
-    <color name="app_icon_round_background">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
-    <color name="grey_500">#9E9E9E</color>
 
     <color name="app_pink">#E8247D</color>
     <color name="app_blue">#168FFF</color>
     <color name="app_black">#1D1D1D</color>
     <color name="app_light_black">#313131</color>
     <color name="app_white">#FFFFFF</color>
-    <color name="card_shadow">#000000</color>
 
     <color name="green">#388E3C</color>
     <color name="red">#D32F2F</color>

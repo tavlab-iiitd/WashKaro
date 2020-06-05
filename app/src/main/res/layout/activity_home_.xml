@@ -138,6 +138,20 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:fontFamily="@font/mukta_bold"
+                                android:text="(in crore)"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data3"
+                                app:layout_constraintBottom_toBottomOf="@+id/mohfw_tv3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
 
                             <TextView

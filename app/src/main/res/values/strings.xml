@@ -5,15 +5,6 @@
     <string name="start">Got It</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="nextQues">Next</string>
-    <string name="back_to_main_menu">Back to Main Menu</string>
-    <string name="name">Name</string>
-    <string name="phone">Number</string>
-    <string name="pinCode">Pincode</string>
-    <string name="place">You reside in:</string>
-    <string name="del">Delhi</string>
-    <string name="nondel">Outside Delhi</string>
-    <string name="begin">Begin</string>
     <string name="sign_out">Sign Out</string>
     <string name="start_phone_auth">Send</string>
     <string name="verify_phone_auth">Verify</string>
@@ -22,8 +13,6 @@
     <string name="hint_verification_code">Verification Code</string>
     <string name="verification_code_help">You will receive an OTP soon!</string>
     <string name="instant_validation">(instant validation)</string>
-    <string name="firebase_status_fmt" translatable="false">Firebase UID: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
 
     <string name="tavlab_logo">Tav Lab at IIIT Delhi</string>
     <string name="precog_logo">Precog Lab at IIIT Delhi</string>
@@ -53,13 +42,9 @@
     <string name="shared_prefs_file" translatable="false">shared_prefs</string>
 
     <!--    Notification Channels-->
-    <string name="user_user_state_notif" translatable="false">user_user_state_notif</string>
 
-    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="default_notification_channel_id" translatable="false">infection_alert_channel</string>
-    <string name="default_notification_channel_name" translatable="false">infectionAlert</string>
 
-    <string name="msg_subscribe_failed">Failed to subscribe to covidAlert topic</string>
     <string name="fcm_message" translatable="false">WashKaro</string>
     <string name="alert_message">Please maintain social distancing to keep you and your family safe</string>
     <string name="network_not_enabled">Location is not enabled</string>
@@ -68,8 +53,6 @@
     <string name="cancel_btn">Cancel</string>
     <string name="share_this_app">Share this app</string>
     <string name="share_content">Help stop the spread of WASH diseases by sharing this app with family and friends.</string>
-    <string name="symptom_tracker">Symptom Tracker</string>
-    <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
     <string name="you_are_safe">You are safe!</string>
     <string name="you_are_unsafe">You are maybe at risk!</string>
@@ -140,7 +123,6 @@
     <string name="tanujURL" translatable="false">https://www.linkedin.com/in/tanuj-dabas-7b28a9151/</string>
 
     <string name="rishabhURL" translatable="false">https://www.linkedin.com/in/jalanrishabh</string>
-    <string name="ayushURL" translatable="false">https://www.linkedin.com/in/ayush-garg-6019aa1a2</string>
     <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
     <string name="vihaanURL" translatable="false">https://www.linkedin.com/in/vihaan-m-a3841811a</string>
     <string name="yashwinURL" translatable="false">https://www.linkedin.com/in/yashwin-agrawal-6b28bb176</string>
@@ -151,11 +133,7 @@
     <string name="myth_act">Myth Busters(By WHO)</string>
     <!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
 
-    <string name="please_select_one_choice">Please select one choice</string>
-
     <!--    SymptomActivity-->
-    <string name="infection_is_present">You are suspected of having an infection</string>
-    <string name="infection_is_not_present">You are not suspected of having an infection</string>
 
     <!--    Myths-->
     <string name="play_audio">Play Audio</string>
@@ -166,13 +144,8 @@
     <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
     <string name="empty_stats" translatable="false">0</string>
-    <string name="govt_advisory_tile">Govt Advisory</string>
-    <string name="symptom_tracker_tile">Symptom Tracker</string>
-    <string name="contact_tracer_tile">Contact Tracer</string>
     <string name="social_distancing_tile">Social Distancer</string>
-    <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
-    <string name="misc_tile">More Info</string>
 
     <!--    URL-->
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
@@ -181,8 +154,6 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_us">About Us</string>
     <string name="survey">Survey</string>
-    <string name="hunger_relief">Hunger Relief</string>
-    <string name="shelter_relief">Shelter Relief</string>
     <string name="language">Language</string>
 
     <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>
