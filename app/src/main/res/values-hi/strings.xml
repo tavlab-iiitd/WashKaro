@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WashKaro</string>
+    <string name="app_name">वॉशकरो</string>
     <string name="back_to_main_menu">मुख्य मेनू में वापस जाएं</string>
 
     <string name="start_phone_auth">संदेश</string>
@@ -66,6 +66,8 @@
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
     <string name="misc_tile">अधिक जानकारी</string>
+    <string name="currency_crore">करोड़</string>
+    <string name="currency_percent">प्रतिशत</string>
 
 
     <!--    SymptomActivity-->
@@ -134,9 +136,9 @@
     <string name="shelter_relief">आश्रय राहत</string>
     <string name="hunger_relief">भूख से राहत</string>
     <string name="about_us">हमारे बारे में</string>
-    <string name="fact_1">उचित स्वच्छता के लिए दुर्गम</string>
+    <string name="fact_1">उचित स्वच्छता की कमी</string>
     <string name="fact_2">शौचालय के लिए दुर्गम</string>
-    <string name="fact_3">सुरक्षित पेयजल के लिए दुर्गम</string>
+    <string name="fact_3">सुरक्षित पेयजल की कमी</string>
     <string name="fact_4">सुरक्षित पेयजल की उपलब्धता</string>
 
 
