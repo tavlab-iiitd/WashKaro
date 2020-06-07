@@ -107,7 +107,7 @@ public class ChatActivity extends BaseActivity {
 
     private static String createURL(Context ctx, String text) {
         text = text.trim();
-        String uid = firebaseUser.getUid();
+        String uid = firebaseUser.getUid().toString();
         return ctx.getString(R.string.satya_chatbot_url) + "?query=" + text + "&lang=" + getCurLang() + "&uid=" + uid;
     }
 
