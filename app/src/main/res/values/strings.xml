@@ -156,14 +156,14 @@
     <string name="survey">Survey</string>
     <string name="language">Language</string>
 
-    <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>
+    <string name="satya_chatbot_url" translatable="false"> http://precog.iiitd.edu.in/satya_api/ans</string>
 
     <string name="satya_chatbot">Satya Chatbot</string>
     <string name="hello">Hello</string>
     <string name="enter_text">Enter Text</string>
-    <string name="fact_1">Inaccess to proper sanitation</string>
-    <string name="fact_2">Inaccess to toilets</string>
-    <string name="fact_3">Inaccess to safe drinking water</string>
+    <string name="fact_1">Lack proper sanitation</string>
+    <string name="fact_2">Lack access to toilets</string>
+    <string name="fact_3">Lack safe drinking water</string>
     <string name="fact_4">Freshwater availability</string>
 
 </resources>
