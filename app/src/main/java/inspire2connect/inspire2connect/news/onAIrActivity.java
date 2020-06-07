@@ -25,13 +25,11 @@ import java.util.Map;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class onAIrActivity extends BaseActivity {
-    private static String LOG_TAG = "onAIrActivity";
     boolean flag = false;
     DatabaseReference ref;
     private RecyclerView mRecyclerView;
@@ -52,7 +50,7 @@ public class onAIrActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Intent i = null;
+        Intent i;
         switch (id){
             case R.id.lang_togg_butt:
                 toggleLang(this);
@@ -69,7 +67,6 @@ public class onAIrActivity extends BaseActivity {
                 openPrivacyPolicy(this);
                 break;
             default:
-                i = null;
                 break;
         }
 
