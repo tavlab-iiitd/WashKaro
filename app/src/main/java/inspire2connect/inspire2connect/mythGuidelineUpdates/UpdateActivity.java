@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
+import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -158,18 +159,26 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.lang_togg_butt) {
-            toggleLang(this);
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(UpdateActivity.this, maleFemaleActivity.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(UpdateActivity.this, aboutActivity.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            openPrivacyPolicy(this);
+        Intent i = null;
+        switch (id){
+            case R.id.lang_togg_butt:
+                toggleLang(this);
+                break;
+            case R.id.Survey:
+                i = new Intent(UpdateActivity.this, maleFemaleActivity.class);
+                startActivity(i);
+                break;
+            case R.id.developers:
+                i = new Intent(UpdateActivity.this, aboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.privacy_policy:
+                openPrivacyPolicy(this);
+                break;
+            default:
+                i = null;
+                break;
         }
-
 
         return super.onOptionsItemSelected(item);
     }

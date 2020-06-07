@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +24,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -31,7 +31,6 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -40,15 +39,14 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
+import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
-import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -108,7 +106,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         initialize_view_flipper();
 
         slideLists = new ArrayList<>();
-        slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.contact_tracer_tile);
         ll_but[1] = findViewById(R.id.onair_tile);
         ll_but[2] = findViewById(R.id.misc_but3_layout);
@@ -120,7 +117,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
-        mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
@@ -142,7 +138,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         fetchset_facts ();
 
         setInfographicFlipper();
-
     }
 
     private void initialize_view_flipper() {
@@ -174,39 +169,42 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == flip_right) {
-            viewFlipper.stopFlipping();
-            viewFlipper.setInAnimation(anim2);
-            viewFlipper.setOutAnimation(anim3);
-            viewFlipper.showPrevious();
-        }
-        if (view == flip_left) {
-            viewFlipper.stopFlipping();
-            viewFlipper.setInAnimation(anim1);
-            viewFlipper.setOutAnimation(anim4);
-            viewFlipper.showNext();
-        }
-
         Intent i = null;
 
-//        if (view == ll_but[0]) {
-//            i = getGovernmentIntent(this);
-//        } else if (view == ll_but[1]) {
-//            i = new Intent(homeActivity.this, QuestionsActivity.class);
-//        } else
-        if (view == ll_but[0]) {
-            i = new Intent(homeActivity.this, ContactTracerActivity.class);
-        } else  if (view == ll_but[1]) {
-            i = new Intent(homeActivity.this, onAIrActivity.class);
-        }else if (view == ll_but[2]) {
-            i = getMythIntent(this);
-        }else if (view == ll_but[3]) {
-            i = getGuidelinesIntent(this);
+        switch (view.getId()){
+            case R.id.flipperLeft:
+                viewFlipper.stopFlipping();
+                viewFlipper.setInAnimation(anim1);
+                viewFlipper.setOutAnimation(anim4);
+                viewFlipper.showNext();
+                break;
+            case R.id.flipperRight:
+                viewFlipper.stopFlipping();
+                viewFlipper.setInAnimation(anim2);
+                viewFlipper.setOutAnimation(anim3);
+                viewFlipper.showPrevious();
+                break;
+            case R.id.contact_tracer_tile:
+                i = new Intent(homeActivity.this, ContactTracerActivity.class);
+                startActivity(i);
+                break;
+            case R.id.onair_tile:
+                i = new Intent(homeActivity.this, onAIrActivity.class);
+                startActivity(i);
+                break;
+            case R.id.misc_but2_layout:
+                i = new Intent(homeActivity.this, ChatActivity.class);
+                startActivity(i);
+                break;
+            case R.id.misc_but3_layout:
+                i = getMythIntent(this);
+                startActivity(i);
+                break;
+            default:
+                i = null;
+                break;
         }
 
-        if(i!=null) {
-            startActivity(i);
-        }
     }
 
     @Override
@@ -222,18 +220,26 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.lang_togg_butt) {
-            toggleLang(this);
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(homeActivity.this, maleFemaleActivity.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(homeActivity.this, aboutActivity.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            openPrivacyPolicy(this);
+        Intent i = null;
+        switch (id){
+            case R.id.lang_togg_butt:
+                toggleLang(this);
+                break;
+            case R.id.Survey:
+                i = new Intent(homeActivity.this, maleFemaleActivity.class);
+                startActivity(i);
+                break;
+            case R.id.developers:
+                i = new Intent(homeActivity.this, aboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.privacy_policy:
+                openPrivacyPolicy(this);
+                break;
+            default:
+                i = null;
+                break;
         }
-
 
         return super.onOptionsItemSelected(item);
     }

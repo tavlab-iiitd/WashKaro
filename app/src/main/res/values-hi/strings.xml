@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WashKaro</string>
+    <string name="app_name">वॉशकरो</string>
+    <string name="back_to_main_menu">मुख्य मेनू में वापस जाएं</string>
 
     <string name="start_phone_auth">संदेश</string>
     <string name="verify_phone_auth">सत्यापित करें</string>
@@ -9,6 +10,7 @@
     <string name="hint_verification_code">पुष्टि संख्या</string>
     <string name="verification_code_help">आपको जल्द ही एक OTP प्राप्त होगा!</string>
     <string name="instant_validation">(तत्काल सत्यापन)</string>
+    <string name="firebase_user_management">फायरबेस यूजर मैनेजमेंट</string>
 
     <string name="tavlab_logo">IIIT दिल्ली में Tav Lab</string>
     <string name="precog_logo">IIIT दिल्ली में Precog Lab</string>
@@ -38,10 +40,13 @@
     <string name="chirag">चिराग जैन</string>
     <string name="chirag_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
+    <string name="msg_subscribe_failed">संक्रमण विषय की सदस्यता लेने में विफल</string>
     <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए संक्रमण मामले के पास हैं</string>
     <string name="network_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="location_is_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="show_location_setting">अपनी स्थान सेटिंग से स्थान सक्षम करें</string>
+
+    <string name="please_select_one_choice">कृपया एक विकल्प चुनें</string>
 
     <string name="guidelines_act">दिशा निर्देश (WHO के द्वारा)</string>
     <string name="myth_act">मिथक (WHO के द्वारा)</string>
@@ -54,21 +59,32 @@
     <string name="information_link">जानकारी का श्रोत</string>
     <string name="who_guidelines_tile">डब्ल्यूएचओ के दिशानिर्देश</string>
     <string name="myth_busters_tile">मिथक</string>
+    <string name="govt_advisory_tile">सरकारी निर्देश</string>
+    <string name="symptom_tracker_tile">लक्षण ट्रैकर</string>
+    <string name="contact_tracer_tile">संपर्क ट्रेसर</string>
     <string name="social_distancing_tile">सोशल डिस्टन्सिंग</string>
+    <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
+    <string name="misc_tile">अधिक जानकारी</string>
+    <string name="currency_crore">करोड़</string>
+    <string name="currency_percent">प्रतिशत</string>
 
 
     <!--    SymptomActivity-->
+    <string name="infection_is_present">आपको संक्रमण होने का संदेह है</string>
+    <string name="infection_is_not_present">आपको संक्रमण होने का संदेह नहीं है</string>
     <string name="play_audio">ऑडियो चलाएं</string>
 
     <string name="satya_chatbot">Satya चैटबोट</string>
     <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
     <string name="you_are_safe">आप सुरक्षित है!</string>
+    <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
     <string name="you_are_safe_content">कोरोना वायरस के संक्रमण का कम जोखिम।</string>
     <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
     <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके रोगों के प्रसार को रोकने में मदद करें।</string>
     <string name="share_this_app">इस एप को शेयर कीजिए</string>
     <string name="cancel_btn">रद्द करें</string>
+    <string name="symptom_tracker">लक्षण ट्रैकर</string>
     <string name="pk">डॉ पोन्नुरंगम कुमारगुरु</string>
     <string name="pk_description">प्रोफेसर (CSE), IIIT दिल्ली</string>
     <string name="tav">डॉ तवप्रितेश सेठी</string>
@@ -103,16 +119,26 @@
     <string name="start">समझ गया</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
+    <string name="nextQues">आगे</string>
+    <string name="name">नाम</string>
+    <string name="phone">संख्या</string>
+    <string name="pinCode">पिन कोड</string>
+    <string name="place">आप इसमें रहते हैं:</string>
+    <string name="del">दिल्ली</string>
+    <string name="nondel">दिल्ली के बाहर</string>
+    <string name="begin">शुरू</string>
     <string name="sign_out">साइन आउट</string>
 
 
     <string name="privacy_policy">गोपनीयता नीति</string>
     <string name="survey">सर्वेक्षण</string>
     <string name="language">भाषा</string>
+    <string name="shelter_relief">आश्रय राहत</string>
+    <string name="hunger_relief">भूख से राहत</string>
     <string name="about_us">हमारे बारे में</string>
-    <string name="fact_1">उचित स्वच्छता के लिए दुर्गम</string>
+    <string name="fact_1">उचित स्वच्छता की कमी</string>
     <string name="fact_2">शौचालय के लिए दुर्गम</string>
-    <string name="fact_3">सुरक्षित पेयजल के लिए दुर्गम</string>
+    <string name="fact_3">सुरक्षित पेयजल की कमी</string>
     <string name="fact_4">सुरक्षित पेयजल की उपलब्धता</string>
 
 

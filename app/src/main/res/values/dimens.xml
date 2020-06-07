@@ -2,19 +2,38 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="slide_title">30dp</dimen>
+    <dimen name="slide_desc">25dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
     <dimen name="home_card_elev">3dp</dimen>
+    <dimen name="card_view_elev">5dp</dimen>
     <dimen name="card_view_elev_2">2dp</dimen>
+    <dimen name="home_card_slider_elev">1dp</dimen>
+    <dimen name="home_card_margin_top">8dp</dimen>
+    <dimen name="home_card_margin_left_right">24dp</dimen>
     <dimen name="home_card_font">15dp</dimen>
+    <dimen name="home_card_margin_cont_top">16dp</dimen>
+
+    <dimen name="icon_top_margin">24dp</dimen>
+    <dimen name="icon_bottom_margin">24dp</dimen>
+    <dimen name="title_bottom_margin">16dp</dimen>
+    <dimen name="field_width_standard">160dp</dimen>
 
     <dimen name="about_name">16sp</dimen>
     <dimen name="about_tag">12sp</dimen>
     <dimen name="about_head">18sp</dimen>
 
-    <dimen name="about_title">22dp</dimen>
-    <dimen name="about_content">16dp</dimen>
-    <dimen name="home_stat_text">12dp</dimen>
-    <dimen name="home_stat_val">20dp</dimen>
+    <dimen name="about_cat_title">28sp</dimen>
+    <dimen name="about_title">22sp</dimen>
+    <dimen name="about_content">16sp</dimen>
+    <dimen name="about_small_content">12sp</dimen>
+    <dimen name="home_stat_text">10sp</dimen>
+    <dimen name="home_stat_val">16sp</dimen>
     <dimen name="about_bottom_margin">20dp</dimen>
+
+    <dimen name="yes_no_size">16sp</dimen>
+
+    <dimen name="home_card_horizontal_margin">5dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
     <dimen name="alert_btn_margin">4dp</dimen>
