@@ -50,8 +50,6 @@
 //    public void onClick(View view) {
 ////        if (view == misc_buttons[0]) {
 ////            Intent i = new Intent(selectMiscActivity.this, urlActivity.class);
-////            i.putExtra("url", getString(R.string.covid_map));
-////            i.putExtra("name", getString(R.string.india_covid_map_tile));
 ////            startActivity(i);
 ////        }
 //

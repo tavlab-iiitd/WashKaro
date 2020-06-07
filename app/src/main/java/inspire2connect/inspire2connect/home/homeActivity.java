@@ -42,9 +42,9 @@ import java.util.List;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
+import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
-import inspire2connect.inspire2connect.utils.AutoResizeTextView;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
@@ -193,7 +193,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(i);
                 break;
             case R.id.misc_but2_layout:
-                i = getGuidelinesIntent(this);
+                i = new Intent(homeActivity.this, ChatActivity.class);
                 startActivity(i);
                 break;
             case R.id.misc_but3_layout:

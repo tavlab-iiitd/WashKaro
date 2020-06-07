@@ -634,7 +634,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/misc_but2_text"
-                            app:srcCompat="@drawable/ic_who_guidelines" />
+                            app:srcCompat="@drawable/ic_chat" />
 
                         <TextView
                             android:id="@+id/misc_but2_text"
@@ -642,7 +642,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
-                            android:text="@string/who_guidelines_tile"
+                            android:text="@string/chatbot_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"

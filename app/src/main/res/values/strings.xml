@@ -59,7 +59,7 @@
     <string name="default_notification_channel_id" translatable="false">infection_alert_channel</string>
     <string name="default_notification_channel_name" translatable="false">infectionAlert</string>
 
-    <string name="msg_subscribe_failed">Failed to subscribe to covidAlert topic</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to infectionAlert topic</string>
     <string name="fcm_message" translatable="false">WashKaro</string>
     <string name="alert_message">Please maintain social distancing to keep you and your family safe</string>
     <string name="network_not_enabled">Location is not enabled</string>
