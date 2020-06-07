@@ -30,6 +30,8 @@ Wash Karo is a free Android-based app which aims to spread awareness among the m
 3. Vaibhav Gautam
 4. Rohan Pandey
 5. Himanshu Sharma 
+6. Yashwin Agrawal
+7. Vihaan Misra
 
 ### Designers
 1. Bhavika Rana
