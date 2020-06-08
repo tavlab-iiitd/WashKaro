@@ -26,7 +26,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
         <activity android:name=".satyaChat.ChatActivity"></activity>
-        <activity android:name=".symptomTracker.QuestionsActivity" /> <!-- <activity android:name=".firstPageActivity"></activity> -->
         <activity android:name=".home.homeActivity" /> <!-- <activity android:name=".male_female_2" /> -->
         <activity android:name=".home.WelcomeActivity">
             <intent-filter>
@@ -54,14 +53,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".home.selectChatBotActivity" />
-        <activity android:name=".home.selectMiscActivity" />
         <activity android:name=".mythGuidelineUpdates.guidelineViewActivity" />
-        <activity android:name=".home.InfographicsActivity" /> <!-- Contact Tracer -->
-        <!-- <activity -->
-        <!-- android:name=".contactTracer.SettingsActivity" -->
-        <!-- android:label="@string/title_activity_settings"></activity> -->
-        <!-- <activity android:name=".contactTracer.InteractionsActivity" /> -->
+        <activity android:name=".home.InfographicsActivity" />
         <activity android:name=".physicalDistancer.PhysicalDistancerActivity" />
         <activity android:name=".physicalDistancer.PhoneAuthActivity" />
 

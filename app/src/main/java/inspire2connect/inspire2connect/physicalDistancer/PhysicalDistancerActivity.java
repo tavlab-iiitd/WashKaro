@@ -98,9 +98,9 @@ public class PhysicalDistancerActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.ca_activity_main);
-        traceImage = findViewById(R.id.tracer_photo);
-        traceTitle = findViewById(R.id.tracer_title);
-        traceContent = findViewById(R.id.tracer_content);
+        traceImage = findViewById(R.id.distancer_photo);
+        traceTitle = findViewById(R.id.distancer_title);
+        traceContent = findViewById(R.id.distancer_content);
         share_layout=findViewById(R.id.share_box);
         getSupportActionBar().hide();
 

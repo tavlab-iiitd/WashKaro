@@ -30,14 +30,14 @@
         android:paddingBottom="20dp">
 
         <ImageView
-            android:id="@+id/tracer_photo"
+            android:id="@+id/distancer_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
             android:src="@drawable/ca_safe" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tracer_title"
+            android:id="@+id/distancer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -48,7 +48,7 @@
             android:textSize="24dp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tracer_content"
+            android:id="@+id/distancer_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
