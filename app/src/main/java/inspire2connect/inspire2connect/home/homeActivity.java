@@ -107,7 +107,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         initialize_view_flipper();
 
         slideLists = new ArrayList<>();
-        ll_but[0] = findViewById(R.id.contact_tracer_tile);
+        ll_but[0] = findViewById(R.id.social_distancer_tile);
         ll_but[1] = findViewById(R.id.onair_tile);
         ll_but[2] = findViewById(R.id.misc_but3_layout);
         ll_but[3] = findViewById(R.id.misc_but2_layout);
@@ -195,7 +195,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
                 break;
-            case R.id.contact_tracer_tile:
+            case R.id.social_distancer_tile:
                 i = new Intent(homeActivity.this, PhysicalDistancerActivity.class);
                 startActivity(i);
                 break;

@@ -168,7 +168,7 @@
     <string name="empty_stats" translatable="false">0</string>
     <string name="govt_advisory_tile">Govt Advisory</string>
     <string name="symptom_tracker_tile">Symptom Tracker</string>
-    <string name="contact_tracer_tile">Contact Tracer</string>
+    <string name="social_distancer_tile">Social Distancer</string>
     <string name="social_distancing_tile">Social Distancer</string>
     <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>

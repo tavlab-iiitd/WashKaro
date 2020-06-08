@@ -493,7 +493,7 @@
                     app:layout_row="0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/contact_tracer_tile"
+                        android:id="@+id/social_distancer_tile"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
