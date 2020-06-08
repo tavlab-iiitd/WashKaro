@@ -16,13 +16,14 @@
 
 ### Introduction
 
-Wash Karo is a free Android-based app which aims to spread awareness among the mass regarding Water and sanitation practices. The app provides plethora of features like
+Wash Karo is a free Android-based app which aims to spread awareness among the mass regarding Water and sanitation practices. The app provides a plethora of features like:
 1. Latest News Articles
 2. AI based WHO report matching
-3. Bluetooth based Contact Tracing
-4. Symptom Self-Assessment Tool
-5. Human curated information
-6. Multilingual text and speech support
+3. Social Distancer 
+4. Human curated information
+5. Multilingual text and speech support
+6. Chatbot
+
 
 ### Developers
 1. Chirag Jain 
