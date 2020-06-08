@@ -59,7 +59,7 @@ public class onAIrActivity extends BaseActivity {
                 i = new Intent(onAIrActivity.this, maleFemaleActivity.class);
                 startActivity(i);
                 break;
-            case R.id.about_us:
+            case R.id.developers:
                 i = new Intent(onAIrActivity.this, aboutActivity.class);
                 startActivity(i);
                 break;
@@ -109,7 +109,7 @@ public class onAIrActivity extends BaseActivity {
 
                     for (Map.Entry<String, Story> it : hn.entrySet()) {
                         Logd("Database", it.getValue().getTitle());
-                        newsObject obj = new newsObject((count + 1) + ".  " + it.getValue().getTitle(), it.getValue().getStory());
+                        newsObject obj = new newsObject(it.getValue().getTitle(), it.getValue().getStory());
                         results2.add(obj);
                         count++;
                     }
