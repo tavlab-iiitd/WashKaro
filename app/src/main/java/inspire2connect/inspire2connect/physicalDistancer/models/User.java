@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.models;
+package inspire2connect.inspire2connect.physicalDistancer.models;
 
 public class User {
     public String phoneNo;

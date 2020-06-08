@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.firebase;
+package inspire2connect.inspire2connect.physicalDistancer.firebase;
 
 import android.content.Context;
 import android.util.Log;

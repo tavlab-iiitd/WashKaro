@@ -66,8 +66,6 @@
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
     <string name="misc_tile">अधिक जानकारी</string>
-    <string name="currency_crore">करोड़</string>
-    <string name="currency_percent">प्रतिशत</string>
 
 
     <!--    SymptomActivity-->
@@ -79,7 +77,7 @@
     <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
     <string name="you_are_safe">आप सुरक्षित है!</string>
     <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
-    <string name="you_are_safe_content">कोरोना वायरस के संक्रमण का कम जोखिम।</string>
+    <string name="you_are_safe_content">संक्रमण का कम जोखिम।</string>
     <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
     <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके रोगों के प्रसार को रोकने में मदद करें।</string>
     <string name="share_this_app">इस एप को शेयर कीजिए</string>
@@ -136,10 +134,6 @@
     <string name="shelter_relief">आश्रय राहत</string>
     <string name="hunger_relief">भूख से राहत</string>
     <string name="about_us">हमारे बारे में</string>
-    <string name="fact_1">उचित स्वच्छता की कमी</string>
-    <string name="fact_2">शौचालय के लिए दुर्गम</string>
-    <string name="fact_3">सुरक्षित पेयजल की कमी</string>
-    <string name="fact_4">सुरक्षित पेयजल की उपलब्धता</string>
 
 
 </resources>

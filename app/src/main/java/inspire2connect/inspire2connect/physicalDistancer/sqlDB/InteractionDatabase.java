@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.sqlDB;
+package inspire2connect.inspire2connect.physicalDistancer.sqlDB;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

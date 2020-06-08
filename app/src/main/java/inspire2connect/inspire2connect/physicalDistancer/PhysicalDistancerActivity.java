@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer;
+package inspire2connect.inspire2connect.physicalDistancer;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -40,14 +40,14 @@ import java.util.TimerTask;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
-import inspire2connect.inspire2connect.contactTracer.bluetooth.Constants;
-import inspire2connect.inspire2connect.contactTracer.models.User;
-import inspire2connect.inspire2connect.contactTracer.sqlDB.InteractionRepository;
+import inspire2connect.inspire2connect.physicalDistancer.bluetooth.Constants;
+import inspire2connect.inspire2connect.physicalDistancer.models.User;
+import inspire2connect.inspire2connect.physicalDistancer.sqlDB.InteractionRepository;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class ContactTracerActivity extends BaseActivity implements View.OnClickListener {
+public class PhysicalDistancerActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String TAG = ContactTracerActivity.class.getSimpleName();
+    private static final String TAG = PhysicalDistancerActivity.class.getSimpleName();
     private static final int REQUEST_ENABLE_BT = 0;
     public static final int REQUEST_LOGIN = 0;
     public static final int REQUEST_LOGOUT = 1;

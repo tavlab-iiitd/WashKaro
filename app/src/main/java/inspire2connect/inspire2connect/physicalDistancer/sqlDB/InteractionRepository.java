@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.sqlDB;
+package inspire2connect.inspire2connect.physicalDistancer.sqlDB;
 
 import android.content.Context;
 import android.os.AsyncTask;

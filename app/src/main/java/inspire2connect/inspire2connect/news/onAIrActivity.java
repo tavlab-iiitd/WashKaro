@@ -94,7 +94,7 @@ public class onAIrActivity extends BaseActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         ref = FirebaseDatabase.getInstance().getReference();
-        Query lastQuery = ref.child("hindi").orderByKey();
+        Query lastQuery = ref.child(getCurLangKey().toLowerCase()).orderByKey();
         lastQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

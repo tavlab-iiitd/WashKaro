@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.sqlDB;
+package inspire2connect.inspire2connect.physicalDistancer.sqlDB;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
