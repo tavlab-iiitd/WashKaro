@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +40,7 @@ import java.util.List;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.contactTracer.ContactTracerActivity;
+import inspire2connect.inspire2connect.physicalDistancer.PhysicalDistancerActivity;
 import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
@@ -56,6 +55,8 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     Animation anim1, anim2, anim3, anim4;
     //    TextView mohfw_data1
     TextView mohfw_data2, mohfw_data3, mohfw_data4, mohfw_data5;
+    TextView mohfw_tv2, mohfw_tv3, mohfw_tv4, mohfw_tv5;
+    TextView mohfw_currency2, mohfw_currency3, mohfw_currency4, mohfw_currency5;
     ConstraintLayout[] statLayouts = new ConstraintLayout[4];
     LayoutInflater inflater;
     float downX, downY, upX, upY;
@@ -117,10 +118,20 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
+        mohfw_tv2 = findViewById(R.id.mohfw_tv2);
+        mohfw_tv3 = findViewById(R.id.mohfw_tv3);
+        mohfw_tv4 = findViewById(R.id.mohfw_tv4);
+        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
+
         mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
         mohfw_data5 = findViewById(R.id.mohfw_data5);
+
+        mohfw_currency2 = findViewById(R.id.mohfw_currency2);
+        mohfw_currency3 = findViewById(R.id.mohfw_currency3);
+        mohfw_currency4 = findViewById(R.id.mohfw_currency4);
+        mohfw_currency5 = findViewById(R.id.mohfw_currency5);
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
@@ -185,7 +196,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.showPrevious();
                 break;
             case R.id.contact_tracer_tile:
-                i = new Intent(homeActivity.this, ContactTracerActivity.class);
+                i = new Intent(homeActivity.this, PhysicalDistancerActivity.class);
                 startActivity(i);
                 break;
             case R.id.onair_tile:
@@ -317,14 +328,26 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
     public void fetchset_facts() {
 
-        statsReference.addValueEventListener(new ValueEventListener() {
+        statsReference.child(getCurLangKey().toLowerCase()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Stats stats = dataSnapshot.getValue(Stats.class);
-                mohfw_data2.setText(stats.Fact1 );
-                mohfw_data3.setText(stats.Fact3 );
-                mohfw_data4.setText(stats.Fact2 );
-                mohfw_data5.setText(stats.Fact4 );
+
+                mohfw_tv2.setText(stats.Fact1);
+                mohfw_tv3.setText(stats.Fact2);
+                mohfw_tv4.setText(stats.Fact3);
+                mohfw_tv5.setText(stats.Fact4);
+
+                mohfw_data2.setText(stats.Fact1_value);
+                mohfw_data3.setText(stats.Fact2_value);
+                mohfw_data4.setText(stats.Fact3_value);
+                mohfw_data5.setText(stats.Fact4_value);
+
+                mohfw_currency2.setText(stats.Fact1_currency);
+                mohfw_currency3.setText(stats.Fact2_currency);
+                mohfw_currency4.setText(stats.Fact3_currency);
+                mohfw_currency5.setText(stats.Fact4_currency);
+
             }
 
             @Override

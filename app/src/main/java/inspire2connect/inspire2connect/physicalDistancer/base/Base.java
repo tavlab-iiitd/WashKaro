@@ -1,4 +1,4 @@
-package inspire2connect.inspire2connect.contactTracer.base;
+package inspire2connect.inspire2connect.physicalDistancer.base;
 
 import android.util.Log;
 

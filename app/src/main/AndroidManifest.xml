@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name=".contactTracer.BluetoothApplication"
+        android:name=".physicalDistancer.BluetoothApplication"
         android:allowBackup="true"
         android:appComponentFactory="whateverString"
         android:icon="@mipmap/ic_launcher"
@@ -62,8 +62,8 @@
         <!-- android:name=".contactTracer.SettingsActivity" -->
         <!-- android:label="@string/title_activity_settings"></activity> -->
         <!-- <activity android:name=".contactTracer.InteractionsActivity" /> -->
-        <activity android:name=".contactTracer.ContactTracerActivity" />
-        <activity android:name=".contactTracer.PhoneAuthActivity" />
+        <activity android:name=".physicalDistancer.PhysicalDistancerActivity" />
+        <activity android:name=".physicalDistancer.PhoneAuthActivity" />
 
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
@@ -76,18 +76,18 @@
             android:resource="@color/colorAccent" />
 
         <service
-            android:name=".contactTracer.bluetooth.BluetoothService"
+            android:name=".physicalDistancer.bluetooth.BluetoothService"
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name=".contactTracer.firebase.FirebaseInstanceService"
+            android:name=".physicalDistancer.firebase.FirebaseInstanceService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".contactTracer.firebase.FirebaseBroadcastReceiver"
+            android:name=".physicalDistancer.firebase.FirebaseBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>

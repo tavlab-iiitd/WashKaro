@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package inspire2connect.inspire2connect.contactTracer.bluetooth;
+package inspire2connect.inspire2connect.physicalDistancer.bluetooth;
 
 import android.os.ParcelUuid;
 

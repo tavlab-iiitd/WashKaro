@@ -39,11 +39,11 @@ public class text2speech2_2Activity extends BaseActivity
     String key;
     DatabaseReference ref;
     int position;
-    TextView tv;
+    TextView tv, tv_title;
     int relevant_num, irrelevant_num;
     String download_url, WHO_download_url;
-    String story_text;
-    String news_text, WHO_text;
+    String story_text, story_title;
+    String news_text, WHO_text, WHO_title;
     ImageButton btn_play;
     boolean isSpeaking;
     TextToSpeech mTTS;
@@ -169,7 +169,7 @@ public class text2speech2_2Activity extends BaseActivity
                         e.printStackTrace();
                     }
 
-                    ref.child("hindi").child(key).child("number_of_relevant_votes").setValue(relevant_num + 1);
+                    ref.child(getCurLangKey().toLowerCase()).child(key).child("number_of_relevant_votes").setValue(relevant_num + 1);
                     String fileContents = currtext + '\n' + key;
                     Log.d("already_clicked", fileContents);
                     FileOutputStream outputStream;
@@ -209,7 +209,7 @@ public class text2speech2_2Activity extends BaseActivity
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    ref.child("hindi").child(key).child("number_of_irrelevant_votes").setValue(irrelevant_num + 1);
+                    ref.child(getCurLangKey().toLowerCase()).child(key).child("number_of_irrelevant_votes").setValue(irrelevant_num + 1);
                     String fileContents = currtext + '\n' + key;
                     Log.d("already_clicked", fileContents);
                     FileOutputStream outputStream;
@@ -260,10 +260,11 @@ public class text2speech2_2Activity extends BaseActivity
             }
         });
         tv = findViewById(R.id.display_text);
-        tv.setMovementMethod(new ScrollingMovementMethod());
+        tv_title = findViewById(R.id.display_title);
+//        tv.setMovementMethod(new ScrollingMovementMethod());
         ref = FirebaseDatabase.getInstance().getReference();
 
-        Query lastQuery = ref.child("hindi").orderByKey();
+        Query lastQuery = ref.child(getCurLangKey().toLowerCase()).orderByKey();
         Intent i = getIntent();
         position = Integer.parseInt(i.getStringExtra("position"));
         WHO_text = "This is WHO report";
@@ -284,10 +285,12 @@ public class text2speech2_2Activity extends BaseActivity
                 // show false
                 if (!isChecked) {
                     tv.setText(news_text);
+                    tv_title.setText(story_title);
                     relevant_button.setVisibility(View.INVISIBLE);
                     irrelevant_button.setVisibility(View.INVISIBLE);
                 } else {
                     tv.setText(WHO_text);
+                    tv_title.setText(WHO_title);
                     if (!already_clicked) {
                         relevant_button.setVisibility(View.VISIBLE);
                         irrelevant_button.setVisibility(View.VISIBLE);
@@ -312,12 +315,15 @@ public class text2speech2_2Activity extends BaseActivity
                         Log.d("already_clicked_?", Boolean.toString(alread_clicked_checker(key)));
                         already_clicked = alread_clicked_checker(key);
                         story_text = it.getValue().getStory();
+                        story_title = it.getValue().getTitle();
                         download_url = it.getValue().getUrl();
                         relevant_num = it.getValue().getNumber_of_relevant_votes();
                         irrelevant_num = it.getValue().getNumber_of_irrelevant_votes();
                         WHO_download_url = it.getValue().getWho_url();
                         WHO_text = it.getValue().getWho_article_text();
+                        WHO_title = it.getValue().getWho_summary();
                         tv.setText(story_text);
+                        tv_title.setText(story_title);
                         news_text = story_text;
                         break;
                     }
