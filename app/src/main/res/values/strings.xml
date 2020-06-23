@@ -7,12 +7,6 @@
     <string name="no">No</string>
     <string name="nextQues">Next</string>
     <string name="back_to_main_menu">Back to Main Menu</string>
-    <string name="name">Name</string>
-    <string name="phone">Number</string>
-    <string name="pinCode">Pincode</string>
-    <string name="place">You reside in:</string>
-    <string name="del">Delhi</string>
-    <string name="nondel">Outside Delhi</string>
     <string name="begin">Begin</string>
     <string name="sign_out">Sign Out</string>
     <string name="start_phone_auth">Send</string>
@@ -88,9 +82,9 @@
     <string name="chirag">Chirag Jain</string>
     <string name="chirag_tag">Undergraduate, IIIT Delhi</string>
 
-    <string name="pk">Dr. Ponnurangam Kumaraguru</string>
+    <string name="pk">Dr Ponnurangam Kumaraguru</string>
     <string name="pk_description">Professor (CSE), IIIT Delhi</string>
-    <string name="tav">Dr. Tavpritesh Sethi</string>
+    <string name="tav">Dr Tavpritesh Sethi</string>
     <string name="tav_description">Assistant Professor(CB), IIIT Delhi</string>
 
     <string name="rohan">Rohan Pandey</string>
@@ -159,20 +153,14 @@
 
     <!--    Myths-->
     <string name="play_audio">Play Audio</string>
-    <!--    <string name="playing">PLAYING</string>-->
 
     <!--    Tiles-->
     <string name="information_link">Information Source</string>
-    <string name="who_guidelines_tile">WHO Guidelines</string>
     <string name="myth_busters_tile">Myth Busters</string>
     <string name="empty_stats" translatable="false">0</string>
-    <string name="govt_advisory_tile">Govt Advisory</string>
-    <string name="symptom_tracker_tile">Symptom Tracker</string>
-    <string name="social_distancer_tile">Social Distancer</string>
     <string name="social_distancing_tile">Social Distancer</string>
     <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
-    <string name="misc_tile">More Info</string>
 
     <!--    URL-->
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
@@ -181,8 +169,6 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_us">About Us</string>
     <string name="survey">Survey</string>
-    <string name="hunger_relief">Hunger Relief</string>
-    <string name="shelter_relief">Shelter Relief</string>
     <string name="language">Language</string>
 
     <string name="satya_chatbot_url" translatable="false">http://precog.iiitd.edu.in/satya_api/ans</string>

@@ -1,55 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout android:orientation="vertical"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:layout_width="fill_parent"-->
-    <!--        card_view:contentPadding="10dp"-->
-    <!--        card_view:cardCornerRadius="5dp"-->
-    <!--        android:layout_margin="5dp"-->
-    <!--        card_view:cardBackgroundColor="#dfedf5"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:id="@+id/card_view">-->
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.MaterialComponents.CardView"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        card_view:cardCornerRadius="5dp"
-        card_view:contentPadding="10dp"
-        card_view:cardBackgroundColor="#dfedf5">
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+
+        android:layout_marginBottom="5dp"
+        app:contentPadding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardCornerRadius="7dp"
+        card_view:cardElevation="@dimen/card_view_elev_2">
 
         <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 android:id="@+id/textView"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true" />
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mukta_semibold"
+                android:paddingLeft="4dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="Titledfngjsfgjfn"
+                android:gravity="center_vertical"
+                android:textColor="@color/blackcolor"
+                android:textSize="@dimen/about_content"
+                app:layout_constrainedWidth="true" />
 
             <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 android:id="@+id/textView2"
-                android:visibility="gone"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/textView" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_marginTop="1dp"
+                android:visibility="gone" />
 
         </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
     <!--</androidx.cardview.widget.CardView>-->
 
 
