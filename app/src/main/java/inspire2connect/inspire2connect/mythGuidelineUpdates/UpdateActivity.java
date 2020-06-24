@@ -123,11 +123,11 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 break;
             case FAQ:
                 databaseReference = faqsReference;
-                getSupportActionBar().setTitle(R.string.myth_act);
+                getSupportActionBar().setTitle(R.string.faqs_tile);
                 break;
             case SUCCESS_STORIES:
                 databaseReference = successStoriesReference;
-                getSupportActionBar().setTitle(R.string.myth_act);
+                getSupportActionBar().setTitle(R.string.success_stories_tile);
                 break;
             default:
                 Logv(TAG, "Invalid Intent");

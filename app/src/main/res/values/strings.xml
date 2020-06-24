@@ -143,6 +143,8 @@
     <string name="govt_updates_act">Government Updates</string>
     <string name="guidelines_act">Guidelines (By WHO)</string>
     <string name="myth_act">Myth Busters(By WHO)</string>
+    <string name="faq_act">FAQs</string>
+    <string name="success_stories_act">Success Stories</string>
     <!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
 
     <string name="please_select_one_choice">Please select one choice</string>
