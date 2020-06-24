@@ -16,13 +16,11 @@
 
 ### Introduction
 
-Wash Karo is a free Android-based app which aims to spread awareness among the mass regarding Water and sanitation practices. The app provides a plethora of features like:
-1. Latest News Articles
-2. AI based WHO report matching
-3. Social Distancer 
-4. Human curated information
-5. Multilingual text and speech support
-6. Chatbot
+WashKaro is a free Android-based app which aims to spread awareness among the mass regarding Tuberculosis. The app provides a plethora of features like:
+1. Human curated information
+2. Success Stories
+3. Multilingual text and speech support
+4. Chatbot
 
 
 ### Developers
