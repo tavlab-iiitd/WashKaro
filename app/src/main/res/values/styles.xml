@@ -12,7 +12,6 @@
 <!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
 <!--        <item name="android:actionBarStyle">@style/MyActionBar</item>-->
 
-<!--        Social Distancer-->
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.ActionBar">

@@ -121,6 +121,14 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 databaseReference = mythReference;
                 getSupportActionBar().setTitle(R.string.myth_act);
                 break;
+            case FAQ:
+                databaseReference = faqsReference;
+                getSupportActionBar().setTitle(R.string.myth_act);
+                break;
+            case SUCCESS_STORIES:
+                databaseReference = successStoriesReference;
+                getSupportActionBar().setTitle(R.string.myth_act);
+                break;
             default:
                 Logv(TAG, "Invalid Intent");
                 break;

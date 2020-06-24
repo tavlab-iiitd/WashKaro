@@ -87,7 +87,7 @@
                                 android:clickable="false"
                                 android:fontFamily="@font/mukta_medium"
                                 android:paddingHorizontal="0dp"
-                                android:maxLines="2"
+                                android:maxLines="3"
                                 android:ellipsize="none"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -146,7 +146,7 @@
                                 android:layout_height="wrap_content"
                                 android:clickable="false"
                                 android:fontFamily="@font/mukta_medium"
-                                android:maxLines="2"
+                                android:maxLines="3"
                                 android:ellipsize="none"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -206,7 +206,7 @@
                                 android:layout_height="wrap_content"
                                 android:clickable="false"
                                 android:fontFamily="@font/mukta_medium"
-                                android:maxLines="2"
+                                android:maxLines="3"
                                 android:ellipsize="none"
                                 android:textAlignment="center"
                                 android:textColor="@color/blackcolor"
@@ -248,65 +248,65 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/mohfw_ll5"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/buttonback2"
-                            android:clipToPadding="false"
-                            android:orientation="vertical">
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:id="@+id/mohfw_ll5"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:background="@drawable/buttonback2"-->
+<!--                            android:clipToPadding="false"-->
+<!--                            android:orientation="vertical">-->
 
-                            <TextView
-                                android:id="@+id/mohfw_tv5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="false"
-                                android:fontFamily="@font/mukta_medium"
-                                android:maxLines="2"
-                                android:ellipsize="none"
-                                android:textAlignment="center"
-                                android:textColor="@color/blackcolor"
-                                android:textSize="@dimen/home_stat_text"
-                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data5"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/mohfw_tv5"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:clickable="false"-->
+<!--                                android:fontFamily="@font/mukta_medium"-->
+<!--                                android:maxLines="2"-->
+<!--                                android:ellipsize="none"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/blackcolor"-->
+<!--                                android:textSize="@dimen/home_stat_text"-->
+<!--                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data5"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
 
 
-                            <TextView
-                                android:id="@+id/mohfw_data5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:clickable="false"
-                                android:text="@string/empty_stats"
-                                android:textAlignment="center"
-                                android:textColor="@color/app_blue"
-                                android:fontFamily="@font/mukta_semibold"
-                                android:textSize="@dimen/home_stat_val"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toTopOf="@+id/mohfw_currency5"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/mohfw_data5"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:clickable="false"-->
+<!--                                android:text="@string/empty_stats"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/app_blue"-->
+<!--                                android:fontFamily="@font/mukta_semibold"-->
+<!--                                android:textSize="@dimen/home_stat_val"-->
+<!--                                android:textStyle="bold"-->
+<!--                                app:layout_constraintBottom_toTopOf="@+id/mohfw_currency5"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toStartOf="parent" />-->
 
-                            <TextView
-                                android:id="@+id/mohfw_currency5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:clickable="false"
-                                android:textAlignment="center"
-                                android:textColor="@color/app_blue"
-                                android:textSize="@dimen/home_stat_text"
-                                android:textStyle="bold"
-                                android:fontFamily="@font/mukta_regular"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/mohfw_currency5"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:clickable="false"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/app_blue"-->
+<!--                                android:textSize="@dimen/home_stat_text"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:fontFamily="@font/mukta_regular"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toStartOf="parent" />-->
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                         <!--                        <LinearLayout-->
                         <!--                            android:id="@+id/mohfw_ll1"-->
@@ -362,123 +362,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:columnCount="2"
-                app:rowCount="2"
+                app:rowCount="3"
                 app:useDefaultMargins="true">
-
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginBottom="12dp"-->
-                <!--                    android:clipToPadding="false"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:orientation="vertical"-->
-                <!--                    app:layout_column="0"-->
-                <!--                    android:paddingBottom="@dimen/home_card_elev"-->
-                <!--                    app:layout_columnWeight="1"-->
-                <!--                    app:layout_gravity="fill_horizontal"-->
-                <!--                    app:layout_row="0">-->
-
-
-                <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
-                <!--                        android:id="@+id/advisories_tile"-->
-                <!--                        android:layout_width="150dp"-->
-                <!--                        android:layout_height="match_parent"-->
-                <!--                        android:background="@drawable/buttonback2"-->
-                <!--                        android:clickable="true"-->
-                <!--                        android:elevation="@dimen/home_card_elev">-->
-
-                <!--                        <ImageButton-->
-                <!--                            android:id="@+id/image_button1"-->
-                <!--                            style="@android:style/Widget.Material.Light.ImageButton"-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_below="@+id/imgbut_text1"-->
-                <!--                            android:layout_alignParentStart="true"-->
-                <!--                            android:layout_alignParentEnd="true"-->
-                <!--                            android:layout_alignParentBottom="true"-->
-                <!--                            android:layout_marginTop="4dp"-->
-                <!--                            android:layout_marginBottom="4dp"-->
-                <!--                            android:background="#FFFFFF"-->
-                <!--                            android:clickable="false"-->
-                <!--                            android:contentDescription="Card Image"-->
-                <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                            app:layout_constraintStart_toStartOf="parent"-->
-                <!--                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text1"-->
-                <!--                            app:srcCompat="@drawable/ic_official_adv" />-->
-
-                <!--                        <TextView-->
-                <!--                            android:id="@+id/imgbut_text1"-->
-                <!--                            android:layout_width="match_parent"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_marginTop="4dp"-->
-                <!--                            android:fontFamily="@font/mukta_semibold"-->
-                <!--                            android:text="@string/govt_advisory_tile"-->
-                <!--                            android:textAlignment="center"-->
-                <!--                            android:textColor="@color/blackcolor"-->
-                <!--                            android:textSize="@dimen/home_card_font"-->
-                <!--                            app:layout_constraintTop_toTopOf="parent" />-->
-
-                <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-                <!--                </LinearLayout>-->
-
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginBottom="12dp"-->
-                <!--                    android:clipToPadding="false"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:orientation="vertical"-->
-                <!--                    app:layout_column="0"-->
-                <!--                    app:layout_columnWeight="1"-->
-                <!--                    android:padding="@dimen/home_card_elev"-->
-                <!--                    app:layout_gravity="fill_horizontal"-->
-                <!--                    app:layout_row="1">-->
-
-                <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
-                <!--                        android:id="@+id/symptom_tracker_tile"-->
-                <!--                        android:layout_width="150dp"-->
-                <!--                        android:layout_height="match_parent"-->
-                <!--                        android:background="@drawable/buttonback2"-->
-                <!--                        android:clickable="true"-->
-                <!--                        android:elevation="@dimen/home_card_elev">-->
-
-                <!--                        <ImageButton-->
-                <!--                            android:id="@+id/image_button2"-->
-                <!--                            style="@android:style/Widget.Material.Light.ImageButton"-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_below="@+id/imgbut_text2"-->
-                <!--                            android:layout_alignParentStart="true"-->
-                <!--                            android:layout_alignParentEnd="true"-->
-                <!--                            android:layout_alignParentBottom="true"-->
-                <!--                            android:layout_marginTop="4dp"-->
-                <!--                            android:layout_marginBottom="2dp"-->
-                <!--                            android:background="#FFFFFF"-->
-                <!--                            android:clickable="false"-->
-                <!--                            android:contentDescription="Card Image"-->
-                <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                            app:layout_constraintStart_toStartOf="parent"-->
-                <!--                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text2"-->
-                <!--                            app:srcCompat="@drawable/ic_people" />-->
-
-                <!--                        <TextView-->
-                <!--                            android:id="@+id/imgbut_text2"-->
-                <!--                            android:layout_width="match_parent"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_marginTop="4dp"-->
-                <!--                            android:fontFamily="@font/mukta_semibold"-->
-                <!--                            android:text="@string/symptom_tracker_tile"-->
-                <!--                            android:textAlignment="center"-->
-                <!--                            android:textColor="@color/blackcolor"-->
-                <!--                            android:textSize="@dimen/home_card_font"-->
-                <!--                            app:layout_constraintTop_toTopOf="parent" />-->
-
-                <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-                <!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -486,22 +371,22 @@
                     android:layout_marginBottom="12dp"
                     android:clipToPadding="false"
                     android:gravity="center"
+                    android:paddingBottom="@dimen/home_card_elev"
                     android:orientation="vertical"
                     app:layout_column="0"
-                    android:paddingBottom="@dimen/home_card_elev"
                     app:layout_columnWeight="1"
                     app:layout_gravity="fill_horizontal"
                     app:layout_row="0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/social_distancer_tile"
+                        android:id="@+id/success_stories_tile"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
                         android:elevation="@dimen/home_card_elev"
-                        app:layout_column="0"
-                        app:layout_row="1">
+                        app:layout_column="1"
+                        app:layout_row="0">
 
                         <ImageButton
                             android:id="@+id/image_button3"
@@ -521,7 +406,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imgbut_text3"
-                            app:srcCompat="@drawable/ic_stethoscope" />
+                            app:srcCompat="@drawable/ic_onair" />
 
                         <TextView
                             android:id="@+id/imgbut_text3"
@@ -529,7 +414,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
-                            android:text="@string/social_distancing_tile"
+                            android:text="@string/success_stories_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"
@@ -701,6 +586,67 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
                             android:text="@string/myth_busters_tile"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    android:orientation="vertical"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:layout_row="2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/faqs_tile"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev"
+                        app:layout_column="1"
+                        app:layout_row="0">
+
+                        <ImageButton
+                            android:id="@+id/image_button5"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/imgbut_text5"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text5"
+                            app:srcCompat="@drawable/ic_onair" />
+
+                        <TextView
+                            android:id="@+id/imgbut_text5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="@string/faqs_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"
