@@ -362,7 +362,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:columnCount="2"
-                app:rowCount="3"
+                app:rowCount="2"
                 app:useDefaultMargins="true">
 
                 <LinearLayout
@@ -438,7 +438,7 @@
                     app:layout_row="0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/onair_tile"
+                        android:id="@+id/faqs_tile"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
@@ -448,11 +448,11 @@
                         app:layout_row="0">
 
                         <ImageButton
-                            android:id="@+id/image_button4"
+                            android:id="@+id/image_button5"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
                             android:layout_height="50dp"
-                            android:layout_below="@+id/imgbut_text4"
+                            android:layout_below="@+id/imgbut_text5"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
@@ -464,72 +464,16 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text4"
-                            app:srcCompat="@drawable/ic_onair" />
-
-                        <TextView
-                            android:id="@+id/imgbut_text4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/mukta_semibold"
-                            android:text="@string/onair_tile"
-                            android:textAlignment="center"
-                            android:textColor="@color/blackcolor"
-                            android:textSize="@dimen/home_card_font"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:clipToPadding="false"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_column="1"
-                    app:layout_columnWeight="1"
-                    android:paddingBottom="@dimen/home_card_elev"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_row="1">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/misc_but2_layout"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/buttonback2"
-                        android:clickable="true"
-                        android:elevation="@dimen/home_card_elev">
-
-                        <ImageButton
-                            style="@android:style/Widget.Material.Light.ImageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_below="@+id/misc_but2_text"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="#FFFFFF"
-                            android:clickable="false"
-                            android:contentDescription="Card Image"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/misc_but2_text"
+                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text5"
                             app:srcCompat="@drawable/ic_chat" />
 
                         <TextView
-                            android:id="@+id/misc_but2_text"
+                            android:id="@+id/imgbut_text5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
-                            android:text="@string/chatbot_tile"
+                            android:text="@string/faqs_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"
@@ -595,58 +539,53 @@
 
                 </LinearLayout>
 
-
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:clipToPadding="false"
                     android:gravity="center"
-                    android:paddingBottom="@dimen/home_card_elev"
                     android:orientation="vertical"
-                    app:layout_column="0"
+                    app:layout_column="1"
                     app:layout_columnWeight="1"
+                    android:paddingBottom="@dimen/home_card_elev"
                     app:layout_gravity="fill_horizontal"
-                    app:layout_row="2">
+                    app:layout_row="1">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/faqs_tile"
+                        android:id="@+id/misc_but2_layout"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
-                        android:elevation="@dimen/home_card_elev"
-                        app:layout_column="1"
-                        app:layout_row="0">
+                        android:elevation="@dimen/home_card_elev">
 
                         <ImageButton
-                            android:id="@+id/image_button5"
                             style="@android:style/Widget.Material.Light.ImageButton"
                             android:layout_width="wrap_content"
                             android:layout_height="50dp"
-                            android:layout_below="@+id/imgbut_text5"
+                            android:layout_below="@+id/misc_but2_text"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:background="#FFFFFF"
-                            android:clickable="false"
                             android:layout_marginTop="6dp"
                             android:layout_marginBottom="8dp"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
                             android:contentDescription="Card Image"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/imgbut_text5"
+                            app:layout_constraintTop_toBottomOf="@+id/misc_but2_text"
                             app:srcCompat="@drawable/ic_chat" />
 
                         <TextView
-                            android:id="@+id/imgbut_text5"
+                            android:id="@+id/misc_but2_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_semibold"
-                            android:text="@string/faqs_tile"
+                            android:text="@string/chatbot_tile"
                             android:textAlignment="center"
                             android:textColor="@color/blackcolor"
                             android:textSize="@dimen/home_card_font"

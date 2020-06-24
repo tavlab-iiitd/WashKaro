@@ -107,12 +107,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
-        ll_but[1] = findViewById(R.id.onair_tile);
-        ll_but[2] = findViewById(R.id.misc_but3_layout);
-        ll_but[3] = findViewById(R.id.misc_but2_layout);
-        ll_but[4] = findViewById(R.id.faqs_tile);
+        ll_but[1] = findViewById(R.id.misc_but3_layout);
+        ll_but[2] = findViewById(R.id.misc_but2_layout);
+        ll_but[3] = findViewById(R.id.faqs_tile);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4};
+        int[] btnToAdd = new int[]{0, 1, 2, 3};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -194,10 +193,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setInAnimation(anim2);
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
-                break;
-            case R.id.onair_tile:
-                i = new Intent(homeActivity.this, onAIrActivity.class);
-                startActivity(i);
                 break;
             case R.id.misc_but2_layout:
                 i = new Intent(homeActivity.this, ChatActivity.class);
