@@ -73,6 +73,7 @@
     <!--    about-->
 
     <string name="presented_to_you_by">WashKaro, presented to you by</string>
+    <string name="reference">References</string>
 
     <string name="relevant">Relevant</string>
     <string name="irrelevant">Irrelevant</string>
