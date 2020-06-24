@@ -61,7 +61,6 @@
     <!--    Tiles-->
     <string name="information_link">जानकारी का श्रोत</string>
     <string name="myth_busters_tile">मिथक</string>
-    <string name="social_distancing_tile">सोशल डिस्टन्सिंग</string>
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
     <string name="faqs_tile">सामान्य प्रश्न</string>
@@ -127,6 +126,7 @@
     <string name="language">भाषा</string>
     <string name="about_us">हमारे बारे में</string>
 
+    <string name="enter_text">लिखना प्रारम्भ करें</string>
 
 </resources>
 

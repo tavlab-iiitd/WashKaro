@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="@+id/precogLogo"
             app:srcCompat="@drawable/iiitd" />
 
-        <GridView
+        <in.srain.cube.views.GridViewWithHeaderAndFooter
             android:id="@+id/gridview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/precogLogo">
-        </GridView>
+        </in.srain.cube.views.GridViewWithHeaderAndFooter>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView"

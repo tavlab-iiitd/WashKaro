@@ -7,48 +7,41 @@
     tools:context=".about.aboutActivity">
 
     <ImageView
-        android:id="@+id/tbassnindiaLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="35dp"
+        android:id="@+id/tbcindia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="@string/tavlab_logo"
+        android:layout_marginRight="4dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/tbcindia"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/tbassnindia_logo" />
-
-    <ImageView
-        android:id="@+id/iiitdLogo"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="35dp"
-        android:contentDescription="@string/precog_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tbassnindiaLogo"
         app:srcCompat="@drawable/tbcindia_logo" />
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/tbassnindiaLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="4dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/tbass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tbassnindiaLogo">
-    </GridView>
+        app:layout_constraintTop_toBottomOf="@+id/tbcindia"
+        app:srcCompat="@drawable/tbassnindia_logo" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/about_bottom_margin"
-        android:text="@string/reference"
-
         android:fontFamily="@font/opensans_regular"
+
+        android:text="@string/reference"
         android:textColor="@color/app_light_black"
 
         android:textSize="@dimen/about_head"
