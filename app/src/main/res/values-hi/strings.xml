@@ -61,6 +61,8 @@
     <string name="social_distancing_tile">सोशल डिस्टन्सिंग</string>
     <string name="chatbot_tile">चैटबॉट</string>
     <string name="onair_tile">समाचार</string>
+    <string name="faqs_tile">सामान्य प्रश्न</string>
+    <string name="success_stories_tile">सफलता की कहानियां</string>
 
 
     <!--    SymptomActivity-->

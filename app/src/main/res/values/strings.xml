@@ -158,9 +158,10 @@
     <string name="information_link">Information Source</string>
     <string name="myth_busters_tile">Myth Busters</string>
     <string name="empty_stats" translatable="false">0</string>
-    <string name="social_distancing_tile">Social Distancer</string>
     <string name="chatbot_tile">Chatbot</string>
     <string name="onair_tile">onAIr</string>
+    <string name="faqs_tile">FAQs</string>
+    <string name="success_stories_tile">Success Stories</string>
 
     <!--    URL-->
     <string name="privacy_policy_url" translatable="false">https://tavlab.iiitd.edu.in/WashKaro/privacy_policy.html</string>
