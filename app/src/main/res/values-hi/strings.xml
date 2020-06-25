@@ -42,7 +42,6 @@
     <string name="chirag_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
 
     <string name="msg_subscribe_failed">संक्रमण विषय की सदस्यता लेने में विफल</string>
-    <string name="alert_message">चेतावनी! आप एक पुष्टि किए गए संक्रमण मामले के पास हैं</string>
     <string name="network_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="location_is_not_enabled">स्थान सक्षम नहीं है</string>
     <string name="show_location_setting">अपनी स्थान सेटिंग से स्थान सक्षम करें</string>
@@ -66,22 +65,12 @@
     <string name="faqs_tile">सामान्य प्रश्न</string>
     <string name="success_stories_tile">सफलता की कहानियां</string>
 
-
-    <!--    SymptomActivity-->
-    <string name="infection_is_present">आपको संक्रमण होने का संदेह है</string>
-    <string name="infection_is_not_present">आपको संक्रमण होने का संदेह नहीं है</string>
     <string name="play_audio">ऑडियो चलाएं</string>
 
     <string name="satya_chatbot">Satya चैटबोट</string>
-    <string name="you_are_unsafe">आप शायद जोखिम में हैं!</string>
-    <string name="you_are_safe">आप सुरक्षित है!</string>
-    <string name="symptom_tracker_content">त्वरित आत्म-मूल्यांकन के लिए इसका उपयोग करें।</string>
-    <string name="you_are_safe_content">संक्रमण का कम जोखिम।</string>
-    <string name="you_are_unsafe_content">कृपया सामाजिक दूरी बनाए रखें।</string>
     <string name="share_content">इस ऐप को परिवार और दोस्तों के साथ साझा करके रोगों के प्रसार को रोकने में मदद करें।</string>
     <string name="share_this_app">इस एप को शेयर कीजिए</string>
     <string name="cancel_btn">रद्द करें</string>
-    <string name="symptom_tracker">लक्षण ट्रैकर</string>
     <string name="pk">डॉ पोन्नुरंगम कुमारगुरु</string>
     <string name="pk_description">प्रोफेसर (CSE), IIIT दिल्ली</string>
     <string name="tav">डॉ तवप्रितेश सेठी</string>
