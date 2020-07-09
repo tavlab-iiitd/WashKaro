@@ -61,8 +61,6 @@
     <string name="cancel_btn">Cancel</string>
     <string name="share_this_app">Share this app</string>
     <string name="share_content">Help stop the spread of WASH diseases by sharing this app with family and friends.</string>
-    <string name="symptom_tracker">Symptom Tracker</string>
-    <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
 
     <!--    about-->
 
@@ -146,13 +144,8 @@
     <string name="myth_act">Myth Busters</string>
     <string name="faq_act">FAQs</string>
     <string name="success_stories_act">Success Stories</string>
-    <!--    <string name="sympotom_tracker_hi" translatable="false">लक्षण ट्रैकर</string>-->
 
     <string name="please_select_one_choice">Please select one choice</string>
-
-    <!--    SymptomActivity-->
-    <string name="infection_is_present">You are suspected of having an infection</string>
-    <string name="infection_is_not_present">You are not suspected of having an infection</string>
 
     <!--    Myths-->
     <string name="play_audio">Play Audio</string>
