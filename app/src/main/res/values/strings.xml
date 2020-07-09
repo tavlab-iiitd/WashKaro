@@ -55,7 +55,6 @@
 
     <string name="msg_subscribe_failed">Failed to subscribe to infectionAlert topic</string>
     <string name="fcm_message" translatable="false">WashKaro</string>
-    <string name="alert_message">Please maintain social distancing to keep you and your family safe</string>
     <string name="network_not_enabled">Location is not enabled</string>
     <string name="location_is_not_enabled">Location is not enabled</string>
     <string name="show_location_setting">Enable Location</string>
@@ -64,11 +63,6 @@
     <string name="share_content">Help stop the spread of WASH diseases by sharing this app with family and friends.</string>
     <string name="symptom_tracker">Symptom Tracker</string>
     <string name="symptom_tracker_content">Use this for a quick self-assessment.</string>
-
-    <string name="you_are_safe">You are safe!</string>
-    <string name="you_are_unsafe">You are maybe at risk!</string>
-    <string name="you_are_safe_content">Low risk of infection.</string>
-    <string name="you_are_unsafe_content">Please maintain social distancing.</string>
 
     <!--    about-->
 

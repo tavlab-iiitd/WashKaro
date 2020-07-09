@@ -13,8 +13,8 @@ android {
         applicationId "inspire2connect.inspire2connect"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 21
-        versionName "4.0"
+        versionCode 23
+        versionName "4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
