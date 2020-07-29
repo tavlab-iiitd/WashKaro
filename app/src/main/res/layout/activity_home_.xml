@@ -248,65 +248,65 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                            android:id="@+id/mohfw_ll5"-->
-<!--                            android:layout_width="100dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_marginStart="5dp"-->
-<!--                            android:layout_marginLeft="20dp"-->
-<!--                            android:layout_marginTop="10dp"-->
-<!--                            android:layout_marginEnd="5dp"-->
-<!--                            android:background="@drawable/buttonback2"-->
-<!--                            android:clipToPadding="false"-->
-<!--                            android:orientation="vertical">-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/mohfw_ll5"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/buttonback2"
+                            android:clipToPadding="false"
+                            android:orientation="vertical">
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/mohfw_tv5"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:clickable="false"-->
-<!--                                android:fontFamily="@font/mukta_medium"-->
-<!--                                android:maxLines="2"-->
-<!--                                android:ellipsize="none"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="@color/blackcolor"-->
-<!--                                android:textSize="@dimen/home_stat_text"-->
-<!--                                app:layout_constraintBottom_toTopOf="@+id/mohfw_data5"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+                            <TextView
+                                android:id="@+id/mohfw_tv5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:fontFamily="@font/mukta_medium"
+                                android:maxLines="2"
+                                android:ellipsize="none"
+                                android:textAlignment="center"
+                                android:textColor="@color/blackcolor"
+                                android:textSize="@dimen/home_stat_text"
+                                app:layout_constraintBottom_toTopOf="@id/mohfw_data5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/mohfw_data5"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:clickable="false"-->
-<!--                                android:text="@string/empty_stats"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="@color/app_blue"-->
-<!--                                android:fontFamily="@font/mukta_semibold"-->
-<!--                                android:textSize="@dimen/home_stat_val"-->
-<!--                                android:textStyle="bold"-->
-<!--                                app:layout_constraintBottom_toTopOf="@+id/mohfw_currency5"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent" />-->
+                            <TextView
+                                android:id="@+id/mohfw_data5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:text="@string/empty_stats"
+                                android:textAlignment="center"
+                                android:textColor="@color/app_blue"
+                                android:fontFamily="@font/mukta_semibold"
+                                android:textSize="@dimen/home_stat_val"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@id/mohfw_currency5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/mohfw_currency5"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:clickable="false"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="@color/app_blue"-->
-<!--                                android:textSize="@dimen/home_stat_text"-->
-<!--                                android:textStyle="bold"-->
-<!--                                android:fontFamily="@font/mukta_regular"-->
-<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent" />-->
+                            <TextView
+                                android:id="@+id/mohfw_currency5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:textAlignment="center"
+                                android:textColor="@color/app_blue"
+                                android:textSize="@dimen/home_stat_text"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/mukta_regular"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <!--                        <LinearLayout-->
                         <!--                            android:id="@+id/mohfw_ll1"-->

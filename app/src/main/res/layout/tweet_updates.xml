@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/Home_background_color"
+    tools:context=".tweets.tweetActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tweetView_updates"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/app_bar_bottom_margin" />
+
+
+</RelativeLayout>
