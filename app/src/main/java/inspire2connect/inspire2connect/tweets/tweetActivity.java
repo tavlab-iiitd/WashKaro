@@ -250,7 +250,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 break;
             case TWEETS:
                 databaseReference = tweetsReference;
-                getSupportActionBar().setTitle( R.string.tweets_tile);
+                getSupportActionBar().setTitle( R.string.social_media_title);
                 break;
             default:
                 Logv(TAG, "Invalid Intent");

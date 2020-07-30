@@ -174,7 +174,6 @@
     <string name="hello" translatable="false">Hello</string>
     <string name="enter_text">Enter Text</string>
     <string name="social_media_title">Twitter Analysis</string>
-    <string name="tweets_tile">Twitter Analysis</string>
     <string name="trending_tweets">Trending Tweets</string>
 
 </resources>
