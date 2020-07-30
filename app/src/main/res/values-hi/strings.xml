@@ -116,6 +116,8 @@
     <string name="about_us">हमारे बारे में</string>
 
     <string name="enter_text">लिखना प्रारम्भ करें</string>
+    <string name="social_media_title">ट्विटर विश्लेषण</string>
+    <string name="trending_tweets">ट्रेंडिंग ट्वीट्स</string>
 
 </resources>
 

@@ -153,7 +153,6 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
 
     @Override
     public boolean onSupportNavigateUp() {
-
         finish();
         return true;
     }

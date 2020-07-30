@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdateActivity;
+import inspire2connect.inspire2connect.tweets.tweetActivity;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class BaseActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference statsReference = FirebaseDatabase.getInstance("https://washkaro-stats.firebaseio.com").getReference();
     public static final DatabaseReference successStoriesReference = FirebaseDatabase.getInstance("https://washkaro-success.firebaseio.com").getReference();
     public static final DatabaseReference faqsReference = FirebaseDatabase.getInstance("https://washkaro-faq.firebaseio.com").getReference();
+    public static final DatabaseReference tweetsReference = FirebaseDatabase.getInstance ("https://washkaro-twitter.firebaseio.com").getReference ();
 
     // Firebase Analytics
     public static FirebaseAnalytics firebaseAnalytics;
@@ -45,6 +47,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final String MYTH = "2";
     public static final String FAQ = "3";
     public static final String SUCCESS_STORIES = "4";
+    public static final String TWEETS = "5";
     public static final String DATE = "D";
     public static final String DATE_YES = "1";
     public static final String DATE_NO = "0";
@@ -123,8 +126,8 @@ public class BaseActivity extends AppCompatActivity {
         return i;
     }
 
-    public static Intent getGuidelinesIntent(Activity activity) {
-        Intent i = new Intent(activity, UpdateActivity.class);
+    public static Intent getSocialAnalysisIntent(Activity activity) {
+        Intent i = new Intent(activity, tweetActivity.class);
         i.putExtra(TYPE, GUIDELINES);
         i.putExtra(DATE, DATE_NO);
         return i;
@@ -133,6 +136,13 @@ public class BaseActivity extends AppCompatActivity {
     public static Intent getMythIntent(Activity activity) {
         Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, MYTH);
+        i.putExtra(DATE, DATE_NO);
+        return i;
+    }
+
+    public static Intent getTwitterIntent(Activity activity) {
+        Intent i = new Intent(activity, tweetActivity.class);
+        i.putExtra(TYPE, TWEETS);
         i.putExtra(DATE, DATE_NO);
         return i;
     }

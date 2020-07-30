@@ -129,6 +129,10 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 databaseReference = successStoriesReference;
                 getSupportActionBar().setTitle(R.string.success_stories_tile);
                 break;
+            case TWEETS:
+                databaseReference = tweetsReference;
+                getSupportActionBar().setTitle( R.string.social_media_title);
+                break;
             default:
                 Logv(TAG, "Invalid Intent");
                 break;

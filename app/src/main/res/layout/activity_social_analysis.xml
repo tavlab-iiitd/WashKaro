@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Home_background_color"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ViewFlipper
+                    android:id="@+id/tweetViewFlipper_slide_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <ImageButton
+
+                    android:id="@+id/tweetFlipperLeft"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/arrow_left" />
+
+                <ImageButton
+                    android:id="@+id/tweetFlipperRight"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/right_arrow" />
+
+
+            </RelativeLayout>
+
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="2"
+                app:rowCount="2"
+                app:useDefaultMargins="true">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    android:orientation="vertical"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:layout_row="0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tweet_data_tile1"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev"
+                        app:layout_column="1"
+                        app:layout_row="0"
+                        android:layout_marginTop="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/tweet_data1"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_below="@+id/tweet_title1"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_title1"
+                             />
+                        <TextView
+                            android:id="@+id/tweet_Currencydata1"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:textSize="35sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_below="@+id/tweet_data1"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_data1"
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tweet_title1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_medium"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    android:orientation="vertical"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:layout_row="0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tweet_data_tile2"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev"
+                        app:layout_column="1"
+                        app:layout_row="0"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/tweet_data2"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/tweet_title2"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:textSize="25sp"
+                            android:textColor="@color/app_blue"
+                            android:clickable="false"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_title2"
+                            />
+                        <TextView
+                            android:id="@+id/tweet_Currencydata2"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:textSize="35sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_below="@+id/tweet_data2"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_data2"
+                            />
+
+                        <TextView
+                            android:id="@+id/tweet_title2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_medium"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    app:layout_gravity="fill_horizontal"
+                    app:layout_row="1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tweet_data_tile3"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/tweet_data3"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/tweet_title3"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_marginTop="6dp"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_title3"
+                             />
+
+                        <TextView
+                            android:id="@+id/tweet_Currencydata3"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:textSize="35sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_below="@+id/tweet_data3"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_data3"
+                            />
+
+                        <TextView
+                            android:id="@+id/tweet_title3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_medium"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    app:layout_gravity="fill_horizontal"
+                    app:layout_row="1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tweet_data_tile4"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/tweet_data4"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/tweet_title4"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="#FFFFFF"
+                            android:textSize="25sp"
+                            android:textColor="@color/app_blue"
+                            android:clickable="false"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_title4"
+                            />
+
+                        <TextView
+                            android:id="@+id/tweet_Currencydata4"
+                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:textSize="10sp"
+                            android:textColor="@color/app_blue"
+                            android:layout_below="@+id/tweet_data4"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:clickable="false"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:contentDescription="Card Image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tweet_data4"
+                            />
+
+                        <TextView
+                            android:id="@+id/tweet_title4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_medium"
+                            android:textAlignment="center"
+                            android:textColor="@color/blackcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tweet_list_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonback2"
+                android:backgroundTint="@color/app_blue"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev">
+                <TextView
+                    style="@android:style/Widget.Material.Light.ImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="@string/trending_tweets"
+                    android:textAlignment="center"
+                    android:textColor="@color/app_white"
+                    android:textSize="20sp"
+                    android:background="@color/app_blue"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tweets_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginTop="@dimen/app_bar_bottom_margin"
+                tools:layout_editor_absoluteX="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

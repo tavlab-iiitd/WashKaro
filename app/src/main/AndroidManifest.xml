@@ -37,6 +37,7 @@
         <!-- <activity android:name=".Infographic" /> -->
         <!-- <activity android:name=".daily_updates" /> -->
         <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
+        <activity android:name=".tweets.tweetActivity" />
         <activity android:name=".utils.urlActivity" />
 
         <service

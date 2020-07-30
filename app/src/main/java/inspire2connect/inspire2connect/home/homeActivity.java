@@ -43,6 +43,7 @@ import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.news.onAIrActivity;
+import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
@@ -110,8 +111,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[1] = findViewById(R.id.misc_but3_layout);
         ll_but[2] = findViewById(R.id.misc_but2_layout);
         ll_but[3] = findViewById(R.id.faqs_tile);
+        ll_but[4] = findViewById(R.id.mohfw_ll2);
+        ll_but[5] = findViewById(R.id.mohfw_ll3);
+        ll_but[6] = findViewById(R.id.mohfw_ll4);
+        ll_but[7] = findViewById(R.id.mohfw_ll5);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3};
+
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6 , 7};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -120,17 +126,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         mohfw_tv2 = findViewById(R.id.mohfw_tv2);
         mohfw_tv3 = findViewById(R.id.mohfw_tv3);
         mohfw_tv4 = findViewById(R.id.mohfw_tv4);
-//        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
+        mohfw_tv5 = findViewById(R.id.mohfw_tv5);
 
         mohfw_data2 = findViewById(R.id.mohfw_data2);
         mohfw_data3 = findViewById(R.id.mohfw_data3);
         mohfw_data4 = findViewById(R.id.mohfw_data4);
-//        mohfw_data5 = findViewById(R.id.mohfw_data5);
+        mohfw_data5 = findViewById(R.id.mohfw_data5);
 
         mohfw_currency2 = findViewById(R.id.mohfw_currency2);
         mohfw_currency3 = findViewById(R.id.mohfw_currency3);
         mohfw_currency4 = findViewById(R.id.mohfw_currency4);
-//        mohfw_currency5 = findViewById(R.id.mohfw_currency5);
+        mohfw_currency5 = findViewById(R.id.mohfw_currency5);
 
         anim1 = AnimationUtils.loadAnimation(this, R.anim.anim1);
         anim2 = AnimationUtils.loadAnimation(this, R.anim.anim2);
@@ -210,6 +216,14 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 i = getFAQsIntent(this);
                 startActivity(i);
                 break;
+            case R.id.mohfw_ll2:
+            case R.id.mohfw_ll3:
+            case R.id.mohfw_ll4:
+            case R.id.mohfw_ll5:
+                i = getTwitterIntent ( this );
+                startActivity(i);
+                break;
+
             default:
                 i = null;
                 break;
@@ -335,17 +349,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 mohfw_tv2.setText(stats.Fact1);
                 mohfw_tv3.setText(stats.Fact2);
                 mohfw_tv4.setText(stats.Fact3);
-//                mohfw_tv5.setText(stats.Fact4);
+                mohfw_tv5.setText(stats.Fact4);
 
                 mohfw_data2.setText(stats.Fact1_value);
                 mohfw_data3.setText(stats.Fact2_value);
                 mohfw_data4.setText(stats.Fact3_value);
-//                mohfw_data5.setText(stats.Fact4_value);
+                mohfw_data5.setText(stats.Fact4_value);
 
                 mohfw_currency2.setText(stats.Fact1_currency);
                 mohfw_currency3.setText(stats.Fact2_currency);
                 mohfw_currency4.setText(stats.Fact3_currency);
-//                mohfw_currency5.setText(stats.Fact4_currency);
+                mohfw_currency5.setText(stats.Fact4_currency);
 
             }
 
