@@ -93,6 +93,9 @@ public class WelcomeActivity extends BaseActivity {
         // Firebase Analytics
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         firebaseAnalytics.setCurrentScreen(this, this.getClass().getSimpleName(), null);
+        Bundle bundle = new Bundle();
+        bundle.putString("Screen", this.getClass().getSimpleName());
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         // Firebase Anonymous Auth
         firebaseAuth = FirebaseAuth.getInstance();
