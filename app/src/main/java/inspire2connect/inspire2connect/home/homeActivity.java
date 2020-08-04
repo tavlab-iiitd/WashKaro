@@ -30,6 +30,7 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -105,6 +106,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_home_);
         update_handle();
         initialize_view_flipper();
+
+        firebaseAnalytics.setCurrentScreen(this, this.getClass().getSimpleName(), null);
+        Bundle bundle = new Bundle();
+        bundle.putString("Screen", this.getClass().getSimpleName());
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
