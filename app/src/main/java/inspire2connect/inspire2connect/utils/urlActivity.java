@@ -22,6 +22,12 @@ public class urlActivity extends BaseActivity {
         url = intent.getStringExtra("url");
         String title = intent.getStringExtra("name");
 
+        //Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("WebPage_Title", title);
+        bundle.putString("WebPage_URL", url);
+        firebaseAnalytics.logEvent("Webpages", bundle);
+
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         webView = findViewById(R.id.web_view);

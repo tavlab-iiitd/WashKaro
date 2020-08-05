@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import inspire2connect.inspire2connect.R;
@@ -53,6 +54,16 @@ public class onAIrActivity extends BaseActivity {
         Intent i;
         switch (id){
             case R.id.lang_togg_butt:
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                if(Locale.getDefault().getLanguage().equals("en"))
+                    bundle.putString("Current_Language", "Hindi");
+                else if(Locale.getDefault().getLanguage().equals("hi"))
+                    bundle.putString("Current_Language", "English");
+
+                bundle.putString("Language_Change_Activity", "onAIr Activity");
+                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
                 toggleLang(this);
                 break;
             case R.id.Survey:

@@ -38,6 +38,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
@@ -107,9 +108,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         update_handle();
         initialize_view_flipper();
 
-        firebaseAnalytics.setCurrentScreen(this, this.getClass().getSimpleName(), null);
+        //Firebase Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
-        bundle.putString("Screen", this.getClass().getSimpleName());
+        bundle.putString("Screen", "Home Activity");
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
@@ -199,12 +201,20 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setInAnimation(anim1);
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
+                //Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("InfographicScroll", "Scrolled Left");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.flipperRight:
                 viewFlipper.stopFlipping();
                 viewFlipper.setInAnimation(anim2);
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
+                //Firebase Analytics
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("InfographicScroll", "Scrolled Right");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
                 break;
             case R.id.misc_but2_layout:
                 i = new Intent(homeActivity.this, ChatActivity.class);
@@ -253,6 +263,16 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Intent i = null;
         switch (id){
             case R.id.lang_togg_butt:
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                if(Locale.getDefault().getLanguage().equals("en"))
+                    bundle.putString("Current_Language", "Hindi");
+                else if(Locale.getDefault().getLanguage().equals("hi"))
+                    bundle.putString("Current_Language", "English");
+
+                bundle.putString("Language_Change_Activity", "Home Activity");
+                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
                 toggleLang(this);
                 break;
             case R.id.Survey:
@@ -341,6 +361,14 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
 
         String url = slideLists.get(i).InfoURL;
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
+
+        System.out.println(url);
+
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", url);
+        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+
         intnt.putExtra("image", url);
         startActivity(intnt);
     }

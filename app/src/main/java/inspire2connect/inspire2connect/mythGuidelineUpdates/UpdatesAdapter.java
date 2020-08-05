@@ -3,6 +3,7 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.text.Html;
@@ -23,6 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
+
+import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseAnalytics;
 
 public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHolder> {
     private static MyClickListener myClickListener;
@@ -56,6 +59,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         String share = shareBody.toString();
         //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("ArticleTitle", share);
+        firebaseAnalytics.logEvent("ArticleShared", bundle);
+
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
@@ -87,7 +96,13 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         holder.play_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("ArticleTitle", movie.getTitle());
+
                 if(isSpeaking) {
+                    // Firebase Analytics
+                    bundle.putString("ArticleAudioStatus", "Audio OFF");
                     if(tts.isSpeaking()) {
                         if(curPlaying!=null) {
                             curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -151,6 +166,8 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                         });
                     }
                 } else {
+                    // Firebase Analytics
+                    bundle.putString("ArticleAudioStatus", "Audio ON");
                     holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
                     tts.speak(movie.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
                     curPlaying = holder.play_pause;
@@ -180,6 +197,9 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                         }
                     });
                 }
+
+                // Firebase Analytics
+                firebaseAnalytics.logEvent("ArticleAudio", bundle);
             }
         });
     }

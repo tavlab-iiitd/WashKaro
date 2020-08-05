@@ -43,6 +43,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
@@ -297,6 +298,12 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
         String url = slideLists.get(i).tweetURL;
         Intent intnt = new Intent(tweetActivity.this, tweetInfoActivity.class);
+
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("Infographic_URL", url);
+        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+
         intnt.putExtra("image", url);
         startActivity(intnt);
     }
@@ -418,6 +425,16 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         Intent i = null;
         switch (id){
             case R.id.lang_togg_butt:
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                if(Locale.getDefault().getLanguage().equals("en"))
+                    bundle.putString("Current_Language", "Hindi");
+                else if(Locale.getDefault().getLanguage().equals("hi"))
+                    bundle.putString("Current_Language", "English");
+
+                bundle.putString("Language_Change_Activity", "Tweet Activity");
+                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
                 toggleLang(this);
                 break;
             case R.id.Survey:
@@ -474,12 +491,20 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.setInAnimation(anim1);
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
+                //Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("InfographicScroll", "Scrolled Left");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.tweetFlipperRight:
                 viewFlipper.stopFlipping();
                 viewFlipper.setInAnimation(anim2);
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
+                //Firebase Analytics
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("InfographicScroll", "Scrolled Right");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
                 break;
 
             default:
