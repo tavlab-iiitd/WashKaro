@@ -24,6 +24,7 @@ public class urlActivity extends BaseActivity {
 
         //Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("WebPage_Title", title);
         bundle.putString("WebPage_URL", url);
         firebaseAnalytics.logEvent("Webpages", bundle);

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import inspire2connect.inspire2connect.R;
 
 import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseAnalytics;
+import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseUser;
 
 
 public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecyclerViewAdapter.MyViewHolder> {
@@ -61,6 +62,7 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("ArticleTitle", share);
         firebaseAnalytics.logEvent("ArticleShared", bundle);
 
@@ -97,11 +99,9 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
                 bundle.putString("ArticleTitle", movie.getText());
+                bundle.putString("UID", firebaseUser.getUid());
 
                 if(isSpeaking) {
-                    // Firebase Analytics
-                    bundle.putString("ArticleAudioStatus", "Audio OFF");
-
                     if(tts.isSpeaking()) {
                         if(curPlaying!=null) {
                             curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -135,6 +135,9 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
                         });
                     }
                     if(curPlaying!=holder.play_pause) {
+                        // Firebase Analytics
+                        bundle.putString("ArticleAudioStatus", "Audio ON");
+
                         holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
                         tts.speak(movie.getText (), TextToSpeech.QUEUE_FLUSH, null);
                         curPlaying = holder.play_pause;

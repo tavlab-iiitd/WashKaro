@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import inspire2connect.inspire2connect.R;
 
 import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseAnalytics;
+import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseUser;
 
 public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHolder> {
     private static MyClickListener myClickListener;
@@ -62,6 +63,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("ArticleTitle", share);
         firebaseAnalytics.logEvent("ArticleShared", bundle);
 
@@ -98,6 +100,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
             public void onClick(View v) {
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("ArticleTitle", movie.getTitle());
 
                 if(isSpeaking) {
@@ -136,6 +139,9 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                         });
                     }
                     if(curPlaying!=holder.play_pause) {
+                        // Firebase Analytics
+                        bundle.putString("ArticleAudioStatus", "Audio ON");
+
                         holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
                         tts.speak(movie.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
                         curPlaying = holder.play_pause;
@@ -168,6 +174,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                 } else {
                     // Firebase Analytics
                     bundle.putString("ArticleAudioStatus", "Audio ON");
+
                     holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_pause_black_34dp));
                     tts.speak(movie.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
                     curPlaying = holder.play_pause;

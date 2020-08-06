@@ -149,6 +149,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", screenName);
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
@@ -190,6 +191,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
@@ -242,6 +244,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
 
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("Screen", screenName);
                 bundle.putString("ArticleTitle", result_from_adapter.get(position).getTitle());
                 bundle.putString("ArticleURL", result_from_adapter.get(position).getSource());

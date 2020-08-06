@@ -140,8 +140,8 @@ public class maleFemaleActivity extends BaseActivity {
         }
 
         //Firebase Analytics
-//        firebaseAnalytics.setCurrentScreen(this, "Survey Screen", null);
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Survey Screen");
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
@@ -247,6 +247,7 @@ public class maleFemaleActivity extends BaseActivity {
         if (id == R.id.lang_togg_butt) {
             // Firebase Analytics
             Bundle bundle = new Bundle();
+            bundle.putString("UID", firebaseUser.getUid());
             if(Locale.getDefault().getLanguage().equals("en"))
                 bundle.putString("Current_Language", "Hindi");
             else if(Locale.getDefault().getLanguage().equals("hi"))

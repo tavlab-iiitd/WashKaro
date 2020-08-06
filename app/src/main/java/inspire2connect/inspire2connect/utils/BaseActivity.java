@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.net.URI;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -117,6 +119,11 @@ public class BaseActivity extends AppCompatActivity {
         i.putExtra("url", activity.getString(R.string.privacy_policy_url));
         i.putExtra("name", activity.getString(R.string.privacy_policy));
         activity.startActivity(i);
+    }
+
+    public static String getURLEncoding(String surl) throws Exception{
+        URL u = new URL(surl);
+        return new URI(u.getProtocol(), u.getAuthority(), u.getPath(), u.getQuery(), u.getRef()).toString();
     }
 
     public static Intent getGovernmentIntent(Activity activity) {

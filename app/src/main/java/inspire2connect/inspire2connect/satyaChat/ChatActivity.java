@@ -55,8 +55,9 @@ public class ChatActivity extends BaseActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("ChatBot_Text", "Sent");
                 firebaseAnalytics.logEvent("ChatBot_Activity", bundle);
 
@@ -78,8 +79,8 @@ public class ChatActivity extends BaseActivity {
         sendRequest(requestQueue, hello);
 
         //Firebase Analytics
-//        firebaseAnalytics.setCurrentScreen(this, "Satya Chatbot Screen", null);
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Satya Chatbot Screen");
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 

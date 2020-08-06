@@ -99,6 +99,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "About Page");
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
@@ -110,6 +111,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
                 //Firebase Analytics
                 Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
                 bundle1.putString("Profile_Visited", elems[position].name);
                 firebaseAnalytics.logEvent("Profile_Visits", bundle1);
 
@@ -128,6 +130,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
                 //Firebase Analytics
                 Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
                 bundle1.putString("Reference_URL", url);
                 firebaseAnalytics.logEvent("References_Visited", bundle1);
 
@@ -143,6 +146,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
                 //Firebase Analytics
                 Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
                 bundle1.putString("Reference_URL", url);
                 firebaseAnalytics.logEvent("References_Visited", bundle1);
 
@@ -186,6 +190,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
 
         //Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("URL", url);
         firebaseAnalytics.logEvent("URLs_Visited", bundle);
 

@@ -282,7 +282,11 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                         float deltaX = downX - upX;
                         float deltaY = downY - upY;
                         if (deltaX == 0 && deltaY == 0) {
-                            onFlipperClicked();
+                            try {
+                                onFlipperClicked();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         return true;
@@ -292,7 +296,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         });
     }
 
-    public void onFlipperClicked() {
+    public void onFlipperClicked() throws Exception {
 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
@@ -301,7 +305,9 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
-        bundle.putString("Infographic_URL", url);
+        bundle.putString("UID", firebaseUser.getUid());
+        //Do URL Encoding
+//        bundle.putString("Infographic_URL", getURLEncoding(url));
         firebaseAnalytics.logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
@@ -427,6 +433,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
@@ -493,6 +500,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.showNext();
                 //Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("InfographicScroll", "Scrolled Left");
                 firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
                 break;
@@ -503,6 +511,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.showPrevious();
                 //Firebase Analytics
                 Bundle bundle2 = new Bundle();
+                bundle2.putString("UID", firebaseUser.getUid());
                 bundle2.putString("InfographicScroll", "Scrolled Right");
                 firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
                 break;

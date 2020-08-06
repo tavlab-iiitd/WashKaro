@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -48,6 +50,7 @@ import inspire2connect.inspire2connect.news.onAIrActivity;
 import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
+import okio.Utf8;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -111,6 +114,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         //Firebase Analytics
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Home Activity");
         firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
@@ -203,6 +207,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.showNext();
                 //Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("InfographicScroll", "Scrolled Left");
                 firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
                 break;
@@ -213,6 +218,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.showPrevious();
                 //Firebase Analytics
                 Bundle bundle2 = new Bundle();
+                bundle2.putString("UID", firebaseUser.getUid());
                 bundle2.putString("InfographicScroll", "Scrolled Right");
                 firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
                 break;
@@ -265,6 +271,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
@@ -345,7 +352,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                         float deltaX = downX - upX;
                         float deltaY = downY - upY;
                         if (deltaX == 0 && deltaY == 0) {
-                            onFlipperClicked();
+                            try {
+                                onFlipperClicked();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         return true;
@@ -355,18 +366,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
-    public void onFlipperClicked() {
+    public void onFlipperClicked() throws Exception {
 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).InfoURL;
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
 
-        System.out.println(url);
-
         // Firebase Analytics
         Bundle bundle = new Bundle();
-        bundle.putString("URL", url);
+        bundle.putString("UID", firebaseUser.getUid());
+        //Do URL Encoding
+//        bundle.putString("URL", url);
         firebaseAnalytics.logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);

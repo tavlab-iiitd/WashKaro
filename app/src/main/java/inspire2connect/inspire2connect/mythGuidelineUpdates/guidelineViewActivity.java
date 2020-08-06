@@ -116,6 +116,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
 
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("ArticleTitle", title);
                 bundle.putString("ArticleURL", redirect_url);
                 firebaseAnalytics.logEvent("ArticleSourceChecked", bundle);
@@ -136,6 +137,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
             public void onClick(View v) {
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 bundle.putString("ArticleTitle", title);
                 bundle.putString("ArticleURL", redirect_url);
 
@@ -147,9 +149,6 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
                     mTTS.stop();
                     detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_black_34dp));
                 } else {
-                    // Firebase Analytics
-                    bundle.putString("ArticleAudioStatus", "Audio ON");
-
                     mTTS.speak(title + " " + content, TextToSpeech.QUEUE_FLUSH, null);
                     isSpeaking = true;
                     detailed_play_button.setImageDrawable(getDrawable(R.drawable.ic_pause_black_34dp));
@@ -166,6 +165,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     public void share(String toShare) {
         // Firebase Analytics
         Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("ArticleTitle", title);
         firebaseAnalytics.logEvent("ArticleShared", bundle);
 

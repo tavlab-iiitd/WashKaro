@@ -56,6 +56,7 @@ public class onAIrActivity extends BaseActivity {
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
