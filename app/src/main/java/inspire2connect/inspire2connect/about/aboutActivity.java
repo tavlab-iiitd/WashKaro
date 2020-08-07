@@ -113,6 +113,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("UID", firebaseUser.getUid());
                 bundle1.putString("Profile_Visited", elems[position].name);
+                bundle1.putString("Profile_Visited_URL", Uri.encode(elems[position].url));
                 firebaseAnalytics.logEvent("Profile_Visits", bundle1);
 
                 i.setData(Uri.parse(url));
