@@ -338,28 +338,31 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void flipper_single_tap() {
-        viewFlipper.setOnTouchListener((view, motionEvent) -> {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    downX = motionEvent.getX();
-                    downY = motionEvent.getY();
-                    return true;
-                case MotionEvent.ACTION_UP:
-                    upX = motionEvent.getX();
-                    upY = motionEvent.getY();
-                    float deltaX = downX - upX;
-                    float deltaY = downY - upY;
-                    if (deltaX == 0 && deltaY == 0) {
-                        try {
-                            onFlipperClicked();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+        viewFlipper.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downX = motionEvent.getX();
+                        downY = motionEvent.getY();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        upX = motionEvent.getX();
+                        upY = motionEvent.getY();
+                        float deltaX = downX - upX;
+                        float deltaY = downY - upY;
+                        if (deltaX == 0 && deltaY == 0) {
+                            try {
+                                onFlipperClicked();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
 
-                    return true;
+                        return true;
+                }
+                return false;
             }
-            return false;
         });
     }
 
@@ -374,10 +377,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         //Do URL Encoding
-//        bundle.putString("URL", url);
+        bundle.putString("URL", Uri.encode(url));
         firebaseAnalytics.logEvent("Infographic_Selected", bundle);
 
-        intnt.putExtra("image", Uri.encode(url));
+        intnt.putExtra("image", url);
         startActivity(intnt);
     }
 
