@@ -3,6 +3,7 @@ package inspire2connect.inspire2connect.tweets;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
@@ -301,13 +302,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).tweetURL;
+        String code = slideLists.get(i).tweetCode;
         Intent intnt = new Intent(tweetActivity.this, tweetInfoActivity.class);
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
-        //Do URL Encoding
-//        bundle.putString("Infographic_URL", getURLEncoding(url));
+        bundle.putString("Tweet_Code", code);
         firebaseAnalytics.logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);

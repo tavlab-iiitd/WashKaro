@@ -371,13 +371,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).InfoURL;
+        String code = slideLists.get(i).Code;
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
 
         // Firebase Analytics
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
-        //Do URL Encoding
-        bundle.putString("URL", Uri.encode(url));
+        bundle.putString("Code", code);
         firebaseAnalytics.logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
