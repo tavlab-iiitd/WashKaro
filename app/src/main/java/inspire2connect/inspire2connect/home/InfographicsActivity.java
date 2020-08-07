@@ -44,6 +44,12 @@ public class InfographicsActivity extends BaseActivity {
 
         put_image(url);
 
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "Infographic Page");
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+
     }
 
     @Override
