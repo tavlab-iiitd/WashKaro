@@ -97,11 +97,25 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         precog.setOnClickListener(this);
         iiitd.setOnClickListener(this);
 
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "About Page");
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 String url = elems[position].url;
                 Intent i = new Intent(Intent.ACTION_VIEW);
+
+                //Firebase Analytics
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("Profile_Visited", elems[position].name);
+                bundle1.putString("Profile_Visited_URL", Uri.encode(elems[position].url));
+                firebaseAnalytics.logEvent("Profile_Visits", bundle1);
+
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
@@ -114,6 +128,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
             public void onClick(View view) {
                 String url = ctx.getString(R.string.tbassindia_web);
                 Intent i = new Intent(Intent.ACTION_VIEW);
+
+                //Firebase Analytics
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("Reference_URL", url);
+                firebaseAnalytics.logEvent("References_Visited", bundle1);
+
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
@@ -123,6 +144,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
             public void onClick(View view) {
                 String url = ctx.getString(R.string.tbcindia_web);
                 Intent i = new Intent(Intent.ACTION_VIEW);
+
+                //Firebase Analytics
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("Reference_URL", url);
+                firebaseAnalytics.logEvent("References_Visited", bundle1);
+
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
@@ -160,6 +188,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 url = getString(R.string.tavlabURL);
                 break;
         }
+
+        //Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("URL", url);
+        firebaseAnalytics.logEvent("URLs_Visited", bundle);
+
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);

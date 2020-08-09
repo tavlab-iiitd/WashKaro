@@ -55,6 +55,12 @@ public class ChatActivity extends BaseActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("ChatBot_Text", "Sent");
+                firebaseAnalytics.logEvent("ChatBot_Activity", bundle);
+
                 String txtToSend = sendText.getText().toString().trim();
                 items.add(new ChatElem(txtToSend, true));
                 sendRequest(requestQueue, txtToSend);
@@ -71,6 +77,13 @@ public class ChatActivity extends BaseActivity {
 //        items.add(new ChatElem(hello, true));
 //        updateListView();
         sendRequest(requestQueue, hello);
+
+        //Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "Satya Chatbot Screen");
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+
     }
 
     private void updateListView() {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,13 +31,16 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
@@ -46,6 +50,7 @@ import inspire2connect.inspire2connect.news.onAIrActivity;
 import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
+import okio.Utf8;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -106,6 +111,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         update_handle();
         initialize_view_flipper();
 
+        //Firebase Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "Home Activity");
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
         ll_but[1] = findViewById(R.id.misc_but3_layout);
@@ -115,7 +127,6 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[5] = findViewById(R.id.mohfw_ll3);
         ll_but[6] = findViewById(R.id.mohfw_ll4);
         ll_but[7] = findViewById(R.id.mohfw_ll5);
-
 
         int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6 , 7};
 
@@ -193,12 +204,22 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setInAnimation(anim1);
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
+                //Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("InfographicScroll", "Scrolled Left");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.flipperRight:
                 viewFlipper.stopFlipping();
                 viewFlipper.setInAnimation(anim2);
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
+                //Firebase Analytics
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("UID", firebaseUser.getUid());
+                bundle2.putString("InfographicScroll", "Scrolled Right");
+                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
                 break;
             case R.id.misc_but2_layout:
                 i = new Intent(homeActivity.this, ChatActivity.class);
@@ -247,6 +268,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Intent i = null;
         switch (id){
             case R.id.lang_togg_butt:
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
+                if(Locale.getDefault().getLanguage().equals("en"))
+                    bundle.putString("Current_Language", "Hindi");
+                else if(Locale.getDefault().getLanguage().equals("hi"))
+                    bundle.putString("Current_Language", "English");
+
+                bundle.putString("Language_Change_Activity", "Home Activity");
+                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
                 toggleLang(this);
                 break;
             case R.id.Survey:
@@ -319,7 +351,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                         float deltaX = downX - upX;
                         float deltaY = downY - upY;
                         if (deltaX == 0 && deltaY == 0) {
-                            onFlipperClicked();
+                            try {
+                                onFlipperClicked();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         return true;
@@ -329,12 +365,20 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
-    public void onFlipperClicked() {
+    public void onFlipperClicked() throws Exception {
 
         int i = viewFlipper.indexOfChild(viewFlipper.getCurrentView());
 
         String url = slideLists.get(i).InfoURL;
+        String code = slideLists.get(i).Code;
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
+
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Code", code);
+        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+
         intnt.putExtra("image", url);
         startActivity(intnt);
     }

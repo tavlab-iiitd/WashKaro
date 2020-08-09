@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
@@ -36,6 +38,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     private UpdatesAdapter mAdapter;
     private TextToSpeech tts;
     private boolean setDate;
+    private String screenName;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -112,22 +115,32 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
             case UPDATES:
                 databaseReference = governmentReference;
                 getSupportActionBar().setTitle(R.string.govt_updates_act);
+                screenName = "Government Updates";
                 break;
             case GUIDELINES:
                 databaseReference = guidelinesReference;
                 getSupportActionBar().setTitle(R.string.guidelines_act);
+                screenName = "Guidelines";
                 break;
             case MYTH:
                 databaseReference = mythReference;
                 getSupportActionBar().setTitle(R.string.myth_act);
+                screenName = "Myth Busters";
                 break;
             case FAQ:
                 databaseReference = faqsReference;
                 getSupportActionBar().setTitle(R.string.faqs_tile);
+                screenName = "FAQs";
                 break;
             case SUCCESS_STORIES:
                 databaseReference = successStoriesReference;
                 getSupportActionBar().setTitle(R.string.success_stories_tile);
+                screenName = "Success Stories";
+                break;
+            case TWEETS:
+                databaseReference = tweetsReference;
+                getSupportActionBar().setTitle( R.string.social_media_title);
+                screenName = "Twitter Analysis";
                 break;
             case TWEETS:
                 databaseReference = tweetsReference;
@@ -137,6 +150,12 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 Logv(TAG, "Invalid Intent");
                 break;
         }
+
+        // Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", screenName);
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         result = new ArrayList<>();
         result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under"));
@@ -174,6 +193,17 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         Intent i = null;
         switch (id){
             case R.id.lang_togg_butt:
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
+                if(Locale.getDefault().getLanguage().equals("en"))
+                    bundle.putString("Current_Language", "Hindi");
+                else if(Locale.getDefault().getLanguage().equals("hi"))
+                    bundle.putString("Current_Language", "English");
+
+                bundle.putString("Language_Change_Activity", screenName);
+                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
                 toggleLang(this);
                 break;
             case R.id.Survey:
@@ -215,6 +245,15 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 i.putExtra("detailed_text", result_from_adapter.get(position).getContent());
                 i.putExtra("url", "");
                 i.putExtra("redirect_url", result_from_adapter.get(position).getSource());
+
+                // Firebase Analytics
+                Bundle bundle = new Bundle();
+                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("Screen", screenName);
+                bundle.putString("ArticleTitle", result_from_adapter.get(position).getTitle());
+                bundle.putString("ArticleURL", result_from_adapter.get(position).getSource());
+                firebaseAnalytics.logEvent("ArticleSelected", bundle);
+
                 startActivity(i);
             }
         });

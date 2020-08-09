@@ -139,6 +139,12 @@ public class maleFemaleActivity extends BaseActivity {
                 break;
         }
 
+        //Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "Survey Screen");
+        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+
     }
 
     @Override
@@ -239,6 +245,17 @@ public class maleFemaleActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.lang_togg_butt) {
+            // Firebase Analytics
+            Bundle bundle = new Bundle();
+            bundle.putString("UID", firebaseUser.getUid());
+            if(Locale.getDefault().getLanguage().equals("en"))
+                bundle.putString("Current_Language", "Hindi");
+            else if(Locale.getDefault().getLanguage().equals("hi"))
+                bundle.putString("Current_Language", "English");
+
+            bundle.putString("Language_Change_Activity", "Survey Activity");
+            firebaseAnalytics.logEvent("Language_Toggle", bundle);
+
             toggleLang(this);
             switch_language();
 
