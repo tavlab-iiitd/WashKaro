@@ -2,6 +2,8 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
@@ -14,7 +16,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,6 @@ import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -91,9 +91,11 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_updates);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
 
         setDate = false;
 
@@ -141,10 +143,6 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 databaseReference = tweetsReference;
                 getSupportActionBar().setTitle( R.string.social_media_title);
                 screenName = "Twitter Analysis";
-                break;
-            case TWEETS:
-                databaseReference = tweetsReference;
-                getSupportActionBar().setTitle( R.string.social_media_title);
                 break;
             default:
                 Logv(TAG, "Invalid Intent");

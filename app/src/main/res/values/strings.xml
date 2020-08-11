@@ -175,5 +175,8 @@
     <string name="enter_text">Enter Text</string>
     <string name="social_media_title">Twitter Analysis</string>
     <string name="trending_tweets">Trending Tweets</string>
+    <string name="quiz_title">Quiz</string>
+    <string name="take_a_quiz">Take a Quiz</string>
+    <string name="twitter_analysis">Twitter Analysis</string>
 
 </resources>

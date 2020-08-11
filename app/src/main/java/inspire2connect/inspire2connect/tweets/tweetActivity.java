@@ -3,9 +3,8 @@ package inspire2connect.inspire2connect.tweets;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-
-import android.net.Uri;
-
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -39,28 +37,15 @@ import com.google.android.play.core.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Locale;
-
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
-import inspire2connect.inspire2connect.home.Infographics;
-import inspire2connect.inspire2connect.home.InfographicsActivity;
-import inspire2connect.inspire2connect.home.Stats;
-import inspire2connect.inspire2connect.home.homeActivity;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdatesAdapter;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.guidelineViewActivity;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.guidelinesObject;
-import inspire2connect.inspire2connect.mythGuidelineUpdates.updateObject;
-import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -166,9 +151,16 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_social_analysis);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+
         update_handle();
         initialize_view_flipper();
+
+
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.tweet_data_tile1);
@@ -183,7 +175,8 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
             ll_but[btnToAdd[i]].setOnClickListener(this);
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         mohfw_tv2 = findViewById(R.id.tweet_title1);
         mohfw_tv3 = findViewById(R.id.tweet_title2);

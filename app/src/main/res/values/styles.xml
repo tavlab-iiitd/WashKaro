@@ -9,8 +9,10 @@
         <!--item name="colorAccent">@color/colorAccent</item-->
         <item name="colorAccent">#1da1f2</item>
 
-<!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
-<!--        <item name="android:actionBarStyle">@style/MyActionBar</item>-->
+        <item name="android:background">@color/transparent</item>
+
+        <!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
+        <!--        <item name="android:actionBarStyle">@style/MyActionBar</item>-->
 
     </style>
 
@@ -22,10 +24,10 @@
 
     </style>
 
-<!--    <style name="MyActionBar.MenuTextStyle"-->
-<!--        parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">-->
-<!--        <item name="android:textColor">@color/app_light_black</item>-->
-<!--    </style>-->
+    <!--    <style name="MyActionBar.MenuTextStyle"-->
+    <!--        parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">-->
+    <!--        <item name="android:textColor">@color/app_light_black</item>-->
+    <!--    </style>-->
 
     <style name="MyActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/app_black</item>

@@ -6,7 +6,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class urlActivity extends BaseActivity {
     WebView webView;
@@ -16,6 +15,7 @@ public class urlActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_url);
 
         Intent intent = getIntent();

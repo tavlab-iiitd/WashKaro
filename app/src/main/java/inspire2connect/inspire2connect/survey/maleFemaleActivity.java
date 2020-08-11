@@ -68,6 +68,7 @@ public class maleFemaleActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_male__female);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        if (!prefManager.isFirstTimeLaunch())

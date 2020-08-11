@@ -1,8 +1,14 @@
 package inspire2connect.inspire2connect.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +25,7 @@ import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdateActivity;
+import inspire2connect.inspire2connect.quiz.quizActivity;
 import inspire2connect.inspire2connect.tweets.tweetActivity;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -34,6 +41,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference successStoriesReference = FirebaseDatabase.getInstance("https://washkaro-success.firebaseio.com").getReference();
     public static final DatabaseReference faqsReference = FirebaseDatabase.getInstance("https://washkaro-faq.firebaseio.com").getReference();
     public static final DatabaseReference tweetsReference = FirebaseDatabase.getInstance ("https://washkaro-twitter.firebaseio.com").getReference ();
+    public static final DatabaseReference quizReference = FirebaseDatabase.getInstance ("https://washkaro-quiz.firebaseio.com").getReference ();
 
     // Firebase Analytics
     public static FirebaseAnalytics firebaseAnalytics;
@@ -50,6 +58,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final String FAQ = "3";
     public static final String SUCCESS_STORIES = "4";
     public static final String TWEETS = "5";
+    public static final String QUIZ = "6";
     public static final String DATE = "D";
     public static final String DATE_YES = "1";
     public static final String DATE_NO = "0";
@@ -154,6 +163,15 @@ public class BaseActivity extends AppCompatActivity {
         return i;
     }
 
+    public static Intent getQuizIntent(Activity activity) {
+        Intent i = new Intent(activity, quizActivity.class);
+        i.putExtra(TYPE, QUIZ);
+        i.putExtra(DATE, DATE_NO);
+        return i;
+    }
+
+
+
     public static Intent getSuccessStoriesIntent(Activity activity) {
         Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, SUCCESS_STORIES);
@@ -166,6 +184,18 @@ public class BaseActivity extends AppCompatActivity {
         i.putExtra(TYPE, FAQ);
         i.putExtra(DATE, DATE_NO);
         return i;
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static void setStatusBarGradiant(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            Drawable background = activity.getResources().getDrawable(R.drawable.gradient_effect);
+            window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor( Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
+            window.setBackgroundDrawable(background);
+        }
     }
 
 }

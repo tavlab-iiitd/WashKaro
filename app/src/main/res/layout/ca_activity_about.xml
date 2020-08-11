@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/gradient_effect"
         tools:context=".about.aboutActivity">
 
         <ImageView
@@ -60,7 +61,7 @@
             android:text="@string/presented_to_you_by"
 
             android:fontFamily="@font/opensans_regular"
-            android:textColor="@color/app_light_black"
+            android:textColor="@color/app_white"
 
             android:textSize="@dimen/about_head"
             app:layout_constraintEnd_toEndOf="parent"

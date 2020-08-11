@@ -1,6 +1,8 @@
 package inspire2connect.inspire2connect.satyaChat;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -41,9 +43,11 @@ public class ChatActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.satya_chatbot);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         context = this;
         requestQueue = Volley.newRequestQueue(context);
 

@@ -3,8 +3,9 @@ package inspire2connect.inspire2connect.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,7 +38,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,11 +46,8 @@ import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
-import inspire2connect.inspire2connect.news.onAIrActivity;
-import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
-import okio.Utf8;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -107,9 +104,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_home_);
         update_handle();
         initialize_view_flipper();
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
 
         //Firebase Analytics
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -123,12 +123,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[1] = findViewById(R.id.misc_but3_layout);
         ll_but[2] = findViewById(R.id.misc_but2_layout);
         ll_but[3] = findViewById(R.id.faqs_tile);
-        ll_but[4] = findViewById(R.id.mohfw_ll2);
-        ll_but[5] = findViewById(R.id.mohfw_ll3);
-        ll_but[6] = findViewById(R.id.mohfw_ll4);
-        ll_but[7] = findViewById(R.id.mohfw_ll5);
+        ll_but[4] = findViewById(R.id.twitter_tile);
+        ll_but[5] = findViewById(R.id.quiz_tile);
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6 , 7};
+
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -237,12 +236,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 i = getFAQsIntent(this);
                 startActivity(i);
                 break;
-            case R.id.mohfw_ll2:
-            case R.id.mohfw_ll3:
-            case R.id.mohfw_ll4:
-            case R.id.mohfw_ll5:
+            case R.id.twitter_tile:
                 i = getTwitterIntent ( this );
                 startActivity(i);
+                break;
+            case R.id.quiz_tile:
+                i = getQuizIntent(this);
+                startActivity ( i );
                 break;
 
             default:
@@ -382,6 +382,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         intnt.putExtra("image", url);
         startActivity(intnt);
     }
+
 
     public void fetchset_facts() {
 

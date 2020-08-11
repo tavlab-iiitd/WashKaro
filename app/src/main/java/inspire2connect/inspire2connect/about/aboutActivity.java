@@ -2,25 +2,15 @@ package inspire2connect.inspire2connect.about;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 
@@ -72,17 +62,21 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         };
 
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant ( this );
         setContentView(R.layout.ca_activity_about);
 
 
         if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
             getActionBar().setTitle(getString(R.string.about_us));
+            getActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+
         }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(getString(R.string.about_us));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         }
 
         GridViewWithHeaderAndFooter gridView = findViewById(R.id.gridview);

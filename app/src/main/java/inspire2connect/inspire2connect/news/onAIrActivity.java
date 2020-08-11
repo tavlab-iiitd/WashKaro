@@ -2,6 +2,8 @@ package inspire2connect.inspire2connect.news;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +33,7 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class onAIrActivity extends BaseActivity {
+
     boolean flag = false;
     DatabaseReference ref;
     private RecyclerView mRecyclerView;
@@ -88,11 +91,13 @@ public class onAIrActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_on_air);
 
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.onair_tile);
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         }
 
         final ArrayList<newsObject> results = new ArrayList<>();

@@ -2,6 +2,8 @@ package inspire2connect.inspire2connect.mythGuidelineUpdates;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
@@ -84,11 +86,13 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_full_guideline_view);
         detailed_title = findViewById(R.id.detailed_title);
         detailed_title.setMovementMethod(LinkMovementMethod.getInstance());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         }
         detailed_text = findViewById(R.id.detailed_text);
         detailed_text.setMovementMethod(new ScrollingMovementMethod());
