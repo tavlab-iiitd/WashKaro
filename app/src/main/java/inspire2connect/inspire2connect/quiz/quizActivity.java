@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.preference.PreferenceManager;
+
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -104,20 +105,18 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
 
     private void setUpdates() {
-        quizReference.child("questions").addValueEventListener(new ValueEventListener() {
+        quizReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    questionObject obj = new questionObject (snapshot.child("question_"+ getCurLang()).getValue().toString(),snapshot.child("option1_"+ getCurLang ()).getValue().toString(),snapshot.child("option2_"+ getCurLang ()).getValue().toString(),snapshot.child("option3_"+ getCurLang ()).getValue().toString(),snapshot.child("option4_"+ getCurLang ()).getValue().toString(),Integer.valueOf ( snapshot.child ( "answer" ).getValue ().toString () ),snapshot.child("explanation_"+ getCurLang ()).getValue().toString(),snapshot.child("correct_attempts").getValue().toString (),snapshot.child("total_attempts").getValue().toString(), Integer.valueOf (snapshot.child ( "key" ).getValue ().toString ()  ));
+                    questionObject obj = new questionObject (snapshot.child("question_"+ getCurLang()).getValue().toString(),snapshot.child("option1_"+ getCurLang ()).getValue().toString(),snapshot.child("option2_"+ getCurLang ()).getValue().toString(),snapshot.child("option3_"+ getCurLang ()).getValue().toString(),snapshot.child("option4_"+ getCurLang ()).getValue().toString(),Integer.valueOf ( snapshot.child ( "answer" ).getValue ().toString () ),snapshot.child("explanation_"+ getCurLang ()).getValue().toString(),snapshot.child("correct_attempts").getValue().toString (),snapshot.child("total_attempts").getValue().toString(), snapshot.getKey (),snapshot.child ( "key" ).getValue(Integer.class)  );
 
                     result.add(new questionObject (obj.question,
-                            obj.option1,obj.option2,obj.option3,obj.option4, obj.answer,obj.explanation,obj.correct_attempts,obj.total_attempts, obj.key));
+                            obj.option1,obj.option2,obj.option3,obj.option4, obj.answer,obj.explanation,obj.correct_attempts,obj.total_attempts, obj.id, obj.key));
                 }
 
                 selectQuestionSet(result);
-
-                setQuestion();
 
                 loadingDialog.dismiss();
             }
@@ -130,7 +129,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void setQuestion(){
-        timer.setText ( String.valueOf ( 30 ) );
+        timer.setText (String.valueOf(30));
 
         question.setText ( selected_questions.get(0).getQuestion () );
         option1_text.setText ( selected_questions.get(0).getOption1 () );
@@ -206,7 +205,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         String type = i.getStringExtra(TYPE);
         String date = i.getStringExtra(DATE);
 
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
         SharedPreferences.Editor editor = sharedPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(seen_questions);
@@ -257,8 +256,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
 
-        result = new ArrayList<>();
-        result.add(new questionObject ("No Question Available", "No Option Available","No Option Available","No Option Available","No Option Available",0,"No Data Available","No Data Available","No Data Available", 0));
+//        result = new ArrayList<>();
+//        result.add(new questionObject ("No Question Available", "No Option Available","No Option Available","No Option Available","No Option Available",0,"No Data Available","No Data Available","No Data Available", "No Data Available",0));
 
         setUpdates();
 
@@ -289,8 +288,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
             default:
 
         }
-            countDown.cancel ();
-            checkAnswer(selectedOption, view);
+        countDown.cancel ();
+        checkAnswer(selectedOption, view);
     }
 
     private void checkAnswer(int selectedOption, View view)
@@ -300,6 +299,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         {
             //Right Answer
             (view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            quizReference.child ( selected_questions.get ( quesNum ).getId () ).child("correct_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getCorrect_attempts ())+1 ));
+            quizReference.child ( selected_questions.get ( quesNum ).getId () ).child("total_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getTotal_attempts ())+1 ));
             score++;
 
         }
@@ -307,6 +308,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         {
             //Wrong Answer
             (view).setBackgroundTintList(ColorStateList.valueOf( Color.RED));
+
+            quizReference.child ( selected_questions.get ( quesNum ).getId() ).child("total_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getTotal_attempts ())+1 ));
 
             switch (selected_questions.get(quesNum).getAnswer ())
             {
@@ -328,12 +331,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         }
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                changeQuestion();
-            }
-        }, 2000);
+        handler.postDelayed( () -> changeQuestion(), 2000);
 
 
 
@@ -353,7 +351,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
             qCount.setText(String.valueOf(quesNum+1) + "/" + String.valueOf(selected_questions.size()));
 
-            timer.setText(String.valueOf(10));
+            timer.setText(String.valueOf(30));
             startTimer();
 
         }
@@ -440,15 +438,21 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
 
     public void selectQuestionSet(ArrayList<questionObject> result){
-        selected_questions.clear();
+
+        try {
+            selected_questions.clear();
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
+
         Collections.sort(result);
         for (questionObject object: result) {
-            if(selected_questions.size () < 4 && checkUsage(object.key) && checkLimit()){
+            if(selected_questions.size () < 5 && checkUsage(object.key) && checkLimit()){
                 //display the question
                 //append key to stored list
                 selected_questions.add (object);
                 seen_questions.add(object);
-                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+                SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(seen_questions);
@@ -456,22 +460,24 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
                 editor.commit();
 
             }
-            else if(selected_questions.size() < 4 && !checkLimit ()) {
+            else if(selected_questions.size() < 5 && !checkLimit()) {
                 seen_questions.clear();
                 selectQuestionSet(result);
             }
 
-            else if(selected_questions.size () == 4){
+            if(selected_questions.size () == 5){
                 break;
             }
 
 
         }
+
+        setQuestion ();
     }
 
     public boolean checkUsage(int key){
         //Check whether key already used or not here
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
         Gson gson = new Gson();
         String json = sharedPrefs.getString(seen_questions_tag, "");
         Type type = new TypeToken<List<questionObject>> () {}.getType();

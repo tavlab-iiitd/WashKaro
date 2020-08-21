@@ -10,10 +10,11 @@ public class questionObject implements Comparable<questionObject>{
     public String explanation;
     public String correct_attempts;
     public String total_attempts;
+    public String id;
     public int key;
 
 
-    public questionObject(String question, String option1, String option2, String option3, String option4, int answer, String explanation, String correct_attempts, String total_attempts, int key) {
+    public questionObject(String question, String option1, String option2, String option3, String option4, int answer, String explanation, String correct_attempts, String total_attempts, String id,int key) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
@@ -23,6 +24,7 @@ public class questionObject implements Comparable<questionObject>{
         this.explanation = explanation;
         this.correct_attempts = correct_attempts;
         this.total_attempts = total_attempts;
+        this.id = id;
         this.key = key ;
 
     }
@@ -61,6 +63,10 @@ public class questionObject implements Comparable<questionObject>{
 
     public String getTotal_attempts() {
         return total_attempts;
+    }
+
+    public String getId(){
+        return id;
     }
 
     public int getKey() {
