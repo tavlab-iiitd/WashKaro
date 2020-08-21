@@ -1,6 +1,6 @@
 package inspire2connect.inspire2connect.quiz;
 
-public class questionObject implements Comparable<questionObject>{
+public class questionObject implements Comparable<questionObject> {
     public String question;
     public String option1;
     public String option2;
@@ -14,7 +14,7 @@ public class questionObject implements Comparable<questionObject>{
     public int key;
 
 
-    public questionObject(String question, String option1, String option2, String option3, String option4, int answer, String explanation, String correct_attempts, String total_attempts, String id,int key) {
+    public questionObject(String question, String option1, String option2, String option3, String option4, int answer, String explanation, String correct_attempts, String total_attempts, String id, int key) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
@@ -23,9 +23,12 @@ public class questionObject implements Comparable<questionObject>{
         this.answer = answer;
         this.explanation = explanation;
         this.correct_attempts = correct_attempts;
+        if (correct_attempts.equals("")) this.correct_attempts = "0";
         this.total_attempts = total_attempts;
+        if (total_attempts.equals("")) this.total_attempts = "0";
         this.id = id;
-        this.key = key ;
+        if (id.equals("")) this.id = "0";
+        this.key = key;
 
     }
 
@@ -49,7 +52,7 @@ public class questionObject implements Comparable<questionObject>{
         return option4;
     }
 
-    public int getAnswer(){
+    public int getAnswer() {
         return answer;
     }
 
@@ -65,7 +68,7 @@ public class questionObject implements Comparable<questionObject>{
         return total_attempts;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
@@ -74,10 +77,25 @@ public class questionObject implements Comparable<questionObject>{
     }
 
     @Override
-    public int compareTo(questionObject comparestu) {
-        float compareRatio= Integer.valueOf(((questionObject)comparestu).getCorrect_attempts ())/Integer.valueOf(((questionObject)comparestu).getTotal_attempts ());
+    public int compareTo(questionObject toCompare) {
 
-        return Float.compare(compareRatio,  Integer.valueOf(this.total_attempts)/Integer.valueOf( this.total_attempts ) );
+        float ratio;
+
+        if (Integer.parseInt(toCompare.getTotal_attempts()) > 0) {
+            ratio = Float.parseFloat(toCompare.getCorrect_attempts());
+        } else {
+            ratio = Float.parseFloat(toCompare.getCorrect_attempts()) / Float.parseFloat(toCompare.getTotal_attempts());
+        }
+
+        float myRatio;
+
+        if (Integer.parseInt(toCompare.getTotal_attempts()) > 0) {
+            myRatio = Float.parseFloat(this.getCorrect_attempts());
+        } else {
+            myRatio = Float.parseFloat(this.getCorrect_attempts()) / Float.parseFloat(this.getTotal_attempts());
+        }
+
+        return Float.compare(ratio, myRatio);
 
     }
 }

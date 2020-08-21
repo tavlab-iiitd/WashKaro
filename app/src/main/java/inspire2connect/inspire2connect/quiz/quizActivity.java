@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
@@ -20,7 +21,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -39,15 +39,17 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class quizActivity extends BaseActivity implements View.OnClickListener{
+public class quizActivity extends BaseActivity implements View.OnClickListener {
     private static final int MY_REQUEST_CODE = 2399;
-    TextView question, option1_text, option2_text, option3_text, option4_text,qCount,timer;
+    TextView question, option1_text, option2_text, option3_text, option4_text, qCount, timer;
     ConstraintLayout[] options = new ConstraintLayout[4];
     public static final String TAG = "QuizActivity";
     public static final String seen_questions_tag = "QuestionsShown";
@@ -65,7 +67,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo> () {
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo appUpdateInfo) {
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
@@ -100,7 +102,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext( LocaleHelper.onAttach(newBase));
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
 
@@ -109,16 +111,30 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    questionObject obj = new questionObject (snapshot.child("question_"+ getCurLang()).getValue().toString(),snapshot.child("option1_"+ getCurLang ()).getValue().toString(),snapshot.child("option2_"+ getCurLang ()).getValue().toString(),snapshot.child("option3_"+ getCurLang ()).getValue().toString(),snapshot.child("option4_"+ getCurLang ()).getValue().toString(),Integer.valueOf ( snapshot.child ( "answer" ).getValue ().toString () ),snapshot.child("explanation_"+ getCurLang ()).getValue().toString(),snapshot.child("correct_attempts").getValue().toString (),snapshot.child("total_attempts").getValue().toString(), snapshot.getKey (),snapshot.child ( "key" ).getValue(Integer.class)  );
 
-                    result.add(new questionObject (obj.question,
-                            obj.option1,obj.option2,obj.option3,obj.option4, obj.answer,obj.explanation,obj.correct_attempts,obj.total_attempts, obj.id, obj.key));
+                if(dataSnapshot.exists()) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        questionObject obj;
+                        obj = new questionObject(Objects.requireNonNull(snapshot.child("question_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("option1_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("option2_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("option3_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("option4_" + getCurLang()).getValue()).toString(),
+                                Integer.parseInt(Objects.requireNonNull(snapshot.child("answer").getValue()).toString()),
+                                Objects.requireNonNull(snapshot.child("explaination_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("correct_attempts").getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("total_attempts").getValue()).toString(),
+                                snapshot.getKey(),
+                                Integer.parseInt(Objects.requireNonNull(snapshot.child("key").getValue()).toString()));
+
+                        result.add(new questionObject(obj.question,
+                                obj.option1, obj.option2, obj.option3, obj.option4, obj.answer, obj.explanation, obj.correct_attempts, obj.total_attempts, obj.id, obj.key));
+                    }
+                    selectQuestionSet(result);
+
+                    loadingDialog.dismiss();
                 }
-
-                selectQuestionSet(result);
-
-                loadingDialog.dismiss();
             }
 
             @Override
@@ -128,28 +144,27 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         });
     }
 
-    private void setQuestion(){
-        timer.setText (String.valueOf(30));
+    private void setQuestion() {
+        timer.setText(String.valueOf(30));
 
-        question.setText ( selected_questions.get(0).getQuestion () );
-        option1_text.setText ( selected_questions.get(0).getOption1 () );
-        option2_text.setText ( selected_questions.get(0).getOption2 () );
-        option3_text.setText ( selected_questions.get(0).getOption3 () );
-        option4_text.setText ( selected_questions.get(0).getOption4 () );
+        question.setText(selected_questions.get(0).getQuestion());
+        option1_text.setText(selected_questions.get(0).getOption1());
+        option2_text.setText(selected_questions.get(0).getOption2());
+        option3_text.setText(selected_questions.get(0).getOption3());
+        option4_text.setText(selected_questions.get(0).getOption4());
 
         qCount.setText(String.valueOf(1) + "/" + String.valueOf(selected_questions.size()));
 
         startTimer();
 
-        quesNum = 0 ;
+        quesNum = 0;
     }
 
-    private void startTimer()
-    {
-        countDown = new CountDownTimer (32000, 1000) {
+    private void startTimer() {
+        countDown = new CountDownTimer(32000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if(millisUntilFinished < 30000)
+                if (millisUntilFinished < 30000)
                     timer.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -164,48 +179,47 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusBarGradiant ( this );
-        setContentView( R.layout.quiz_activity);
+        setStatusBarGradiant(this);
+        setContentView(R.layout.quiz_activity);
 
-        question = findViewById ( R.id.question_text );
-        qCount = findViewById ( R.id.quest_num );
+        question = findViewById(R.id.question_text);
+        qCount = findViewById(R.id.quest_num);
         timer = findViewById(R.id.countdown);
 
-        option1_text = findViewById ( R.id.option_1_text );
-        option2_text = findViewById ( R.id.option_2_text );
-        option3_text = findViewById ( R.id.option_3_text );
-        option4_text = findViewById ( R.id.option_4_text );
+        option1_text = findViewById(R.id.option_1_text);
+        option2_text = findViewById(R.id.option_2_text);
+        option3_text = findViewById(R.id.option_3_text);
+        option4_text = findViewById(R.id.option_4_text);
 
-        options[0] = findViewById ( R.id.option_1_tile );
-        options[0].setOnClickListener ( this );
-        options[1] = findViewById ( R.id.option_2_tile );
-        options[1].setOnClickListener ( this );
-        options[2] = findViewById ( R.id.option_3_tile );
-        options[2].setOnClickListener ( this );
-        options[3] = findViewById ( R.id.option_4_tile );
-        options[3].setOnClickListener ( this );
+        options[0] = findViewById(R.id.option_1_tile);
+        options[0].setOnClickListener(this);
+        options[1] = findViewById(R.id.option_2_tile);
+        options[1].setOnClickListener(this);
+        options[2] = findViewById(R.id.option_3_tile);
+        options[2].setOnClickListener(this);
+        options[3] = findViewById(R.id.option_4_tile);
+        options[3].setOnClickListener(this);
 
         loadingDialog = new Dialog(quizActivity.this);
         loadingDialog.setContentView(R.layout.loading_progressbar);
         loadingDialog.setCancelable(false);
         loadingDialog.getWindow().setBackgroundDrawableResource(R.drawable.progress_background);
-        loadingDialog.getWindow().setLayout( ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         loadingDialog.show();
 
         setDate = false;
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable( Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Intent i = getIntent();
 
         String type = i.getStringExtra(TYPE);
         String date = i.getStringExtra(DATE);
 
-        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = sharedPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(seen_questions);
@@ -244,12 +258,12 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case TWEETS:
                 databaseReference = tweetsReference;
-                getSupportActionBar().setTitle( R.string.social_media_title);
+                getSupportActionBar().setTitle(R.string.social_media_title);
                 break;
             case QUIZ:
                 databaseReference = quizReference;
-                getSupportActionBar ().setTitle (getString( R.string.quiz_title));
-                getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+                getSupportActionBar().setTitle(getString(R.string.quiz_title));
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 break;
             default:
                 Logv(TAG, "Invalid Intent");
@@ -268,53 +282,48 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        int selectedOption = 0 ;
+        int selectedOption = 0;
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
-            case R.id.option_1_tile :
+            case R.id.option_1_tile:
                 selectedOption = 1;
                 break;
-            case R.id.option_2_tile :
+            case R.id.option_2_tile:
                 selectedOption = 2;
                 break;
-            case R.id.option_3_tile :
+            case R.id.option_3_tile:
                 selectedOption = 3;
                 break;
-            case R.id.option_4_tile :
+            case R.id.option_4_tile:
                 selectedOption = 4;
                 break;
 
             default:
 
         }
-        countDown.cancel ();
+        countDown.cancel();
         checkAnswer(selectedOption, view);
     }
 
-    private void checkAnswer(int selectedOption, View view)
-    {
+    private void checkAnswer(int selectedOption, View view) {
 
-        if(selectedOption == selected_questions.get(quesNum).getAnswer())
-        {
+        if (selectedOption == selected_questions.get(quesNum).getAnswer()) {
             //Right Answer
             (view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            quizReference.child ( selected_questions.get ( quesNum ).getId () ).child("correct_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getCorrect_attempts ())+1 ));
-            quizReference.child ( selected_questions.get ( quesNum ).getId () ).child("total_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getTotal_attempts ())+1 ));
+            quizReference.child(selected_questions.get(quesNum).getId()).child("correct_attempts").setValue(String.valueOf(Integer.valueOf(selected_questions.get(quesNum).getCorrect_attempts()) + 1));
+            quizReference.child(selected_questions.get(quesNum).getId()).child("total_attempts").setValue(String.valueOf(Integer.valueOf(selected_questions.get(quesNum).getTotal_attempts()) + 1));
             score++;
 
-        }
-        else
-        {
+        } else {
             //Wrong Answer
-            (view).setBackgroundTintList(ColorStateList.valueOf( Color.RED));
+            (view).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-            quizReference.child ( selected_questions.get ( quesNum ).getId() ).child("total_attempts").setValue( String.valueOf (Integer.valueOf (selected_questions.get ( quesNum ).getTotal_attempts ())+1 ));
+            quizReference.child(selected_questions.get(quesNum).getId()).child("total_attempts").setValue(String.valueOf(Integer.valueOf(selected_questions.get(quesNum).getTotal_attempts()) + 1));
 
-            switch (selected_questions.get(quesNum).getAnswer ())
-            {
+            switch (selected_questions.get(quesNum).getAnswer()) {
                 case 1:
-                    options[0].setBackgroundTintList( ColorStateList.valueOf(Color.GREEN));
+                    options[0].setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     break;
                 case 2:
                     options[1].setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
@@ -331,34 +340,29 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         }
 
         Handler handler = new Handler();
-        handler.postDelayed( () -> changeQuestion(), 2000);
-
+        handler.postDelayed(() -> changeQuestion(), 2000);
 
 
     }
 
-    private void changeQuestion()
-    {
-        if( quesNum < selected_questions.size() - 1)
-        {
+    private void changeQuestion() {
+        if (quesNum < selected_questions.size() - 1) {
             quesNum++;
 
-            playAnim(question,0,0);
-            playAnim(option1_text,0,1);
-            playAnim(option2_text,0,2);
-            playAnim(option3_text,0,3);
-            playAnim(option4_text,0,4);
+            playAnim(question, 0, 0);
+            playAnim(option1_text, 0, 1);
+            playAnim(option2_text, 0, 2);
+            playAnim(option3_text, 0, 3);
+            playAnim(option4_text, 0, 4);
 
-            qCount.setText(String.valueOf(quesNum+1) + "/" + String.valueOf(selected_questions.size()));
+            qCount.setText(String.valueOf(quesNum + 1) + "/" + String.valueOf(selected_questions.size()));
 
             timer.setText(String.valueOf(30));
             startTimer();
 
-        }
-        else
-        {
+        } else {
             // Go to Score Activity
-            Intent intent = new Intent(quizActivity.this,scoreActivity.class);
+            Intent intent = new Intent(quizActivity.this, scoreActivity.class);
             intent.putExtra("SCORE", String.valueOf(score) + "/" + String.valueOf(selected_questions.size()));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -368,11 +372,10 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
     }
 
-    private void playAnim(final View view, final int value, final int viewNum)
-    {
+    private void playAnim(final View view, final int value, final int viewNum) {
 
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
-                .setStartDelay(100).setInterpolator(new DecelerateInterpolator ())
+                .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
@@ -381,34 +384,32 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if(value == 0)
-                        {
-                            switch (viewNum)
-                            {
+                        if (value == 0) {
+                            switch (viewNum) {
                                 case 0:
-                                    ((TextView)view).setText(selected_questions.get(quesNum).getQuestion());
+                                    ((TextView) view).setText(selected_questions.get(quesNum).getQuestion());
                                     break;
                                 case 1:
-                                    ((TextView)view).setText(selected_questions.get(quesNum).getOption1 ());
+                                    ((TextView) view).setText(selected_questions.get(quesNum).getOption1());
                                     break;
                                 case 2:
-                                    ((TextView)view).setText(selected_questions.get(quesNum).getOption2 ());
+                                    ((TextView) view).setText(selected_questions.get(quesNum).getOption2());
                                     break;
                                 case 3:
-                                    ((TextView)view).setText(selected_questions.get(quesNum).getOption3 ());
+                                    ((TextView) view).setText(selected_questions.get(quesNum).getOption3());
                                     break;
                                 case 4:
-                                    ((TextView)view).setText(selected_questions.get(quesNum).getOption4 ());
+                                    ((TextView) view).setText(selected_questions.get(quesNum).getOption4());
                                     break;
 
                             }
 
 
-                            if(viewNum != 0)
+                            if (viewNum != 0)
                                 (view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E99C03")));
 
 
-                            playAnim(view,1,viewNum);
+                            playAnim(view, 1, viewNum);
 
                         }
 
@@ -435,68 +436,67 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
-
-
-    public void selectQuestionSet(ArrayList<questionObject> result){
+    public void selectQuestionSet(ArrayList<questionObject> result) {
 
         try {
             selected_questions.clear();
         } catch (Exception e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
 
         Collections.sort(result);
-        for (questionObject object: result) {
-            if(selected_questions.size () < 5 && checkUsage(object.key) && checkLimit()){
+        for (questionObject object : result) {
+            if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
                 //display the question
                 //append key to stored list
-                selected_questions.add (object);
+                selected_questions.add(object);
                 seen_questions.add(object);
-                SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+                SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(seen_questions);
                 editor.putString(seen_questions_tag, json);
                 editor.commit();
 
-            }
-            else if(selected_questions.size() < 5 && !checkLimit()) {
+            } else if (selected_questions.size() < 5 && !checkLimit()) {
                 seen_questions.clear();
                 selectQuestionSet(result);
             }
 
-            if(selected_questions.size () == 5){
+            if (selected_questions.size() == 5) {
                 break;
             }
 
 
         }
 
-        setQuestion ();
+        setQuestion();
     }
 
-    public boolean checkUsage(int key){
+    public boolean checkUsage(int key) {
         //Check whether key already used or not here
-        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = sharedPrefs.getString(seen_questions_tag, "");
-        Type type = new TypeToken<List<questionObject>> () {}.getType();
+        Type type = new TypeToken<List<questionObject>>() {
+        }.getType();
         List<questionObject> arrayList = gson.fromJson(json, type);
-        for (questionObject object : arrayList){
-            if (object.key == key){
+        for (questionObject object : arrayList) {
+            if (object.key == key) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean checkLimit(){
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext ());
+    public boolean checkLimit() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = sharedPrefs.getString(seen_questions_tag, "");
-        Type type = new TypeToken<List<questionObject>> () {}.getType();
+        Type type = new TypeToken<List<questionObject>>() {
+        }.getType();
         List<questionObject> arrayList = gson.fromJson(json, type);
-        if(arrayList.size() > 95){
+        if (arrayList.size() > 95) {
             return false;
         }
         return true;
