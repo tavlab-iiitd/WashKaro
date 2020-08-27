@@ -36,6 +36,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,6 +66,9 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     private int quesNum;
     private int score;
     private boolean setDate;
+    private SharedPreferences mPrefs;
+
+    private static SharedPreferences.Editor editor;
 
 
     public void update_handle() {
@@ -122,7 +129,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
                                 Objects.requireNonNull(snapshot.child("option3_" + getCurLang()).getValue()).toString(),
                                 Objects.requireNonNull(snapshot.child("option4_" + getCurLang()).getValue()).toString(),
                                 Integer.parseInt(Objects.requireNonNull(snapshot.child("answer").getValue()).toString()),
-                                Objects.requireNonNull(snapshot.child("explaination_" + getCurLang()).getValue()).toString(),
+                                Objects.requireNonNull(snapshot.child("explanation_" + getCurLang()).getValue()).toString(),
                                 Objects.requireNonNull(snapshot.child("correct_attempts").getValue()).toString(),
                                 Objects.requireNonNull(snapshot.child("total_attempts").getValue()).toString(),
                                 snapshot.getKey(),
@@ -212,19 +219,20 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         setDate = false;
 
+
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+        mPrefs = getPreferences(MODE_PRIVATE);
+        editor = mPrefs.edit();
 
         Intent i = getIntent();
 
         String type = i.getStringExtra(TYPE);
         String date = i.getStringExtra(DATE);
 
-        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(seen_questions);
-        editor.putString(seen_questions_tag, json);
-        editor.commit();
 
         switch (date) {
             case DATE_YES:
@@ -446,26 +454,25 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         Collections.sort(result);
         for (questionObject object : result) {
-            if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
-                //display the question
-                //append key to stored list
-                selected_questions.add(object);
-                seen_questions.add(object);
-                SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor = sharedPrefs.edit();
-                Gson gson = new Gson();
-                String json = gson.toJson(seen_questions);
-                editor.putString(seen_questions_tag, json);
-                editor.commit();
 
-            } else if (selected_questions.size() < 5 && !checkLimit()) {
-                seen_questions.clear();
-                selectQuestionSet(result);
-            }
+                if (((selected_questions == null) ? 0 : selected_questions.size()) < 5 && checkUsage(object.key) && checkLimit()) {
+                    //display the question
+                    //append key to stored list
+                    selected_questions.add(object);
+                    seen_questions.add(object);
+                    addInJSONArray ( object );
 
-            if (selected_questions.size() == 5) {
-                break;
-            }
+                } else if (selected_questions.size() < 5 && !checkLimit()) {
+                    seen_questions.clear();
+                    selectQuestionSet(result);
+                }
+
+                if (selected_questions.size() == 5) {
+                    break;
+                }
+
+
+
 
 
         }
@@ -475,31 +482,67 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
     public boolean checkUsage(int key) {
         //Check whether key already used or not here
-        SharedPreferences sharedPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = sharedPrefs.getString(seen_questions_tag, "");
-        Type type = new TypeToken<List<questionObject>>() {
-        }.getType();
-        List<questionObject> arrayList = gson.fromJson(json, type);
-        for (questionObject object : arrayList) {
-            if (object.key == key) {
-                return false;
+        List<questionObject> arrayList = getList ();
+        try{
+            for (questionObject object : arrayList) {
+                if (object.key == key) {
+                    return false;
+                }
             }
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return true;
     }
 
     public boolean checkLimit() {
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = sharedPrefs.getString(seen_questions_tag, "");
-        Type type = new TypeToken<List<questionObject>>() {
-        }.getType();
-        List<questionObject> arrayList = gson.fromJson(json, type);
-        if (arrayList.size() > 95) {
-            return false;
+        List<questionObject> arrayList = getList ();
+        try{
+            if (arrayList.size() > 95) {
+                return false;
+            }
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
         return true;
+    }
+
+    private void addInJSONArray(questionObject productToAdd){
+
+        Gson gson = new Gson();
+
+        String jsonSaved = mPrefs.getString(seen_questions_tag, "");
+        String jsonNewproductToAdd = gson.toJson(productToAdd);
+
+        JSONArray jsonArrayProduct= new JSONArray();
+
+        try {
+            if(jsonSaved.length()!=0){
+                jsonArrayProduct = new JSONArray(jsonSaved);
+            }
+            jsonArrayProduct.put(new JSONObject (jsonNewproductToAdd));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //SAVE NEW ARRAY
+        editor.putString(seen_questions_tag, gson.toJson(jsonArrayProduct));
+        editor.commit();
+    }
+
+    public List<questionObject> getList(){
+        List<questionObject> arrayItems = null;
+        String serializedObject = mPrefs.getString(seen_questions_tag, null);
+        if (serializedObject != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<questionObject>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject, type);
+        }
+        return arrayItems;
     }
 
 }

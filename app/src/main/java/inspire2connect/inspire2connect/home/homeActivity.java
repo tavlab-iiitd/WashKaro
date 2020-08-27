@@ -112,11 +112,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
 
         //Firebase Analytics
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
-        bundle.putString("Screen", "Home Activity");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+//        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("UID", firebaseUser.getUid());
+//        bundle.putString("Screen", "Home Activity");
+//        firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
