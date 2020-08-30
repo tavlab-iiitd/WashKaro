@@ -125,9 +125,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[3] = findViewById(R.id.faqs_tile);
         ll_but[4] = findViewById(R.id.twitter_tile);
         ll_but[5] = findViewById(R.id.quiz_tile);
+        ll_but[6] = findViewById(R.id.aqi_tile);
 
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -242,6 +243,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.quiz_tile:
                 i = getQuizIntent(this);
+                startActivity ( i );
+                break;
+            case R.id.aqi_tile:
+                i = getAqiIntent(this);
                 startActivity ( i );
                 break;
 

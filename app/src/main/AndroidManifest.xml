@@ -42,6 +42,9 @@
         <activity android:name=".quiz.quizActivity" />
         <activity android:name=".quiz.scoreActivity" />
         <activity android:name=".utils.urlActivity" />
+        <activity android:name=".aqi_cough.aqi_activity" />
+        <activity android:name=".aqi_cough.cough_recorder" />
+        <activity android:name=".aqi_cough.GeoTagPage" />
 
         <service
             android:name=".utils.MyFirebaseMessagingService"
