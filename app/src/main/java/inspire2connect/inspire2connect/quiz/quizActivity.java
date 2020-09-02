@@ -12,8 +12,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
@@ -43,7 +41,6 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -119,8 +116,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
 
-                if(dataSnapshot.exists()) {
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                         questionObject obj;
                         obj = new questionObject(Objects.requireNonNull(snapshot.child("question_" + getCurLang()).getValue()).toString(),
@@ -192,6 +189,10 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         setStatusBarGradiant(this);
         setContentView(R.layout.quiz_activity);
 
+        seen_questions = new ArrayList<>();
+        selected_questions = new ArrayList<>();
+        result = new ArrayList<>();
+
         question = findViewById(R.id.question_text);
         qCount = findViewById(R.id.quest_num);
         timer = findViewById(R.id.countdown);
@@ -220,9 +221,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         setDate = false;
 
 
-
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
 
 
         mPrefs = getPreferences(MODE_PRIVATE);
@@ -458,27 +457,22 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         for (questionObject object : result) {
 
-            if(selected_questions.isEmpty () && checkLimit() && checkUsage(object.key)){
+            if (selected_questions.isEmpty() && checkLimit() && checkUsage(object.key)) {
 
                 selected_questions.add(object);
                 seen_questions.add(object);
-                addInJSONArray ( object );
+                addInJSONArray(object);
 
-            }
-
-
-            else if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
+            } else if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
 
                 selected_questions.add(object);
                 seen_questions.add(object);
-                addInJSONArray ( object );
+                addInJSONArray(object);
 
             } else if (selected_questions.size() < 5 && !checkLimit()) {
                 seen_questions.clear();
                 selectQuestionSet(result);
-            }
-
-            else if (selected_questions.size() == 5) {
+            } else if (selected_questions.size() == 5) {
                 break;
             }
 
@@ -489,15 +483,14 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
     public boolean checkUsage(int key) {
         //Check whether key already used or not here
-        List<questionObject> arrayList = getList ();
-        try{
+        List<questionObject> arrayList = getList();
+        try {
             for (questionObject object : arrayList) {
                 if (object.key == key) {
                     return false;
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -505,33 +498,32 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public boolean checkLimit() {
-        List<questionObject> arrayList = getList ();
-        try{
+        List<questionObject> arrayList = getList();
+        try {
             if (arrayList.size() > 95) {
                 return false;
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return true;
     }
 
-    private void addInJSONArray(questionObject productToAdd){
+    private void addInJSONArray(questionObject productToAdd) {
 
         Gson gson = new Gson();
 
         String jsonSaved = mPrefs.getString(seen_questions_tag, "");
         String jsonNewproductToAdd = gson.toJson(productToAdd);
 
-        JSONArray jsonArrayProduct= new JSONArray();
+        JSONArray jsonArrayProduct = new JSONArray();
 
         try {
-            if(jsonSaved.length()!=0){
+            if (jsonSaved.length() != 0) {
                 jsonArrayProduct = new JSONArray(jsonSaved);
             }
-            jsonArrayProduct.put(new JSONObject (jsonNewproductToAdd));
+            jsonArrayProduct.put(new JSONObject(jsonNewproductToAdd));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -541,14 +533,16 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         editor.commit();
     }
 
-    public List<questionObject> getList(){
+    public List<questionObject> getList() {
         List<questionObject> arrayItems = null;
         String serializedObject = mPrefs.getString(seen_questions_tag, null);
         if (serializedObject != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<questionObject>>(){}.getType();
-            arrayItems = gson.fromJson(serializedObject, type);
+            Type type = new TypeToken<List<questionObject>>() {
+            }.getType();
+//            arrayItems = gson.fromJson(serializedObject, type);
         }
+        arrayItems = new ArrayList<>();
         return arrayItems;
     }
 
