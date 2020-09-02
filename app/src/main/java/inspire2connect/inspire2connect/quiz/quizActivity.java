@@ -446,34 +446,41 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
     public void selectQuestionSet(ArrayList<questionObject> result) {
 
+        Collections.sort(result);
+
+
         try {
             selected_questions.clear();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Collections.sort(result);
+
         for (questionObject object : result) {
 
-                if (((selected_questions == null) ? 0 : selected_questions.size()) < 5 && checkUsage(object.key) && checkLimit()) {
-                    //display the question
-                    //append key to stored list
-                    selected_questions.add(object);
-                    seen_questions.add(object);
-                    addInJSONArray ( object );
+            if(selected_questions.isEmpty () && checkLimit() && checkUsage(object.key)){
 
-                } else if (selected_questions.size() < 5 && !checkLimit()) {
-                    seen_questions.clear();
-                    selectQuestionSet(result);
-                }
+                selected_questions.add(object);
+                seen_questions.add(object);
+                addInJSONArray ( object );
 
-                if (selected_questions.size() == 5) {
-                    break;
-                }
+            }
 
 
+            else if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
 
+                selected_questions.add(object);
+                seen_questions.add(object);
+                addInJSONArray ( object );
 
+            } else if (selected_questions.size() < 5 && !checkLimit()) {
+                seen_questions.clear();
+                selectQuestionSet(result);
+            }
+
+            else if (selected_questions.size() == 5) {
+                break;
+            }
 
         }
 
