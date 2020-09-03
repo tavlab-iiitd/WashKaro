@@ -14,11 +14,14 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -45,12 +48,14 @@ import java.util.List;
 import java.util.Objects;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.TinyDB;
+import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class quizActivity extends BaseActivity implements View.OnClickListener {
     private static final int MY_REQUEST_CODE = 2399;
-    TextView question, option1_text, option2_text, option3_text, option4_text, qCount, timer;
+    TextView question, option1_text, option2_text, option3_text, option4_text, qCount;
     ConstraintLayout[] options = new ConstraintLayout[4];
     public static final String TAG = "QuizActivity";
     public static final String seen_questions_tag = "QuestionsShown";
@@ -59,13 +64,11 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     public ArrayList<questionObject> seen_questions;
     DatabaseReference databaseReference;
     private Dialog loadingDialog;
-    private CountDownTimer countDown;
+//    private CountDownTimer countDown;
     private int quesNum;
     private int score;
     private boolean setDate;
-    private SharedPreferences mPrefs;
 
-    private static SharedPreferences.Editor editor;
 
 
     public void update_handle() {
@@ -149,7 +152,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void setQuestion() {
-        timer.setText(String.valueOf(30));
+//        timer.setText(String.valueOf(30));
 
         question.setText(selected_questions.get(0).getQuestion());
         option1_text.setText(selected_questions.get(0).getOption1());
@@ -159,28 +162,51 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         qCount.setText(String.valueOf(1) + "/" + String.valueOf(selected_questions.size()));
 
-        startTimer();
-
-        quesNum = 0;
-    }
-
-    private void startTimer() {
-        countDown = new CountDownTimer(32000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                if (millisUntilFinished < 30000)
-                    timer.setText(String.valueOf(millisUntilFinished / 1000));
-            }
-
-            @Override
-            public void onFinish() {
-                changeQuestion();
-            }
-        };
-
-        countDown.start();
+//        startTimer();
 
     }
+
+//    private void startTimer() {
+//        countDown = new CountDownTimer(32000, 1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//                if (millisUntilFinished < 30000)
+//                    timer.setText(String.valueOf(millisUntilFinished / 1000));
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                changeQuestion();
+//            }
+//
+//
+//        };
+//
+//        countDown.start();
+//
+//    }
+
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        countDown.start();
+//    }
+//
+//    //When activity is destroyed then this will cancel the timer
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        countDown.cancel();
+//    }
+//
+//    //This will pause the time
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        countDown.cancel();
+//    }
+
+
 
 
     @Override
@@ -195,7 +221,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         question = findViewById(R.id.question_text);
         qCount = findViewById(R.id.quest_num);
-        timer = findViewById(R.id.countdown);
+//        timer = findViewById(R.id.countdown);
 
         option1_text = findViewById(R.id.option_1_text);
         option2_text = findViewById(R.id.option_2_text);
@@ -220,12 +246,11 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         setDate = false;
 
+        quesNum = 0;
+
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-
-        mPrefs = getPreferences(MODE_PRIVATE);
-        editor = mPrefs.edit();
 
         Intent i = getIntent();
 
@@ -309,7 +334,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
             default:
 
         }
-        countDown.cancel();
+//        countDown.cancel();
         checkAnswer(selectedOption, view);
     }
 
@@ -321,6 +346,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
             quizReference.child(selected_questions.get(quesNum).getId()).child("correct_attempts").setValue(String.valueOf(Integer.valueOf(selected_questions.get(quesNum).getCorrect_attempts()) + 1));
             quizReference.child(selected_questions.get(quesNum).getId()).child("total_attempts").setValue(String.valueOf(Integer.valueOf(selected_questions.get(quesNum).getTotal_attempts()) + 1));
             score++;
+            correctDialog();
 
         } else {
             //Wrong Answer
@@ -344,16 +370,19 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
             }
 
-        }
+            wrongDialog ();
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> changeQuestion(), 2000);
+        }
 
 
     }
 
     private void changeQuestion() {
+
+        resetColor ();
+
         if (quesNum < selected_questions.size() - 1) {
+
             quesNum++;
 
             playAnim(question, 0, 0);
@@ -364,8 +393,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
             qCount.setText(String.valueOf(quesNum + 1) + "/" + String.valueOf(selected_questions.size()));
 
-            timer.setText(String.valueOf(30));
-            startTimer();
+//            timer.setText(String.valueOf(30));
+//            startTimer();
 
         } else {
             // Go to Score Activity
@@ -435,11 +464,96 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+    public void resetColor() {
+        options[0].setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        options[1].setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        options[2].setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        options[3].setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+
+
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(this, homeActivity.class);
+        startActivity(intent);
+        finish();
+//        countDown.cancel();
+    }
 
-        countDown.cancel();
+    public void wrongDialog() {
+        final Dialog dialogWrong = new Dialog(quizActivity.this);
+        dialogWrong.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (dialogWrong.getWindow() != null) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
+            dialogWrong.getWindow().setBackgroundDrawable(colorDrawable);
+        }
+        dialogWrong.setContentView(R.layout.dialog_wrong);
+        dialogWrong.setCancelable(false);
+        dialogWrong.show();
+
+        //Since the dialog is show to user just pause the timer in background
+//        onPause();
+
+
+        TextView correctText = (TextView) dialogWrong.findViewById(R.id.correctText);
+        Button buttonNext = (Button) dialogWrong.findViewById(R.id.dialogNext);
+
+        //OnCLick listener to go next que
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //This will dismiss the dialog
+                dialogWrong.dismiss();
+
+                //reset the color of buttons back to white
+                resetColor();
+
+                //Change question
+                changeQuestion();
+
+
+            }
+        });
+    }
+
+    public void correctDialog() {
+        resetColor ();
+        final Dialog dialogCorrect = new Dialog(quizActivity.this);
+        dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (dialogCorrect.getWindow() != null) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
+            dialogCorrect.getWindow().setBackgroundDrawable(colorDrawable);
+        }
+        dialogCorrect.setContentView(R.layout.dialog_correct);
+        dialogCorrect.setCancelable(false);
+        dialogCorrect.show();
+
+        //Since the dialog is show to user just pause the timer in background
+//        onPause();
+
+
+        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correctText);
+        Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
+
+
+        //OnCLick listener to go next que
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //This will dismiss the dialog
+                dialogCorrect.dismiss();
+
+                //reset the color of buttons back to white
+                resetColor();
+
+                //it will increment the question number
+                changeQuestion();
+
+
+            }
+        });
     }
 
 
@@ -461,23 +575,22 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
                 selected_questions.add(object);
                 seen_questions.add(object);
-                addInJSONArray(object);
+                addInJSONArray(seen_questions);
 
             } else if (selected_questions.size() < 5 && checkUsage(object.key) && checkLimit()) {
 
                 selected_questions.add(object);
                 seen_questions.add(object);
-                addInJSONArray(object);
+                addInJSONArray(seen_questions);
 
             } else if (selected_questions.size() < 5 && !checkLimit()) {
                 seen_questions.clear();
-                selectQuestionSet(result);
+//                selectQuestionSet(result);
             } else if (selected_questions.size() == 5) {
                 break;
             }
 
         }
-
         setQuestion();
     }
 
@@ -510,40 +623,38 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         return true;
     }
 
-    private void addInJSONArray(questionObject productToAdd) {
+    private void addInJSONArray(ArrayList<questionObject> questions_seen) {
+
 
         Gson gson = new Gson();
 
-        String jsonSaved = mPrefs.getString(seen_questions_tag, "");
-        String jsonNewproductToAdd = gson.toJson(productToAdd);
+        TinyDB tinydb = new TinyDB(this);
 
-        JSONArray jsonArrayProduct = new JSONArray();
+        tinydb.checkForNullKey( seen_questions_tag );
 
-        try {
-            if (jsonSaved.length() != 0) {
-                jsonArrayProduct = new JSONArray(jsonSaved);
-            }
-            jsonArrayProduct.put(new JSONObject(jsonNewproductToAdd));
-        } catch (JSONException e) {
-            e.printStackTrace();
+        ArrayList<String> objStrings = new ArrayList<String>();
+
+        for(questionObject question: questions_seen){
+            objStrings.add(gson.toJson(question));
         }
 
-        //SAVE NEW ARRAY
-        editor.putString(seen_questions_tag, gson.toJson(jsonArrayProduct));
-        editor.commit();
+        tinydb.putListString(seen_questions_tag, objStrings);
     }
 
-    public List<questionObject> getList() {
-        List<questionObject> arrayItems = null;
-        String serializedObject = mPrefs.getString(seen_questions_tag, null);
-        if (serializedObject != null) {
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<questionObject>>() {
-            }.getType();
-//            arrayItems = gson.fromJson(serializedObject, type);
+    public ArrayList<questionObject> getList() {
+
+        Gson gson = new Gson();
+
+        TinyDB tinydb = new TinyDB(this);
+
+        ArrayList<String> objStrings = tinydb.getListString(seen_questions_tag);
+        ArrayList<questionObject> questionList =  new ArrayList<questionObject>();
+
+        for(String jObjString : objStrings){
+            questionObject question  = gson.fromJson(jObjString,  questionObject.class);
+            questionList.add(question);
         }
-        arrayItems = new ArrayList<>();
-        return arrayItems;
+        return questionList;
     }
 
 }

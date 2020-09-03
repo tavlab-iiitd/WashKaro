@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_effect"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".quiz.Time_Up">
+
+    <TextView
+        android:id="@+id/timeUpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Time Up"
+        android:fontFamily="@font/mukta_regular"
+        android:textColor="@color/red"
+        android:textSize="50sp" />
+<ImageView
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:src="@drawable/ic_time"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"></View>
+
+    <Button
+        android:id="@+id/playAgainButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Play Again"
+        android:backgroundTint="@color/GreenColor" />
+</LinearLayout>

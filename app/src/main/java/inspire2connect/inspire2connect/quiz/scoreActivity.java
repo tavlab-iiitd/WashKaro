@@ -32,9 +32,8 @@ public class scoreActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(scoreActivity.this, homeActivity.class);
-                scoreActivity.this.startActivity(intent);
-                scoreActivity.this.finish();
-
+                startActivity(intent);
+                finish();
 
             }
         });

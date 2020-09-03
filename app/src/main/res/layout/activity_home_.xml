@@ -758,7 +758,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imgbut_text8"
-                            app:srcCompat="@drawable/ic_question" />
+                            app:srcCompat="@drawable/ic_cough" />
 
                         <TextView
                             android:id="@+id/imgbut_text8"
