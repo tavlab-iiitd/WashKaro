@@ -56,6 +56,7 @@
     <color name="app_purple">#AA00FF</color>
     <color name="app_white">#FFFFFF</color>
     <color name="card_shadow">#000000</color>
+    <color name="backgroundColor">#3E454F</color>
 
     <color name="green">#388E3C</color>
     <color name="red">#D32F2F</color>

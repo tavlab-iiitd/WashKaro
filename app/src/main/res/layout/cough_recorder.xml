@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coughConsLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_effect"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="COUGH RECORDER"
+        android:textColor="@color/app_white"
+        android:textSize="36sp"
+        app:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/textView5"
+        >
+        <Button
+            android:id="@+id/recordButton1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/GreenColor"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="96dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="RECORD"
+            android:textSize="24sp"
+            android:textStyle="bold"
+             />
+
+        <Button
+            android:id="@+id/stopButton1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/RedColor"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="36dp"
+            android:background="@android:color/holo_red_light"
+            android:text="STOP"
+            android:textSize="24sp"
+            android:textStyle="bold"
+             />
+
+        <Button
+            android:id="@+id/playFileButton1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/GreenColor"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="92dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="Play file"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/stopFileButton1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/RedColor"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="27dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="Stop File"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/submitButton1"
+            android:background="@drawable/buttonback2"
+            android:layout_width="match_parent"
+            android:textColor="@color/app_blue"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:text="SUBMIT"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

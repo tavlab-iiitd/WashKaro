@@ -112,11 +112,11 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
 
         //Firebase Analytics
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
-        bundle.putString("Screen", "Home Activity");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+//        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("UID", firebaseUser.getUid());
+//        bundle.putString("Screen", "Home Activity");
+//        firebaseAnalytics.logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
@@ -125,9 +125,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         ll_but[3] = findViewById(R.id.faqs_tile);
         ll_but[4] = findViewById(R.id.twitter_tile);
         ll_but[5] = findViewById(R.id.quiz_tile);
+        ll_but[6] = findViewById(R.id.aqi_tile);
 
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -242,6 +243,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.quiz_tile:
                 i = getQuizIntent(this);
+                startActivity ( i );
+                break;
+            case R.id.aqi_tile:
+                i = getAqiIntent(this);
                 startActivity ( i );
                 break;
 

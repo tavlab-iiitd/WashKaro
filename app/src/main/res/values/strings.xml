@@ -178,5 +178,6 @@
     <string name="quiz_title">Quiz</string>
     <string name="take_a_quiz">Take a Quiz</string>
     <string name="twitter_analysis">Twitter Analysis</string>
+    <string name="timeUp">Time Up!</string>
 
 </resources>

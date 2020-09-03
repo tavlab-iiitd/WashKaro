@@ -18,7 +18,7 @@ public class scoreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_score);
+        setContentView(R.layout.activity_score);
 
         score = findViewById(R.id.sa_score);
         done = findViewById(R.id.sa_done);
@@ -32,9 +32,8 @@ public class scoreActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(scoreActivity.this, homeActivity.class);
-                scoreActivity.this.startActivity(intent);
-                scoreActivity.this.finish();
-
+                startActivity(intent);
+                finish();
 
             }
         });
