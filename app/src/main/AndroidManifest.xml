@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:appComponentFactory">
+        tools:replace="android:appComponentFactory"
+        >
         <activity android:name=".satyaChat.ChatActivity"></activity>
         <activity android:name=".home.homeActivity" /> <!-- <activity android:name=".male_female_2" /> -->
         <activity android:name=".home.WelcomeActivity">
@@ -39,7 +40,11 @@
         <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
         <activity android:name=".tweets.tweetActivity" />
         <activity android:name=".quiz.quizActivity" />
+        <activity android:name=".quiz.scoreActivity" />
         <activity android:name=".utils.urlActivity" />
+        <activity android:name=".aqi_cough.aqi_activity" />
+        <activity android:name=".aqi_cough.cough_recorder" />
+        <activity android:name=".aqi_cough.GeoTagPage" />
 
         <service
             android:name=".utils.MyFirebaseMessagingService"

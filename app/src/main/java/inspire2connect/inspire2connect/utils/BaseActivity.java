@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.aqi_cough.aqi_activity;
 import inspire2connect.inspire2connect.mythGuidelineUpdates.UpdateActivity;
 import inspire2connect.inspire2connect.quiz.quizActivity;
 import inspire2connect.inspire2connect.tweets.tweetActivity;
@@ -59,6 +60,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final String SUCCESS_STORIES = "4";
     public static final String TWEETS = "5";
     public static final String QUIZ = "6";
+    public static final String AQI = "7";
     public static final String DATE = "D";
     public static final String DATE_YES = "1";
     public static final String DATE_NO = "0";
@@ -182,6 +184,13 @@ public class BaseActivity extends AppCompatActivity {
     public static Intent getFAQsIntent(Activity activity) {
         Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, FAQ);
+        i.putExtra(DATE, DATE_NO);
+        return i;
+    }
+
+    public static Intent getAqiIntent(Activity activity) {
+        Intent i = new Intent(activity, aqi_activity.class);
+        i.putExtra(TYPE, AQI);
         i.putExtra(DATE, DATE_NO);
         return i;
     }

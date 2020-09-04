@@ -176,8 +176,6 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         }
 
 
-
-
         mohfw_tv2 = findViewById(R.id.tweet_title1);
         mohfw_tv3 = findViewById(R.id.tweet_title2);
         mohfw_tv4 = findViewById(R.id.tweet_title3);
