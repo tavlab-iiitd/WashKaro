@@ -104,15 +104,15 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
 
     private void setUpdates() {
-        quizReference.child("questions").addValueEventListener(new ValueEventListener() {
+        quizReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    questionObject obj = new questionObject (snapshot.child("question_"+ getCurLang()).getValue().toString(),snapshot.child("option1_"+ getCurLang ()).getValue().toString(),snapshot.child("option2_"+ getCurLang ()).getValue().toString(),snapshot.child("option3_"+ getCurLang ()).getValue().toString(),snapshot.child("option4_"+ getCurLang ()).getValue().toString(),Integer.valueOf ( snapshot.child ( "answer" ).getValue ().toString () ),snapshot.child("explanation_"+ getCurLang ()).getValue().toString(),snapshot.child("correct_attempts").getValue().toString (),snapshot.child("total_attempts").getValue().toString(), Integer.valueOf (snapshot.child ( "key" ).getValue ().toString ()  ));
+                    System.out.println(snapshot.child("question_"+ getCurLang()).getValue().toString());
 
-                    result.add(new questionObject (obj.question,
-                            obj.option1,obj.option2,obj.option3,obj.option4, obj.answer,obj.explanation,obj.correct_attempts,obj.total_attempts, obj.key));
+                    questionObject obj = new questionObject (snapshot.child("question_"+ getCurLang()).getValue().toString(),snapshot.child("option1_"+ getCurLang ()).getValue().toString(),snapshot.child("option2_"+ getCurLang ()).getValue().toString(),snapshot.child("option3_"+ getCurLang ()).getValue().toString(),snapshot.child("option4_"+ getCurLang ()).getValue().toString(),Integer.valueOf ( snapshot.child ("answer").getValue ().toString () ),snapshot.child("explanation_"+ getCurLang ()).getValue().toString(),snapshot.child("correct_attempts").getValue().toString (),snapshot.child("total_attempts").getValue().toString(), Integer.valueOf (snapshot.child ( "key" ).getValue ().toString ()), snapshot.getKey());
+                    result.add(obj);
                 }
 
                 selectQuestionSet(result);
@@ -258,7 +258,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         }
 
         result = new ArrayList<>();
-        result.add(new questionObject ("No Question Available", "No Option Available","No Option Available","No Option Available","No Option Available",0,"No Data Available","No Data Available","No Data Available", 0));
+        result.add(new questionObject ("No Question Available", "No Option Available","No Option Available","No Option Available","No Option Available",0,"No Data Available","No Data Available","No Data Available", 0, ""));
 
         setUpdates();
 
@@ -295,12 +295,13 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
 
     private void checkAnswer(int selectedOption, View view)
     {
-
+        boolean ans = false;
         if(selectedOption == selected_questions.get(quesNum).getAnswer())
         {
             //Right Answer
             (view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             score++;
+            ans = true;
 
         }
         else
@@ -326,6 +327,25 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
             }
 
         }
+
+        String id = selected_questions.get(quesNum).getId();
+        boolean finalAns = ans;
+        quizReference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int prev_total_attempts = Integer.parseInt(dataSnapshot.child("total_attempts").getValue().toString());
+                int prev_correct_attempts = Integer.parseInt(dataSnapshot.child("correct_attempts").getValue().toString());
+                dataSnapshot.getRef().child("total_attempts").setValue(prev_total_attempts+1);
+                if(finalAns){
+                    dataSnapshot.getRef().child("correct_attempts").setValue(prev_correct_attempts+1);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -443,7 +463,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
         selected_questions.clear();
         Collections.sort(result);
         for (questionObject object: result) {
-            if(selected_questions.size () < 4 && checkUsage(object.key) && checkLimit()){
+            if(selected_questions.size () < 5 && checkUsage(object.key) && checkLimit()){
                 //display the question
                 //append key to stored list
                 selected_questions.add (object);
@@ -456,12 +476,12 @@ public class quizActivity extends BaseActivity implements View.OnClickListener{
                 editor.commit();
 
             }
-            else if(selected_questions.size() < 4 && !checkLimit ()) {
+            else if(selected_questions.size() < 5 && !checkLimit ()) {
                 seen_questions.clear();
                 selectQuestionSet(result);
             }
 
-            else if(selected_questions.size () == 4){
+            else if(selected_questions.size () == 5){
                 break;
             }
 
