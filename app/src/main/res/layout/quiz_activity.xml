@@ -20,164 +20,175 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_weight="1"
-        android:id="@+id/question_tile"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginHorizontal="10dp"
-        android:clickable="true"
-        android:elevation="@dimen/home_card_elev">
-        <TextView
-            android:id="@+id/question_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/mukta_semibold"
-            android:text="Question"
-            android:textAlignment="center"
-            android:textColor="@color/app_white"
-            android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/options_list">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="20dp"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:paddingBottom="@dimen/home_card_elev"
-            android:orientation="vertical"
-            app:layout_gravity="fill_horizontal"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/option_1_tile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/buttonback2"
-                android:clickable="true"
-                android:onClick="buttonA"
-                android:layout_marginBottom="15dp"
-                android:elevation="@dimen/home_card_elev"
-                >
-
-                <TextView
-                    android:id="@+id/option_1_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/mukta_semibold"
-                    android:text="Option 1"
-                    android:textAlignment="center"
-                    android:textColor="@color/app_purple"
-                    android:textSize="@dimen/home_card_font"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/option_2_tile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/buttonback2"
-                android:clickable="true"
-                android:onClick="buttonB"
-                android:elevation="@dimen/home_card_elev"
-                app:layout_column="1"
-                app:layout_row="0"
-                android:layout_marginBottom="15dp">
-
-
-
-                <TextView
-                    android:id="@+id/option_2_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/mukta_semibold"
-                    android:text="Option 2"
-                    android:textAlignment="center"
-                    android:textColor="@color/app_purple"
-                    android:textSize="@dimen/home_card_font"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/option_3_tile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/buttonback2"
-                android:clickable="true"
-                android:elevation="@dimen/home_card_elev"
-                android:onClick="buttonC"
-                app:layout_column="1"
-                app:layout_row="0"
-                android:layout_marginBottom="15dp">
-
-
-
-                <TextView
-                    android:id="@+id/option_3_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/mukta_semibold"
-                    android:text="Option 3"
-                    android:textAlignment="center"
-                    android:textColor="@color/app_purple"
-                    android:textSize="@dimen/home_card_font"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/option_4_tile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/buttonback2"
-            android:clickable="true"
-            android:onClick="buttonD"
-            android:elevation="@dimen/home_card_elev"
-            app:layout_column="1"
-            app:layout_row="0"
-            android:layout_marginBottom="15dp">
+            android:orientation="vertical">
 
-
-
-            <TextView
-                android:id="@+id/option_4_text"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                android:id="@+id/question_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/mukta_semibold"
-                android:text="Option 4"
-                android:textAlignment="center"
-                android:textColor="@color/app_purple"
-                android:textSize="@dimen/home_card_font"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="50dp"
+                android:layout_marginHorizontal="10dp"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev">
+                <TextView
+                    android:id="@+id/question_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="Question"
+                    android:textAlignment="center"
+                    android:textColor="@color/app_white"
+                    android:textSize="25sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/options_list">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    android:orientation="vertical"
+                    app:layout_gravity="fill_horizontal"
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_1_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:onClick="buttonA"
+                        android:layout_marginBottom="15dp"
+                        android:elevation="@dimen/home_card_elev"
+                        >
+
+                        <TextView
+                            android:id="@+id/option_1_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 1"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_2_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:onClick="buttonB"
+                        android:elevation="@dimen/home_card_elev"
+                        app:layout_column="1"
+                        app:layout_row="0"
+                        android:layout_marginBottom="15dp">
+
+
+
+                        <TextView
+                            android:id="@+id/option_2_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 2"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_3_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev"
+                        android:onClick="buttonC"
+                        app:layout_column="1"
+                        app:layout_row="0"
+                        android:layout_marginBottom="15dp">
+
+
+
+                        <TextView
+                            android:id="@+id/option_3_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 3"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_4_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:onClick="buttonD"
+                        android:elevation="@dimen/home_card_elev"
+                        app:layout_column="1"
+                        app:layout_row="0"
+                        android:layout_marginBottom="15dp">
+
+
+
+                        <TextView
+                            android:id="@+id/option_4_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 4"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
+    </ScrollView>
 
 
-    </LinearLayout>
 
 </LinearLayout>
