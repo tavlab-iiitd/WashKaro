@@ -10,7 +10,7 @@ public class UserHelperClass {
     boolean bronchitisVal;
     boolean asthmaVal;
     boolean pneumoniaVal;
-    boolean covidVal;
+    boolean lungCancerVal;
     boolean tbVal;
     boolean otherRespVal;
     boolean femaleVal;
@@ -22,7 +22,7 @@ public class UserHelperClass {
 
     }
 
-    public UserHelperClass(String aqiPredictString, String dataLocationString, String bmiString, String ageString, boolean bronchitisVal, boolean asthmaVal, boolean pneumoniaVal, boolean covidVal, boolean tbVal, boolean otherRespVal, boolean femaleVal, boolean maleVal, boolean otherGenderVal, Date currentTime) {
+    public UserHelperClass(String aqiPredictString, String dataLocationString, String bmiString, String ageString, boolean bronchitisVal, boolean asthmaVal, boolean pneumoniaVal, boolean lungCancerVal, boolean tbVal, boolean otherRespVal, boolean femaleVal, boolean maleVal, boolean otherGenderVal, Date currentTime) {
         this.aqiPredictString = aqiPredictString;
         this.dataLocationString = dataLocationString;
         this.bmiString = bmiString;
@@ -30,7 +30,7 @@ public class UserHelperClass {
         this.bronchitisVal = bronchitisVal;
         this.asthmaVal = asthmaVal;
         this.pneumoniaVal = pneumoniaVal;
-        this.covidVal = covidVal;
+        this.lungCancerVal = lungCancerVal;
         this.tbVal = tbVal;
         this.otherRespVal = otherRespVal;
         this.femaleVal = femaleVal;
@@ -95,12 +95,12 @@ public class UserHelperClass {
         this.pneumoniaVal = pneumoniaVal;
     }
 
-    public boolean isCovidVal() {
-        return covidVal;
+    public boolean isLungCancerVal() {
+        return lungCancerVal;
     }
 
-    public void setCovidVal(boolean covidVal) {
-        this.covidVal = covidVal;
+    public void setLungCancerVal(boolean lungCancerVal) {
+        this.lungCancerVal = lungCancerVal;
     }
 
     public boolean isTbVal() {

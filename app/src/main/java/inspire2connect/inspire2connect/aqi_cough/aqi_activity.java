@@ -1,6 +1,8 @@
 package inspire2connect.inspire2connect.aqi_cough;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +39,9 @@ public class aqi_activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView( R.layout.aqi_activity );
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         final TextView avgAQI = (TextView) findViewById(R.id.avgAQI);
 
         Button resetButton = (Button) findViewById(R.id.resetButton);
@@ -51,7 +55,7 @@ public class aqi_activity extends BaseActivity {
         final CheckBox bronchitisCheck = (CheckBox) findViewById(R.id.bronchitisCheck);
         final CheckBox asthmaCheck = (CheckBox) findViewById(R.id.asthmaCheck);
         final CheckBox pneumoniaCheck = (CheckBox) findViewById(R.id.pneumoniaCheck);
-        final CheckBox covidCheck = (CheckBox) findViewById(R.id.covidCheck);
+        final CheckBox lungCancerCheck = (CheckBox) findViewById(R.id.lungCancerCheck);
         final CheckBox tbCheck = (CheckBox) findViewById(R.id.tbCheck);
         final CheckBox otherRespCheck = (CheckBox) findViewById(R.id.otherRespCheck);
 
@@ -69,7 +73,7 @@ public class aqi_activity extends BaseActivity {
                 bronchitisCheck.setChecked(false);
                 asthmaCheck.setChecked(false);
                 pneumoniaCheck.setChecked(false);
-                covidCheck.setChecked(false);
+                lungCancerCheck.setChecked(false);
                 tbCheck.setChecked(false);
                 otherRespCheck.setChecked(false);
                 femaleCheck.setChecked(false);
@@ -90,7 +94,7 @@ public class aqi_activity extends BaseActivity {
                 boolean bronchitisVal = bronchitisCheck.isChecked();    //To Convert to String : Boolean.toString(bronchitisVal)
                 boolean asthmaVal = asthmaCheck.isChecked();
                 boolean pneumoniaVal = pneumoniaCheck.isChecked();
-                boolean covidVal = covidCheck.isChecked();
+                boolean lungCancerVal = lungCancerCheck.isChecked();
                 boolean tbVal = tbCheck.isChecked();
                 boolean otherRespVal = otherRespCheck.isChecked();
                 boolean femaleVal = femaleCheck.isChecked();
@@ -98,7 +102,7 @@ public class aqi_activity extends BaseActivity {
                 boolean otherGenderVal = otherGenderCheck.isChecked();
                 Date currentTime = Calendar.getInstance().getTime();
 
-                UserHelperClass helperClass = new UserHelperClass(aqiPredictString,dataLocationString,bmiString,ageString,bronchitisVal,asthmaVal,pneumoniaVal,covidVal,tbVal,otherRespVal,femaleVal,maleVal,otherGenderVal,currentTime);
+                UserHelperClass helperClass = new UserHelperClass(aqiPredictString,dataLocationString,bmiString,ageString,bronchitisVal,asthmaVal,pneumoniaVal,lungCancerVal,tbVal,otherRespVal,femaleVal,maleVal,otherGenderVal,currentTime);
 //                rootNode = FirebaseDatabase.getInstance();
 //                reference = rootNode.getReference("AqiUserData");
 //                reference.push().setValue(helperClass);
