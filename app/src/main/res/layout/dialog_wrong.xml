@@ -17,10 +17,10 @@
 
 
         <TextView
-            android:id="@+id/correctText"
+            android:id="@+id/wrongText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wrong"
+            android:text="@string/wrongAns"
             android:textColor="@color/RedColor"
             android:gravity="center"
             android:textSize="30sp"/>

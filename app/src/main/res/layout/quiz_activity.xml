@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/gradient_effect"
+    android:orientation="vertical"
     tools:context=".quiz.quizActivity">
 
     <TextView
         android:id="@+id/quest_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:padding="8dp"
         android:text="1/5"
         android:textColor="@color/app_white"
@@ -30,14 +30,15 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_weight="1"
                 android:id="@+id/question_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
                 android:clickable="true"
                 android:elevation="@dimen/home_card_elev">
+
                 <TextView
                     android:id="@+id/question_text"
                     android:layout_width="match_parent"
@@ -48,40 +49,35 @@
                     android:textAlignment="center"
                     android:textColor="@color/app_white"
                     android:textSize="25sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <LinearLayout
-                android:layout_weight="1"
+                android:id="@+id/options_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/options_list">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:clipToPadding="false"
                     android:gravity="center"
-                    android:paddingBottom="@dimen/home_card_elev"
                     android:orientation="vertical"
-                    app:layout_gravity="fill_horizontal"
-                    >
+                    android:paddingBottom="@dimen/home_card_elev"
+                    app:layout_gravity="fill_horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/option_1_tile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
-                        android:onClick="buttonA"
-                        android:layout_marginBottom="15dp"
-                        android:elevation="@dimen/home_card_elev"
-                        >
+                        android:elevation="@dimen/home_card_elev">
 
                         <TextView
                             android:id="@+id/option_1_text"
@@ -101,15 +97,10 @@
                         android:id="@+id/option_2_tile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
-                        android:onClick="buttonB"
-                        android:elevation="@dimen/home_card_elev"
-                        app:layout_column="1"
-                        app:layout_row="0"
-                        android:layout_marginBottom="15dp">
-
-
+                        android:elevation="@dimen/home_card_elev">
 
                         <TextView
                             android:id="@+id/option_2_text"
@@ -129,15 +120,10 @@
                         android:id="@+id/option_3_tile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
-                        android:elevation="@dimen/home_card_elev"
-                        android:onClick="buttonC"
-                        app:layout_column="1"
-                        app:layout_row="0"
-                        android:layout_marginBottom="15dp">
-
-
+                        android:elevation="@dimen/home_card_elev">
 
                         <TextView
                             android:id="@+id/option_3_text"
@@ -157,15 +143,10 @@
                         android:id="@+id/option_4_tile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/buttonback2"
                         android:clickable="true"
-                        android:onClick="buttonD"
-                        android:elevation="@dimen/home_card_elev"
-                        app:layout_column="1"
-                        app:layout_row="0"
-                        android:layout_marginBottom="15dp">
-
-
+                        android:elevation="@dimen/home_card_elev">
 
                         <TextView
                             android:id="@+id/option_4_text"
@@ -188,7 +169,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </LinearLayout>

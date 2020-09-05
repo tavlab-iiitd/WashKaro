@@ -20,7 +20,7 @@
             android:id="@+id/correctText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correct!"
+            android:text="@string/correctAns"
             android:textColor="@color/green"
             android:gravity="center"
             android:textSize="30sp"/>

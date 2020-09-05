@@ -456,6 +456,10 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
             case R.id.privacy_policy:
                 openPrivacyPolicy(this);
                 break;
+            case R.id.research_analytics:
+                i = getAqiIntent(this);
+                startActivity(i);
+                break;
             default:
                 i = null;
                 break;

@@ -409,7 +409,6 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void playAnim(final View view, final int value, final int viewNum) {
-
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
                 .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
@@ -497,7 +496,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 //        onPause();
 
 
-        TextView correctText = (TextView) dialogWrong.findViewById(R.id.correctText);
+        TextView wrongText = (TextView) dialogWrong.findViewById(R.id.wrongText);
         Button buttonNext = (Button) dialogWrong.findViewById(R.id.dialogNext);
 
         //OnCLick listener to go next que
@@ -519,7 +518,6 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void correctDialog() {
-        resetColor ();
         final Dialog dialogCorrect = new Dialog(quizActivity.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogCorrect.getWindow() != null) {
@@ -536,7 +534,6 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correctText);
         Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
-
 
         //OnCLick listener to go next que
         buttonNext.setOnClickListener(new View.OnClickListener() {

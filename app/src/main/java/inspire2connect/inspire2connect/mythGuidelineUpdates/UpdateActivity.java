@@ -215,6 +215,10 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
             case R.id.privacy_policy:
                 openPrivacyPolicy(this);
                 break;
+            case R.id.research_analytics:
+                i = getAqiIntent(this);
+                startActivity(i);
+                break;
             default:
                 i = null;
                 break;
