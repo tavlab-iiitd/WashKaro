@@ -52,11 +52,12 @@ public class GeoTagPage extends FragmentActivity implements OnMapReadyCallback {
         setContentView( R.layout.geotagpage);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        fetchLastLocation();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        fetchLastLocation();
 
         Button coughButton = (Button) findViewById(R.id.coughButton);
 

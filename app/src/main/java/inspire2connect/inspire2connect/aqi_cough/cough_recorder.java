@@ -3,6 +3,8 @@ package inspire2connect.inspire2connect.aqi_cough;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
@@ -42,6 +44,8 @@ public class cough_recorder extends BaseActivity {
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cough_recorder);
+        setStatusBarGradiant(this);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         if(!checkPermissionFromDevice())
             requestPermission();

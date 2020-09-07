@@ -183,4 +183,7 @@
     <string name="correctAns">Correct</string>
     <string name="wrongAns">Wrong</string>
 
+    <!--    Map API-->
+    <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
+
 </resources>
