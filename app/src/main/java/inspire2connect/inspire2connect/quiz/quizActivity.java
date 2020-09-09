@@ -114,7 +114,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void setUpdates() {
-        quizReference.addValueEventListener(new ValueEventListener() {
+        quizReference.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
@@ -161,6 +161,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         option4_text.setText(selected_questions.get(0).getOption4());
 
         qCount.setText(String.valueOf(1) + "/" + String.valueOf(selected_questions.size()));
+
+
 
 //        startTimer();
 
