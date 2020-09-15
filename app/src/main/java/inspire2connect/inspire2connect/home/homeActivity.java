@@ -112,11 +112,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
 
         //Firebase Analytics
-//        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("UID", firebaseUser.getUid());
-//        bundle.putString("Screen", "Home Activity");
-//        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        if(firebaseAnalytics == null){
+            firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        }
+        Bundle bundle = new Bundle();
+        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("Screen", "Home Activity");
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
@@ -204,10 +206,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
                 //Firebase Analytics
-                Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
-                bundle.putString("InfographicScroll", "Scrolled Left");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("UID", firebaseUser.getUid());
+                    bundle.putString("InfographicScroll", "Scrolled Left");
+                    FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.flipperRight:
                 viewFlipper.stopFlipping();
@@ -218,7 +220,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 Bundle bundle2 = new Bundle();
                 bundle2.putString("UID", firebaseUser.getUid());
                 bundle2.putString("InfographicScroll", "Scrolled Right");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
+                FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle2);
                 break;
             case R.id.misc_but2_layout:
                 i = new Intent(homeActivity.this, ChatActivity.class);
@@ -276,7 +278,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "Home Activity");
-                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance(this).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -380,7 +382,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Code", code);
-        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
         startActivity(intnt);

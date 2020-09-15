@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -71,6 +73,7 @@ public class maleFemaleActivity extends BaseActivity {
         setStatusBarGradiant(this);
         setContentView(R.layout.activity_male__female);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //        if (!prefManager.isFirstTimeLaunch())
 //        {
 //

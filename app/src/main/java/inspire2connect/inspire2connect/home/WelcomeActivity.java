@@ -104,12 +104,14 @@ public class WelcomeActivity extends BaseActivity {
             });
         }
 
-        // Firebase Analytics
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+//         Firebase Analytics
+        if(firebaseAnalytics == null){
+            firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        }
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", this.getClass().getSimpleName());
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
