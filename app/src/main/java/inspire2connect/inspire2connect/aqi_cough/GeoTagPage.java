@@ -59,19 +59,19 @@ public class GeoTagPage extends FragmentActivity implements OnMapReadyCallback {
 
         fetchLastLocation();
 
-//        Button coughButton = (Button) findViewById(R.id.coughButton);
-//
-//        coughButton.setOnClickListener(new android.view.View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(android.view.View view) {
-//                Intent coughPage = new Intent(GeoTagPage.this, cough_recorder.class);
-//                startActivity(coughPage);
-//            }
-//
-//        });
+       Button coughButton = (Button) findViewById(R.id.coughButton);
 
-//        finalAQI = "";
+       coughButton.setOnClickListener(new android.view.View.OnClickListener(){
+
+           @Override
+           public void onClick(android.view.View view) {
+               Intent coughPage = new Intent(GeoTagPage.this, cough_recorder.class);
+               startActivity(coughPage);
+           }
+
+       });
+
+       finalAQI = "";
     }
 
     private void fetchAQI(final double lat, final double lon, final String markerLabel, final int colorVal ) {
