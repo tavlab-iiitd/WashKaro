@@ -18,7 +18,8 @@ class questionAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<questionObject> questions = quizActivity.selected_questions;
-    TextView question, option1_text, option2_text, option3_text, option4_text;
+    private int[] optionsSelected = quizActivity.selected_options;
+    TextView question, option1_text, option2_text, option3_text, option4_text, explanation;
     ConstraintLayout[] options = new ConstraintLayout[4];
 
     public questionAdapter(Context context, ArrayList<questionObject> arrayList) {
@@ -43,12 +44,13 @@ class questionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.quiz_row, parent, false);
+        convertView = LayoutInflater.from(context).inflate(R.layout.quiz_solutions_row, parent, false);
         question = convertView.findViewById(R.id.question_text);
         option1_text = convertView.findViewById(R.id.option_1_text);
         option2_text = convertView.findViewById(R.id.option_2_text);
         option3_text = convertView.findViewById(R.id.option_3_text);
         option4_text = convertView.findViewById(R.id.option_4_text);
+        explanation = convertView.findViewById ( R.id.explanation );
 
         options[0] = convertView.findViewById(R.id.option_1_tile);
         options[1] = convertView.findViewById(R.id.option_2_tile);
@@ -60,6 +62,10 @@ class questionAdapter extends BaseAdapter {
         option2_text.setText(questions.get(position).getOption2());
         option3_text.setText(questions.get(position).getOption3());
         option4_text.setText(questions.get(position).getOption4());
+        explanation.setText ("Explanation: " +  questions.get(position).getExplanation() );
+
+        if(optionsSelected[position] != questions.get ( position ).getAnswer ())
+            options[position].setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
         switch (questions.get(position).getAnswer()) {
             case 1:

@@ -17,6 +17,7 @@ public class quizSolutionsActivity extends BaseActivity {
     ArrayList<questionObject> questions;
     questionAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,9 @@ public class quizSolutionsActivity extends BaseActivity {
 
         ArrayList<questionObject> questions = quizActivity.selected_questions;
 
-        listView = findViewById(R.id.list);
+
+
+                listView = findViewById(R.id.list);
         adapter = new questionAdapter(this, questions);
         listView.setAdapter(adapter);
 

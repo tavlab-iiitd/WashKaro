@@ -20,6 +20,7 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class scoreActivity extends BaseActivity {
     private TextView score;
+    private int[] user_selections;
     private Button done, solutions;
 
     @Override
@@ -28,11 +29,13 @@ public class scoreActivity extends BaseActivity {
         setStatusBarGradiant(this);
         setContentView(R.layout.activity_score);
 
+
         score = findViewById(R.id.sa_score);
         done = findViewById(R.id.sa_done);
         solutions = findViewById(R.id.button_view_solutions);
 
         String score_str = getIntent().getStringExtra("SCORE");
+        user_selections = getIntent ().getIntArrayExtra ( "SELECTED_OPTIONS" );
         ArrayList<questionObject> questions = (ArrayList<questionObject>) getIntent().getSerializableExtra("QUESTIONS");
 //        ArrayList<questionObject> questions = quizActivity.selected_questions
         score.setText(score_str);

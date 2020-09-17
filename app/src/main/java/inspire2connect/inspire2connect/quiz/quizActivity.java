@@ -68,6 +68,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 //    private CountDownTimer countDown;
     private int quesNum;
     private int score;
+    public static final int[] selected_options = new int[5];
     private boolean setDate;
 
 
@@ -305,8 +306,6 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
 
-//        result = new ArrayList<>();
-//        result.add(new questionObject ("No Question Available", "No Option Available","No Option Available","No Option Available","No Option Available",0,"No Data Available","No Data Available","No Data Available", "No Data Available",0));
 
         //Firebase Analytics
         Bundle bundle = new Bundle();
@@ -349,6 +348,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         }
 //        countDown.cancel();
+        selected_options[quesNum] = selectedOption;
         checkAnswer(selectedOption, view);
     }
 
