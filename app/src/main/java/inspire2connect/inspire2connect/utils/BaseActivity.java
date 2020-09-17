@@ -43,6 +43,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference faqsReference = FirebaseDatabase.getInstance("https://washkaro-faq.firebaseio.com").getReference();
     public static final DatabaseReference tweetsReference = FirebaseDatabase.getInstance ("https://washkaro-twitter.firebaseio.com").getReference ();
     public static final DatabaseReference quizReference = FirebaseDatabase.getInstance ("https://washkaro-quiz.firebaseio.com").getReference ();
+    public static final DatabaseReference aqiReference = FirebaseDatabase.getInstance ("https://washkaro-aqi.firebaseio.com").getReference ();
 
     // Firebase Analytics
     public static FirebaseAnalytics firebaseAnalytics;
