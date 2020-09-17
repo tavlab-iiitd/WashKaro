@@ -29,6 +29,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.home.WelcomeActivity;
+import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class cough_recorder extends BaseActivity {
@@ -62,18 +64,18 @@ public class cough_recorder extends BaseActivity {
             @Override
             public void onClick(android.view.View view) {
 
-//                FirebaseStorage storage = FirebaseStorage.getInstance();
-//
-//                StorageReference storageRef = storage.getReference();
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                StorageReference storageRef = storage.getReference();
 
                 //System.out.println("PATHSAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" + pathSave1);
 
                 Uri file = Uri.fromFile(new File(pathSave1));
                 Date currentTime = Calendar.getInstance().getTime();
 
-//                StorageReference coughRef = storageRef.child("coughAudio/" + currentTime + file.getLastPathSegment());
+                StorageReference coughRef = storageRef.child("coughAudio/" + currentTime + file.getLastPathSegment());
 
-//                uploadTask = coughRef.putFile(file);
+                uploadTask = coughRef.putFile(file);
 
                 // Register observers to listen for when the download is done or if it fails
                 uploadTask.addOnFailureListener(new OnFailureListener () {
@@ -89,8 +91,8 @@ public class cough_recorder extends BaseActivity {
                     }
                 });
 
-//                Intent youtubeVideo = new Intent(cough_recorder.this, YoutubePlayVid.class);
-//                startActivity(youtubeVideo);
+                Intent intent = new Intent(cough_recorder.this, homeActivity.class);
+                startActivity(intent);
             }
 
         });
