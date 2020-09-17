@@ -41,8 +41,8 @@ public class GeoTagPage extends FragmentActivity implements OnMapReadyCallback {
     Location currentLocation;
     private static final int REQUEST_CODE = 101;
 
-//    public String finalAQI;
-//    public LatLng currLoc;
+    public String finalAQI;
+    public LatLng currLoc;
     public String myLocURL;
     public double currLat, currLong;
 
