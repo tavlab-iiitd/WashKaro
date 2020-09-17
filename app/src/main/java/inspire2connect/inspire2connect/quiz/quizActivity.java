@@ -68,7 +68,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 //    private CountDownTimer countDown;
     private int quesNum;
     private int score;
-    public static final int[] selected_options = new int[5];
+    public static int[] selected_options;
     private boolean setDate;
 
 
@@ -222,6 +222,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         seen_questions = new ArrayList<>();
 //        selected_questions = new ArrayList<>();
         result = new ArrayList<>();
+        selected_options = new int[5];
+
 
         question = findViewById(R.id.question_text);
         qCount = findViewById(R.id.quest_num);
