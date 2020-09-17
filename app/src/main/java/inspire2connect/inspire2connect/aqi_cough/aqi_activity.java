@@ -103,9 +103,8 @@ public class aqi_activity extends BaseActivity {
                 Date currentTime = Calendar.getInstance().getTime();
 
                 UserHelperClass helperClass = new UserHelperClass(aqiPredictString,dataLocationString,bmiString,ageString,bronchitisVal,asthmaVal,pneumoniaVal,lungCancerVal,tbVal,otherRespVal,femaleVal,maleVal,otherGenderVal,currentTime);
-//                rootNode = FirebaseDatabase.getInstance();
-//                reference = rootNode.getReference("AqiUserData");
-//                reference.push().setValue(helperClass);
+
+                aqiReference.push().setValue(helperClass);
 
                 Intent geotagIntent = new Intent(aqi_activity.this, GeoTagPage.class);
                 startActivity(geotagIntent);
