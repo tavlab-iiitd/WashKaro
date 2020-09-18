@@ -4,4 +4,5 @@ public class tweetInfographics {
     public long tweetSno;
     public String tweetURL;
     public String tweetCode;
+
 }

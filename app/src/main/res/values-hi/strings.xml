@@ -118,6 +118,13 @@
     <string name="enter_text">लिखना प्रारम्भ करें</string>
     <string name="social_media_title">ट्विटर विश्लेषण</string>
     <string name="trending_tweets">ट्रेंडिंग ट्वीट्स</string>
+    <string name="research_analytics">अनुसंधान विश्लेषिकी</string>
+    <string name="quiz_title">प्रश्नोत्तरी</string>
+    <string name="take_a_quiz">कोई प्रश्नोत्तरी लें</string>
+    <string name="twitter_analysis">ट्विटर विश्लेषण</string>
+    <string name="timeUp">समय समाप्त!</string>
+    <string name="correctAns">सही</string>
+    <string name="wrongAns">गलत</string>
 
 </resources>
 

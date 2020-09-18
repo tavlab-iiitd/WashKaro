@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    >
 
     <TextView
         android:id="@+id/textview_abt_name"
@@ -12,7 +13,7 @@
         android:fontFamily="@font/mukta_semibold"
         tools:text="Student Name"
         android:textAlignment="center"
-        android:textColor="@color/app_black"
+        android:textColor="@color/app_white"
         android:gravity="center_horizontal"/>
 
     <TextView
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/mukta_medium"
         android:textAlignment="center"
-        android:textColor="@color/app_light_black"
+        android:textColor="@color/app_white"
         android:textSize="@dimen/about_tag"
         tools:text="UnderGrad"
         android:gravity="center_horizontal"/>

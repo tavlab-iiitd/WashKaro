@@ -2,6 +2,8 @@ package inspire2connect.inspire2connect.news;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,11 +35,13 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class onAIrActivity extends BaseActivity {
+
     boolean flag = false;
     DatabaseReference ref;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+    String currentUserID;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -55,15 +61,18 @@ public class onAIrActivity extends BaseActivity {
         switch (id){
             case R.id.lang_togg_butt:
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "onAIr Activity");
-                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -78,6 +87,10 @@ public class onAIrActivity extends BaseActivity {
             case R.id.privacy_policy:
                 openPrivacyPolicy(this);
                 break;
+            case R.id.research_analytics:
+                i = getAqiIntent(this);
+                startActivity(i);
+                break;
             default:
                 break;
         }
@@ -88,11 +101,13 @@ public class onAIrActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_on_air);
 
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.onair_tile);
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         }
 
         final ArrayList<newsObject> results = new ArrayList<>();

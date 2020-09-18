@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Home_background_color"
+    android:background="@drawable/gradient_effect"
     >
 
     <ScrollView
@@ -131,7 +131,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_medium"
                             android:textAlignment="center"
-                            android:textColor="@color/blackcolor"
+                            android:textColor="@color/app_black"
                             android:textSize="10sp"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -213,7 +213,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_medium"
                             android:textAlignment="center"
-                            android:textColor="@color/blackcolor"
+                            android:textColor="@color/app_black"
                             android:textSize="10sp"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -293,7 +293,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_medium"
                             android:textAlignment="center"
-                            android:textColor="@color/blackcolor"
+                            android:textColor="@color/app_black"
                             android:textSize="10sp"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -373,7 +373,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/mukta_medium"
                             android:textAlignment="center"
-                            android:textColor="@color/blackcolor"
+                            android:textColor="@color/app_black"
                             android:textSize="10sp"
                             app:layout_constraintTop_toTopOf="parent" />
 

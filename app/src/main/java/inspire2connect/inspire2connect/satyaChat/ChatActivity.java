@@ -1,6 +1,8 @@
 package inspire2connect.inspire2connect.satyaChat;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONObject;
 
@@ -37,13 +41,16 @@ public class ChatActivity extends BaseActivity {
 
     private EditText sendText;
     private ImageButton sendButton;
+    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.satya_chatbot);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
         context = this;
         requestQueue = Volley.newRequestQueue(context);
 
@@ -56,10 +63,13 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("ChatBot_Text", "Sent");
-                firebaseAnalytics.logEvent("ChatBot_Activity", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ChatBot_Activity", bundle);
 
                 String txtToSend = sendText.getText().toString().trim();
                 items.add(new ChatElem(txtToSend, true));
@@ -82,7 +92,7 @@ public class ChatActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Satya Chatbot Screen");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
 
     }
 

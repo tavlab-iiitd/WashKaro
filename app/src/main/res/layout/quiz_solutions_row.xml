@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_effect">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/question_tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:elevation="@dimen/home_card_elev">
+
+                <TextView
+                    android:id="@+id/question_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/mukta_semibold"
+                    android:text="Question"
+                    android:textAlignment="center"
+                    android:textColor="@color/app_white"
+                    android:textSize="25sp"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:id="@+id/options_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/home_card_elev"
+                    app:layout_gravity="fill_horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_1_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/option_1_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 1"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_2_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/option_2_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 2"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_3_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/option_3_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 3"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/option_4_tile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/buttonback2"
+                        android:clickable="true"
+                        android:elevation="@dimen/home_card_elev">
+
+                        <TextView
+                            android:id="@+id/option_4_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mukta_semibold"
+                            android:text="Option 4"
+                            android:textAlignment="center"
+                            android:textColor="@color/app_purple"
+                            android:textSize="@dimen/home_card_font"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/explanation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/mukta_semibold"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/home_card_font"
+                        android:textColor="@color/app_white">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -66,7 +66,7 @@
 
     <string name="presented_to_you_by">WashKaro, presented to you by</string>
     <string name="reference">References</string>
-    
+
     // references
     <string name="tbcindia" translatable="false">Central TB Division, Ministry of Health &amp; Family Welfare, Government of India</string>
     <string name="tbass" translatable="false">The Tuberculosis Association of India</string>
@@ -175,5 +175,15 @@
     <string name="enter_text">Enter Text</string>
     <string name="social_media_title">Twitter Analysis</string>
     <string name="trending_tweets">Trending Tweets</string>
+    <string name="research_analytics">Research Analytics</string>
+    <string name="quiz_title">Quiz</string>
+    <string name="take_a_quiz">Take a Quiz</string>
+    <string name="twitter_analysis">Twitter Analysis</string>
+    <string name="timeUp">Time Up!</string>
+    <string name="correctAns">Correct</string>
+    <string name="wrongAns">Wrong</string>
+
+    <!--    Map API-->
+    <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
 
 </resources>

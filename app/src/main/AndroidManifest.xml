@@ -5,9 +5,13 @@
     <!-- TODO: Why -->
     <uses-feature android:name="android.hardware.location.gps" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +20,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".satyaChat.ChatActivity"></activity>
+        <activity android:name=".quiz.quizSolutionsActivity"></activity>
+        <activity android:name=".satyaChat.ChatActivity" />
         <activity android:name=".home.homeActivity" /> <!-- <activity android:name=".male_female_2" /> -->
         <activity android:name=".home.WelcomeActivity">
             <intent-filter>
@@ -38,7 +43,12 @@
         <!-- <activity android:name=".daily_updates" /> -->
         <activity android:name=".mythGuidelineUpdates.UpdateActivity" />
         <activity android:name=".tweets.tweetActivity" />
+        <activity android:name=".quiz.quizActivity" />
+        <activity android:name=".quiz.scoreActivity" />
         <activity android:name=".utils.urlActivity" />
+        <activity android:name=".aqi_cough.aqi_activity" />
+        <activity android:name=".aqi_cough.cough_recorder" />
+        <activity android:name=".aqi_cough.GeoTagPage" />
 
         <service
             android:name=".utils.MyFirebaseMessagingService"
@@ -60,7 +70,12 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
     </application>
 
 </manifest>

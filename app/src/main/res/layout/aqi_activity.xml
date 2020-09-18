@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConsLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_effect"
+    tools:context=".aqi_cough.aqi_activity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/headText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="10dp"
+            android:text="AQI Hyperlocal Monitoring"
+            android:textColor="#FFEB3B"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/resetButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blackcolor"
+                    android:text="RESET"
+                    android:textColor="#FFC107"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="Enter Age -"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/ageText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView5"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="15dp"
+                        android:hint="XX"
+                        android:inputType="number"
+                        android:textColor="#FFC107"
+                        android:textColorHint="#80FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Enter Gender :"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/maleCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView4"
+                        android:layout_marginHorizontal="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:background="#FFC107"
+                        android:text="Male"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/femaleCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/maleCheck"
+                        android:layout_marginHorizontal="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:background="#FFC107"
+                        android:text="Female"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/otherGenderCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:layout_alignLeft="@id/maleCheck"
+                        android:layout_below="@id/maleCheck"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:text="Other"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="Enter BMI -"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/bmiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView2"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="15dp"
+                        android:hint="XX"
+                        android:inputType="numberDecimal"
+                        android:textColor="#FFC107"
+                        android:textColorHint="#80FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="10dp"
+                android:text="Suffering from / Suspicion of :"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <CheckBox
+                        android:id="@+id/asthmaCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:includeFontPadding="true"
+                        android:text="Asthma"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/bronchitisCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/asthmaCheck"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:background="#FFC107"
+                        android:includeFontPadding="true"
+                        android:text="Bronchitis"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/pneumoniaCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/asthmaCheck"
+                        android:layout_alignLeft="@id/asthmaCheck"
+                        android:layout_marginRight="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:includeFontPadding="true"
+                        android:text="Pneumonia"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/tbCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bronchitisCheck"
+                        android:layout_toRightOf="@id/pneumoniaCheck"
+                        android:layout_marginHorizontal="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:text="Tuberculosis "
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/lungCancerCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pneumoniaCheck"
+                        android:layout_alignLeft="@id/pneumoniaCheck"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:text="Lung Cancer"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <CheckBox
+                        android:id="@+id/otherRespCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pneumoniaCheck"
+                        android:layout_toRightOf="@id/lungCancerCheck"
+                        android:layout_marginHorizontal="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="#FFC107"
+                        android:text="Other "
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="Yesterday's AQI -"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/avgAQI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView8"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="15dp"
+                        android:text="Unavailable"
+                        android:textAllCaps="false"
+                        android:textColor="#FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="AQI Prediction for Today -"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/aqiPredictText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView7"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="10dp"
+                        android:hint="XX"
+                        android:textSize="16sp"
+                        android:inputType="number"
+                        android:textColor="#FFC107"
+                        android:textColorHint="#80FFC107" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="Data Collected At :"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/dataCollectedAt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textView"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="10dp"
+                        android:hint="Home / Hospital"
+                        android:textSize="16sp"
+                        android:inputType="textPersonName"
+                        android:textColor="#FFC107"
+                        android:textColorHint="#80FFC107"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/geotagButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="20dp"
+                android:background="#00BCD4"
+                android:text="GeoTagging"
+                android:textColor="@color/app_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="@color/app_white">
+    android:background="@drawable/gradient_effect">
 
     <ImageButton
         android:id="@+id/detailed_play_button"

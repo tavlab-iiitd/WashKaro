@@ -3,8 +3,9 @@ package inspire2connect.inspire2connect.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,12 +33,12 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,11 +47,8 @@ import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.about.aboutActivity;
 import inspire2connect.inspire2connect.satyaChat.ChatActivity;
 import inspire2connect.inspire2connect.survey.maleFemaleActivity;
-import inspire2connect.inspire2connect.news.onAIrActivity;
-import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
-import okio.Utf8;
 
 public class homeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -67,6 +65,8 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
     private List<Infographics> slideLists;
+    String currentUserID;
+
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -107,29 +107,32 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarGradiant(this);
         setContentView(R.layout.activity_home_);
         update_handle();
         initialize_view_flipper();
 
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
+
         //Firebase Analytics
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "Home Activity");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         slideLists = new ArrayList<>();
         ll_but[0] = findViewById(R.id.success_stories_tile);
         ll_but[1] = findViewById(R.id.misc_but3_layout);
         ll_but[2] = findViewById(R.id.misc_but2_layout);
         ll_but[3] = findViewById(R.id.faqs_tile);
-        ll_but[4] = findViewById(R.id.mohfw_ll2);
-        ll_but[5] = findViewById(R.id.mohfw_ll3);
-        ll_but[6] = findViewById(R.id.mohfw_ll4);
-        ll_but[7] = findViewById(R.id.mohfw_ll5);
+        ll_but[4] = findViewById(R.id.twitter_tile);
+        ll_but[5] = findViewById(R.id.quiz_tile);
 
 
-        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5, 6 , 7};
+        int[] btnToAdd = new int[]{0, 1, 2, 3, 4, 5};
 
         for (int i = 0; i < btnToAdd.length; i++) {
             ll_but[btnToAdd[i]].setOnClickListener(this);
@@ -206,10 +209,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
-                bundle.putString("InfographicScroll", "Scrolled Left");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
+                bundle.putString("UID", currentUserID);
+                    bundle.putString("InfographicScroll", "Scrolled Left");
+                    FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.flipperRight:
                 viewFlipper.stopFlipping();
@@ -217,10 +223,13 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle2 = new Bundle();
-                bundle2.putString("UID", firebaseUser.getUid());
+                bundle2.putString("UID", currentUserID);
                 bundle2.putString("InfographicScroll", "Scrolled Right");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
+                FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle2);
                 break;
             case R.id.misc_but2_layout:
                 i = new Intent(homeActivity.this, ChatActivity.class);
@@ -238,14 +247,14 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 i = getFAQsIntent(this);
                 startActivity(i);
                 break;
-            case R.id.mohfw_ll2:
-            case R.id.mohfw_ll3:
-            case R.id.mohfw_ll4:
-            case R.id.mohfw_ll5:
+            case R.id.twitter_tile:
                 i = getTwitterIntent ( this );
                 startActivity(i);
                 break;
-
+            case R.id.quiz_tile:
+                i = getQuizIntent(this);
+                startActivity ( i );
+                break;
             default:
                 i = null;
                 break;
@@ -270,15 +279,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         switch (id){
             case R.id.lang_togg_butt:
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "Home Activity");
-                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance(this).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -292,6 +304,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.privacy_policy:
                 openPrivacyPolicy(this);
+                break;
+            case R.id.research_analytics:
+                i = getAqiIntent(this);
+                startActivity(i);
                 break;
             default:
                 i = null;
@@ -375,14 +391,18 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
 
         // Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Code", code);
-        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
         startActivity(intnt);
     }
+
 
     public void fetchset_facts() {
 
