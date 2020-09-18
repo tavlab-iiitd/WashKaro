@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
+
 import inspire2connect.inspire2connect.R;
 
 public class urlActivity extends BaseActivity {
     WebView webView;
+
+    String currentUserID;
 
     public String url;
 
@@ -23,11 +28,14 @@ public class urlActivity extends BaseActivity {
         String title = intent.getStringExtra("name");
 
         //Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("WebPage_Title", title);
         bundle.putString("WebPage_URL", url);
-        firebaseAnalytics.logEvent("Webpages", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("Webpages", bundle);
 
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

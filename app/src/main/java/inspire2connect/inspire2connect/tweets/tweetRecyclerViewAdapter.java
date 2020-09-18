@@ -22,6 +22,9 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
@@ -37,6 +40,8 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
     Context context;
 
     private TextToSpeech tts;
+
+    String currentUserID;
 
     private ArrayList<tweetObject> List;
 
@@ -66,10 +71,13 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
 
 
         // Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("ArticleTitle", share);
-        firebaseAnalytics.logEvent("ArticleShared", bundle);
+        FirebaseAnalytics.getInstance ( context ).logEvent("ArticleShared", bundle);
 
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
@@ -105,9 +113,13 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
             public void onClick(View v) {
 
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
+                bundle.putString("UID", currentUserID);
                 bundle.putString("ArticleTitle", movie.getText());
-                bundle.putString("UID", firebaseUser.getUid());
+
 
                 if(isSpeaking) {
                     if(tts.isSpeaking()) {
@@ -213,7 +225,7 @@ public class tweetRecyclerViewAdapter extends RecyclerView.Adapter<tweetRecycler
 
 
                 // Firebase Analytics
-                firebaseAnalytics.logEvent("ArticleAudio", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleAudio", bundle);
 
             }
         });

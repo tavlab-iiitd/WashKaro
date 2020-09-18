@@ -14,6 +14,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
+
 import in.srain.cube.views.GridViewWithHeaderAndFooter;
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
@@ -26,6 +29,8 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
     private ImageView tavlab;
     private ImageView precog;
     private ImageView iiitd;
+
+    String currentUserID;
 
     aboutElem[] elems;
 
@@ -92,10 +97,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         iiitd.setOnClickListener(this);
 
         // Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "About Page");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,11 +112,14 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("UID", currentUserID);
                 bundle1.putString("Profile_Visited", elems[position].name);
                 bundle1.putString("Profile_Visited_URL", Uri.encode(elems[position].url));
-                firebaseAnalytics.logEvent("Profile_Visits", bundle1);
+                FirebaseAnalytics.getInstance ( ctx ).logEvent("Profile_Visits", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -124,10 +135,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("UID", currentUserID);
                 bundle1.putString("Reference_URL", url);
-                firebaseAnalytics.logEvent("References_Visited", bundle1);
+                FirebaseAnalytics.getInstance ( ctx ).logEvent("References_Visited", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -140,10 +154,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("UID", firebaseUser.getUid());
+                bundle1.putString("UID", currentUserID);
                 bundle1.putString("Reference_URL", url);
-                firebaseAnalytics.logEvent("References_Visited", bundle1);
+                FirebaseAnalytics.getInstance ( ctx ).logEvent("References_Visited", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -184,10 +201,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         }
 
         //Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("URL", url);
-        firebaseAnalytics.logEvent("URLs_Visited", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("URLs_Visited", bundle);
 
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));

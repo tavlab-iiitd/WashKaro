@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONObject;
 
@@ -39,6 +41,7 @@ public class ChatActivity extends BaseActivity {
 
     private EditText sendText;
     private ImageButton sendButton;
+    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +63,13 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("ChatBot_Text", "Sent");
-                firebaseAnalytics.logEvent("ChatBot_Activity", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ChatBot_Activity", bundle);
 
                 String txtToSend = sendText.getText().toString().trim();
                 items.add(new ChatElem(txtToSend, true));
@@ -86,7 +92,7 @@ public class ChatActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Satya Chatbot Screen");
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
 
     }
 

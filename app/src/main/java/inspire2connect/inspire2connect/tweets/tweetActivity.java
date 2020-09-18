@@ -34,6 +34,8 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +66,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     float downX, downY, upX, upY;
     private ViewFlipper viewFlipper;
     private List<tweetInfographics> slideLists;
+    String currentUserID;
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -305,10 +308,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         Intent intnt = new Intent(tweetActivity.this, tweetInfoActivity.class);
 
         // Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Tweet_Code", code);
-        firebaseAnalytics.logEvent("Infographic_Selected", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
         startActivity(intnt);
@@ -433,15 +439,18 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
             case R.id.lang_togg_butt:
 
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "Tweet Activity");
-                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -505,10 +514,14 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.showNext();
 
                 //Firebase Analytics
+
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("InfographicScroll", "Scrolled Left");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle);
+                FirebaseAnalytics.getInstance ( this ).logEvent("ScrollingInfographics", bundle);
 
                 break;
             case R.id.tweetFlipperRight:
@@ -518,10 +531,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.showPrevious();
 
                 //Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle2 = new Bundle();
-                bundle2.putString("UID", firebaseUser.getUid());
+                bundle2.putString("UID", currentUserID);
                 bundle2.putString("InfographicScroll", "Scrolled Right");
-                firebaseAnalytics.logEvent("ScrollingInfographics", bundle2);
+                FirebaseAnalytics.getInstance ( this ).logEvent("ScrollingInfographics", bundle2);
 
                 break;
 

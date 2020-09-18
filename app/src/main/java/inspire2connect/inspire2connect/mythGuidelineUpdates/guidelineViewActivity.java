@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.Serializable;
 
 import inspire2connect.inspire2connect.R;
@@ -32,6 +35,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     private String title;
     private String content;
     private Context context;
+    String currentUserID;
 
     @Override
     protected void onPause() {
@@ -119,11 +123,14 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
                 i.putExtra("name", getString(R.string.information_link ));
 
                 // Firebase Analytics
+                if(firebaseUser != null) {
+                    currentUserID = firebaseUser.getUid();
+                }
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("ArticleTitle", title);
                 bundle.putString("ArticleURL", redirect_url);
-                firebaseAnalytics.logEvent("ArticleSourceChecked", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleSourceChecked", bundle);
 
                 startActivity(i);
             }
@@ -141,7 +148,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
             public void onClick(View v) {
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("ArticleTitle", title);
                 bundle.putString("ArticleURL", redirect_url);
 
@@ -159,7 +166,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
                 }
 
                 // Firebase Analytics
-                firebaseAnalytics.logEvent("ArticleAudio", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleAudio", bundle);
 
             }
         });
@@ -169,9 +176,9 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     public void share(String toShare) {
         // Firebase Analytics
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("ArticleTitle", title);
-        firebaseAnalytics.logEvent("ArticleShared", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("ArticleShared", bundle);
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/html");

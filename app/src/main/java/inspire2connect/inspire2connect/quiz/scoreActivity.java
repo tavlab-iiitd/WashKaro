@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class scoreActivity extends BaseActivity {
     private TextView score;
     private int[] user_selections;
     private Button done, solutions;
+    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,10 @@ public class scoreActivity extends BaseActivity {
 
 //      Firebase Analytics
         Bundle bundle1 = new Bundle();
-        bundle1.putString("UID", firebaseUser.getUid());
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
+        bundle1.putString("UID", currentUserID);
         bundle1.putString("QuizStatus", "Quiz Completed");
         bundle1.putString("QuizScore", score_str);
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);

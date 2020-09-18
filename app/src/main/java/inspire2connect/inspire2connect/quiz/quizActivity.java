@@ -32,6 +32,7 @@ import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,6 +71,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
     private int score;
     public static int[] selected_options;
     private boolean setDate;
+    String currentUserID;
 
 
 
@@ -310,13 +312,16 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 
         //Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "Quiz Activity");
         FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         Bundle bundle2 = new Bundle();
-        bundle2.putString("UID", firebaseUser.getUid());
+        bundle2.putString("UID", currentUserID);
         bundle2.putString("Quiz", "Quiz Started");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle2);
 
@@ -399,7 +404,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 //      Firebase Analytics
         Bundle bundle1 = new Bundle();
-        bundle1.putString("UID", firebaseUser.getUid());
+        bundle1.putString("UID", currentUserID);
         bundle1.putString("QuizQuestionStatus", "Q" + quesNum + " Attempted");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);
 
@@ -521,7 +526,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 //      Firebase Analytics
         Bundle bundle1 = new Bundle();
-        bundle1.putString("UID", firebaseUser.getUid());
+        bundle1.putString("UID", currentUserID);
         bundle1.putString("QuizAnswerStatus", "Wrong Answer");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);
 
@@ -563,7 +568,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 //      Firebase Analytics
         Bundle bundle1 = new Bundle();
-        bundle1.putString("UID", firebaseUser.getUid());
+        bundle1.putString("UID", currentUserID);
         bundle1.putString("QuizAnswerStatus", "Correct Answer");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);
 

@@ -26,6 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.Objects;
+
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
@@ -43,6 +45,7 @@ public class WelcomeActivity extends BaseActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    String currentUserID;
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -93,6 +96,7 @@ public class WelcomeActivity extends BaseActivity {
         // Firebase Anonymous Auth
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+
         if(firebaseUser == null){
             firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -105,13 +109,13 @@ public class WelcomeActivity extends BaseActivity {
         }
 
 //         Firebase Analytics
-        if(firebaseAnalytics == null){
-            firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Screen", this.getClass().getSimpleName());
-        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
 
         prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {

@@ -48,6 +48,7 @@ public class text2speech2_2Activity extends BaseActivity
     boolean isSpeaking;
     TextToSpeech mTTS;
     private boolean already_clicked;
+    String currentUserID;
 
     @Override
     protected void onPause() {

@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +41,8 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     private TextToSpeech tts;
     private boolean setDate;
     private String screenName;
+    String currentUserID;
+    private static Context context;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -100,6 +104,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         setDate = false;
 
         Intent i = getIntent();
+        context = getApplicationContext ();
 
         String type = i.getStringExtra(TYPE);
         String date = i.getStringExtra(DATE);
@@ -150,10 +155,13 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         }
 
         // Firebase Analytics
+        if(firebaseUser != null) {
+            currentUserID = firebaseUser.getUid();
+        }
         Bundle bundle = new Bundle();
-        bundle.putString("UID", firebaseUser.getUid());
+        bundle.putString("UID", currentUserID);
         bundle.putString("Screen", screenName);
-        firebaseAnalytics.logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
 
         result = new ArrayList<>();
         result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under"));
@@ -193,14 +201,14 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 if(Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
                 else if(Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", screenName);
-                firebaseAnalytics.logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -250,11 +258,11 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
 
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
-                bundle.putString("UID", firebaseUser.getUid());
+                bundle.putString("UID", currentUserID);
                 bundle.putString("Screen", screenName);
                 bundle.putString("ArticleTitle", result_from_adapter.get(position).getTitle());
                 bundle.putString("ArticleURL", result_from_adapter.get(position).getSource());
-                firebaseAnalytics.logEvent("ArticleSelected", bundle);
+                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleSelected", bundle);
 
                 startActivity(i);
             }
