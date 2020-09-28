@@ -185,5 +185,9 @@
 
     <!--    Map API-->
     <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
+    <string name="view_source">View Source</string>
+    <string name="raunak">Raunak Mokhasi</string>
+    <string name="raunak_tag">Undergraduate, IIIT Delhi</string>
+    <string name="raunakURL">https://in.linkedin.com/in/raunak-mokhasi-610b41188</string>
 
 </resources>

@@ -137,10 +137,11 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
                                 Objects.requireNonNull(snapshot.child("correct_attempts").getValue()).toString(),
                                 Objects.requireNonNull(snapshot.child("total_attempts").getValue()).toString(),
                                 snapshot.getKey(),
-                                Integer.parseInt(Objects.requireNonNull(snapshot.child("key").getValue()).toString()));
+                                Integer.parseInt(Objects.requireNonNull(snapshot.child("key").getValue()).toString()),
+                                Objects.requireNonNull ( (snapshot.child("source").getValue ()).toString () ));
 
                         result.add(new questionObject(obj.question,
-                                obj.option1, obj.option2, obj.option3, obj.option4, obj.answer, obj.explanation, obj.correct_attempts, obj.total_attempts, obj.id, obj.key));
+                                obj.option1, obj.option2, obj.option3, obj.option4, obj.answer, obj.explanation, obj.correct_attempts, obj.total_attempts, obj.id, obj.key, obj.source));
                     }
                     selectQuestionSet(result);
 
