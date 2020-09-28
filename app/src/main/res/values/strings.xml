@@ -94,6 +94,8 @@
 
     <string name="vaibhav">Vaibhav Gautam</string>
     <string name="vaibhav_tag">Undergraduate, SNU</string>
+  
+    <string name="raunak">Raunak Mokhasi</string>
 
     <string name="himanshu">Himanshu Sharma</string>
     <string name="himanshu_tag">Undergraduate, GL Bajaj Institute</string>
@@ -108,6 +110,7 @@
     <string name="vrinda_tag">Undergraduate, IIIT Delhi</string>
     <string name="yashwin">Yashwin Agrawal</string>
     <string name="yashwin_tag">Undergraduate, IIIT Delhi</string>
+    <string name="raunak_tag">Undergraduate, IIIT Delhi</string>
 
     <string name="tanuj">Tanuj Dabas</string>
     <string name="tanuj_tag">Undergraduate, IIIT Delhi</string>
@@ -137,6 +140,7 @@
     <string name="akshatURL" translatable="false">https://www.linkedin.com/in/akshat-wadhwa-0852761a6</string>
     <string name="vihaanURL" translatable="false">https://www.linkedin.com/in/vihaan-m-a3841811a</string>
     <string name="yashwinURL" translatable="false">https://www.linkedin.com/in/yashwin-agrawal-6b28bb176</string>
+    <string name="raunakURL">https://in.linkedin.com/in/raunak-mokhasi-610b41188</string>
 
     <!--    WK Activities-->
     <string name="govt_updates_act">Government Updates</string>
@@ -186,8 +190,9 @@
     <!--    Map API-->
     <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
     <string name="view_source">View Source</string>
-    <string name="raunak">Raunak Mokhasi</string>
-    <string name="raunak_tag">Undergraduate, IIIT Delhi</string>
-    <string name="raunakURL">https://in.linkedin.com/in/raunak-mokhasi-610b41188</string>
+    
+    
+    
+
 
 </resources>

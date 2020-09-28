@@ -2,12 +2,14 @@ package inspire2connect.inspire2connect.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import inspire2connect.inspire2connect.R;
+
 import inspire2connect.inspire2connect.tweets.tweetActivity;
 import inspire2connect.inspire2connect.tweets.tweetObject;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.urlActivity;
 
 import android.content.Intent;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
