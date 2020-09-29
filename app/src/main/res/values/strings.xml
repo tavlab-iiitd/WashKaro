@@ -191,5 +191,28 @@
     <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
     <string name="view_source">View Source</string>
 
+<!--    AQI Hyperlocal Monitoring-->
+    <string name="aqi_hyperlocal_title">AQI Hyperlocal Monitoring</string>
+    <string name="reset">Reset</string>
+    <string name="enter_age">Enter Age :</string>
+    <string name="enter_gender">Enter Gender :</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="enter_bmi">Enter BMI :</string>
+    <string name="enter_bmi_hint">BMI Value</string>
+    <string name="suffering_from">Suffering from / Suspicion of :</string>
+    <string name="asthma">Asthama</string>
+    <string name="bronchitis">Bronchitis</string>
+    <string name="pneumonia">Pneumonia</string>
+    <string name="tuberculosis">Tuberculosis</string>
+    <string name="lung_cancer">Lung Cancer</string>
+    <string name="yesterday_aqi">Yesterday\'s AQI :</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="aqi_prediction_today">AQI Prediction for Today :</string>
+    <string name="aqi_hint">AQI</string>
+    <string name="geotagging">GeoTagging</string>
+    <string name="data_collected_at">Data Collected At :</string>
+    <string name="home_hospital">Home / Hospital</string>
 
 </resources>

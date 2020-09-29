@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginVertical="10dp"
-            android:text="AQI Hyperlocal Monitoring"
+            android:text="@string/aqi_hyperlocal_title"
             android:textColor="#FFEB3B"
             android:textSize="24sp"
             android:textStyle="bold"/>
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:background="@color/blackcolor"
-                    android:text="RESET"
+                    android:text="@string/reset"
                     android:textColor="#FFC107"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_centerVertical="true"
-                        android:text="Enter Age -"
+                        android:text="@string/enter_age"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:text="Enter Gender :"
+                        android:text="@string/enter_gender"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
@@ -122,7 +122,7 @@
                         android:layout_marginHorizontal="5dp"
                         android:paddingHorizontal="10dp"
                         android:background="#FFC107"
-                        android:text="Male"
+                        android:text="@string/male"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -135,7 +135,7 @@
                         android:layout_marginHorizontal="5dp"
                         android:paddingHorizontal="10dp"
                         android:background="#FFC107"
-                        android:text="Female"
+                        android:text="@string/female"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -149,7 +149,7 @@
                         android:layout_below="@id/maleCheck"
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
-                        android:text="Other"
+                        android:text="@string/other"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
 
@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_centerVertical="true"
-                        android:text="Enter BMI -"
+                        android:text="@string/enter_bmi"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
@@ -185,7 +185,7 @@
                         android:layout_toRightOf="@id/textView2"
                         android:layout_alignParentEnd="true"
                         android:layout_marginHorizontal="15dp"
-                        android:hint="XX"
+                        android:hint="@string/enter_bmi_hint"
                         android:inputType="numberDecimal"
                         android:textColor="#FFC107"
                         android:textColorHint="#80FFC107"
@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="10dp"
-                android:text="Suffering from / Suspicion of :"
+                android:text="@string/suffering_from"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
                         android:includeFontPadding="true"
-                        android:text="Asthma"
+                        android:text="@string/asthma"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -242,7 +242,7 @@
                         android:paddingHorizontal="10dp"
                         android:background="#FFC107"
                         android:includeFontPadding="true"
-                        android:text="Bronchitis"
+                        android:text="@string/bronchitis"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -258,7 +258,7 @@
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
                         android:includeFontPadding="true"
-                        android:text="Pneumonia"
+                        android:text="@string/pneumonia"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -273,7 +273,7 @@
                         android:paddingHorizontal="10dp"
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
-                        android:text="Tuberculosis "
+                        android:text="@string/tuberculosis"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -288,7 +288,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
-                        android:text="Lung Cancer"
+                        android:text="@string/lung_cancer"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -303,7 +303,7 @@
                         android:paddingHorizontal="10dp"
                         android:layout_marginVertical="5dp"
                         android:background="#FFC107"
-                        android:text="Other "
+                        android:text="@string/other"
                         android:textColor="#000000"
                         android:textSize="14sp"
                         android:textStyle="bold"/>
@@ -328,7 +328,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_centerVertical="true"
-                        android:text="Yesterday's AQI -"
+                        android:text="@string/yesterday_aqi"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
@@ -340,7 +340,7 @@
                         android:layout_toRightOf="@id/textView8"
                         android:layout_alignParentEnd="true"
                         android:layout_marginHorizontal="15dp"
-                        android:text="Unavailable"
+                        android:text="@string/unavailable"
                         android:textAllCaps="false"
                         android:textColor="#FFC107"
                         android:textSize="16sp"
@@ -366,7 +366,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_centerVertical="true"
-                        android:text="AQI Prediction for Today -"
+                        android:text="@string/aqi_prediction_today"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -378,7 +378,7 @@
                         android:layout_toRightOf="@id/textView7"
                         android:layout_alignParentEnd="true"
                         android:layout_marginHorizontal="10dp"
-                        android:hint="XX"
+                        android:hint="@string/aqi_hint"
                         android:textSize="16sp"
                         android:inputType="number"
                         android:textColor="#FFC107"
@@ -404,7 +404,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_centerVertical="true"
-                        android:text="Data Collected At :"
+                        android:text="@string/data_collected_at"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -416,7 +416,7 @@
                         android:layout_toRightOf="@id/textView"
                         android:layout_alignParentEnd="true"
                         android:layout_marginHorizontal="10dp"
-                        android:hint="Home / Hospital"
+                        android:hint="@string/home_hospital"
                         android:textSize="16sp"
                         android:inputType="textPersonName"
                         android:textColor="#FFC107"
@@ -433,7 +433,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="20dp"
                 android:background="#00BCD4"
-                android:text="GeoTagging"
+                android:text="@string/geotagging"
+                android:textAllCaps="false"
                 android:textColor="@color/app_blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
