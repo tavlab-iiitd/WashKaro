@@ -1,5 +1,6 @@
 package inspire2connect.inspire2connect.aqi_cough;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,6 +24,7 @@ import java.util.Date;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
+import inspire2connect.inspire2connect.utils.LocaleHelper;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -195,7 +197,10 @@ public class aqi_activity extends BaseActivity {
 
             }
         });
+    }
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 }
