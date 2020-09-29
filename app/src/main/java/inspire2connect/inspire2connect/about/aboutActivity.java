@@ -55,6 +55,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 new aboutElem(this, R.string.himanshu, R.string.himanshu_tag, R.string.himanshuURL),
                 new aboutElem(this, R.string.kanav, R.string.kanav_tag, R.string.kanavURL),
                 new aboutElem(this, R.string.priyanka, R.string.priyanka_tag, R.string.priyankaURL),
+                new aboutElem(this, R.string.raunak,R.string.raunak_tag , R.string.raunakURL),
                 new aboutElem(this, R.string.rishabh, R.string.tanuj_tag, R.string.rishabhURL),
                 new aboutElem(this, R.string.rohan, R.string.rohan_tag, R.string.rohanURL),
                 new aboutElem(this, R.string.tanuj, R.string.tanuj_tag, R.string.tanujURL),

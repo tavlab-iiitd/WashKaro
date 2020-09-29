@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -159,6 +160,21 @@
                         android:textColor="@color/app_white">
 
                     </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/source_button"
+                        android:padding="5dp"
+                        android:text="@string/view_source"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/mukta_regular"
+                        android:textColor="@color/app_black"
+                        android:background="@color/app_white">
+
+                    </TextView>
+
 
                 </LinearLayout>
 
