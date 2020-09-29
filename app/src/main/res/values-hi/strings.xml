@@ -149,19 +149,10 @@
     <string name="geotagging">जियोटैगिंग</string>
     <string name="data_collected_at">डेटा एकत्र:</string>
     <string name="home_hospital">घर / अस्पताल</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="name">नाम</string>
+    <string name="view_source">स्रोत देखें</string>
+    <string name="raunak_tag">अंडरग्रेजुएट, IIIT दिल्ली</string>
+    <string name="raunak">रौनक मोखसी</string>
 
 
 </resources>
