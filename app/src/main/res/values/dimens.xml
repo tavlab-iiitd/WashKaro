@@ -45,4 +45,6 @@
     <dimen name="chat_font_size">16sp</dimen>
     <dimen name="chat_padding">12dp</dimen>
     <dimen name="chat_send_but_size">48dp</dimen>
+
+    <dimen name="aqi_btn_margin">8dp</dimen>
 </resources>

@@ -214,5 +214,6 @@
     <string name="geotagging">GeoTagging</string>
     <string name="data_collected_at">Data Collected At :</string>
     <string name="home_hospital">Home / Hospital</string>
+    <string name="name">Name</string>
 
 </resources>
