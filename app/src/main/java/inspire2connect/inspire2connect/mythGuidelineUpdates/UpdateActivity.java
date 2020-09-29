@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,15 +33,15 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitListener {
     public static final String TAG = "UpdateActivity";
+    private static Context context;
     public ArrayList<guidelinesObject> result;
     DatabaseReference databaseReference;
+    String currentUserID;
     private RecyclerView recyclerView;
     private UpdatesAdapter mAdapter;
     private TextToSpeech tts;
     private boolean setDate;
     private String screenName;
-    String currentUserID;
-    private static Context context;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -99,12 +98,12 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         setContentView(R.layout.activity_updates);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         setDate = false;
 
         Intent i = getIntent();
-        context = getApplicationContext ();
+        context = getApplicationContext();
 
         String type = i.getStringExtra(TYPE);
         String date = i.getStringExtra(DATE);
@@ -146,7 +145,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 break;
             case TWEETS:
                 databaseReference = tweetsReference;
-                getSupportActionBar().setTitle( R.string.social_media_title);
+                getSupportActionBar().setTitle(R.string.social_media_title);
                 screenName = "Twitter Analysis";
                 break;
             default:
@@ -155,13 +154,13 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         }
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Screen", screenName);
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         result = new ArrayList<>();
         result.add(new guidelinesObject("Under Maintainence", "Under Maintainence", "1", "Under"));
@@ -197,18 +196,18 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent i = null;
-        switch (id){
+        switch (id) {
             case R.id.lang_togg_butt:
                 // Firebase Analytics
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
-                if(Locale.getDefault().getLanguage().equals("en"))
+                if (Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
-                else if(Locale.getDefault().getLanguage().equals("hi"))
+                else if (Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", screenName);
-                FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance(this).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
@@ -243,7 +242,7 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
         super.onDestroy();
     }
 
-        @Override
+    @Override
     protected void onResume() {
         super.onResume();
         mAdapter.setOnItemClickListener(new UpdatesAdapter.MyClickListener() {
@@ -262,12 +261,13 @@ public class UpdateActivity extends BaseActivity implements TextToSpeech.OnInitL
                 bundle.putString("Screen", screenName);
                 bundle.putString("ArticleTitle", result_from_adapter.get(position).getTitle());
                 bundle.putString("ArticleURL", result_from_adapter.get(position).getSource());
-                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleSelected", bundle);
+                FirebaseAnalytics.getInstance(context).logEvent("ArticleSelected", bundle);
 
                 startActivity(i);
             }
         });
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         finish();

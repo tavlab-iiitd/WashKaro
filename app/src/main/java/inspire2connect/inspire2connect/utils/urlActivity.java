@@ -6,16 +6,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 
 import inspire2connect.inspire2connect.R;
 
 public class urlActivity extends BaseActivity {
-    WebView webView;
-
-    String currentUserID;
-
     public String url;
+    WebView webView;
+    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +25,14 @@ public class urlActivity extends BaseActivity {
         String title = intent.getStringExtra("name");
 
         //Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("WebPage_Title", title);
         bundle.putString("WebPage_URL", url);
-        FirebaseAnalytics.getInstance ( this ).logEvent("Webpages", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("Webpages", bundle);
 
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

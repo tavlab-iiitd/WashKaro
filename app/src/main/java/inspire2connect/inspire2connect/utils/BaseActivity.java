@@ -41,17 +41,9 @@ public class BaseActivity extends AppCompatActivity {
     public static final DatabaseReference statsReference = FirebaseDatabase.getInstance("https://washkaro-stats.firebaseio.com").getReference();
     public static final DatabaseReference successStoriesReference = FirebaseDatabase.getInstance("https://washkaro-success.firebaseio.com").getReference();
     public static final DatabaseReference faqsReference = FirebaseDatabase.getInstance("https://washkaro-faq.firebaseio.com").getReference();
-    public static final DatabaseReference tweetsReference = FirebaseDatabase.getInstance ("https://washkaro-twitter.firebaseio.com").getReference ();
-    public static final DatabaseReference quizReference = FirebaseDatabase.getInstance ("https://washkaro-quiz.firebaseio.com").getReference ();
-    public static final DatabaseReference aqiReference = FirebaseDatabase.getInstance ("https://washkaro-aqi.firebaseio.com").getReference ();
-
-    // Firebase Analytics
-    public static FirebaseAnalytics firebaseAnalytics;
-
-    // Firebase Authenticaiton
-    public static FirebaseAuth firebaseAuth;
-    public static FirebaseUser firebaseUser;
-
+    public static final DatabaseReference tweetsReference = FirebaseDatabase.getInstance("https://washkaro-twitter.firebaseio.com").getReference();
+    public static final DatabaseReference quizReference = FirebaseDatabase.getInstance("https://washkaro-quiz.firebaseio.com").getReference();
+    public static final DatabaseReference aqiReference = FirebaseDatabase.getInstance("https://washkaro-aqi.firebaseio.com").getReference();
     // mythGuidelineUpdatesKey
     public static final String TYPE = "T";
     public static final String GUIDELINES = "0";
@@ -65,18 +57,14 @@ public class BaseActivity extends AppCompatActivity {
     public static final String DATE = "D";
     public static final String DATE_YES = "1";
     public static final String DATE_NO = "0";
-
     // TODO: Add Code for New Language Here
     public static final String englishCode = "en";
     public static final String hindiCode = "hi";
-
+    // TTS
+    public static final int SPEECH_REQUEST_CODE = 1500;
     // TODO: Add Firebase Key for Language Here
     private static final String englishKey = "english";
     private static final String hindiKey = "hindi";
-
-    // TTS
-    public static final int SPEECH_REQUEST_CODE = 1500;
-
     private static final HashMap<String, String> langKeyMap = new HashMap<String, String>() {
         {
             // TODO: Add put entry here
@@ -84,7 +72,11 @@ public class BaseActivity extends AppCompatActivity {
             put(hindiCode, hindiKey);
         }
     };
-
+    // Firebase Analytics
+    public static FirebaseAnalytics firebaseAnalytics;
+    // Firebase Authenticaiton
+    public static FirebaseAuth firebaseAuth;
+    public static FirebaseUser firebaseUser;
     public static DatabaseReference usersDB = FirebaseDatabase.getInstance().getReference("users");
 
     public static final void Logv(String TAG, String message) {
@@ -133,7 +125,7 @@ public class BaseActivity extends AppCompatActivity {
         activity.startActivity(i);
     }
 
-    public static String getURLEncoding(String surl) throws Exception{
+    public static String getURLEncoding(String surl) throws Exception {
         URL u = new URL(surl);
         return new URI(u.getProtocol(), u.getAuthority(), u.getPath(), u.getQuery(), u.getRef()).toString();
     }
@@ -174,7 +166,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-
     public static Intent getSuccessStoriesIntent(Activity activity) {
         Intent i = new Intent(activity, UpdateActivity.class);
         i.putExtra(TYPE, SUCCESS_STORIES);
@@ -201,8 +192,8 @@ public class BaseActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
             Drawable background = activity.getResources().getDrawable(R.drawable.gradient_effect);
-            window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor( Color.TRANSPARENT);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
             window.setNavigationBarColor(Color.TRANSPARENT);
             window.setBackgroundDrawable(background);
         }

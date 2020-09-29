@@ -33,7 +33,6 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -63,10 +62,9 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     ConstraintLayout[] statLayouts = new ConstraintLayout[4];
     LayoutInflater inflater;
     float downX, downY, upX, upY;
+    String currentUserID;
     private ViewFlipper viewFlipper;
     private List<Infographics> slideLists;
-    String currentUserID;
-
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -112,10 +110,10 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         update_handle();
         initialize_view_flipper();
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable (Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         //Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
@@ -166,7 +164,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         flip_right.setOnClickListener(this);
 
         flipper_single_tap();
-        fetchset_facts ();
+        fetchset_facts();
 
         setInfographicFlipper();
     }
@@ -202,20 +200,20 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         Intent i = null;
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.flipperLeft:
                 viewFlipper.stopFlipping();
                 viewFlipper.setInAnimation(anim1);
                 viewFlipper.setOutAnimation(anim4);
                 viewFlipper.showNext();
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
-                    bundle.putString("InfographicScroll", "Scrolled Left");
-                    FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle);
+                bundle.putString("InfographicScroll", "Scrolled Left");
+                FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle);
                 break;
             case R.id.flipperRight:
                 viewFlipper.stopFlipping();
@@ -223,7 +221,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 viewFlipper.setOutAnimation(anim3);
                 viewFlipper.showPrevious();
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle2 = new Bundle();
@@ -248,12 +246,12 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(i);
                 break;
             case R.id.twitter_tile:
-                i = getTwitterIntent ( this );
+                i = getTwitterIntent(this);
                 startActivity(i);
                 break;
             case R.id.quiz_tile:
                 i = getQuizIntent(this);
-                startActivity ( i );
+                startActivity(i);
                 break;
             default:
                 i = null;
@@ -267,7 +265,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         getMenuInflater().inflate(R.menu.home_page_menu, menu);
         Drawable drawable = menu.findItem(R.id.lang_togg_butt).getIcon();
         drawable = DrawableCompat.wrap(drawable);
-        DrawableCompat.setTint(drawable, ContextCompat.getColor(this,R.color.app_pink));
+        DrawableCompat.setTint(drawable, ContextCompat.getColor(this, R.color.app_pink));
         menu.findItem(R.id.lang_togg_butt).setIcon(drawable);
         return super.onCreateOptionsMenu(menu);
     }
@@ -276,17 +274,17 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent i = null;
-        switch (id){
+        switch (id) {
             case R.id.lang_togg_butt:
                 // Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
-                if(Locale.getDefault().getLanguage().equals("en"))
+                if (Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
-                else if(Locale.getDefault().getLanguage().equals("hi"))
+                else if (Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "Home Activity");
@@ -391,7 +389,7 @@ public class homeActivity extends BaseActivity implements View.OnClickListener {
         Intent intnt = new Intent(homeActivity.this, InfographicsActivity.class);
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();

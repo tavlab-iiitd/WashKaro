@@ -44,7 +44,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="CustomTheme" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+    <style name="CustomTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 

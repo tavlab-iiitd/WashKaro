@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -33,8 +32,7 @@ import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-public class text2speech2_2Activity extends BaseActivity
-{
+public class text2speech2_2Activity extends BaseActivity {
     Switch toggleSwitch;
     String key;
     DatabaseReference ref;
@@ -47,8 +45,8 @@ public class text2speech2_2Activity extends BaseActivity
     ImageButton btn_play;
     boolean isSpeaking;
     TextToSpeech mTTS;
-    private boolean already_clicked;
     String currentUserID;
+    private boolean already_clicked;
 
     @Override
     protected void onPause() {

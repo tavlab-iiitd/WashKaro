@@ -35,7 +35,7 @@ public class tweetInfoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_infographics);
+        setContentView(R.layout.activity_infographics);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent i = this.getIntent();
@@ -48,7 +48,7 @@ public class tweetInfoActivity extends BaseActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext( LocaleHelper.onAttach(newBase));
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override

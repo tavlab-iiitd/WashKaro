@@ -16,16 +16,16 @@ public class Time_Up extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_time__up);
+        setContentView(R.layout.activity_time__up);
         //Initialize
-        playAgainButton = (Button)findViewById(R.id.playAgainButton);
-        timeUpText = (TextView)findViewById(R.id.timeUpText);
+        playAgainButton = findViewById(R.id.playAgainButton);
+        timeUpText = findViewById(R.id.timeUpText);
 
         //play again button onclick listener
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (Time_Up.this,quizActivity.class);
+                Intent intent = new Intent(Time_Up.this, quizActivity.class);
                 startActivity(intent);
                 finish();
 

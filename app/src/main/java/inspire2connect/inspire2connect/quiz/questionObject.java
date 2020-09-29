@@ -82,7 +82,9 @@ public class questionObject implements Comparable<questionObject> {
     }
 
 
-    public String getSource(){return source;}
+    public String getSource() {
+        return source;
+    }
 
 
     @Override

@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,27 +21,21 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 import inspire2connect.inspire2connect.R;
 
-import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseAnalytics;
-import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseAuth;
 import static inspire2connect.inspire2connect.utils.BaseActivity.firebaseUser;
 
 public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHolder> {
     private static MyClickListener myClickListener;
     Context context;
-
-    private TextToSpeech tts;
-
-    private ArrayList<guidelinesObject> List;
-
     boolean isSpeaking = false;
-    private ImageView curPlaying = null;
     String currentUserID;
+    private TextToSpeech tts;
+    private ArrayList<guidelinesObject> List;
+    private ImageView curPlaying = null;
 
     public UpdatesAdapter(Context context, ArrayList<guidelinesObject> List) {
         this.context = context;
@@ -67,13 +60,13 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("ArticleTitle", share);
-        FirebaseAnalytics.getInstance ( context ).logEvent("ArticleShared", bundle);
+        FirebaseAnalytics.getInstance(context).logEvent("ArticleShared", bundle);
 
         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
@@ -111,11 +104,11 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                 bundle.putString("UID", currentUserID);
                 bundle.putString("ArticleTitle", movie.getTitle());
 
-                if(isSpeaking) {
+                if (isSpeaking) {
                     // Firebase Analytics
                     bundle.putString("ArticleAudioStatus", "Audio OFF");
-                    if(tts.isSpeaking()) {
-                        if(curPlaying!=null) {
+                    if (tts.isSpeaking()) {
+                        if (curPlaying != null) {
                             curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                         }
                         tts.stop();
@@ -126,7 +119,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                             @Override
                             public void onDone(String utteranceId) {
                                 isSpeaking = false;
-                                if(curPlaying!=null) {
+                                if (curPlaying != null) {
                                     curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                                 }
                                 holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -135,7 +128,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                             @Override
                             public void onError(String utteranceId) {
                                 isSpeaking = false;
-                                if(curPlaying!=null) {
+                                if (curPlaying != null) {
                                     curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                                 }
                                 holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -146,7 +139,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                             }
                         });
                     }
-                    if(curPlaying!=holder.play_pause) {
+                    if (curPlaying != holder.play_pause) {
                         // Firebase Analytics
                         bundle.putString("ArticleAudioStatus", "Audio ON");
 
@@ -159,7 +152,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                             @Override
                             public void onDone(String utteranceId) {
                                 isSpeaking = false;
-                                if(curPlaying!=null) {
+                                if (curPlaying != null) {
                                     curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                                 }
                                 holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -168,7 +161,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                             @Override
                             public void onError(String utteranceId) {
                                 isSpeaking = false;
-                                if(curPlaying!=null) {
+                                if (curPlaying != null) {
                                     curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                                 }
                                 holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -192,7 +185,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                         @Override
                         public void onDone(String utteranceId) {
                             isSpeaking = false;
-                            if(curPlaying!=null) {
+                            if (curPlaying != null) {
                                 curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                             }
                             holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -201,7 +194,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                         @Override
                         public void onError(String utteranceId) {
                             isSpeaking = false;
-                            if(curPlaying!=null) {
+                            if (curPlaying != null) {
                                 curPlaying.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
                             }
                             holder.play_pause.setImageDrawable(context.getDrawable(R.drawable.ic_play_arrow_black_34dp));
@@ -214,7 +207,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                 }
 
                 // Firebase Analytics
-                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleAudio", bundle);
+                FirebaseAnalytics.getInstance(context).logEvent("ArticleAudio", bundle);
             }
         });
     }

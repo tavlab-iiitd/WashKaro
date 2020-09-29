@@ -5,13 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -21,7 +18,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -30,20 +26,13 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
-import com.google.common.reflect.TypeToken;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,24 +45,22 @@ import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class quizActivity extends BaseActivity implements View.OnClickListener {
-    private static final int MY_REQUEST_CODE = 2399;
-    TextView question, option1_text, option2_text, option3_text, option4_text, qCount;
-    ConstraintLayout[] options = new ConstraintLayout[4];
     public static final String TAG = "QuizActivity";
     public static final String seen_questions_tag = "QuestionsShown";
-    public ArrayList<questionObject> result;
     public static final ArrayList<questionObject> selected_questions = new ArrayList<>();
+    private static final int MY_REQUEST_CODE = 2399;
+    public static int[] selected_options;
+    public ArrayList<questionObject> result;
     public ArrayList<questionObject> seen_questions;
+    TextView question, option1_text, option2_text, option3_text, option4_text, qCount;
+    ConstraintLayout[] options = new ConstraintLayout[4];
     DatabaseReference databaseReference;
+    String currentUserID;
     private Dialog loadingDialog;
-//    private CountDownTimer countDown;
+    //    private CountDownTimer countDown;
     private int quesNum;
     private int score;
-    public static int[] selected_options;
     private boolean setDate;
-    String currentUserID;
-
-
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
@@ -118,7 +105,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void setUpdates() {
-        quizReference.addListenerForSingleValueEvent (new ValueEventListener() {
+        quizReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 result = new ArrayList<>();
@@ -139,7 +126,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
                                 snapshot.getKey(),
 
                                 Integer.parseInt(Objects.requireNonNull(snapshot.child("key").getValue()).toString()),
-                                Objects.requireNonNull ( (snapshot.child("source").getValue ()).toString () ));
+                                Objects.requireNonNull((snapshot.child("source").getValue()).toString()));
 
                         result.add(new questionObject(obj.question,
                                 obj.option1, obj.option2, obj.option3, obj.option4, obj.answer, obj.explanation, obj.correct_attempts, obj.total_attempts, obj.id, obj.key, obj.source));
@@ -167,8 +154,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         option3_text.setText(selected_questions.get(0).getOption3());
         option4_text.setText(selected_questions.get(0).getOption4());
 
-        qCount.setText(String.valueOf(1) + "/" + String.valueOf(selected_questions.size()));
-
+        qCount.setText(1 + "/" + selected_questions.size());
 
 
 //        startTimer();
@@ -214,8 +200,6 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 //        super.onPause();
 //        countDown.cancel();
 //    }
-
-
 
 
     @Override
@@ -315,7 +299,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
 
         //Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
@@ -394,7 +378,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
             }
 
-            wrongDialog ();
+            wrongDialog();
 
         }
 
@@ -403,7 +387,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
     private void changeQuestion() {
 
-        resetColor ();
+        resetColor();
 
 //      Firebase Analytics
         Bundle bundle1 = new Bundle();
@@ -421,7 +405,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
             playAnim(option3_text, 0, 3);
             playAnim(option4_text, 0, 4);
 
-            qCount.setText(String.valueOf(quesNum + 1) + "/" + String.valueOf(selected_questions.size()));
+            qCount.setText((quesNum + 1) + "/" + selected_questions.size());
 
 //            timer.setText(String.valueOf(30));
 //            startTimer();
@@ -429,7 +413,7 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         } else {
             // Go to Score Activity
             Intent intent = new Intent(quizActivity.this, scoreActivity.class);
-            intent.putExtra("SCORE", String.valueOf(score) + "/" + String.valueOf(selected_questions.size()));
+            intent.putExtra("SCORE", score + "/" + selected_questions.size());
 //            intent.putExtra("QUESTIONS", selected_questions);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -533,8 +517,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         bundle1.putString("QuizAnswerStatus", "Wrong Answer");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);
 
-        TextView wrongText = (TextView) dialogWrong.findViewById(R.id.wrongText);
-        Button buttonNext = (Button) dialogWrong.findViewById(R.id.dialogNext);
+        TextView wrongText = dialogWrong.findViewById(R.id.wrongText);
+        Button buttonNext = dialogWrong.findViewById(R.id.dialogNext);
 
         //OnCLick listener to go next que
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -575,8 +559,8 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         bundle1.putString("QuizAnswerStatus", "Correct Answer");
         FirebaseAnalytics.getInstance(this).logEvent("QuizStatus", bundle1);
 
-        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correctText);
-        Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
+        TextView correctText = dialogCorrect.findViewById(R.id.correctText);
+        Button buttonNext = dialogCorrect.findViewById(R.id.dialogNext);
 
         //OnCLick listener to go next que
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -670,11 +654,11 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
 
         TinyDB tinydb = new TinyDB(this);
 
-        tinydb.checkForNullKey( seen_questions_tag );
+        tinydb.checkForNullKey(seen_questions_tag);
 
         ArrayList<String> objStrings = new ArrayList<String>();
 
-        for(questionObject question: questions_seen){
+        for (questionObject question : questions_seen) {
             objStrings.add(gson.toJson(question));
         }
 
@@ -688,10 +672,10 @@ public class quizActivity extends BaseActivity implements View.OnClickListener {
         TinyDB tinydb = new TinyDB(this);
 
         ArrayList<String> objStrings = tinydb.getListString(seen_questions_tag);
-        ArrayList<questionObject> questionList =  new ArrayList<questionObject>();
+        ArrayList<questionObject> questionList = new ArrayList<questionObject>();
 
-        for(String jObjString : objStrings){
-            questionObject question  = gson.fromJson(jObjString,  questionObject.class);
+        for (String jObjString : objStrings) {
+            questionObject question = gson.fromJson(jObjString, questionObject.class);
             questionList.add(question);
         }
         return questionList;

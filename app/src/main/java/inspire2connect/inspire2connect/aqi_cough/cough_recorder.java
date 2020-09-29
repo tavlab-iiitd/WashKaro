@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -23,24 +22,21 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
-
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 import inspire2connect.inspire2connect.R;
-import inspire2connect.inspire2connect.home.WelcomeActivity;
 import inspire2connect.inspire2connect.home.homeActivity;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class cough_recorder extends BaseActivity {
+    final int REQUEST_PERMISSION_CODE = 1000;
     Button recordButton1, stopButton1, playFileButton1, stopFileButton1, submitButton1;
     String pathSave1 = "";
     MediaRecorder mediaRecorder1;
     MediaPlayer mediaPlayer1;
     UploadTask uploadTask;
-
-    final int REQUEST_PERMISSION_CODE = 1000;
 
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
@@ -49,17 +45,17 @@ public class cough_recorder extends BaseActivity {
         setStatusBarGradiant(this);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        if(!checkPermissionFromDevice())
+        if (!checkPermissionFromDevice())
             requestPermission();
 
-        recordButton1 = (Button) findViewById( R.id.recordButton1);
-        stopButton1 = (Button) findViewById(R.id.stopButton1);
-        playFileButton1 = (Button) findViewById(R.id.playFileButton1);
-        stopFileButton1 = (Button) findViewById(R.id.stopFileButton1);
+        recordButton1 = findViewById(R.id.recordButton1);
+        stopButton1 = findViewById(R.id.stopButton1);
+        playFileButton1 = findViewById(R.id.playFileButton1);
+        stopFileButton1 = findViewById(R.id.stopFileButton1);
 
-        submitButton1 = (Button) findViewById(R.id.submitButton1);
+        submitButton1 = findViewById(R.id.submitButton1);
 
-        submitButton1.setOnClickListener(new android.view.View.OnClickListener(){
+        submitButton1.setOnClickListener(new android.view.View.OnClickListener() {
 
             @Override
             public void onClick(android.view.View view) {
@@ -78,14 +74,14 @@ public class cough_recorder extends BaseActivity {
                 uploadTask = coughRef.putFile(file);
 
                 // Register observers to listen for when the download is done or if it fails
-                uploadTask.addOnFailureListener(new OnFailureListener () {
+                uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@androidx.annotation.NonNull Exception exception) {
                         // Handle unsuccessful uploads
                     }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot> () {
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onSuccess(UploadTask    .TaskSnapshot taskSnapshot) {
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                         // ...
                     }
@@ -98,34 +94,32 @@ public class cough_recorder extends BaseActivity {
         });
 
 
-        recordButton1.setOnClickListener(new android.view.View.OnClickListener(){
+        recordButton1.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View view) {
                 System.out.println("GOING IN");
-                if(checkPermissionFromDevice()){
+                if (checkPermissionFromDevice()) {
                     //pathSave1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
                     //        .getAbsolutePath()+"/"
                     //        + UUID.randomUUID().toString()+"_audio_record.3gp"; //CHANGE THIS
 
-                    pathSave1 = getExternalFilesDir(pathSave1).getAbsolutePath() + "/" + UUID.randomUUID().toString()+"_audio_record.3gp";
+                    pathSave1 = getExternalFilesDir(pathSave1).getAbsolutePath() + "/" + UUID.randomUUID().toString() + "_audio_record.3gp";
 
                     System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAA " + pathSave1);
                     setupMediaRecorder();
-                    try{
+                    try {
                         mediaRecorder1.prepare();
                         mediaRecorder1.start();
                         stopButton1.setEnabled(true);
                         playFileButton1.setEnabled(false);
                         stopFileButton1.setEnabled(false);
                         recordButton1.setEnabled(false);
-                    }
-                    catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     Toast.makeText(cough_recorder.this, "Please COUGH!", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     requestPermission();
                 }
 
@@ -152,10 +146,10 @@ public class cough_recorder extends BaseActivity {
 
                 mediaPlayer1 = new MediaPlayer();
 
-                try{
+                try {
                     mediaPlayer1.setDataSource(pathSave1);
                     mediaPlayer1.prepare();
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 Toast.makeText(cough_recorder.this, "Playing...", Toast.LENGTH_SHORT).show();
@@ -171,7 +165,7 @@ public class cough_recorder extends BaseActivity {
                 stopButton1.setEnabled(false);
                 playFileButton1.setEnabled(true);
 
-                if(mediaPlayer1 != null){
+                if (mediaPlayer1 != null) {
                     mediaPlayer1.stop();
                     mediaPlayer1.release();
                     setupMediaRecorder();
@@ -180,11 +174,10 @@ public class cough_recorder extends BaseActivity {
         });
 
 
-
     }
 
     private void setupMediaRecorder() {
-        mediaRecorder1= new MediaRecorder();
+        mediaRecorder1 = new MediaRecorder();
         mediaRecorder1.setAudioSource(MediaRecorder.AudioSource.MIC);
         mediaRecorder1.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mediaRecorder1.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
@@ -196,18 +189,17 @@ public class cough_recorder extends BaseActivity {
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.RECORD_AUDIO,
-        },REQUEST_PERMISSION_CODE);
+        }, REQUEST_PERMISSION_CODE);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
-        switch(requestCode){
-            case REQUEST_PERMISSION_CODE:
-            {
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT).show();
+        switch (requestCode) {
+            case REQUEST_PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
                 else
-                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
 
             }
         }

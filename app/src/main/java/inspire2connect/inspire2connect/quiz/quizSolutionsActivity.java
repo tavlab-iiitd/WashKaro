@@ -1,21 +1,14 @@
 package inspire2connect.inspire2connect.quiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-import inspire2connect.inspire2connect.R;
-
-import inspire2connect.inspire2connect.tweets.tweetActivity;
-import inspire2connect.inspire2connect.tweets.tweetObject;
-import inspire2connect.inspire2connect.utils.BaseActivity;
-import inspire2connect.inspire2connect.utils.urlActivity;
-
-import android.content.Intent;
-
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import inspire2connect.inspire2connect.R;
+import inspire2connect.inspire2connect.utils.BaseActivity;
 
 public class quizSolutionsActivity extends BaseActivity {
 
@@ -34,8 +27,7 @@ public class quizSolutionsActivity extends BaseActivity {
         ArrayList<questionObject> questions = quizActivity.selected_questions;
 
 
-
-                listView = findViewById(R.id.list);
+        listView = findViewById(R.id.list);
         adapter = new questionAdapter(this, questions);
         listView.setAdapter(adapter);
 

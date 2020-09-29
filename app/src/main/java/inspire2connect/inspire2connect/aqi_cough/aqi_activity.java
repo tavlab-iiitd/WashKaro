@@ -10,8 +10,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,28 +38,28 @@ public class aqi_activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusBarGradiant(this);
-        setContentView( R.layout.aqi_activity );
+        setContentView(R.layout.aqi_activity);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        final TextView avgAQI = (TextView) findViewById(R.id.avgAQI);
+        final TextView avgAQI = findViewById(R.id.avgAQI);
 
-        Button resetButton = (Button) findViewById(R.id.resetButton);
-        Button geotagButton = (Button) findViewById(R.id.geotagButton);
+        Button resetButton = findViewById(R.id.resetButton);
+        Button geotagButton = findViewById(R.id.geotagButton);
 
-        final EditText dataCollectedAt = (EditText) findViewById(R.id.dataCollectedAt);
-        final EditText aqiPredictText = (EditText) findViewById(R.id.aqiPredictText);
-        final EditText bmiText = (EditText) findViewById(R.id.bmiText);
-        final EditText ageText = (EditText) findViewById(R.id.ageText);
+        final EditText dataCollectedAt = findViewById(R.id.dataCollectedAt);
+        final EditText aqiPredictText = findViewById(R.id.aqiPredictText);
+        final EditText bmiText = findViewById(R.id.bmiText);
+        final EditText ageText = findViewById(R.id.ageText);
 
-        final CheckBox bronchitisCheck = (CheckBox) findViewById(R.id.bronchitisCheck);
-        final CheckBox asthmaCheck = (CheckBox) findViewById(R.id.asthmaCheck);
-        final CheckBox pneumoniaCheck = (CheckBox) findViewById(R.id.pneumoniaCheck);
-        final CheckBox lungCancerCheck = (CheckBox) findViewById(R.id.lungCancerCheck);
-        final CheckBox tbCheck = (CheckBox) findViewById(R.id.tbCheck);
-        final CheckBox otherRespCheck = (CheckBox) findViewById(R.id.otherRespCheck);
+        final CheckBox bronchitisCheck = findViewById(R.id.bronchitisCheck);
+        final CheckBox asthmaCheck = findViewById(R.id.asthmaCheck);
+        final CheckBox pneumoniaCheck = findViewById(R.id.pneumoniaCheck);
+        final CheckBox lungCancerCheck = findViewById(R.id.lungCancerCheck);
+        final CheckBox tbCheck = findViewById(R.id.tbCheck);
+        final CheckBox otherRespCheck = findViewById(R.id.otherRespCheck);
 
-        final CheckBox femaleCheck = (CheckBox) findViewById(R.id.femaleCheck);
-        final CheckBox maleCheck = (CheckBox) findViewById(R.id.maleCheck);
-        final CheckBox otherGenderCheck = (CheckBox) findViewById(R.id.otherGenderCheck);
+        final CheckBox femaleCheck = findViewById(R.id.femaleCheck);
+        final CheckBox maleCheck = findViewById(R.id.maleCheck);
+        final CheckBox otherGenderCheck = findViewById(R.id.otherGenderCheck);
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +100,7 @@ public class aqi_activity extends BaseActivity {
                 boolean otherGenderVal = otherGenderCheck.isChecked();
                 Date currentTime = Calendar.getInstance().getTime();
 
-                UserHelperClass helperClass = new UserHelperClass(aqiPredictString,dataLocationString,bmiString,ageString,bronchitisVal,asthmaVal,pneumoniaVal,lungCancerVal,tbVal,otherRespVal,femaleVal,maleVal,otherGenderVal,currentTime);
+                UserHelperClass helperClass = new UserHelperClass(aqiPredictString, dataLocationString, bmiString, ageString, bronchitisVal, asthmaVal, pneumoniaVal, lungCancerVal, tbVal, otherRespVal, femaleVal, maleVal, otherGenderVal, currentTime);
 
                 aqiReference.push().setValue(helperClass);
 
@@ -114,15 +112,13 @@ public class aqi_activity extends BaseActivity {
         maleCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(maleCheck.isChecked()){
+                if (maleCheck.isChecked()) {
                     femaleCheck.setChecked(false);
                     otherGenderCheck.setChecked(false);
-                }
-                else if(femaleCheck.isChecked()){
+                } else if (femaleCheck.isChecked()) {
                     otherGenderCheck.setChecked(false);
                     maleCheck.setChecked(false);
-                }
-                else if(otherGenderCheck.isChecked()){
+                } else if (otherGenderCheck.isChecked()) {
                     maleCheck.setChecked(false);
                     femaleCheck.setChecked(false);
                 }
@@ -132,15 +128,13 @@ public class aqi_activity extends BaseActivity {
         femaleCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(maleCheck.isChecked()){
+                if (maleCheck.isChecked()) {
                     femaleCheck.setChecked(false);
                     otherGenderCheck.setChecked(false);
-                }
-                else if(femaleCheck.isChecked()){
+                } else if (femaleCheck.isChecked()) {
                     otherGenderCheck.setChecked(false);
                     maleCheck.setChecked(false);
-                }
-                else if(otherGenderCheck.isChecked()){
+                } else if (otherGenderCheck.isChecked()) {
                     maleCheck.setChecked(false);
                     femaleCheck.setChecked(false);
                 }
@@ -150,15 +144,13 @@ public class aqi_activity extends BaseActivity {
         otherGenderCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(maleCheck.isChecked()){
+                if (maleCheck.isChecked()) {
                     femaleCheck.setChecked(false);
                     otherGenderCheck.setChecked(false);
-                }
-                else if(femaleCheck.isChecked()){
+                } else if (femaleCheck.isChecked()) {
                     otherGenderCheck.setChecked(false);
                     maleCheck.setChecked(false);
-                }
-                else if(otherGenderCheck.isChecked()){
+                } else if (otherGenderCheck.isChecked()) {
                     maleCheck.setChecked(false);
                     femaleCheck.setChecked(false);
                 }
@@ -173,7 +165,7 @@ public class aqi_activity extends BaseActivity {
                 .url(url)
                 .build();
 
-        client.newCall(request).enqueue(new Callback () {
+        client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 e.printStackTrace();

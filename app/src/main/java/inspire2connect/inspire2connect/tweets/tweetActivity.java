@@ -35,7 +35,6 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +53,9 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 import inspire2connect.inspire2connect.utils.urlActivity;
 
 public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitListener, View.OnClickListener {
+    public static final String TAG = "TweetActivity";
     private static final int MY_REQUEST_CODE = 2399;
+    public ArrayList<tweetObject> result;
     ConstraintLayout[] ll_but = new ConstraintLayout[10];
     ImageButton flip_left, flip_right;
     Animation anim1, anim2, anim3, anim4;
@@ -64,14 +65,19 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     ConstraintLayout[] statLayouts = new ConstraintLayout[4];
     LayoutInflater inflater;
     float downX, downY, upX, upY;
+    String currentUserID;
+    DatabaseReference databaseReference;
     private ViewFlipper viewFlipper;
     private List<tweetInfographics> slideLists;
-    String currentUserID;
+    private RecyclerView recyclerView;
+    private tweetRecyclerViewAdapter mAdapter;
+    private TextToSpeech tts;
+    private boolean setDate;
 
     public void update_handle() {
         final AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo> () {
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo appUpdateInfo) {
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
@@ -104,14 +110,6 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         }
     }
 
-    public static final String TAG = "TweetActivity";
-    public ArrayList<tweetObject> result;
-    DatabaseReference databaseReference;
-    private RecyclerView recyclerView;
-    private tweetRecyclerViewAdapter mAdapter;
-    private TextToSpeech tts;
-    private boolean setDate;
-
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
@@ -125,10 +123,10 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     count += 1;
-                    tweetObject obj = new tweetObject(snapshot.child("tweet_"+ getCurLang()).getValue().toString(),snapshot.child("url").getValue().toString(),Integer.toString(count) );
+                    tweetObject obj = new tweetObject(snapshot.child("tweet_" + getCurLang()).getValue().toString(), snapshot.child("url").getValue().toString(), Integer.toString(count));
 
-                    result.add(new tweetObject (obj.text,
-                            obj.source,Integer.toString(count)));
+                    result.add(new tweetObject(obj.text,
+                            obj.source, Integer.toString(count)));
                 }
                 populate_recycler_view(result);
             }
@@ -141,12 +139,12 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     }
 
     public void populate_recycler_view(ArrayList<tweetObject> result) {
-        mAdapter = new tweetRecyclerViewAdapter (this, result);
+        mAdapter = new tweetRecyclerViewAdapter(this, result);
         mAdapter.setTTS(tts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator ());
-        recyclerView.addItemDecoration(new DividerItemDecoration (this, 0));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
 
         recyclerView.setAdapter(mAdapter);
     }
@@ -158,11 +156,10 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         setContentView(R.layout.activity_social_analysis);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         update_handle();
         initialize_view_flipper();
-
 
 
         slideLists = new ArrayList<>();
@@ -207,7 +204,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         flip_right.setOnClickListener(this);
 
         flipper_single_tap();
-        fetchset_facts ();
+        fetchset_facts();
 
         setInfographicFlipper();
 
@@ -250,7 +247,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 break;
             case TWEETS:
                 databaseReference = tweetsReference;
-                getSupportActionBar().setTitle( R.string.social_media_title);
+                getSupportActionBar().setTitle(R.string.social_media_title);
                 break;
             default:
                 Logv(TAG, "Invalid Intent");
@@ -258,7 +255,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         }
 
         result = new ArrayList<>();
-        result.add(new tweetObject ("No Tweet Available", "No Tweet","1"));
+        result.add(new tweetObject("No Tweet Available", "No Tweet", "1"));
         mAdapter = new tweetRecyclerViewAdapter(this, result);
         recyclerView = findViewById(R.id.tweets_recycler_view);
 
@@ -308,13 +305,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         Intent intnt = new Intent(tweetActivity.this, tweetInfoActivity.class);
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Tweet_Code", code);
-        FirebaseAnalytics.getInstance ( this ).logEvent("Infographic_Selected", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("Infographic_Selected", bundle);
 
         intnt.putExtra("image", url);
         startActivity(intnt);
@@ -327,6 +324,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
         imageView.setImageResource(R.drawable.loading_image);
         viewFlipper.addView(imageView);
     }
+
     private void usingFirebaseImages(List<tweetInfographics> slideLists) {
         for (int i = 0; i < slideLists.size(); i++) {
             String downloadImageUrl = slideLists.get(i).tweetURL;
@@ -348,27 +346,28 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
     public void fetchset_facts() {
 
-        tweetsReference.child ("facts").child(getCurLangKey().toLowerCase()).addValueEventListener(new ValueEventListener() {
+        tweetsReference.child("facts").child(getCurLangKey().toLowerCase()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Tweets tweets = dataSnapshot.getValue (Tweets.class );
+                Tweets tweets = dataSnapshot.getValue(Tweets.class);
 
-                mohfw_tv2.setText ( tweets.Fact1 );
-                mohfw_tv3.setText ( tweets.Fact2 );
-                mohfw_tv4.setText ( tweets.Fact3 );
-                mohfw_tv5.setText ( tweets.Fact4 );
+                mohfw_tv2.setText(tweets.Fact1);
+                mohfw_tv3.setText(tweets.Fact2);
+                mohfw_tv4.setText(tweets.Fact3);
+                mohfw_tv5.setText(tweets.Fact4);
 
-                mohfw_data2.setText ( tweets.Fact1_value );
-                mohfw_data3.setText ( tweets.Fact2_value );
-                mohfw_data4.setText ( tweets.Fact3_value );
-                mohfw_data5.setText ( tweets.Fact4_value );
+                mohfw_data2.setText(tweets.Fact1_value);
+                mohfw_data3.setText(tweets.Fact2_value);
+                mohfw_data4.setText(tweets.Fact3_value);
+                mohfw_data5.setText(tweets.Fact4_value);
 
-                mohfw_currency2.setText ( tweets.Fact1_currency );
-                mohfw_currency3.setText ( tweets.Fact2_currency );
-                mohfw_currency4.setText ( tweets.Fact3_currency );
-                mohfw_currency5.setText ( tweets.Fact4_currency );
+                mohfw_currency2.setText(tweets.Fact1_currency);
+                mohfw_currency3.setText(tweets.Fact2_currency);
+                mohfw_currency4.setText(tweets.Fact3_currency);
+                mohfw_currency5.setText(tweets.Fact4_currency);
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -377,11 +376,10 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     }
 
 
-
     public void setInfographicFlipper() {
         initialize_view_flipper();
 
-        tweetsReference.child ("images").child(getCurLangKey().toLowerCase())
+        tweetsReference.child("images").child(getCurLangKey().toLowerCase())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
@@ -435,27 +433,27 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent i = null;
-        switch (id){
+        switch (id) {
             case R.id.lang_togg_butt:
 
                 // Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
-                if(Locale.getDefault().getLanguage().equals("en"))
+                if (Locale.getDefault().getLanguage().equals("en"))
                     bundle.putString("Current_Language", "Hindi");
-                else if(Locale.getDefault().getLanguage().equals("hi"))
+                else if (Locale.getDefault().getLanguage().equals("hi"))
                     bundle.putString("Current_Language", "English");
 
                 bundle.putString("Language_Change_Activity", "Tweet Activity");
-                FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
+                FirebaseAnalytics.getInstance(this).logEvent("Language_Toggle", bundle);
 
                 toggleLang(this);
                 break;
             case R.id.Survey:
-                i = new Intent( tweetActivity.this, maleFemaleActivity.class);
+                i = new Intent(tweetActivity.this, maleFemaleActivity.class);
                 startActivity(i);
                 break;
             case R.id.developers:
@@ -488,14 +486,15 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     @Override
     protected void onResume() {
         super.onResume();
-        mAdapter.setOnItemClickListener( (position, v) -> {
+        mAdapter.setOnItemClickListener((position, v) -> {
             Intent i = new Intent(tweetActivity.this, urlActivity.class);
             ArrayList<tweetObject> result_from_adapter = mAdapter.getResult();
-            i.putExtra("url", result_from_adapter.get(position).getSource ());
-            i.putExtra("name", getString(R.string.information_link ));
+            i.putExtra("url", result_from_adapter.get(position).getSource());
+            i.putExtra("name", getString(R.string.information_link));
             startActivity(i);
-        } );
+        });
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -506,7 +505,7 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
     public void onClick(View view) {
         Intent i = null;
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tweetFlipperLeft:
                 viewFlipper.stopFlipping();
                 viewFlipper.setInAnimation(anim1);
@@ -515,13 +514,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
                 //Firebase Analytics
 
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
                 bundle.putString("InfographicScroll", "Scrolled Left");
-                FirebaseAnalytics.getInstance ( this ).logEvent("ScrollingInfographics", bundle);
+                FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle);
 
                 break;
             case R.id.tweetFlipperRight:
@@ -531,13 +530,13 @@ public class tweetActivity extends BaseActivity implements TextToSpeech.OnInitLi
                 viewFlipper.showPrevious();
 
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle2 = new Bundle();
                 bundle2.putString("UID", currentUserID);
                 bundle2.putString("InfographicScroll", "Scrolled Right");
-                FirebaseAnalytics.getInstance ( this ).logEvent("ScrollingInfographics", bundle2);
+                FirebaseAnalytics.getInstance(this).logEvent("ScrollingInfographics", bundle2);
 
                 break;
 

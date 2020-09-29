@@ -25,7 +25,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -52,10 +51,10 @@ public class maleFemaleActivity extends BaseActivity {
     LocationManager mLocationManager;
     LocationListener mLocationListener;
     Button skip;
+    String currentUserID;
     private DatabaseReference mDatabaseReference;
     private WebView webView;
     private ProgressDialog progDailog;
-    String currentUserID;
 
     private void send_data() {
         ref = FirebaseDatabase.getInstance().getReference();
@@ -147,13 +146,13 @@ public class maleFemaleActivity extends BaseActivity {
         }
 
         //Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "Survey Screen");
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
     }
 
@@ -258,13 +257,13 @@ public class maleFemaleActivity extends BaseActivity {
             // Firebase Analytics
             Bundle bundle = new Bundle();
             bundle.putString("UID", currentUserID);
-            if(Locale.getDefault().getLanguage().equals("en"))
+            if (Locale.getDefault().getLanguage().equals("en"))
                 bundle.putString("Current_Language", "Hindi");
-            else if(Locale.getDefault().getLanguage().equals("hi"))
+            else if (Locale.getDefault().getLanguage().equals("hi"))
                 bundle.putString("Current_Language", "English");
 
             bundle.putString("Language_Change_Activity", "Survey Activity");
-            FirebaseAnalytics.getInstance ( this ).logEvent("Language_Toggle", bundle);
+            FirebaseAnalytics.getInstance(this).logEvent("Language_Toggle", bundle);
 
             toggleLang(this);
             switch_language();

@@ -15,37 +15,29 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import java.util.Objects;
 
 import inspire2connect.inspire2connect.R;
 import inspire2connect.inspire2connect.utils.BaseActivity;
 import inspire2connect.inspire2connect.utils.LocaleHelper;
 
-//import android.support.v4.view.PagerAdapter;
-//import android.support.v4.view.ViewPager;
-//import android.support.v7.app.AppCompatActivity;
-//import android.preference.PreferenceManager;
-
 public class WelcomeActivity extends BaseActivity {
 
+    String currentUserID;
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    String currentUserID;
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -97,11 +89,11 @@ public class WelcomeActivity extends BaseActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(firebaseUser == null){
+        if (firebaseUser == null) {
             firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         firebaseUser = firebaseAuth.getCurrentUser();
                     }
                 }
@@ -109,13 +101,13 @@ public class WelcomeActivity extends BaseActivity {
         }
 
 //         Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Screen", this.getClass().getSimpleName());
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {

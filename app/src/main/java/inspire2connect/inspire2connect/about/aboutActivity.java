@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 
 import in.srain.cube.views.GridViewWithHeaderAndFooter;
 import inspire2connect.inspire2connect.R;
@@ -26,15 +25,12 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 @SuppressWarnings("SpellCheckingInspection")
 public class aboutActivity extends BaseActivity implements View.OnClickListener {
 
+    String currentUserID;
+    aboutElem[] elems;
+    Context ctx;
     private ImageView tavlab;
     private ImageView precog;
     private ImageView iiitd;
-
-    String currentUserID;
-
-    aboutElem[] elems;
-
-    Context ctx;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -55,7 +51,7 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 new aboutElem(this, R.string.himanshu, R.string.himanshu_tag, R.string.himanshuURL),
                 new aboutElem(this, R.string.kanav, R.string.kanav_tag, R.string.kanavURL),
                 new aboutElem(this, R.string.priyanka, R.string.priyanka_tag, R.string.priyankaURL),
-                new aboutElem(this, R.string.raunak,R.string.raunak_tag , R.string.raunakURL),
+                new aboutElem(this, R.string.raunak, R.string.raunak_tag, R.string.raunakURL),
                 new aboutElem(this, R.string.rishabh, R.string.tanuj_tag, R.string.rishabhURL),
                 new aboutElem(this, R.string.rohan, R.string.rohan_tag, R.string.rohanURL),
                 new aboutElem(this, R.string.tanuj, R.string.tanuj_tag, R.string.tanujURL),
@@ -68,21 +64,21 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         };
 
         super.onCreate(savedInstanceState);
-        setStatusBarGradiant ( this );
+        setStatusBarGradiant(this);
         setContentView(R.layout.ca_activity_about);
 
 
         if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
             getActionBar().setTitle(getString(R.string.about_us));
-            getActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+            getActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(getString(R.string.about_us));
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
         GridViewWithHeaderAndFooter gridView = findViewById(R.id.gridview);
@@ -98,13 +94,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         iiitd.setOnClickListener(this);
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "About Page");
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,14 +109,14 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("UID", currentUserID);
                 bundle1.putString("Profile_Visited", elems[position].name);
                 bundle1.putString("Profile_Visited_URL", Uri.encode(elems[position].url));
-                FirebaseAnalytics.getInstance ( ctx ).logEvent("Profile_Visits", bundle1);
+                FirebaseAnalytics.getInstance(ctx).logEvent("Profile_Visits", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -136,13 +132,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("UID", currentUserID);
                 bundle1.putString("Reference_URL", url);
-                FirebaseAnalytics.getInstance ( ctx ).logEvent("References_Visited", bundle1);
+                FirebaseAnalytics.getInstance(ctx).logEvent("References_Visited", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -155,13 +151,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
                 //Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("UID", currentUserID);
                 bundle1.putString("Reference_URL", url);
-                FirebaseAnalytics.getInstance ( ctx ).logEvent("References_Visited", bundle1);
+                FirebaseAnalytics.getInstance(ctx).logEvent("References_Visited", bundle1);
 
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -202,13 +198,13 @@ public class aboutActivity extends BaseActivity implements View.OnClickListener 
         }
 
         //Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("URL", url);
-        FirebaseAnalytics.getInstance ( this ).logEvent("URLs_Visited", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("URLs_Visited", bundle);
 
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));

@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import inspire2connect.inspire2connect.R;
@@ -29,13 +28,13 @@ public class InfographicsActivity extends BaseActivity {
     float d = 0f;
     float newRot = 0f;
     float oldDist = 1f;
+    String currentUserID;
     private boolean isZoomAndRotate;
     private boolean isOutSide;
     private int mode = NONE;
     private PointF start = new PointF();
     private PointF mid = new PointF();
     private float xCoOrdinate, yCoOrdinate;
-    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class InfographicsActivity extends BaseActivity {
         setStatusBarGradiant(this);
         setContentView(R.layout.activity_infographics);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Intent i = this.getIntent();
         String url = i.getStringExtra("image");
@@ -52,13 +51,13 @@ public class InfographicsActivity extends BaseActivity {
         put_image(url);
 
         // Firebase Analytics
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             currentUserID = firebaseUser.getUid();
         }
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("Screen", "Infographic Page");
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
     }
 

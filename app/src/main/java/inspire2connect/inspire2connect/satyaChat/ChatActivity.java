@@ -18,7 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONObject;
 
@@ -30,18 +29,21 @@ import inspire2connect.inspire2connect.utils.LocaleHelper;
 
 public class ChatActivity extends BaseActivity {
 
-    private Context context;
-    private RequestQueue requestQueue;
     private static final String answer = "answer";
-
     public ListView chatListView;
     ArrayList<ChatElem> items;
-
+    String currentUserID;
+    private Context context;
+    private RequestQueue requestQueue;
     private ChatAdapter chatAdapter;
-
     private EditText sendText;
     private ImageButton sendButton;
-    String currentUserID;
+
+    private static String createURL(Context ctx, String text) {
+        text = text.trim();
+        String uid = firebaseUser.getUid();
+        return ctx.getString(R.string.satya_chatbot_url) + "?query=" + text + "&lang=" + getCurLang() + "&uid=" + uid;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.satya_chatbot);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         context = this;
         requestQueue = Volley.newRequestQueue(context);
 
@@ -63,13 +65,13 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
                 bundle.putString("ChatBot_Text", "Sent");
-                FirebaseAnalytics.getInstance ( context ).logEvent("ChatBot_Activity", bundle);
+                FirebaseAnalytics.getInstance(context).logEvent("ChatBot_Activity", bundle);
 
                 String txtToSend = sendText.getText().toString().trim();
                 items.add(new ChatElem(txtToSend, true));
@@ -92,7 +94,7 @@ public class ChatActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString("UID", firebaseUser.getUid());
         bundle.putString("Screen", "Satya Chatbot Screen");
-        FirebaseAnalytics.getInstance ( this ).logEvent("CurrentScreen", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("CurrentScreen", bundle);
 
     }
 
@@ -126,12 +128,6 @@ public class ChatActivity extends BaseActivity {
         });
         requestQueue.add(ExampleRequest);
 
-    }
-
-    private static String createURL(Context ctx, String text) {
-        text = text.trim();
-        String uid = firebaseUser.getUid().toString();
-        return ctx.getString(R.string.satya_chatbot_url) + "?query=" + text + "&lang=" + getCurLang() + "&uid=" + uid;
     }
 
     @Override

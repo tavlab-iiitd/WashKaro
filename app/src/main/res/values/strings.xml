@@ -94,7 +94,7 @@
 
     <string name="vaibhav">Vaibhav Gautam</string>
     <string name="vaibhav_tag">Undergraduate, SNU</string>
-  
+
     <string name="raunak">Raunak Mokhasi</string>
 
     <string name="himanshu">Himanshu Sharma</string>
@@ -190,9 +190,6 @@
     <!--    Map API-->
     <string name="map_key" translatable="false">AIzaSyCe0a6tIEWNP8FMrbNUN-ebB6mtUkzfdkQ</string>
     <string name="view_source">View Source</string>
-    
-    
-    
 
 
 </resources>

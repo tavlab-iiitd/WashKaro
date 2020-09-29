@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.io.Serializable;
 
@@ -32,10 +31,10 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
     public ImageButton sourceBtn;
     boolean isSpeaking;
     TextToSpeech mTTS;
+    String currentUserID;
     private String title;
     private String content;
     private Context context;
-    String currentUserID;
 
     @Override
     protected void onPause() {
@@ -96,7 +95,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
         detailed_title.setMovementMethod(LinkMovementMethod.getInstance());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable ( Color.TRANSPARENT));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         detailed_text = findViewById(R.id.detailed_text);
         detailed_text.setMovementMethod(new ScrollingMovementMethod());
@@ -120,17 +119,17 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
             public void onClick(View v) {
                 Intent i = new Intent(context, urlActivity.class);
                 i.putExtra("url", redirect_url);
-                i.putExtra("name", getString(R.string.information_link ));
+                i.putExtra("name", getString(R.string.information_link));
 
                 // Firebase Analytics
-                if(firebaseUser != null) {
+                if (firebaseUser != null) {
                     currentUserID = firebaseUser.getUid();
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("UID", currentUserID);
                 bundle.putString("ArticleTitle", title);
                 bundle.putString("ArticleURL", redirect_url);
-                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleSourceChecked", bundle);
+                FirebaseAnalytics.getInstance(context).logEvent("ArticleSourceChecked", bundle);
 
                 startActivity(i);
             }
@@ -166,7 +165,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
                 }
 
                 // Firebase Analytics
-                FirebaseAnalytics.getInstance ( context ).logEvent("ArticleAudio", bundle);
+                FirebaseAnalytics.getInstance(context).logEvent("ArticleAudio", bundle);
 
             }
         });
@@ -178,7 +177,7 @@ public class guidelineViewActivity extends BaseActivity implements Serializable 
         Bundle bundle = new Bundle();
         bundle.putString("UID", currentUserID);
         bundle.putString("ArticleTitle", title);
-        FirebaseAnalytics.getInstance ( this ).logEvent("ArticleShared", bundle);
+        FirebaseAnalytics.getInstance(this).logEvent("ArticleShared", bundle);
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/html");
