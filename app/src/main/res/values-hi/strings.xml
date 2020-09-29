@@ -126,6 +126,44 @@
     <string name="correctAns">सही</string>
     <string name="wrongAns">गलत</string>
 
+    <!--    AQI Hyperlocal Monitoring-->
+    <string name="aqi_hyperlocal_title">AQI हाइपरलोकल मॉनिटरिंग</string>
+    <string name="reset">रीसेट</string>
+    <string name="enter_age">आयु दर्ज करें :</string>
+    <string name="enter_gender">लिंग दर्ज करें :</string>
+    <string name="male">नर</string>
+    <string name="female">महिला</string>
+    <string name="other">अन्य</string>
+    <string name="enter_bmi">बीएमआई दर्ज करें :</string>
+    <string name="enter_bmi_hint">बीएमआई मूल्य</string>
+    <string name="suffering_from">से पीड़ित / के संदेह :</string>
+    <string name="asthma">दमा</string>
+    <string name="bronchitis">ब्रोंकाइटिस</string>
+    <string name="pneumonia">न्यूमोनिया</string>
+    <string name="tuberculosis">यक्ष्मा</string>
+    <string name="lung_cancer">फेफड़ों का कैंसर</string>
+    <string name="yesterday_aqi">कल का AQI :</string>
+    <string name="unavailable">अनुपलब्ध</string>
+    <string name="aqi_prediction_today">आज के लिए AQI भविष्यवाणी :</string>
+    <string name="aqi_hint">AQI</string>
+    <string name="geotagging">जियोटैगिंग</string>
+    <string name="data_collected_at">डेटा एकत्र:</string>
+    <string name="home_hospital">घर / अस्पताल</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
 
 
