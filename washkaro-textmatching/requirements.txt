@@ -1,0 +1,9 @@
+summa
+nltk
+gensim
+sumy
+spacy
+pytextrank
+nltk
+pandas
+scipy
